@@ -131,7 +131,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt-ruby (~> 3.1.2)
+  bcrypt-ruby
   coffee-rails (~> 4.0.0)
   haml-rails
   jbuilder (~> 1.2)
