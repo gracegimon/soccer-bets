@@ -17,7 +17,8 @@ class AuthenticationController < ApplicationController
     if user
       redirect_to :root, :notice => "You're logged in"
     else
-      render :action => "sign_in", :notice => "Please check your username and/or password"
+      flash[:error] = "Please check your username and/or password"
+      redirect_to :action => "sign_in"
     end
 
   end
