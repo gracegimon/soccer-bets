@@ -1,0 +1,14 @@
+%p Sign In
+= form_for @user, :as => :user, :url => sign_in_path(@user) do |f|
+  %p
+    = f.label 'username or email:'
+    %br
+    = f.text_field :username
+  %p
+    = f.label 'password:'
+    %br
+    = f.password_field :password
+  %p
+    = f.submit 'Sign In'
+       
+    #{f.submit 'Clear Form', :type => 'reset'}
