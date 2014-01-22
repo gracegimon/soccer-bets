@@ -15,6 +15,7 @@ class AuthenticationController < ApplicationController
       user = User.authenticate_by_username(username, password)
     end
     if user
+      session[:user_id] = user.id
       redirect_to :root, :notice => "You're logged in"
     else
       flash[:error] = "Please check your username and/or password"
