@@ -41,7 +41,7 @@ gem "twitter-bootstrap-rails"
 gem 'bcrypt-ruby', require: 'bcrypt'
 
 gem 'pry'
-
+gem "mail"
 # For heroku
 gem 'rails_serve_static_assets'
 # Use unicorn as the app server

@@ -143,6 +143,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   less-rails
+  mail
   pg
   pry
   rails (= 4.0.1)

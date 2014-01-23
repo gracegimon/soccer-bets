@@ -22,22 +22,7 @@
     .navbar.navbar-fluid-top
       .navbar-inner
         .container-fluid
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand(href="#") Quiniela
-          .container.nav-collapse
-            %ul.nav.right
-            - if current_user
-              %li
-                Logged in as #{current_user.username}.
-                \#{link_to "Sign Out", signed_out_path}
-            - else
-              %li= link_to "Sign up", sign_up_path
-              %li= link_to "Sign In", sign_in_path
-
-
+          = render "layouts/header"
     .container-fluid
 
       .row-fluid
