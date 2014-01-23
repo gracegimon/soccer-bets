@@ -1,9 +1,9 @@
 %p Sign In
 = form_for @user, :as => :user, :url => sign_in_path(@user) do |f|
   %p
-    = f.label 'username or email:'
+    = f.label 'email:'
     %br/
-    = f.text_field :username, required: true
+    = f.text_field :email, required: true
   %p
     = f.label 'password:'
     %br/

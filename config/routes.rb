@@ -11,6 +11,7 @@ Quiniela::Application.routes.draw do
   get "change_password" => "authentication#change_password"
   get "forgot_password" => "authentication#forgot_password"
   get "sign_up" => "authentication#sign_up"
+  put "sign_up" => "authentication#register"
   get "password_sent" => "authentication#password_sent"
 
   # Example of regular route:

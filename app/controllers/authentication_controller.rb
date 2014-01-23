@@ -5,20 +5,14 @@ class AuthenticationController < ApplicationController
   end
 
   def login
-    username_or_email = params[:user][:username]
+    email = params[:user][:email]
     password = params[:user][:password]
-    if username_or_email.rindex('@')
-      email=username_or_email
-      user = User.authenticate_by_email(email, password)
-    else
-      username=username_or_email
-      user = User.authenticate_by_username(username, password)
-    end
+    user = User.authenticate(email, password)
     if user
       session[:user_id] = user.id
       redirect_to :root, :notice => "You're logged in"
     else
-      flash[:error] = "Please check your username and/or password"
+      flash[:error] = "Please check your email and/or password"
       redirect_to :action => "sign_in"
     end
 
@@ -39,9 +33,20 @@ class AuthenticationController < ApplicationController
   end
 
   def sign_up
-    @user = User.create!(user_params)
-    @user.save
-    redirect_to :root
+    @user = User.new
+  end
+
+  def register
+    @user = User.new(new_user_params)
+    if @user.valid?
+      @user.save
+      session[:user_id] = @user.id
+      flash[:notice] = "You've signed up !"
+      redirect_to :root
+    else
+      flash[:error] = "This email has already been used "
+      redirect_to sign_up_path
+    end    
   end
 
   def password_sent
@@ -52,5 +57,9 @@ class AuthenticationController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username,:password)
+  end
+
+  def new_user_params
+    params.require(:user).permit(:username, :password, :password_confirmation, :email)
   end
 end
