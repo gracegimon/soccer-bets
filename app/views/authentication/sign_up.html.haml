@@ -1,27 +1,28 @@
-%p Sign Up
-= form_for @user, :as => :user, :url => sign_up_path, :method => :put do |f|
-  %p
-    = f.label 'username:'
-    %br/
-    = f.text_field :username, required: true
-    = show_field_error(@user, :username)
-  %p This will be your display name
-  %p
-    = f.label 'email:'
-    %br/
-    = f.text_field :email, required: true
-    = show_field_error(@user, :email)
-  %p
-    = f.label 'password:'
-    %br/
-    = f.password_field :password, required: true
-    = show_field_error(@user, :password)
-  %p
-    = f.label 'password confirmation:'
-    %br/
-    = f.password_field :password_confirmation, required: true
-    = show_field_error(@user, :password_confirmation)
-  %p
-    = f.submit 'Sign Up'
-    \   
-    \#{f.submit 'Clear Form', :type => 'reset'}
+.well
+  %h3 Sign Up
+  = form_for @user, :as => :user, :url => sign_up_path, :method => :post  do |f|
+    .form-group
+      = f.label 'username:'
+      %br/
+      = f.text_field :username, required: true
+      = show_field_error(@user, :username)
+      %p This will be your display name
+    .form-group
+      = f.label 'email:'
+      %br/
+      = f.text_field :email, required: true
+      = show_field_error(@user, :email)
+    .form-group
+      = f.label 'password:'
+      %br/
+      = f.password_field :password, required: true
+      = show_field_error(@user, :password)
+    .form-group
+      = f.label 'password confirmation:'
+      %br/
+      = f.password_field :password_confirmation, required: true
+      = show_field_error(@user, :password_confirmation)
+    %p
+      = f.submit 'Sign Up'
+      \   
+      \#{f.submit 'Clear Form', :type => 'reset'}

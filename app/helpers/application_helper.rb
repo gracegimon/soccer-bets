@@ -1,12 +1,12 @@
 module ApplicationHelper
-	
+
   def show_field_error(model, field)
     s=""
 
     if !model.errors[field].empty?
       s =
         <<-EOHTML
-           <div id="error_message">
+           <div class="has-error">
              #{model.errors[field][0]}
            </div>
         EOHTML

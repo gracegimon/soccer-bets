@@ -44,8 +44,7 @@ class AuthenticationController < ApplicationController
       flash[:notice] = "You've signed up !"
       redirect_to :root
     else
-      flash[:error] = "This email has already been used "
-      redirect_to sign_up_path
+      render "sign_up"
     end    
   end
 

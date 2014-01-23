@@ -3,13 +3,21 @@
 class User < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
-
+  before_save { self.email = email.downcase }
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
+  validates_presence_of :password_confirmation, :on => :create
   validates_presence_of :email, :on => :create
   validates_presence_of :username, :on => :create
-  validates_uniqueness_of :email
-  validates_uniqueness_of :username
+  validates :email, uniqueness: true
+  validate  :email_regex
+  validates :password, length: { minimum: 6 }
+
+  def email_regex
+    if email.present? and not email.match(/\A[^@]+@[^@]+\z/)
+      errors.add :email, "This is not a valid email format"
+    end
+  end
 
   def initialize(attributes = {})
     super # must allow the active record to initialize!
