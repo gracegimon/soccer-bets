@@ -6,6 +6,9 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: quiniela_development
+  database: quiniela
   pool: 5
-  password:
+  password: postgres
+  username: postgres
+  host: localhost
+  port: 5432
