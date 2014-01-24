@@ -11,20 +11,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124014301) do
+ActiveRecord::Schema.define(version: 20140124031346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.integer  "first_place_team_id"
+    t.integer  "second_place_team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "matches", force: true do |t|
     t.integer  "team_1_id"
     t.integer  "team_2_id"
-    t.string   "type"
     t.date     "date"
     t.string   "city"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "stadium_id"
+    t.integer  "type"
+  end
+
+  create_table "players", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "date_of_birth"
+    t.string   "position"
+    t.integer  "shirt_number"
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "score_boards", force: true do |t|
+    t.integer  "name"
+    t.integer  "user_id"
+    t.integer  "position"
+    t.integer  "points"
+    t.integer  "type"
+    t.boolean  "is_active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "scores", force: true do |t|
+    t.integer  "team_1_goals"
+    t.integer  "team_2_goals"
+    t.integer  "winner_team_id"
+    t.integer  "scoreboard_id"
+    t.integer  "match_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "stadia", force: true do |t|
@@ -38,13 +78,39 @@ ActiveRecord::Schema.define(version: 20140124014301) do
     t.datetime "updated_at"
   end
 
+  create_table "team_stats", force: true do |t|
+    t.integer  "team_id"
+    t.integer  "points"
+    t.integer  "status"
+    t.integer  "played_games"
+    t.integer  "won_games"
+    t.integer  "tied_games"
+    t.integer  "goals_favor"
+    t.integer  "goals_aggainst"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "teams", force: true do |t|
     t.string   "country"
     t.string   "country_ab"
     t.string   "flag"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "group_id"
+    t.string   "name"
+    t.string   "city"
+    t.string   "league"
+  end
+
+  create_table "tournaments", force: true do |t|
+    t.string   "name"
+    t.string   "number"
+    t.string   "type"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "country"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
@@ -56,6 +122,7 @@ ActiveRecord::Schema.define(version: 20140124014301) do
     t.datetime "updated_at"
     t.string   "password_reset_token"
     t.datetime "password_expires_after"
+    t.boolean  "is_admin"
   end
 
 end

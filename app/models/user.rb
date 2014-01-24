@@ -1,6 +1,8 @@
 # Strong parameters that are going to be permitted
 # attr_accessible :email, :username, :password, :password_confirmation
 class User < ActiveRecord::Base
+  has_many :score_boards
+
   attr_accessor :password, :new_password
   before_save :encrypt_password
   before_save { self.email = email.downcase }

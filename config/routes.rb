@@ -5,6 +5,7 @@ Quiniela::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
+  ## AUTHENTICATION ##
   get "sign_in" => "authentication#sign_in"
   post "sign_in"=> "authentication#login"
   get "signed_out" => "authentication#signed_out"
@@ -16,6 +17,16 @@ Quiniela::Application.routes.draw do
   get "sign_up" => "authentication#sign_up"
   post "sign_up" => "authentication#register"
   get "password_sent" => "authentication#password_sent"
+
+
+  # USERS #
+
+  resources :users do
+    resources :score_boards do
+
+    end
+  end
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
