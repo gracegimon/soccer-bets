@@ -1,7 +1,7 @@
 class CreateScoreBoards < ActiveRecord::Migration
   def change
     create_table :score_boards do |t|
-      t.column :name, :integer
+      t.column :name, :text
       t.column :user_id, :integer
       t.column :position, :integer
       t.column :points, :integer

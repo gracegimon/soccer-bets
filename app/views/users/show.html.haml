@@ -1,1 +1,22 @@
-%p This is the show page for you :)
+%p This is the show page for you :) #{@user.username}
+
+%hr
+
+%h2 Add a Scoreboard:
+= form_for([@user, @user.score_boards.build]) do |f|
+  %p
+    = f.label :name
+    %br/
+    = f.text_field :name
+    %p Remember that your scoreboards should have different names!
+  %p
+    = f.label :position, "Amount to bet"
+    %br/
+    - # This can be a select if it has more options
+    = f.radio_button :position, "0"
+    = f.label :position, '50 USD', checked: true
+    = f.radio_button :position, "1"
+    = f.label :position, '100 USD'
+    =# f.hidden :is_active, :false
+  %p
+    = f.submit
