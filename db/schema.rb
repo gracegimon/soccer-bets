@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124043354) do
+ActiveRecord::Schema.define(version: 20140126182437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140124043354) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "stadium_id"
-    t.integer  "type"
+    t.integer  "match_type"
   end
 
   create_table "players", force: true do |t|
@@ -50,11 +50,11 @@ ActiveRecord::Schema.define(version: 20140124043354) do
     t.integer  "user_id"
     t.integer  "position"
     t.integer  "points"
-    t.integer  "type"
     t.boolean  "is_active"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "name"
+    t.integer  "board_type"
   end
 
   create_table "scores", force: true do |t|
@@ -66,6 +66,16 @@ ActiveRecord::Schema.define(version: 20140124043354) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "sessions", force: true do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
   create_table "stadia", force: true do |t|
     t.string   "name"
@@ -105,12 +115,12 @@ ActiveRecord::Schema.define(version: 20140124043354) do
   create_table "tournaments", force: true do |t|
     t.string   "name"
     t.string   "number"
-    t.string   "type"
     t.date     "start_date"
     t.date     "end_date"
     t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tournament_type"
   end
 
   create_table "users", force: true do |t|

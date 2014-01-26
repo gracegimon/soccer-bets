@@ -2,6 +2,7 @@ class ScoreBoard < ActiveRecord::Base
   has_many :scores
   belongs_to :user
   belongs_to :tournament
+  before_create :valid_name
 
  # TYPE 0 --> SCOREBOARD WORTH 50$
  # TYPE 1 --> SCOREBOARD WORTH 100$
@@ -9,6 +10,12 @@ class ScoreBoard < ActiveRecord::Base
 
 
   def valid_name
+    if user.score_boards.find_by_name(name).nil?
+      true
+    else
+      errors[:name] <<  "Name is already being used"
+      false
+    end
   # This method should see all of the scoreboards that
   # the user has and check if this name is unique 
   # for him

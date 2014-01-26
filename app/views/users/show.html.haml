@@ -7,16 +7,16 @@
   %p
     = f.label :name
     %br/
-    = f.text_field :name
+    = f.text_field :name, required: true
     %p Remember that your scoreboards should have different names!
-  %p
-    = f.label :position, "Amount to bet"
-    %br/
-    - # This can be a select if it has more options
-    = f.radio_button :position, "0"
-    = f.label :position, '50 USD', checked: true
-    = f.radio_button :position, "1"
-    = f.label :position, '100 USD'
-    =# f.hidden :is_active, :false
+
+  = f.label :board_type, "Amount to bet", required: true
+  %br/
+  - # This can be a select if it has more options
+  = f.radio_button :board_type, "0", checked: true
+  %p= '50 USD'
+  = f.radio_button :board_type, "1"
+  %p= '100 USD'
+  =f.hidden_field :is_active, value: false
   %p
     = f.submit

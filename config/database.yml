@@ -12,3 +12,10 @@ development:
   username: postgres
   host: localhost
   port: 5432
+
+# development:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: quiniela_development
+#   pool: 5
+#   password: 
