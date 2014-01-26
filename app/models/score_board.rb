@@ -13,7 +13,7 @@ class ScoreBoard < ActiveRecord::Base
     if user.score_boards.find_by_name(name).nil?
       true
     else
-      errors[:name] <<  "Name is already being used"
+      errors[:name] <<  " is already being used"
       false
     end
   # This method should see all of the scoreboards that
