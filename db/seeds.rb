@@ -9,6 +9,8 @@
 
 
 country_teams = [
+	{ name: "Algeria", flag: "http://img.fifa.com/imgml/flags/reflected/m/alg.png",
+		country_ab: 'ALG'},
 	{ name: "Argentina", flag: "http://img.fifa.com/imgml/flags/reflected/m/arg.png",
 		country_ab: 'ARG'},
 	{name: "Australia", flag: "http://img.fifa.com/imgml/flags/reflected/m/aus.png",
@@ -81,4 +83,6 @@ country_teams.each do |c|
   @t1.country_ab = c[:country_ab]
   @t1.flag = c[:flag]
   @t1.name = c[:name]
+  @t1.save
 end
+
