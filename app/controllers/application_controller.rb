@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
     redirect_to :root unless @current_user.nil?
   end
 
+  def current_tournament
+    Tournament.last
+  end
+
 end

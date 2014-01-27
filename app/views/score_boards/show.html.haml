@@ -1,3 +1,25 @@
 %h3 This is the Scoreboard #{@score_board.name} from #{@user.username}
 
+%h2 GROUP STAGE
 
+- @groups.each do |g| 
+  %h3= g.name
+
+  - matches = g.matches
+  - matches.each do |m|
+    - team_1 = m.team_1
+    - team_2 = m.team_2
+    .col-xs-1
+      %p= team_1.name
+      = image_tag team_1.flag
+    .col-xs-3
+      .col-xs-5
+        %input.form-control{type: 'text'}
+      .col-xs-1
+        %p{style: "display:inline;"} -
+      .col-xs-5
+        %input.form-control{type: 'text'}
+    .col-xs-1
+      %p= m.team_2.name
+      = image_tag team_2.flag
+ 

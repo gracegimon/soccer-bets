@@ -86,3 +86,32 @@ country_teams.each do |c|
   @t1.save
 end
 
+
+# For each Match, add its stadium
+
+## Stadium ##
+
+# Sao Paolo http://www.fifa.com/worldcup/destination/stadiums/stadium=5025136/index.html
+
+
+## Tournament ##
+
+t = Tournament.new(name: "2014 FIFA World Cup Brazil", number: "0", start_date: "2014-06-12", end_date: "2014-07-13", country: "Brazil", tournament_type: 0)
+t.save
+
+## Group ##
+
+g = Group.new( name: "A", first_place_team_id: nil, second_place_team_id: nil, tournament_id: 1)
+g.save
+
+## Match ##
+
+m = Match.new(team_1_id: 6, team_2_id: 12, city: "Sao Paulo", stadium_id: nil, match_type: 0, date: "2014-06-12 00:00:00")
+m.save
+
+g.teams << Team.find_by_name("Brazil")
+g.teams << Team.find_by_name("Croatia")
+g.teams << Team.find_by_name("Cameroon")
+g.teams << Team.find_by_name("Mexico")
+
+g.matches << m
