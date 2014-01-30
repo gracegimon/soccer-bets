@@ -22,6 +22,17 @@ class Match < ActiveRecord::Base
     Team.find(team_2_id)
   end
 
+  def time
+    self.date.strftime("%I:%M%p")
+  end
+
+  def day
+    self.date.strftime("%d-%b")
+  end
+
+  def stadium_name
+    Stadium.find(stadium_id).name unless self.stadium_id.nil?
+  end
 
 
 end

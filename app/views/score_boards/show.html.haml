@@ -15,9 +15,9 @@
   .panel.panel-default
     .panel-heading
       %h4.panel-title
-        %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseONE"}
+        %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapse#{i}"}
           %h3= "Group " + g.name
-    .panel-collapse.collapse.in{id: "collapseONE"}
+    .panel-collapse.collapse.in{id: "collapse#{i}"}
       .panel-body
         - matches = g.matches
         - matches.each do |m|
@@ -29,13 +29,40 @@
           .col-xs-3
             .col-xs-5
               %input.form-control{type: 'text'}
+              %p= m.day
             .col-xs-1
               %p{style: "display:inline;"} -
+              %p= m.stadium_name
             .col-xs-5
               %input.form-control{type: 'text'}
+              %p= m.time
           .col-xs-1
             %p= m.team_2.name
             = image_tag team_2.flag
+        .col-xs-6
+          %table.table{style: "float:right"}
+            %thead
+              %th Teams
+              %th J
+              %th G
+              %th E
+              %th P
+              %th GF
+              %th GC
+              %th DIF
+              %th PTS
+            %tbody
+              - g.teams.each do |t|
+                %tr
+                  %td= t.name
+                  %td J
+                  %td G
+                  %td E
+                  %td P
+                  %td GF
+                  %td GC
+                  %td DIF
+                  %td PTS
 
 
 - content_for(:javascript) do

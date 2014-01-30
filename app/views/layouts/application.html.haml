@@ -24,14 +24,7 @@
     .container-fluid
 
       .row-fluid
-        .span3
-          .well.sidebar-nav
-            %ul.nav.nav-list
-              %li.nav-header Menu
-              %li= link_to "Your Score Boards", "/path1"
-              %li= link_to "See overall ranking", "/path2"
-              %li= link_to "Stadiums", "/path3"
-        .span9
+        .span12
           = bootstrap_flash
           = yield
     

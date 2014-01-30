@@ -4,11 +4,14 @@
   %span.icon-bar
 %a.brand(href="#") Quiniela
 .container.nav-collapse
-  %ul.nav.right
+  %ul.nav.right{style: "display:inline;"}
   - if current_user
     %li
       Logged in as #{current_user.username}.
       \#{link_to "Sign Out", signed_out_path}
+    %li= link_to "Your Score Boards", "/path1"
+    %li= link_to "See overall ranking", "/path2"
+    %li= link_to "Stadia", "/path3"
   - else
     %li= link_to "Sign up", sign_up_path
     %li= link_to "Sign In", sign_in_path
