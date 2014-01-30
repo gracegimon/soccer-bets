@@ -1,25 +1,46 @@
 %h3 This is the Scoreboard #{@score_board.name} from #{@user.username}
 
-%h2 GROUP STAGE
+%ul.nav.nav-tabs
+  %li.active
+    %a{:href => "#tabs-1", "data-toggle" => "tab", "id" => "tabs-groups"}="Group Stage"
+  %li
+    %a{:href => "#tabs-2", "data-toggle" => "tab", "id" => "tabs-r16"}= "Round of 16"
+  %li
+    %a{:href => "#tabs-3", "data-toggle" => "tab", "id" => "tabs-quarter"}="Quarters"
+  %li
+    %a{:href => "#tabs-3", "data-toggle" => "tab", "id" => "tabs-quarter"}="Semi & Finals"
 
-- @groups.each do |g| 
-  %h3= g.name
+#accordion.panel-group
+- @groups.each_with_index do |g,i| 
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title
+        %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseONE"}
+          %h3= "Group " + g.name
+    .panel-collapse.collapse.in{id: "collapseONE"}
+      .panel-body
+        - matches = g.matches
+        - matches.each do |m|
+          - team_1 = m.team_1
+          - team_2 = m.team_2
+          .col-xs-1
+            %p= team_1.name
+            = image_tag team_1.flag
+          .col-xs-3
+            .col-xs-5
+              %input.form-control{type: 'text'}
+            .col-xs-1
+              %p{style: "display:inline;"} -
+            .col-xs-5
+              %input.form-control{type: 'text'}
+          .col-xs-1
+            %p= m.team_2.name
+            = image_tag team_2.flag
 
-  - matches = g.matches
-  - matches.each do |m|
-    - team_1 = m.team_1
-    - team_2 = m.team_2
-    .col-xs-1
-      %p= team_1.name
-      = image_tag team_1.flag
-    .col-xs-3
-      .col-xs-5
-        %input.form-control{type: 'text'}
-      .col-xs-1
-        %p{style: "display:inline;"} -
-      .col-xs-5
-        %input.form-control{type: 'text'}
-    .col-xs-1
-      %p= m.team_2.name
-      = image_tag team_2.flag
- 
+
+- content_for(:javascript) do
+  :javascript
+    $('.collapse').on('hide', function () {
+    $('[href="#'+$(this).attr('id')+'"]').addClass('collapsed');
+    });
+
