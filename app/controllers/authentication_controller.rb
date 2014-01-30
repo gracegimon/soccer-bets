@@ -43,7 +43,7 @@ class AuthenticationController < ApplicationController
       session[:user_id] = @user.id
       #UserMailer.welcome_email(@user).deliver
       flash[:notice] = "You've signed up !"
-      redirect_to :root
+      redirect_to @user
     else
       render "sign_up"
     end    

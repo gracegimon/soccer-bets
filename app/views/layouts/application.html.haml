@@ -15,8 +15,6 @@
     = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
     = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
-    = javascript_include_tag "application"
-
 
   %body
     .navbar.navbar-fluid-top
@@ -29,13 +27,15 @@
         .span3
           .well.sidebar-nav
             %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+              %li.nav-header Menu
+              %li= link_to "Your Score Boards", "/path1"
+              %li= link_to "See overall ranking", "/path2"
+              %li= link_to "Stadiums", "/path3"
         .span9
           = bootstrap_flash
           = yield
     
       %footer
         %p &copy; Company 2014
+  = javascript_include_tag "application"
+  = yield(:javascript) if content_for?(:javascript)
