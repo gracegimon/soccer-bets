@@ -26,6 +26,10 @@ Quiniela::Application.routes.draw do
 
     end
   end
+
+  resources :scores do
+
+  end
   
 
   # Example of regular route:

@@ -10,64 +10,71 @@
   %li
     %a{:href => "#tabs-3", "data-toggle" => "tab", "id" => "tabs-quarter"}="Semi & Finals"
 
-#accordion.panel-group
-- @groups.each_with_index do |g,i| 
-  .panel.panel-default
-    .panel-heading
-      %h4.panel-title
-        %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapse#{i}"}
-          %h3= "Group " + g.name
-    .panel-collapse.collapse.in{id: "collapse#{i}"}
-      .panel-body
-        - matches = g.matches
-        - matches.each do |m|
-          - team_1 = m.team_1
-          - team_2 = m.team_2
-          .col-xs-1
-            %p= team_1.name
-            = image_tag team_1.flag
-          .col-xs-3
-            .col-xs-5
-              %input.form-control{type: 'text'}
-              %p= m.day
-            .col-xs-1
-              %p{style: "display:inline;"} -
-              %p= m.stadium_name
-            .col-xs-5
-              %input.form-control{type: 'text'}
-              %p= m.time
-          .col-xs-1
-            %p= m.team_2.name
-            = image_tag team_2.flag
-        .col-xs-6
-          %table.table{style: "float:right"}
-            %thead
-              %th Teams
-              %th J
-              %th G
-              %th E
-              %th P
-              %th GF
-              %th GC
-              %th DIF
-              %th PTS
-            %tbody
-              - g.teams.each do |t|
-                %tr
-                  %td= t.name
-                  %td J
-                  %td G
-                  %td E
-                  %td P
-                  %td GF
-                  %td GC
-                  %td DIF
-                  %td PTS
+.tab-content
+  #tabs-1.tab-pane.active
+    #accordion.panel-group
+    - @groups.each_with_index do |g,i| 
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title
+            %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapse#{i}"}
+              %h3= "Group " + g.name
+        .panel-collapse.collapse.in{id: "collapse#{i}"}
+          .panel-body
+            - matches = g.matches
+            - matches.each_with_index do |m,i|
+              - team_1 = m.team_1
+              - team_2 = m.team_2
+              .col-xs-1
+                %p= team_1.name
+                = image_tag team_1.flag
+              .col-xs-3
+                = form_for @score, :url => scores_path, :method => :post do |f|
+                  .col-xs-5
+                    = f.text_field :team_1_goals 
+                    %p= m.day
+                    %p= m.city
+                  .col-xs-1
+                    %p{style: "display:inline;"} -
+                  .col-xs-5
+                    = f.text_field :team_2_goals 
+                    %p= m.time
+              .col-xs-1
+                %p= m.team_2.name
+                = image_tag team_2.flag
+            .col-xs-6
+              %table.table{style: "float:right"}
+                %thead
+                  %th Teams
+                  %th J
+                  %th G
+                  %th E
+                  %th P
+                  %th GF
+                  %th GC
+                  %th DIF
+                  %th PTS
+                %tbody
+                  - g.teams.each do |t|
+                    %tr
+                      %td= t.name
+                      %td J
+                      %td G
+                      %td E
+                      %td P
+                      %td GF
+                      %td GC
+                      %td DIF
+                      %td PTS
+
+  #tabs-2.tab-pane
+    %h1 Not yet 
 
 
-- content_for(:javascript) do
-  :javascript
-    $('.collapse').on('hide', function () {
-    $('[href="#'+$(this).attr('id')+'"]').addClass('collapsed');
-    });
-
+  - content_for(:javascript) do
+    :javascript
+      $(function() {
+         $(".auto_submit_item").change(function() {
+           $("form").submit();
+         });
+       });

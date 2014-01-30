@@ -4,6 +4,7 @@ class ScoreBoardsController < ApplicationController
     @score_board = ScoreBoard.find(params[:id])
     @user = @score_board.user
     @groups = current_tournament.groups
+    @score = Score.new
   end
 
   def create
