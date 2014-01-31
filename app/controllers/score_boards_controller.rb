@@ -1,5 +1,10 @@
 class ScoreBoardsController < ApplicationController
   before_filter :authenticate 
+
+  def index
+    @score_boards = current_user.score_boards
+  end
+  
   def show
     @score_board = ScoreBoard.find(params[:id])
     @user = @score_board.user

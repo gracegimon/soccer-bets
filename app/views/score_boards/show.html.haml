@@ -25,20 +25,25 @@
             - matches.each_with_index do |m,i|
               - team_1 = m.team_1
               - team_2 = m.team_2
+              - @score = m.score
+              - @score = Score.new if m.score.nil?
               .col-xs-1
                 %p= team_1.name
                 = image_tag team_1.flag
               .col-xs-3
-                = form_for @score, :url => scores_path, :method => :post do |f|
+                = form_for @score, :url => scores_path, :method => :post, id: "new_score#{m.id}", remote: true  do |f|
                   .col-xs-5
-                    = f.text_field :team_1_goals 
+                    = f.text_field :team_1_goals, required: true, class: "form-control form-input", id: "team_1##{m.id}"
                     %p= m.day
                     %p= m.city
                   .col-xs-1
                     %p{style: "display:inline;"} -
                   .col-xs-5
-                    = f.text_field :team_2_goals 
+                    = f.text_field :team_2_goals, required: true, class: "form-control form-input" 
                     %p= m.time
+                  = f.hidden_field :scoreboard_id, value: @score_board.id
+                  = f.hidden_field :match_id, value: m.id
+                  = f.submit 'Save'
               .col-xs-1
                 %p= m.team_2.name
                 = image_tag team_2.flag
@@ -58,23 +63,18 @@
                   - g.teams.each do |t|
                     %tr
                       %td= t.name
-                      %td J
-                      %td G
-                      %td E
-                      %td P
-                      %td GF
-                      %td GC
-                      %td DIF
-                      %td PTS
+                      %td{id: '#{t.id}#J'} J
+                      %td{id: '#{t.id}#G'} G
+                      %td{id: '#{t.id}#E'} E
+                      %td{id: '#{t.id}#P'} P
+                      %td{id: '#{t.id}#GF'} GF
+                      %td{id: '#{t.id}#GC'} GC
+                      %td{id: '#{t.id}#DIF'} DIF
+                      %td{id: '#{t.id}#PTS'} PTS
 
   #tabs-2.tab-pane
     %h1 Not yet 
 
 
-  - content_for(:javascript) do
-    :javascript
-      $(function() {
-         $(".auto_submit_item").change(function() {
-           $("form").submit();
-         });
-       });
+- content_for(:javascript) do
+  :coffeescript

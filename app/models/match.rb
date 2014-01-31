@@ -1,5 +1,6 @@
 class Match < ActiveRecord::Base
   has_many :teams
+  has_one :score
   belongs_to :group
 
   validates_presence_of :team_1_id, :team_2_id, :match_type, :date, :city
