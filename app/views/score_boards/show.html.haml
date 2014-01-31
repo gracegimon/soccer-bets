@@ -63,7 +63,7 @@
                   - g.teams.each do |t|
                     %tr
                       %td= t.name
-                      %td{id: '#{t.id}#J'} J
+                      %td{class: 'J##{t.id}, #{g.id}'} J
                       %td{id: '#{t.id}#G'} G
                       %td{id: '#{t.id}#E'} E
                       %td{id: '#{t.id}#P'} P

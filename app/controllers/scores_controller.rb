@@ -5,7 +5,6 @@ class ScoresController < ApplicationController
     if @score.valid?
       @score.save
       flash[:notice] = "It was saved"
-      redirect_to user_score_board_path(current_user,@score.score_board)
     else
       flash[:error] = "It already exists"
     end
