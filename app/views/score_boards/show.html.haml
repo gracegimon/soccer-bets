@@ -45,7 +45,8 @@
                         %p= m.time
                       = f.hidden_field :scoreboard_id, value: @score_board.id
                       = f.hidden_field :match_id, value: m.id
-                      = f.submit 'Save'
+                      .div{style: "visibility:hidden;"}
+                        = f.submit 'Save', class: "scores"
                   .col-xs-3.team-2-name
                     %p= m.team_2.name
                     = image_tag team_2.flag
@@ -73,6 +74,10 @@
                       %td{id: t.id.to_s + 'GC'} GC
                       %td{id: t.id.to_s + 'DIF'} DIF
                       %td{id: t.id.to_s + 'PTS'} PTS
+            .row
+              %button.btn.btn-success{id: "saveGroup#{i}"}
+                Guardar
+              
 
   #tabs-2.tab-pane
     %h1 Not yet 
@@ -80,5 +85,9 @@
 
 - content_for(:javascript) do
   :coffeescript
-    console.log "Hokis"
-    jQuery('.11').html('10')
+    jQuery("#saveGroup0").click ->
+      console.log "Me presionaron vale"
+      scores = jQuery("form")
+      jQuery("form").each (index) ->
+        console.log index
+        $(this).submit()
