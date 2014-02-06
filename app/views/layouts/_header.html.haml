@@ -14,5 +14,6 @@
     %li= link_to "Sign up", sign_up_path
     %li= link_to "Sign In", sign_in_path
 %ul.nav.navbar-nav.navbar-right
-  %li= current_user.username
-  %li= link_to "Sign Out", signed_out_path
+  - if current_user
+    %li= current_user.username
+    %li= link_to "Sign Out", signed_out_path

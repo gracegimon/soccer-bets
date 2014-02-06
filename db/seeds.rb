@@ -109,9 +109,13 @@ g.save
 m = Match.new(team_1_id: 6, team_2_id: 12, city: "Sao Paulo", stadium_id: nil, match_type: 0, date: "2014-06-12 00:00:00")
 m.save
 
+m1 = Match.new(team_1_id: 24, team_2_id: 7, city: "Natal", stadium_id: nil, match_type: 0, date: "2014-06-13 11:30:00" )
+m1.save
+
 g.teams << Team.find_by_name("Brazil")
 g.teams << Team.find_by_name("Croatia")
 g.teams << Team.find_by_name("Cameroon")
 g.teams << Team.find_by_name("Mexico")
 
 g.matches << m
+g.matches << m1
