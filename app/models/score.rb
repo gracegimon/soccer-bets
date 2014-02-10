@@ -2,7 +2,7 @@ class Score < ActiveRecord::Base
   belongs_to :score_board
   belongs_to :match
 
-  validates :match, uniqueness: { scope: :match}
+#  validates :match, uniqueness: { scope: :match}
 
   def match
   	Match.find(self.match_id)

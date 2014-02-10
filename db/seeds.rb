@@ -93,23 +93,29 @@ end
 
 # Sao Paolo http://www.fifa.com/worldcup/destination/stadiums/stadium=5025136/index.html
 
+# User Admin #
+
+admin = User.new(username: "Admin", email: "admin@tupote.com", password: "tupote.admin", password_confirmation: "tupote.admin", is_admin: true)
+admin.save
 
 ## Tournament ##
 
-t = Tournament.new(name: "2014 FIFA World Cup Brazil", number: "0", start_date: "2014-06-12", end_date: "2014-07-13", country: "Brazil", tournament_type: 0)
+t = Tournament.new(name: "2014 FIFA World Cup Brazil", number: "0", start_date: "2014-06-12", end_date: "2014-07-13", country: "Brazil", tournament_type: 0, is_active: true)
 t.save
 
+s = ScoreBoard.new(name: "Resultados Oficiales", is_active: true, user_id: nil, tournament_id: t.id)
+s.save
 ## Group ##
 
-g = Group.new( name: "A", first_place_team_id: nil, second_place_team_id: nil, tournament_id: 1)
+g = Group.new( name: "A", first_place_team_id: nil, second_place_team_id: nil, tournament_id: t.id)
 g.save
 
 ## Match ##
 
-m = Match.new(team_1_id: 6, team_2_id: 12, city: "Sao Paulo", stadium_id: nil, match_type: 0, date: "2014-06-12 00:00:00")
+m = Match.new(team_1_id: 6, team_2_id: 12, city: "Sao Paulo", stadium_id: nil, match_type: 0, date: "2014-06-12 00:00:00", score_board_id: s.id, match_number: 0)
 m.save
 
-m1 = Match.new(team_1_id: 24, team_2_id: 7, city: "Natal", stadium_id: nil, match_type: 0, date: "2014-06-13 11:30:00" )
+m1 = Match.new(team_1_id: 24, team_2_id: 7, city: "Natal", stadium_id: nil, match_type: 0, date: "2014-06-13 11:30:00", score_board_id: s.id. match_number: 0 )
 m1.save
 
 g.teams << Team.find_by_name("Brazil")

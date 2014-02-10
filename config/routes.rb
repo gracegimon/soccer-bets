@@ -23,7 +23,6 @@ Quiniela::Application.routes.draw do
 
   resources :users do
     resources :score_boards do
-
     end
   end
 
@@ -31,6 +30,10 @@ Quiniela::Application.routes.draw do
 
   end
   
+  resources :tournaments do
+  end
+
+  get "/tournament/:tournament_id/score_boards/:id", to: "score_boards#tournament_score_board", as: "tournament_score_board"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

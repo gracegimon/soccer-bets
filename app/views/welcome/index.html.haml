@@ -1,1 +1,68 @@
-%h1 Hello
+.jumbotron{style: "text-align: center"}
+
+  %h2 Arma tu quiniela
+  %h3 Te puedes quedar hasta con 55% del pote!
+  %h3 Corre la voz, mientras más jueguen, más puedes ganar!
+
+
+  %a#view-more-link{href: "#view-more"} Ver más
+
+
+#view-more.well{style: "display: none;"}
+
+  %h2 PREMIACION
+
+  %p 1ER LUGAR 55% DEL POTE
+
+  %p 2DO LUGAR 35% DEL POTE
+
+  %p *10% del pote va destinado a los organizadores
+
+  
+  %h3 PUNTUACIÓN
+
+  %h4 PRIMERA FASE:
+   
+  %p - ACERTAR MARCADOR EXACTO                                =  5 PUNTOS POR PARTIDO
+  %p - ACERTAR MARCADOR CON "DIFERENCIA DE GOLES" =  4 PUNTOS POR PARTIDO
+  %p - ACERTAR GANADOR                                                =  3 PUNTO  POR PARTIDO
+   
+  %p Ejemplo: Brasil vs Croacia queda 2 a 1
+  %p * Si pusiste 2 a 1 - ganas 5 puntos
+  %p * Si pusiste 1 a 0, 3 a 2, etc.... - ganas 4 puntos
+  %p * Si pusiste 2 a 0 – ganas 3 puntos 
+   
+  %h4 SEGUNDA FASE (NO IMPORTAN LOS RESULTADOS EXACTOS):
+   
+  %p - ACERTAR LOS EQUIPOS QUE PASAN A OCTAVOS DE FINAL  =  4 PUNTOS POR EQUIPO
+  %p - ACERTAR LOS EQUIPOS QUE PASAN A CUARTOS DE FINAL                 =  5 PUNTOS POR EQUIPO
+  %p - ACERTAR LOS EQUIPOS QUE PASAN A SEMIFINAL                 =  6 PUNTOS POR EQUIPO
+
+  %p - ACERTAR 3ER LUGAR                            =  7 PUNTOS
+  %p - ACERTAR SUBCAMPEON                                   =  8 PUNTOS
+  %p - ACERTAR CAMPEON                                         =  9 PUNTOS
+  %p - ACERTAR GOLEADOR (INCLUYEN TODOS LOS GOLES y PENALTIES) = 7 PUNTOS
+  %p - PRIMER EQUIPO EN RECIBIR TARJETA ROJA  =  5 PUNTOS
+  %p - PRIMER EQUIPO EN MARCAR GOL DE PENALTI    = 5 PUNTOS 
+ 
+
+
+
+.well
+  %h4 REGLAS DE LA QUINIELA
+   
+  %p - Tu Quiniela será válida desde el momento que se haya confirmado el pago (sin excepción).
+  %p - Se aceptarán pagos para la Quiniela hasta el 10 de junio a las 8pm
+  %p - Una vez enviada tu Quiniela definitiva no podrá ser modificada por ningún motivo.
+  %p - La Quiniela de todos los participantes estarán publicadas en la página a partir del 12 de junio con los respectivos resultados y puntuaciones.
+  %p - En caso de empate en el 1er lugar, se repartirá el POTE equitativamente entre las quinielas empatadas y no habrá 2do lugar.
+  %p - En caso de empate en el 2do lugar, se repartirá el segundo premio equitativamente entre las quinielas empatadas.
+  %p - En caso de empate en el "goleador", se otorgará la puntuación para todos los goleadores por igual.
+  %p - Los premios a los ganadores se entregaran el día 16 de JULIO del 2014.
+
+
+- content_for(:javascript) do
+  :coffeescript
+    $('#view-more-link').click (e) ->
+      e.preventDefault();
+      $('#view-more').toggle()

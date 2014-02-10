@@ -3,6 +3,7 @@
 class User < ActiveRecord::Base
   has_many :score_boards
 
+
   attr_accessor :password, :new_password
   before_save :encrypt_password
   before_save { self.email = email.downcase }
@@ -14,6 +15,12 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validate  :email_regex
   validates :password, length: { minimum: 6 }
+
+  def score_boards_admin
+    if self.is_admin?
+      return ScoreBoard.where(tournament_id: Tournament.where(is_active: true).first.id, user_id: nil)
+    end
+  end
 
   def email_regex
     if email.present? and not email.match(/\A[^@]+@[^@]+\z/)

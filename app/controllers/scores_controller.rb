@@ -6,8 +6,19 @@ class ScoresController < ApplicationController
       @score.save
       flash[:notice] = "It was saved"
     else
-      flash[:error] = "It already exists"
+      flash[:error] = "Something unexpected happened"
     end
+  end
+
+  def update
+    @score = Score.find(params[:id]) unless params[:id].nil?
+    if @score.update_attributes(score_params)
+      flash[:notice] = "Good"
+    end
+  end
+
+  def edit
+    flash[:notice] = "Edit"
   end
 
   private

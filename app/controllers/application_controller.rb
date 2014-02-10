@@ -19,8 +19,15 @@ class ApplicationController < ActionController::Base
     redirect_to :root unless @current_user.nil?
   end
 
-  def current_tournament
-    Tournament.last
+  def check_admin
+    redirect_to :root unless current_user.is_admin?
   end
 
+  def current_tournament
+    Tournament.where(is_active: true).first
+  end
+
+  def main_score_board
+    ScoreBoard.where(tournament_id: current_tournament.id, user_id: nil).first
+  end
 end

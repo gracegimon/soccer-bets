@@ -3,17 +3,17 @@
   %span.icon-bar
   %span.icon-bar
 = image_tag "Brasil.png", size: "40x60"
-%a.brand(href="#") Quiniela
+%a.brand(href= root_path) TuPote
 .container.nav-collapse
 %ul.nav.navbar-nav
   - if current_user
-    %li= link_to "Your Score Boards", user_score_boards_path(current_user)
-    %li= link_to "See overall ranking", "/path2"
-    %li= link_to "Stadia", "/path3"
+    %li= link_to "Tus quinielas", user_score_boards_path(current_user)
+    %li= link_to "Ranking", "/path2"
+    %li= link_to "Estadios", "/path3"
   - else
-    %li= link_to "Sign up", sign_up_path
-    %li= link_to "Sign In", sign_in_path
+    %li= link_to "Crea tu cuenta", sign_up_path
+    %li= link_to "Inicia sesión", sign_in_path
 %ul.nav.navbar-nav.navbar-right
   - if current_user
     %li= current_user.username
-    %li= link_to "Sign Out", signed_out_path
+    %li= link_to "Cerrar sesión", signed_out_path

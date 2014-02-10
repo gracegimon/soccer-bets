@@ -5,8 +5,9 @@ class Match < ActiveRecord::Base
 
   validates_presence_of :team_1_id, :team_2_id, :match_type, :date, :city
 
-  #MATCH_TYPE = 0 --> GROUP 
-  #MATCH_TYPE = 1 --> Round of 16,
+  #MATCH_TYPE = 0 --> GROUP MAIN
+  #MATCH_TYPE = 1 --> GROUP USERS
+  #MATCH_TYPE = 2 --> Round of 16,
   # AND CONTINUES FOR: Quarter-finals, Semi-finals, Third-place play-off, Final
   def initialize(attributes = {})
     super # must allow the active record to initialize!
@@ -33,6 +34,14 @@ class Match < ActiveRecord::Base
 
   def stadium_name
     Stadium.find(stadium_id).name unless self.stadium_id.nil?
+  end
+
+  def self.find_by_team_group(t)
+    Match.where(team_1_id: t.id) | Match.where(team_2_id: t.id)
+  end
+
+  def self.find_by_team_group_score_board(t,sb)
+    Match.where(team_1_id: t.id, score_board_id: sb.id) | Match.where(team_2_id: t.id, score_board_id: sb.id)
   end
 
 

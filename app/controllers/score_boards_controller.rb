@@ -1,5 +1,6 @@
 class ScoreBoardsController < ApplicationController
-  before_filter :authenticate 
+  before_filter :authenticate
+  before_action :check_admin, only: [:tournament_score_board]
 
   def index
     @score_boards = current_user.score_boards
@@ -9,7 +10,13 @@ class ScoreBoardsController < ApplicationController
     @score_board = ScoreBoard.find(params[:id])
     @user = @score_board.user
     @groups = current_tournament.groups
-    @score = Score.new
+  end
+
+  def tournament_score_board
+    @tournament = Tournament.find(params[:id])
+    @groups = @tournament.groups
+    @score_board = main_score_board
+    binding.pry
   end
 
   def create

@@ -11,6 +11,16 @@ class Group < ActiveRecord::Base
   	teams.each do |t|
   		matches << Match.find_by_team_group(t) unless  Match.find_by_team_group(t).nil?
   	end
+    return matches
+  end
+
+  def matches_for_score_board(score_board)
+    teams = self.teams
+    matches = []
+    teams.each do |t|
+      matches << Match.find_by_team_group_score_board(t,score_board) unless  Match.find_by_team_group_score_board(t,score_board).empty?
+    end
+    return matches.flatten.uniq!   
   end
 
 end
