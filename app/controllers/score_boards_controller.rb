@@ -16,7 +16,6 @@ class ScoreBoardsController < ApplicationController
     @tournament = Tournament.find(params[:id])
     @groups = @tournament.groups
     @score_board = main_score_board
-    binding.pry
   end
 
   def create

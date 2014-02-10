@@ -7,7 +7,10 @@
 .container.nav-collapse
 %ul.nav.navbar-nav
   - if current_user
-    %li= link_to "Tus quinielas", user_score_boards_path(current_user)
+    - if current_user.is_admin?
+      %li= link_to "Resultados Oficiales", tournament_score_board_path(current_tournament,main_score_board)
+    - else
+      %li= link_to "Tus quinielas", user_score_boards_path(current_user)
     %li= link_to "Ranking", "/path2"
     %li= link_to "Estadios", "/path3"
   - else

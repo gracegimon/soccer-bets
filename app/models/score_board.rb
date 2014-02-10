@@ -4,7 +4,7 @@ class ScoreBoard < ActiveRecord::Base
   belongs_to :user
   belongs_to :tournament
   before_create :valid_name
-  after_create :generate_matches
+  after_create :generate_matches, :create_team_stats
 
   # TYPE 0 --> SCOREBOARD WORTH 50$
   # TYPE 1 --> SCOREBOARD WORTH 100$
@@ -33,6 +33,17 @@ class ScoreBoard < ActiveRecord::Base
         new_match = Match.new(team_1_id: m.team_1_id, team_2_id: m.team_2_id, city: m.city, stadium_id: m.stadium_id, match_type: 1 , date: m.date)
         new_match.score_board_id = self.id
         new_match.save
+      end
+    end
+  end
+
+  def create_team_stats
+    groups = self.tournament.groups
+    groups.each do |group|
+      group.teams.each do |t|
+        team_stat = TeamStat.new(team_id: t.id, points: 0, status: 1, played_games: 0, won_games:0, tied_games: 0,
+                    goals_favor: 0, goals_aggainst: 0, score_board_id: self.id, lost_games: 0)
+        team_stat.save
       end
     end
   end

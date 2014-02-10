@@ -44,5 +44,12 @@ class Match < ActiveRecord::Base
     Match.where(team_1_id: t.id, score_board_id: sb.id) | Match.where(team_2_id: t.id, score_board_id: sb.id)
   end
 
+  def update_teams_stats
+    team_stats_1 = self.team_1.team_stats.where(score_board_id: self.score_board_id).first
+    team_stats_2 = self.team_2.team_stats.where(score_board_id: self.score_board_id).first
+    team_stats_1.update_team_stats(self.score)
+    team_stats_2.update_team_stats(self.score)
+  end
+
 
 end
