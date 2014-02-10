@@ -20,7 +20,7 @@ class ScoreBoardsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @score_board = @user.score_boards.create(params[:score_board].permit(:name,:board_type,:is_active))
+    @score_board = @user.score_boards.create(params[:score_board].permit(:name,:board_type,:is_active, :tournament_id))
     if @score_board.errors.empty?
       redirect_to user_score_board_path(@user,@score_board)
     else

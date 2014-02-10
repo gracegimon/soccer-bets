@@ -30,6 +30,7 @@
       = f.radio_button :board_type, "1"
       %p= '100 USD'
       =f.hidden_field :is_active, value: false
+      = f.hidden_field :tournament_id, value: current_tournament.id
       %p
         = f.submit
 

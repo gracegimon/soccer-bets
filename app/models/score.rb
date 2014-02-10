@@ -21,7 +21,7 @@ class Score < ActiveRecord::Base
   	else
   		winner_team_id = 0 # This means tie
   	end
-  	self.match.update_teams_stats
+  #	self.match.update_teams_stats
   end
 
 end

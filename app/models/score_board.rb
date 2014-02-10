@@ -6,6 +6,8 @@ class ScoreBoard < ActiveRecord::Base
   before_create :valid_name
   after_create :generate_matches, :create_team_stats
 
+  validates_presence_of :name, :tournament_id
+
   # TYPE 0 --> SCOREBOARD WORTH 50$
   # TYPE 1 --> SCOREBOARD WORTH 100$
   # IS_ACTIVE set to TRUE only when user has paid.
@@ -30,7 +32,7 @@ class ScoreBoard < ActiveRecord::Base
     unless self.user.nil? || self.user.is_admin?
       main_matches = Match.where(match_type: 0)
       main_matches.each do |match|
-        new_match = Match.new(team_1_id: m.team_1_id, team_2_id: m.team_2_id, city: m.city, stadium_id: m.stadium_id, match_type: 1 , date: m.date)
+        new_match = Match.new(team_1_id: match.team_1_id, team_2_id: match.team_2_id, city: match.city, stadium_id: match.stadium_id, match_type: 1 , date: match.date)
         new_match.score_board_id = self.id
         new_match.save
       end
