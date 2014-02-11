@@ -1,28 +1,28 @@
 .well
-  %h3 Sign Up
+  %h3 Crea tu cuenta
   = form_for @user, :as => :user, :url => sign_up_path, :method => :post  do |f|
     .form-group
-      = f.label 'username:'
+      = f.label 'Nombre de usuario:'
       %br/
       = f.text_field :username, required: true
       = show_field_error(@user, :username)
-      %p This will be your display name
+      %p Este es el nombre que será visible públicamente
     .form-group
-      = f.label 'email:'
+      = f.label 'Email:'
       %br/
       = f.text_field :email, required: true
       = show_field_error(@user, :email)
     .form-group
-      = f.label 'password:'
+      = f.label 'Contraseña:'
       %br/
       = f.password_field :password, required: true
       = show_field_error(@user, :password)
     .form-group
-      = f.label 'password confirmation:'
+      = f.label 'Confirme su contraseña:'
       %br/
       = f.password_field :password_confirmation, required: true
       = show_field_error(@user, :password_confirmation)
     %p
-      = f.submit 'Sign Up'
+      = f.submit 'Crear cuenta'
       \   
-      \#{f.submit 'Clear Form', :type => 'reset'}
+      \#{f.submit 'Limpiar', :type => 'reset'}

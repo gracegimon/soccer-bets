@@ -30,4 +30,19 @@ class ApplicationController < ActionController::Base
   def main_score_board
     ScoreBoard.where(tournament_id: current_tournament.id, user_id: nil).first
   end
+
+  rescue_from Exception, with: lambda { |exception| render_error 500, exception }
+  rescue_from ActionController::RoutingError, ActionController::UnknownController, ::AbstractController::ActionNotFound, ActiveRecord::RecordNotFound, with: lambda { |exception| render_error 404, exception }
+
+  def error_404
+    @not_found_path = params[:not_found]
+  end
+
+  private
+    def render_error(status, exception)
+      respond_to do |format|
+        format.html { render template: "layouts/error_#{status}", layout: 'layouts/application', status: status }
+        format.all { render nothing: true, status: status }
+      end
+    end
 end

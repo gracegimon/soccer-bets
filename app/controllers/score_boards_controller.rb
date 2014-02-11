@@ -1,6 +1,6 @@
 class ScoreBoardsController < ApplicationController
   before_filter :authenticate
-  before_action :check_admin, only: [:tournament_score_board]
+  before_action :check_admin, only: [:tournament_score_board, :show_for_admin]
 
   def index
     @score_boards = current_user.score_boards
@@ -10,6 +10,11 @@ class ScoreBoardsController < ApplicationController
     @score_board = ScoreBoard.find(params[:id])
     @user = @score_board.user
     @groups = current_tournament.groups
+  end
+
+  def show_for_admin
+    @score_boards_not_active = ScoreBoard.where(is_active: false, is_published: true)
+    @score_boards_active = ScoreBoard.where(is_active: true, is_published: true)
   end
 
   def tournament_score_board

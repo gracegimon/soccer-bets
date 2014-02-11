@@ -26,6 +26,10 @@ Quiniela::Application.routes.draw do
     end
   end
 
+  resources :score_boards do
+    get "show_all", to: "score_boards#show_for_admin", on: :collection
+  end
+
   resources :scores do
 
   end
@@ -83,4 +87,7 @@ Quiniela::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  get '*not_found', to: 'application#error_404'
+
 end
