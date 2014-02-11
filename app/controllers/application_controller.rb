@@ -32,10 +32,11 @@ class ApplicationController < ActionController::Base
   end
 
 #  rescue_from Exception, with: lambda { |exception| render_error 500, exception }
-#  rescue_from ActionController::RoutingError, ActionController::UnknownController, ::AbstractController::ActionNotFound, ActiveRecord::RecordNotFound, with: lambda { |exception| render_error 404, exception }
+  rescue_from ActionController::RoutingError, ActionController::UnknownController, ::AbstractController::ActionNotFound, ActiveRecord::RecordNotFound, with: lambda { |exception| render_error 404, exception }
 
   def error_404
     @not_found_path = params[:not_found]
+    render "layouts/error_404"
   end
 
   def error_500
