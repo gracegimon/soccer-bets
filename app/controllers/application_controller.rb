@@ -31,11 +31,15 @@ class ApplicationController < ActionController::Base
     ScoreBoard.where(tournament_id: current_tournament.id, user_id: nil).first
   end
 
-  rescue_from Exception, with: lambda { |exception| render_error 500, exception }
-  rescue_from ActionController::RoutingError, ActionController::UnknownController, ::AbstractController::ActionNotFound, ActiveRecord::RecordNotFound, with: lambda { |exception| render_error 404, exception }
+#  rescue_from Exception, with: lambda { |exception| render_error 500, exception }
+#  rescue_from ActionController::RoutingError, ActionController::UnknownController, ::AbstractController::ActionNotFound, ActiveRecord::RecordNotFound, with: lambda { |exception| render_error 404, exception }
 
   def error_404
     @not_found_path = params[:not_found]
+  end
+
+  def error_500
+
   end
 
   private

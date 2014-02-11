@@ -1,0 +1,15 @@
+%h2 Ranking
+
+%table.table.table-bordered
+  %thead
+    %th Núm
+    %th Usuario
+    %th Quiniela
+    %th Puntos
+  %tbody
+    - @score_boards.each_with_index do |score_board, i|
+      %tr
+        %td= i + 1
+        %td= score_board.user.username
+        %td= score_board.name
+        %td= score_board.points

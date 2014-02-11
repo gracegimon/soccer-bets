@@ -6,6 +6,10 @@ class ScoreBoard < ActiveRecord::Base
   before_create :valid_name
   after_create :generate_matches, :create_team_stats
 
+  scope :not_main_board, -> {where "user_id IS NOT NULL"}
+  scope :active, -> {where is_active: true}
+  scope :published, -> {where is_published: true}
+
   validates_presence_of :name, :tournament_id
 
   # TYPE 0 --> SCOREBOARD WORTH 50$
@@ -29,6 +33,8 @@ class ScoreBoard < ActiveRecord::Base
   # This method generate group matches for each scoreboard
   # taken from the standard matches
   def generate_matches
+    #Self points
+    self.points = 0
     unless self.user.nil? || self.user.is_admin?
       main_matches = Match.where(match_type: 0)
       main_matches.each do |match|

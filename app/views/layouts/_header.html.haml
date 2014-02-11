@@ -12,7 +12,7 @@
       %li= link_to "Administración de Quinielas", show_all_score_boards_path
     - else
       %li= link_to "Tus quinielas", user_score_boards_path(current_user)
-    %li= link_to "Ranking", "/path2"
+    %li= link_to "Ranking", ranking_score_boards_path
     %li= link_to "Estadios", "/path3"
   - else
     %li= link_to "Crea tu cuenta", sign_up_path
