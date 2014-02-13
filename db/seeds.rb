@@ -65,8 +65,8 @@ country_teams = [
 		country_ab: 'POR'},
 	{name: "Russia", flag: "http://img.fifa.com/imgml/flags/reflected/m/rus.png",
 		country_ab: 'RUS'},
-	{name: "Spain", flag: "http://img.fifa.com/imgml/flags/reflected/m/spa.png",
-		country_ab: 'SPA'},
+	{name: "Spain", flag: "http://img.fifa.com/imgml/flags/reflected/m/esp.png",
+		country_ab: 'ESP'},
 	{name: "Switzerland", flag: "http://img.fifa.com/imgml/flags/reflected/m/sui.png",
 		country_ab: 'SUI'},
 	{name: "Uruguay", flag: "http://img.fifa.com/imgml/flags/reflected/m/uru.png",
@@ -107,15 +107,15 @@ s = ScoreBoard.new(name: "Resultados Oficiales", is_active: true, user_id: nil, 
 s.save
 ## Group ##
 
-g = Group.new( name: "A", first_place_team_id: nil, second_place_team_id: nil, tournament_id: t.id)
+g = Group.new( name: "A", first_place_team_id: 0, second_place_team_id: 0, tournament_id: t.id)
 g.save
 
 ## Match ##
 
-m = Match.new(team_1_id: 6, team_2_id: 12, city: "Sao Paulo", stadium_id: nil, match_type: 0, date: "2014-06-12 00:00:00", score_board_id: s.id, match_number: 0)
+m = Match.new(team_1_id: 6, team_2_id: 12, city: "Sao Paulo", stadium_id: nil, match_type: 0, date: "2014-06-12 00:00:00", score_board_id: s.id, match_number: 1)
 m.save
 
-m1 = Match.new(team_1_id: 24, team_2_id: 7, city: "Natal", stadium_id: nil, match_type: 0, date: "2014-06-13 11:30:00", score_board_id: s.id, match_number: 0 )
+m1 = Match.new(team_1_id: 24, team_2_id: 7, city: "Natal", stadium_id: nil, match_type: 0, date: "2014-06-13 11:30:00", score_board_id: s.id, match_number: 2 )
 m1.save
 
 g.teams << Team.find_by_name("Brazil")
@@ -125,3 +125,21 @@ g.teams << Team.find_by_name("Mexico")
 
 g.matches << m
 g.matches << m1
+
+g2 = Group.new( name: "B", first_place_team_id: 0, second_place_team_id: 0, tournament_id: t.id)
+
+g2.teams << Team.find_by_name("Spain")
+g2.teams << Team.find_by_name("Chile")
+g2.teams << Team.find_by_name("Australia")
+g2.teams << Team.find_by_name("Netherlands")
+g2.save
+
+m2 = Match.new(team_1_id: Team.find_by_name("Spain").id, team_2_id: Team.find_by_name("Netherlands").id, city: "Salvador", stadium_id: nil, match_type: 0, date: "2014-06-13 14:30:00", score_board_id: s.id, match_number: 3 )
+m2.save
+
+m3 = Match.new(team_1_id: Team.find_by_name("Chile").id, team_2_id: Team.find_by_name("Australia").id, city: "Cuiaba", stadium_id: nil, match_type: 0, date: "2014-06-13 17:30:00", score_board_id: s.id, match_number: 4 )
+m3.save
+
+g2.matches << m2
+
+g2.matches << m3 
