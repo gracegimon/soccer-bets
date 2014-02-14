@@ -67,15 +67,16 @@
                   %th PTS
                 %tbody
                   - g.teams.each do |t|
+                    - ts = t.team_stats.where(score_board_id: @score_board.id).first
                     %tr
                       %td= t.name
-                      %td{id: t.id.to_s + "J"} J
-                      %td{id: t.id.to_s + "G"} G
-                      %td{id: t.id.to_s + 'E'} E
-                      %td{id: t.id.to_s + 'P'} P
-                      %td{id: t.id.to_s + 'GF'} GF
-                      %td{id: t.id.to_s + 'GC'} GC
-                      %td{id: t.id.to_s + 'DIF'} DIF
+                      %td{id: t.id.to_s + "J"}= ts.played_games
+                      %td{id: t.id.to_s + "G"}= ts.won_games
+                      %td{id: t.id.to_s + 'E'}= ts.tied_games
+                      %td{id: t.id.to_s + 'P'}= ts.lost_games
+                      %td{id: t.id.to_s + 'GF'}= ts.goals_favor
+                      %td{id: t.id.to_s + 'GC'}= ts.goals_aggainst
+                      %td{id: t.id.to_s + 'DIF'}= ts.goals_favor - ts.goals_aggainst
                       %td{id: t.id.to_s + 'PTS'} PTS
               .row
                 %button.btn.btn-success{id: "saveGroup#{i}"}
