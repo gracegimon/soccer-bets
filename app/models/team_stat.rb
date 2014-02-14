@@ -23,36 +23,38 @@ class TeamStat < ActiveRecord::Base
 
   def set_current_stats
     matches = Match.find_by_team_group_score_board(self.team,self.score_board)
+    matches = matches.select {|m| !m.score.nil?}
     set_won_games(matches)
     set_lost_games(matches)
     set_tied_games(matches)
     set_goals_favor(matches)
     set_goals_aggainst(matches)
     count = 0
-    matches.each do | match|
-      count += 1 unless match.scores.empty?
+    matches.each do |match|
+      count += 1 unless match.score.nil?
     end
     self.played_games = count
+    self.save
   end
 
   def set_won_games(matches)
-    won_games_matches = matches.where(winner_team_id: self.team.id)
+    won_games_matches = matches.select {|m| m.score.winner_team_id == self.team.id}
     self.won_games = won_games_matches.size
   end
 
   def set_lost_games(matches)
-    lost_games_matches = matches.where.not(winner_team_id: self.team.id)
+    lost_games_matches = matches.select {|m| m.score.winner_team_id != self.team.id}
     self.lost_games = lost_games_matches.size
   end
 
   def set_tied_games(matches)
-    tied_games_matches = matches.where(winner_team_id: 0)
+    tied_games_matches = matches.select {|m| m.score.winner_team_id == 0}
     self.tied_games = tied_games_matches.size
   end
 
   def set_goals_favor(matches)
     goals = 0
-    matches.each do |match|
+    matches.each do |m|
       if self.team == m.team_1
         goals += m.score.team_1_goals
       elsif self.team == m.team_2
@@ -60,12 +62,13 @@ class TeamStat < ActiveRecord::Base
       else
         return
       end
+    end
     self.goals_favor = goals
   end
 
   def set_goals_aggainst(matches)
     goals = 0
-    matches.each do |match|
+    matches.each do |m|
       if self.team == m.team_1
         goals += m.score.team_2_goals
       elsif self.team == m.team_2
@@ -73,6 +76,7 @@ class TeamStat < ActiveRecord::Base
       else
         return
       end
+    end
     self.goals_aggainst = goals    
   end
 

@@ -1,8 +1,9 @@
 class Score < ActiveRecord::Base
   belongs_to :score_board
-  belongs_to :match
+  belongs_to :match, touch: true
 
-  after_create :set_winner
+  before_save :set_winner
+
 #  validates :match, uniqueness: { scope: :match}
 
   def match
@@ -15,13 +16,14 @@ class Score < ActiveRecord::Base
 
   def set_winner
   	if team_1_goals > team_2_goals
-  		winner_team_id = team_1_id
+  		self.winner_team_id = self.match.team_1_id
   	elsif team_2_goals > team_1_goals
-  		winner_team_id = team_2_goals
+  		self.winner_team_id = self.match.team_2_id
   	else
-  		winner_team_id = 0 # This means tie
+  		self.winner_team_id = 0 # This means tie
   	end
-  #	self.match.update_teams_stats
+
+    self.match.update_teams_stats
   end
 
 end

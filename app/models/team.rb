@@ -6,7 +6,7 @@ class Team < ActiveRecord::Base
   validates :name, uniqueness: true
 
   def read_team_stats(score_board)
-    team_stats = self.team_stats.where(score_board_id: score_board.id)
+    team_stats = self.team_stats.where(score_board_id: score_board.id).first
     team_stats.set_current_stats
   end
 

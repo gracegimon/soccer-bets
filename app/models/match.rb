@@ -1,6 +1,7 @@
 class Match < ActiveRecord::Base
   has_many :teams
   has_one :score
+  belongs_to :score_board
   belongs_to :group
 
   validates_presence_of :team_1_id, :team_2_id, :match_type, :date, :city
@@ -45,10 +46,8 @@ class Match < ActiveRecord::Base
   end
 
   def update_teams_stats
-    team_stats_1 = self.team_1.team_stats.where(score_board_id: self.score_board_id).first
-    team_stats_2 = self.team_2.team_stats.where(score_board_id: self.score_board_id).first
-    team_stats_1.update_team_stats(self.score)
-    team_stats_2.update_team_stats(self.score)
+    team_stats_1 = self.team_1.read_team_stats(self.score_board)
+    team_stats_2 = self.team_2.read_team_stats(self.score_board)
   end
 
 
