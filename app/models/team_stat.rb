@@ -29,11 +29,8 @@ class TeamStat < ActiveRecord::Base
     set_tied_games(matches)
     set_goals_favor(matches)
     set_goals_aggainst(matches)
-    count = 0
-    matches.each do |match|
-      count += 1 unless match.score.nil?
-    end
-    self.played_games = count
+    set_played_games(matches)
+    set_points
     self.save
   end
 
@@ -82,6 +79,21 @@ class TeamStat < ActiveRecord::Base
 
   def set_goals_diff
     return self.goals_favor - self.goals_aggainst
+  end
+
+  def set_played_games(matches)
+    count = 0
+    matches.each do |match|
+      count += 1 unless match.score.nil?
+    end
+    self.played_games = count
+  end
+
+  def set_points
+    points = 0
+    points += 3*self.won_games
+    points += self.tied_games
+    self.points = points 
   end
 
 end

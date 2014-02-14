@@ -77,7 +77,7 @@
                       %td{id: t.id.to_s + 'GF'}= ts.goals_favor
                       %td{id: t.id.to_s + 'GC'}= ts.goals_aggainst
                       %td{id: t.id.to_s + 'DIF'}= ts.goals_favor - ts.goals_aggainst
-                      %td{id: t.id.to_s + 'PTS'} PTS
+                      %td{id: t.id.to_s + 'PTS'}= ts.points
               .row
                 %button.btn.btn-success{class: "js-save-group"}
                   Guardar
