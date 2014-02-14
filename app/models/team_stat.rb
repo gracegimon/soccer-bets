@@ -1,5 +1,5 @@
 class TeamStat < ActiveRecord::Base
-  belongs_to :team
+  belongs_to :team, touch: true
   belongs_to :score_board
 
   DISCARDED = 0
@@ -43,7 +43,7 @@ class TeamStat < ActiveRecord::Base
   end
 
   def set_lost_games(matches)
-    lost_games_matches = matches.select {|m| m.score.winner_team_id != self.team.id}
+    lost_games_matches = matches.select {|m| m.score.winner_team_id != self.team.id && m.score.winner_team_id != 0}
     self.lost_games = lost_games_matches.size
   end
 

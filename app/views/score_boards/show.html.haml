@@ -79,7 +79,7 @@
                       %td{id: t.id.to_s + 'DIF'}= ts.goals_favor - ts.goals_aggainst
                       %td{id: t.id.to_s + 'PTS'} PTS
               .row
-                %button.btn.btn-success{id: "saveGroup#{i}"}
+                %button.btn.btn-success{class: "js-save-group"}
                   Guardar
                 
 
@@ -89,9 +89,9 @@
 
 - content_for(:javascript) do
   :coffeescript
-    jQuery("#saveGroup0").click ->
-      console.log "Me presionaron vale"
+    jQuery(".js-save-group").click ->
+      console.log "Pressed"
       scores = jQuery("form")
-      jQuery("form").each (index) ->
+      scores.each (index) ->
         console.log index
         $(this).submit()
