@@ -10,4 +10,8 @@ class Team < ActiveRecord::Base
     team_stats.set_current_stats
   end
 
+  def group
+  	GroupTeam.find_by_team_id(self.id)
+  end
+
 end

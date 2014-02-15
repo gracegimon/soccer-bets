@@ -28,6 +28,14 @@ class Score < ActiveRecord::Base
     	end
 
       self.match.update_teams_stats
+      leaders = self.match.team_1.group.group.group_leaders_for_score_board(self.score_board)
+      binding.pry
+      team_s_1 = leaders.first.team_stats.for_scoreboard(self.score_board)
+      team_s_1.set_position(1)
+      team_s_1.save
+      team_s_2 = leaders.second.team_stats.for_scoreboard(self.score_board)
+      team_s_2.set_position(2)
+      team_s_2.save
     end
   end
 

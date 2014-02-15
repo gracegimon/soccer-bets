@@ -38,13 +38,13 @@
                   .col-xs-6
                     = form_for @score, remote: true  do |f|
                       .col-xs-5
-                        = f.text_field :team_1_goals, required: true, class: "form-control form-input", name: "field"
+                        = f.text_field :team_1_goals, required: true, class: "form-control form-input"
                         %p= m.day
                         %p= m.city
                       .col-xs-2
                         %p{style: "display:inline;"} -
                       .col-xs-5
-                        = f.text_field :team_2_goals, required: true, class: "form-control form-input", name: "field" 
+                        = f.text_field :team_2_goals, required: true, class: "form-control form-input"
                         %p= m.time
                       = f.hidden_field :scoreboard_id, value: @score_board.id
                       = f.hidden_field :match_id, value: m.id
@@ -65,6 +65,7 @@
                   %th GC
                   %th DIF
                   %th PTS
+                  %th
                 %tbody
                   - g.teams.each do |t|
                     - ts = t.team_stats.where(score_board_id: @score_board.id).first
@@ -78,6 +79,7 @@
                       %td{id: t.id.to_s + 'GC'}= ts.goals_aggainst
                       %td{id: t.id.to_s + 'DIF'}= ts.goals_favor - ts.goals_aggainst
                       %td{id: t.id.to_s + 'PTS'}= ts.points
+                      %td{id: t.id.to_s + 'LD'}= ts.final_position
               .row
                 %button.btn.btn-success{class: "js-save-group"}
                   Guardar
@@ -95,7 +97,12 @@
       scores.each (index) ->
         console.log index
         $(this).validate rules:
-          field:
+          'score[team_1_goals]':
+            required: true
+            min: 0
+        console.log index
+        $(this).validate rules:
+          'score[team_2_goals]':
             required: true
             min: 0
         $(this).submit()

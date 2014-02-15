@@ -25,6 +25,36 @@ class Group < ActiveRecord::Base
 
   def group_leaders_for_score_board(score_board)
     teams = self.teams
+    team_stats = []
+    teams.each do |t|
+      team_stats << t.team_stats.for_scoreboard(score_board)
+    end
+    team_stats.sort_by! { |ts| -ts.points}
+
+    leader_1 = team_stats.first
+    leader_2 = team_stats.second
+    set_leader(leader_1,leader_2)
+  end
+
+  # Compares TeamStats
+  def set_leader(leader_1, leader_2)
+    if leader_1.points > leader_2.points
+      return [leader_1.team, leader_2.team]
+    elsif leader_1.points == leader_2.points
+      if leader_1.diff > leader_2.diff
+        return [leader_1.team, leader_2.team]
+      elsif leader_1.diff == leader_2.diff
+        if leader_1.goals_favor > leader_2.goals_favor
+          return [leader_1.team, leader_2.team]
+        else
+          return [leader_2.team, leader_1.team]
+        end
+      else
+        return [leader_2.team, leader_1.team]
+      end
+    else
+      return [leader_2.team, leader_1.team]
+    end
   end
 
 end

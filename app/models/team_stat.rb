@@ -98,5 +98,23 @@ class TeamStat < ActiveRecord::Base
     self.points = points 
   end
 
+  def set_position(pos)
+    self.position = pos
+  end
+
+  def final_position
+    if self.position == 1
+      return  "1er lugar"
+    elsif self.position == 2
+      return "2do lugar"
+    else
+      return " "
+    end
+  end
+
+  def diff
+    self.goals_favor - self.goals_aggainst
+  end
+
 end
  

@@ -50,7 +50,7 @@ class ScoreBoard < ActiveRecord::Base
     groups.each do |group|
       group.teams.each do |t|
         team_stat = TeamStat.new(team_id: t.id, points: 0, status: 1, played_games: 0, won_games:0, tied_games: 0,
-                    goals_favor: 0, goals_aggainst: 0, score_board_id: self.id, lost_games: 0)
+                    goals_favor: 0, goals_aggainst: 0, score_board_id: self.id, lost_games: 0, position: 0)
         team_stat.save
       end
     end
