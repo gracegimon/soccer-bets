@@ -2,7 +2,8 @@ class Score < ActiveRecord::Base
   belongs_to :score_board
   belongs_to :match, touch: true
 
-  before_save :set_winner
+  before_update :set_winner
+  before_create :set_winner
 
 #  validates :match, uniqueness: { scope: :match}
 
@@ -11,7 +12,7 @@ class Score < ActiveRecord::Base
   end
 
   def score_board
-  	ScoreBoard.find(self.score_board)
+  	ScoreBoard.find(self.scoreboard_id)
   end
 
   def set_winner

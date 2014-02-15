@@ -1,2 +1,4 @@
 console.log("hello?")
 console.log('#<%= escape_javascript @score.match.team_1_id.to_s%>#J')
+
+$("#<%= escape_javascript @score.match.team_1_id.to_s%>#J").html("#<%=@score.match.team_1.team_stats.played_games%>")

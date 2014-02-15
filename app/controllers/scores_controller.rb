@@ -12,6 +12,7 @@ class ScoresController < ApplicationController
 
   def update
     @score = Score.find(params[:id]) unless params[:id].nil?
+    #binding.pry
     if @score.update_attributes(score_params)
       flash[:notice] = "Good"
     end

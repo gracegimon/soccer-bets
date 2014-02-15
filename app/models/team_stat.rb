@@ -2,6 +2,8 @@ class TeamStat < ActiveRecord::Base
   belongs_to :team, touch: true
   belongs_to :score_board
 
+  scope :for_scoreboard, -> (score_board) {where(score_board_id: score_board.id).first}
+
   DISCARDED = 0
   IN_GROUP = 1
   ROUND_16 = 2
