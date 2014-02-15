@@ -33,3 +33,7 @@ $("#<%= escape_javascript @score.match.team_2_id.to_s%>DIF").html("<%= escape_ja
 $("#<%= escape_javascript @score.match.team_1_id.to_s%>PTS").html("<%= escape_javascript @score.match.team_1.team_stats.for_scoreboard(@score.score_board).points.to_s %>")
 $("#<%= escape_javascript @score.match.team_2_id.to_s%>PTS").html("<%= escape_javascript @score.match.team_2.team_stats.for_scoreboard(@score.score_board).points.to_s %>")
 
+# Leadership
+$("#<%= escape_javascript @score.match.team_1_id.to_s%>LD").html("<%= escape_javascript @score.match.team_1.team_stats.for_scoreboard(@score.score_board).final_position %>")
+$("#<%= escape_javascript @score.match.team_2_id.to_s%>LD").html("<%= escape_javascript @score.match.team_2.team_stats.for_scoreboard(@score.score_board).final_position %>")
+
