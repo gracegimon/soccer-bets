@@ -13,7 +13,7 @@ class ScoreBoard < ActiveRecord::Base
   validates_presence_of :name, :tournament_id
 
   # TYPE 0 --> SCOREBOARD WORTH 50$
-  # TYPE 1 --> SCOREBOARD WORTH 100$
+  # TYPE 1 --> SCOREBOARD WORTH 200$
   # IS_ACTIVE set to TRUE only when user has paid.
 
   # This method should see all of the scoreboards that

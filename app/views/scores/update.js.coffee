@@ -1,9 +1,4 @@
-console.log("hello!! UPDATE")
-
-console.log("#<%= escape_javascript @score.match.team_1_id.to_s%>J")
-
-# team_1 = @score.match.team_1.team_stats.for_scoreboard(@score.score_board)
-# team_2 = @score.match.team_2.team_stats.for_scoreboard(@score.score_board)
+console.log("UPDATE")
 
 # Played games
 $("#<%= escape_javascript @score.match.team_1_id.to_s%>J").html("<%= escape_javascript @score.match.team_1.team_stats.for_scoreboard(@score.score_board).played_games.to_s %>")

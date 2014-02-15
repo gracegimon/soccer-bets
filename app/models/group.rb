@@ -23,4 +23,8 @@ class Group < ActiveRecord::Base
     return matches.flatten.uniq!   
   end
 
+  def group_leaders_for_score_board(score_board)
+    teams = self.teams
+  end
+
 end

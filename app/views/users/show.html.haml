@@ -10,11 +10,11 @@
     %h6
       =link_to "#{score_board.name}", user_score_board_path(@user,score_board)
   %a#new_scoreboard_link{href: "#"}
-    Add new Score Board
+    Agregar una nueva quiniela
 
   %hr
   #new_scoreboard{style: "display:none"}
-    %h2 Add a Scoreboard:
+    %h2 Agregar una Quiniela:
     = form_for([@user, @user.score_boards.build]) do |f|
       %p
         = f.label :name
@@ -28,7 +28,7 @@
       = f.radio_button :board_type, "0", checked: true
       %p= '50 USD'
       = f.radio_button :board_type, "1"
-      %p= '100 USD'
+      %p= '200 USD'
       =f.hidden_field :is_active, value: false
       = f.hidden_field :tournament_id, value: current_tournament.id
       %p
