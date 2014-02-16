@@ -1,11 +1,34 @@
-.jumbotron{style: "text-align: center"}
+.row-fluid
+  .span4
+    .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
+      %h4 1er lugar
+      %h1 55%
+      %h4 del pote
 
-  %h2 Arma tu quiniela
-  %h3 Te puedes quedar hasta con 55% del pote!
-  %h3 Corre la voz, mientras más jueguen, más puedes ganar!
+  .span4
+    .colored-circle.colored-circle-title.tournament-blue
+      = image_tag "Brasil_2014.png", class: "logo-center"
 
+  .span4
+    .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
+      %h4 2do lugar
+      %h1 35%
+      %h4 del pote
 
-  %a#view-more-link{href: "#view-more"} Ver más
+.row-fluid
+  .span4
+    .colored-circle.colored-circle-subsection.colored-circle-subsection-center.tournament-blue
+      %h5 General
+      %h2 $50
+  .span4
+    .colored-circle.colored-circle-middle-section.colored-circle-middle-section-center.tournament-blue
+      %h2 Arma tus quinielas
+  .span4
+    .colored-circle.colored-circle-subsection.colored-circle-subsection-center.tournament-blue
+      %h5 High Roller
+      %h2 $200
+  
+%a#view-more-link{href: "#view-more"} Ver más
 
 
 #view-more.well{style: "display: none;"}

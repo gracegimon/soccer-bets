@@ -1,16 +1,92 @@
+@import "bootstrap_and_overrides.css.less";
+
 .has-error{
-	color: red;
-	font-weight: 500;
+  color: red;
+  font-weight: 500;
 }
 
 
 // Typography
 
 label{
-	font-size: 13px;
-	font-weight: bold;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 h1,h2,h3,p{
-	font-family: Helvetica;
+  font-family: Helvetica;
+}
+
+
+/* WELCOME INDEX */
+
+.colored-circle{
+  width: 60px;
+  height: 60px;
+  border-radius: 90%;
+  margin: 0 auto;
+  color: white;
+}
+
+.colored-circle-title{
+  width: 250px;
+  height: 250px;
+}
+
+.colored-circle-section{
+  width: 150px;
+  height: 150px;
+}
+
+.colored-circle-subsection{
+  width: 100px;
+  height: 100px;
+}
+
+.colored-circle-middle-section{
+  width: 180px;
+  height: 180px;
+}
+
+.colored-circle-middle-section-center{
+  padding-top: 35px;
+  margin-top: 20%;
+  text-align: center;
+}
+
+.colored-circle-subsection-center{
+    margin-top: 34%;
+    text-align: center;
+    padding: 10px;
+    h5{
+      margin-bottom: 0;
+    }
+    h2{
+      margin-top:0;
+    }
+  }
+
+.colored-circle-section-center{
+  margin-top: 20%;
+  text-align: center;
+  padding: 20px;
+}
+
+.tournament-green{
+  background-color: @tournament-green-color;
+}
+
+.tournament-yellow{
+  background-color: @tournament-yellow-color;
+}
+
+.tournament-blue{
+  background-color: @tournament-blue-color;
+}
+
+.logo-center{
+  position: relative;
+  top: 19%;
+  right: 11%;
+  max-width: 120%;
 }
