@@ -5,6 +5,21 @@ class Match < ActiveRecord::Base
   belongs_to :group
 
   validates_presence_of :team_1_id, :team_2_id, :match_type, :date, :city
+ 
+  GROUP_MAIN = 0
+  GROUP_USERS = 1 
+  R16_MAIN = 2
+  R16 = 3
+  QUARTER_MAIN = 4
+  QUARTER = 5
+  SEMI_MAIN = 6
+  SEMI = 7
+  THIRD_MAIN = 8
+  THIRD = 9
+  FINAL_MAIN = 10
+  FINAL = 11
+
+
 
   #MATCH_TYPE = 0 --> GROUP MAIN
   #MATCH_TYPE = 1 --> GROUP USERS

@@ -127,7 +127,7 @@ g.matches << m
 g.matches << m1
 
 g2 = Group.new( name: "B", first_place_team_id: 0, second_place_team_id: 0, tournament_id: t.id)
-
+g2.save
 g2.teams << Team.find_by_name("Spain")
 g2.teams << Team.find_by_name("Chile")
 g2.teams << Team.find_by_name("Australia")
@@ -143,3 +143,52 @@ m3.save
 g2.matches << m2
 
 g2.matches << m3 
+
+g3 =  Group.new( name: "C", first_place_team_id: 0, second_place_team_id: 0, tournament_id: t.id)
+g3.save
+g3.teams << Team.find_by_name("Colombia")
+g3.teams << Team.find_by_name("Côte d\'Ivoire")
+g3.teams << Team.find_by_name("Greece")
+g3.teams << Team.find_by_name("Japan")
+g3.save
+
+g4 = Group.new( name: "D", first_place_team_id: 0, second_place_team_id: 0, tournament_id: t.id)
+g4.save
+g4.teams << Team.find_by_name("Costa Rica")
+g4.teams << Team.find_by_name("England")
+g4.teams << Team.find_by_name("Italy")
+g4.teams << Team.find_by_name("Uruguay")
+g4.save
+
+g5 = Group.new( name: "E", first_place_team_id: 0, second_place_team_id: 0, tournament_id: t.id)
+g5.save
+g5.teams << Team.find_by_name("Ecuador")
+g5.teams << Team.find_by_name("France")
+g5.teams << Team.find_by_name("Honduras")
+g5.teams << Team.find_by_name("Switzerland")
+g5.save
+
+g6 = Group.new( name: "F", first_place_team_id: 0, second_place_team_id: 0, tournament_id: t.id)
+g6.save
+g6.teams << Team.find_by_name("Argentina")
+g6.teams << Team.find_by_name("Bosnia and Herzegovina")
+g6.teams << Team.find_by_name("Iran")
+g6.teams << Team.find_by_name("Nigeria")
+g6.save
+
+
+g7 = Group.new( name: "G", first_place_team_id: 0, second_place_team_id: 0, tournament_id: t.id)
+g7.save
+g7.teams << Team.find_by_name("Germany")
+g7.teams << Team.find_by_name("Ghana")
+g7.teams << Team.find_by_name("Portugal")
+g7.teams << Team.find_by_name("USA")
+g7.save
+
+g8 = Group.new( name: "H", first_place_team_id: 0, second_place_team_id: 0, tournament_id: t.id)
+g8.save
+g8.teams << Team.find_by_name("Algeria")
+g8.teams << Team.find_by_name("Belgium")
+g8.teams << Team.find_by_name("Korea Republic")
+g8.teams << Team.find_by_name("Russia")
+g8.save

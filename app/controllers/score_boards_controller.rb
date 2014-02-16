@@ -37,4 +37,11 @@ class ScoreBoardsController < ApplicationController
       redirect_to @user
     end
   end
+
+  def show_round_of_16
+    @matches = Match.where(match_type: Match::R16)
+    if @matches.empty?
+      @matches = [Match.first]
+    end
+  end
 end
