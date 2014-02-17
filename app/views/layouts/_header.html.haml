@@ -19,10 +19,16 @@
         %li= link_to "Ranking", ranking_score_boards_path
         %li= link_to "Estadios", "/path3"
       - else
-        %li= link_to "Crea tu cuenta", sign_up_path
+        %li= #link_to "Crea tu cuenta", sign_up_path
         %li= link_to "Inicia sesión", sign_in_path
   .span7
     %ul.nav.navbar-nav.navbar-right
+      %li 
+        %a{href: "#"}
+          = image_tag "facebook.gif", size: "40x40"
+      %li 
+        %a{href: "#", style: "padding-top:15px;"}
+          = image_tag "twitter.png", size: "40x43"
       - if current_user
         %li 
           %a{href: "#"}
