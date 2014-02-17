@@ -1,90 +1,114 @@
-.row-fluid
-  .span4
-    .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
-      %h4 1er lugar
-      %h1 55%
-      %h4 del pote
+.main-content
+  .row-fluid
+    .span4
+      .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
+        %h4 1er lugar
+        %h1 55%
+        %h4 del pote
 
-  .span4
-    .colored-circle.colored-circle-title.tournament-blue
-      = image_tag "Brasil_2014.png", class: "logo-center"
+    .span4
+      .colored-circle.colored-circle-title.tournament-blue
+        = image_tag "Brasil_2014.png", class: "logo-center"
 
-  .span4
-    .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
-      %h4 2do lugar
-      %h1 35%
-      %h4 del pote
+    .span4
+      .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
+        %h4 2do lugar
+        %h1 35%
+        %h4 del pote
+  = image_tag "dots.png"
+  = image_tag "dots.png"
+  .row-fluid
+    .span4
+      .colored-circle.colored-circle-subsection.colored-circle-subsection-center.tournament-blue
+        %h5 General
+        %h2 $50
+    .span4
+      .colored-circle.colored-circle-middle-section.colored-circle-middle-section-center.tournament-blue
+        %h2 Arma tus quinielas
+    .span4
+      .colored-circle.colored-circle-subsection.colored-circle-subsection-center.tournament-blue
+        %h5 High Roller
+        %h2 $200
+  = image_tag "dots.png"
+  = image_tag "dots.png"    
+  .row-fluid
 
-.row-fluid
-  .span4
-    .colored-circle.colored-circle-subsection.colored-circle-subsection-center.tournament-blue
-      %h5 General
-      %h2 $50
-  .span4
-    .colored-circle.colored-circle-middle-section.colored-circle-middle-section-center.tournament-blue
-      %h2 Arma tus quinielas
-  .span4
-    .colored-circle.colored-circle-subsection.colored-circle-subsection-center.tournament-blue
-      %h5 High Roller
-      %h2 $200
-  
-.row-fluid
+    .span4
+    .span4
+      .colored-circle.colored-circle-middle-section.colored-circle-middle-section-center.tournament-blue{style: "padding-left: 5px; padding-top: 57px;"}
+        %h2 Puntuación
+    .span4
 
-  .span4
-    .colored-circle.colored-circle-section.colored-circle-section-center.special-section-circle.tournament-blue
-      %h4 Fase de Grupos
-  .span4
-    .colored-circle.colored-circle-middle-section.colored-circle-middle-section-center.tournament-blue{style: "padding-left: 5px; padding-top: 57px;"}
-      %h2 Puntuación
-  .span4
-    .colored-circle.colored-circle-section.colored-circle-section-center.special-section-circle.tournament-blue
-      %h4 Fase de Eliminatorias
+  .row-fluid
+    .span4
+      .colored-circle.colored-circle-section.colored-circle-section-center.special-section-circle.tournament-blue
+        %h4 Fase de Grupos
+    .span4
+      .colored-circle.colored-circle-section.colored-circle-section-center.special-section-circle.tournament-blue
+        %h4 Puntos extra
+    .span4
+      .colored-circle.colored-circle-section.colored-circle-section-center.special-section-circle.tournament-blue
+        %h4 Fase de Eliminatorias
 
-%a#view-more-link{href: "#view-more"} Ver más
+  .row-fluid.special-row
+    .span4
+      .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
+        %h6 Marcador Exacto
+        %h5 5 puntos
+    .span4
+      .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
+        %h6 Goleador (Goles + Penales)
+        %h5 7 puntos
+        
+    .span4
+      .span6
+        .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
+          %h6 Equipo en 8vos
+          %h5 4 puntos
+      .span6
+        .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
+          %h6 Equipo en 4tos
+          %h5 5 puntos
 
 
-#view-more.well{style: "display: none;"}
+  .row-fluid.special-row
+    .span4
+      .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
+        %h6 Marcador Dif Goles
+        %h5 4 puntos
+    .span4
+      .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
+        %h6 Equipo con tarjeta roja
+        %h5 5 puntos
+    .span4
+      .span6
+        .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
+          %h6 Semi final
+          %h5 6 puntos
+      .span6
+        .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-dark
+          %h6 3er lugar
+          %h5 7 puntos
 
-  %h2 PREMIACION
+  .row-fluid.special-row
+    .span4
+      .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
+        %h6 Acertar ganador
+        %h5 3 puntos
+    .span4
+      .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
+        %h6 Primer equipo penal
+        %h5 3 puntos
+    .span4
+      .span6
+        .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-dark
+          %h6 Sub campeón
+          %h5 8 puntos
+      .span6
+        .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-dark
+          %h6 Campeón
+          %h5 9 puntos 
 
-  %p 1ER LUGAR 55% DEL POTE
-
-  %p 2DO LUGAR 35% DEL POTE
-
-  %p *10% del pote va destinado a los organizadores
-
-  
-  %h3 PUNTUACIÓN
-
-  %h4 PRIMERA FASE:
-   
-  %p - ACERTAR MARCADOR EXACTO                                =  5 PUNTOS POR PARTIDO
-  %p - ACERTAR MARCADOR CON "DIFERENCIA DE GOLES" =  4 PUNTOS POR PARTIDO
-  %p - ACERTAR GANADOR                                                =  3 PUNTO  POR PARTIDO
-   
-  %p Ejemplo: Brasil vs Croacia queda 2 a 1
-  %p * Si pusiste 2 a 1 - ganas 5 puntos
-  %p * Si pusiste 1 a 0, 3 a 2, etc.... - ganas 4 puntos
-  %p * Si pusiste 2 a 0 – ganas 3 puntos 
-   
-  %h4 SEGUNDA FASE (NO IMPORTAN LOS RESULTADOS EXACTOS):
-   
-  %p - ACERTAR LOS EQUIPOS QUE PASAN A OCTAVOS DE FINAL  =  4 PUNTOS POR EQUIPO
-  %p - ACERTAR LOS EQUIPOS QUE PASAN A CUARTOS DE FINAL                 =  5 PUNTOS POR EQUIPO
-  %p - ACERTAR LOS EQUIPOS QUE PASAN A SEMIFINAL                 =  6 PUNTOS POR EQUIPO
-
-  %p - ACERTAR 3ER LUGAR                            =  7 PUNTOS
-  %p - ACERTAR SUBCAMPEON                                   =  8 PUNTOS
-  %p - ACERTAR CAMPEON                                         =  9 PUNTOS
-  %p - ACERTAR GOLEADOR (INCLUYEN TODOS LOS GOLES y PENALTIES) = 7 PUNTOS
-  %p - PRIMER EQUIPO EN RECIBIR TARJETA ROJA  =  5 PUNTOS
-  %p - PRIMER EQUIPO EN MARCAR GOL DE PENALTI    = 5 PUNTOS 
- 
-
-.well 
-  %h4 Tipos de Quiniela
-  %p General 50 USD
-  %p High Roller 200 USD
 
 .well
   %h4 REGLAS DE LA QUINIELA

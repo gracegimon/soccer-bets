@@ -3,7 +3,7 @@ class Score < ActiveRecord::Base
   belongs_to :match, touch: true
 
   after_update :set_winner
-  before_create :set_winner
+  after_create :set_winner
 
 #  validates :match, uniqueness: { scope: :match}
   validates :team_1_goals, :numericality => {:greater_than_or_equal_to => 0}
@@ -48,6 +48,7 @@ class Score < ActiveRecord::Base
     team_s_3.save
     team_s_4.set_position(4)
     team_s_4.save
-
   end
+
+
 end
