@@ -12,17 +12,6 @@ class TeamStat < ActiveRecord::Base
   THIRD_PLACE_OFF = 5
   FINALS = 6
 
-  def update_team_stats(score)
-  	if score.winner_team_id == self.team.id 
-  		self.won_games += 1
-  	elsif score.winner_team_id == 0
-  		self.tied_games += 1
-  	else
-  		self.lost_games += 1
-  	end
-  	self.played_games += 1
-  end
-
   def set_current_stats
     matches = Match.find_by_team_group_score_board(self.team,self.score_board)
     matches = matches.select {|m| !m.score.nil?}

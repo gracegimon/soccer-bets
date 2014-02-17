@@ -2,7 +2,7 @@ class Score < ActiveRecord::Base
   belongs_to :score_board
   belongs_to :match, touch: true
 
-  before_update :set_winner
+  after_update :set_winner
   before_create :set_winner
 
 #  validates :match, uniqueness: { scope: :match}
@@ -28,6 +28,7 @@ class Score < ActiveRecord::Base
     	end
 
       self.match.update_teams_stats
+      binding.pry
       leaders = self.match.team_1.group.group.group_leaders_for_score_board(self.score_board)
       bottom = self.match.team_1.group.group.group_bottom_for_score_board(self.score_board)
       set_group_positions(leaders,bottom)
