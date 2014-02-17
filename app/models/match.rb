@@ -5,6 +5,8 @@ class Match < ActiveRecord::Base
   belongs_to :group
 
   validates_presence_of :team_1_id, :team_2_id, :match_type, :date, :city
+
+  validates :team_1_id, uniqueness: {scope: [:team_2_id, :match_type, :score_board_id]}
  
   GROUP_MAIN = 0
   GROUP_USERS = 1 
