@@ -25,35 +25,39 @@
         .panel-collapse.collapse.in{id: "collapse#{i}"}
           .panel-body
             - matches = g.matches_for_score_board(@score_board)
-            .col-xs-7
+            .span7
               - matches.each_with_index do |m,i|
                 .row
                   - team_1 = m.team_1
                   - team_2 = m.team_2
                   - @score = m.score
                   - @score = Score.new if m.score.nil?
-                  .col-xs-3.team-name
+                  .span3.team-name
                     %p= team_1.name
                     = image_tag team_1.flag
-                  .col-xs-6
+                  .span6
                     = form_for @score, remote: true  do |f|
-                      .col-xs-5
+                      .span5
                         = f.text_field :team_1_goals, required: true, class: "form-control form-input"
                         %p= m.day
                         %p= m.city
-                      .col-xs-2
+                      .span1
                         %p{style: "display:inline;"} -
-                      .col-xs-5
+                      .span5
                         = f.text_field :team_2_goals, required: true, class: "form-control form-input"
                         %p= m.time
                       = f.hidden_field :scoreboard_id, value: @score_board.id
                       = f.hidden_field :match_id, value: m.id
                       .div{style: "visibility:hidden;"}
                         = f.submit 'Save', class: "scores"
-                  .col-xs-3.team-2-name
+                  .span3.team-2-name
                     %p= m.team_2.name
                     = image_tag team_2.flag
-            .col-xs-5
+              .row.span3
+                %button.btn.btn-success{class: "js-save-group"}
+                  Guardar
+                
+            .span5
               %table.table{style: "float:right"}
                 %thead
                   %th Teams
@@ -80,10 +84,6 @@
                       %td{id: t.id.to_s + 'DIF'}= ts.goals_favor - ts.goals_aggainst
                       %td{id: t.id.to_s + 'PTS'}= ts.points
                       %td{id: t.id.to_s + 'LD'}= ts.final_position
-              .row
-                %button.btn.btn-success{class: "js-save-group"}
-                  Guardar
-                
 
   #tabs-2.tab-pane
     = render "show_round_of_16"
@@ -92,7 +92,7 @@
   :coffeescript
     jQuery(".js-save-group").click ->
       console.log "Pressed"
-      scores = jQuery("form")
+      scores = jQuery(this).parent().siblings().find("form")
       scores.each (index) ->
         console.log index
         $(this).validate rules:

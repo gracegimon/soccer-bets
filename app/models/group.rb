@@ -23,17 +23,25 @@ class Group < ActiveRecord::Base
     return matches.flatten.uniq!   
   end
 
-  def group_leaders_for_score_board(score_board)
+  def group_team_stats_for_score_board(score_board)
     teams = self.teams
     team_stats = []
     teams.each do |t|
       team_stats << t.team_stats.for_scoreboard(score_board)
     end
     team_stats.sort_by! { |ts| -ts.points}
+  end
 
+  def group_leaders_for_score_board(score_board)
+    team_stats = group_team_stats_for_score_board(score_board)
     leader_1 = team_stats.first
     leader_2 = team_stats.second
     set_leader(leader_1,leader_2)
+  end
+
+  def group_bottom_for_score_board(score_board)
+    team_stats = group_team_stats_for_score_board(score_board)
+    set_leader(team_stats[2], team_stats[3])
   end
 
   # Compares TeamStats
