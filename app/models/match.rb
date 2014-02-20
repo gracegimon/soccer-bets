@@ -63,8 +63,10 @@ class Match < ActiveRecord::Base
   end
 
   def update_teams_stats
-    team_stats_1 = self.team_1.read_team_stats(self.score_board)
-    team_stats_2 = self.team_2.read_team_stats(self.score_board)
+    unless self.score.winner_team_id.nil?
+      team_stats_1 = self.team_1.read_team_stats(self.score_board)
+      team_stats_2 = self.team_2.read_team_stats(self.score_board)
+    end
   end
 
 

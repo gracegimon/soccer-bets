@@ -8,6 +8,7 @@ class Score < ActiveRecord::Base
 #  validates :match, uniqueness: { scope: :match}
   validates :team_1_goals, :numericality => {:greater_than_or_equal_to => 0}
   validates :team_2_goals, :numericality => {:greater_than_or_equal_to => 0}
+#  validates :winner_team_id, presence: true
 
   def match
   	Match.find(self.match_id)
@@ -26,9 +27,8 @@ class Score < ActiveRecord::Base
     	else
     		self.winner_team_id = 0 # This means tie
     	end
-
+      self.save
       self.match.update_teams_stats
-      binding.pry
       leaders = self.match.team_1.group.group.group_leaders_for_score_board(self.score_board)
       bottom = self.match.team_1.group.group.group_bottom_for_score_board(self.score_board)
       set_group_positions(leaders,bottom)

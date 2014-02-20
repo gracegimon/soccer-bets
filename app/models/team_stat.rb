@@ -92,12 +92,14 @@ class TeamStat < ActiveRecord::Base
   end
 
   def final_position
-    if self.position == 1
-      return  "1er lugar"
-    elsif self.position == 2
-      return "2do lugar"
-    else
-      return " "
+    unless self.points == 0
+      if self.position == 1
+        return  "1er lugar"
+      elsif self.position == 2
+        return "2do lugar"
+      else
+        return " "
+      end
     end
   end
 
