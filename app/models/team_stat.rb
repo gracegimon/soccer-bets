@@ -98,7 +98,7 @@ class TeamStat < ActiveRecord::Base
       elsif self.position == 2
         return "2do lugar"
       else
-        return " "
+        return " - "
       end
     end
   end

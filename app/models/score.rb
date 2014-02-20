@@ -2,8 +2,11 @@ class Score < ActiveRecord::Base
   belongs_to :score_board
   belongs_to :match, touch: true
 
-  after_update :set_winner
-  after_create :set_winner
+  after_update :update_match_stats
+  after_create :update_match_stats
+
+  before_create :set_winner
+  before_update :set_winner
 
 #  validates :match, uniqueness: { scope: :match}
   validates :team_1_goals, :numericality => {:greater_than_or_equal_to => 0}
@@ -27,12 +30,14 @@ class Score < ActiveRecord::Base
     	else
     		self.winner_team_id = 0 # This means tie
     	end
-      self.save
-      self.match.update_teams_stats
-      leaders = self.match.team_1.group.group.group_leaders_for_score_board(self.score_board)
-      bottom = self.match.team_1.group.group.group_bottom_for_score_board(self.score_board)
-      set_group_positions(leaders,bottom)
     end
+  end
+
+  def update_match_stats
+    self.match.update_teams_stats
+    leaders = self.match.team_1.group.group.group_leaders_for_score_board(self.score_board)
+    bottom = self.match.team_1.group.group.group_bottom_for_score_board(self.score_board)
+    set_group_positions(leaders,bottom)
   end
 
   def set_group_positions(leaders,bottom)
