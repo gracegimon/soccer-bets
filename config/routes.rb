@@ -29,6 +29,7 @@ Quiniela::Application.routes.draw do
   resources :score_boards do
     get "show_all", to: "score_boards#show_for_admin", on: :collection
     get "ranking", to: "score_boards#ranking", on: :collection
+    get "show_round_of_16", to: "score_boards#show_round_of_16", on: :member
   end
 
   resources :scores do

@@ -58,12 +58,14 @@ class ScoreBoard < ActiveRecord::Base
 
   # Returns matches for Round of 16
   # phase, for normal users and admin
-  def round_of_16
+  def calculate_round_of_16
     groups = self.tournament.groups
+    matches = []
     leaders = []
     groups.each do |group|
       leaders << group.group_leaders_for_score_board(self)
     end
+    binding.pry
     team_1A = leaders.first.first
     team_2A = leaders.first.second
     team_1B = leaders[1][0]
@@ -74,43 +76,55 @@ class ScoreBoard < ActiveRecord::Base
     team_2D = leaders[3][1]
     team_1E = leaders[4][0]
     team_2E = leaders[4][1]
+
     team_1F = leaders[5][0]
-    team_2F = leaders[6][0]
-    team_1G = leaders[7][0]
-    team_2G = leaders[7][1]
+    team_2F = leaders[5][1]
 
-    team_1H = leaders[8][0]
-    team_2H = leaders[8][1]
+    team_1G = leaders[6][0]
+    team_2G = leaders[6][1]
 
+    team_1H = leaders[7][0]
+    team_2H = leaders[7][1]
+
+    match_type = Match::R16
     if self.user.is_admin?
       match_type = Match::R16_MAIN
-    else
-      match_type = Match::R16
     end
+    binding.pry
     # Match 49
-    m1 = Match.new(team_1_id: team_1A, team_2_id: team_2B, city: "Belo Horizonte", stadium_id: nil, match_type: match_type , date: "2014-06-28 11:30:00", match_number: 49)
-    m1.save
+    m1 = Match.create(team_1_id: team_1A.id, team_2_id: team_2B.id, city: "Belo Horizonte", stadium_id: nil, match_type: match_type , date: "2014-06-28 11:30:00", match_number: 49, score_board_id: self.id)
+    matches << m1
+    binding.pry
     # Match 50
-    m2 = Match.new(team_1_id: team_1C, team_2_id: team_2D, city: "Rio de Janeiro", stadium_id: nil, match_type: match_type , date: "2014-06-28 15:30:00", match_number: 50)
-    m2.save
+    m2 = Match.create(team_1_id: team_1C.id, team_2_id: team_2D.id, city: "Rio de Janeiro", stadium_id: nil, match_type: match_type , date: "2014-06-28 15:30:00", match_number: 50, score_board_id: self.id)
+    matches << m2
+
     # Match 51
-    m3 = Match.new(team_1_id: team_1B, team_2_id: team_2A, city: "Fortaleza", stadium_id: nil, match_type: match_type, date: "2014-06-29 11:30:00", match_number: 51)
-    m3.save
+    m3 = Match.create(team_1_id: team_1B.id, team_2_id: team_2A.id, city: "Fortaleza", stadium_id: nil, match_type: match_type, date: "2014-06-29 11:30:00", match_number: 51, score_board_id: self.id)
+  
+    matches << m3
     # Match 52
-    m4 = Match.new(team_1_id: team_1D, team_2_id: team_2C, city: "Recife", stadium_id: nil, match_type: match_type, date: "2014-06-29 15:30:00", match_number: 52)
-    m4.save
+    m4 = Match.create(team_1_id: team_1D.id, team_2_id: team_2C.id, city: "Recife", stadium_id: nil, match_type: match_type, date: "2014-06-29 15:30:00", match_number: 52, score_board_id: self.id)
+
+    matches << m4
     # Match 53
-    m5 = Match.new(team_1_id: team_1E, team_2_id: team_2F, city: "Brasilia", stadium_id: nil, match_type: match_type , date: "2014-06-30 11:30:00", match_number: 53)
-    m5.save
+    m5 = Match.create(team_1_id: team_1E.id, team_2_id: team_2F.id, city: "Brasilia", stadium_id: nil, match_type: match_type , date: "2014-06-30 11:30:00", match_number: 53, score_board_id: self.id)
+
+    matches << m5
     # Match 54
-    m6 = Match.new(team_1_id: team_1G, team_2_id: team_2H, city: "Porto Alegre", stadium_id: nil, match_type: match_type , date: "2014-06-30 15:30:00", match_number: 54)
-    m6.save
+    m6 = Match.create(team_1_id: team_1G.id, team_2_id: team_2H.id, city: "Porto Alegre", stadium_id: nil, match_type: match_type , date: "2014-06-30 15:30:00", match_number: 54, score_board_id: self.id)
+
+    matches << m6
     # Match 55
-    m6 = Match.new(team_1_id: team_1F, team_2_id: team_2E, city: "Sao Paulo", stadium_id: nil, match_type: match_type , date: "2014-07-01 11:30:00", match_number: 55)
-    m6.save
+    m7 = Match.create(team_1_id: team_1F.id, team_2_id: team_2E.id, city: "Sao Paulo", stadium_id: nil, match_type: match_type , date: "2014-07-01 11:30:00", match_number: 55, score_board_id: self.id)
+
+    matches << m7
     # Match 56
-    m7 = Match.new(team_1_id: team_1H, team_2_id: team_2G, city: "Salvador", stadium_id: nil, match_type: match_type , date: "2014-07-01 15:30:00", match_number: 56)
-    m7.save
+    m8 = Match.create(team_1_id: team_1H.id, team_2_id: team_2G.id, city: "Salvador", stadium_id: nil, match_type: match_type , date: "2014-07-01 15:30:00", match_number: 56, score_board_id: self.id)
+
+    matches << m8
+
+    return matches
   end
 
 end

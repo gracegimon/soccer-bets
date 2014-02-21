@@ -39,7 +39,12 @@ class ScoreBoardsController < ApplicationController
   end
 
   def show_round_of_16
-    @matches = Match.where(match_type: Match::R16)
+    @score_board = ScoreBoard.find(params[:id])
+    @matches = Match.where(match_type: Match::R16, score_board_id: @score_board.id)
+    binding.pry
+    if @matches.empty?
+      @matches = @score_board.calculate_round_of_16
+    end
     if @matches.empty?
       @matches = [Match.first]
     end

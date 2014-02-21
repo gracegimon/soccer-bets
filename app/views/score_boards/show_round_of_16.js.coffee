@@ -1,0 +1,1 @@
+jQuery("#tabs-2").html("<%= j render 'score_boards/show_round_of_16', {:matches=> @matches} %>");
