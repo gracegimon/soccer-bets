@@ -23,6 +23,20 @@ class Group < ActiveRecord::Base
     return matches.flatten.uniq!   
   end
 
+  def matches_for_score_board_group(score_board)
+    teams = self.teams
+    matches = []
+    type = Match::GROUP_USERS
+    if score_board.user.nil?
+      type = Match::GROUP_MAIN
+    end
+
+    teams.each do |t|
+      matches << Match.find_by_team_group_score_board_match_type(t,score_board,type) unless  Match.find_by_team_group_score_board_match_type(t,score_board,type).empty?
+    end
+    return matches.flatten.uniq!   
+  end
+
   def group_team_stats_for_score_board(score_board)
     teams = self.teams
     team_stats = []

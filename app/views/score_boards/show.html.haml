@@ -24,7 +24,7 @@
               %h3= "Group " + g.name
         .panel-collapse.collapse.in{id: "collapse#{i}"}
           .panel-body
-            - matches = g.matches_for_score_board(@score_board)
+            - matches = g.matches_for_score_board_group(@score_board)
             .span7
               - matches.each_with_index do |m,i|
                 .row
