@@ -88,12 +88,12 @@ class ScoreBoardsController < ApplicationController
     @third = Match.where(match_type: Match::THIRD, score_board_id: @score_board.id).first
     @matches = []
     if @score_board.matches_have_score(@matches_semi)
-      if @final.empty?
+      if @final.nil?
         @final = @score_board.calculate_final
       else
         @final = @score_board.update_final
       end
-      if @third.empty?
+      if @third.nil?
         @third = @score_board.calculate_third_place
       else
         @third = @score_board.update_third_place

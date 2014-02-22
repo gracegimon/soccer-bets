@@ -277,6 +277,7 @@ class ScoreBoard < ActiveRecord::Base
       match_type = Match::SEMI_MAIN
     end
     # Match 61
+
     w57 = Match.find_by_match_number_score_board(57, self).winner
     w58 = Match.find_by_match_number_score_board(58, self).winner
     m1 = Match.create(team_1_id: w57.id, team_2_id: w58.id, city: "Belo Horizonte", stadium_id: nil, match_type: match_type , date: "2014-07-08 15:30:00", match_number: 61, score_board_id: self.id)
@@ -294,14 +295,14 @@ class ScoreBoard < ActiveRecord::Base
  def update_semi_finals(matches)
     updated_matches = []
 
-    # Match 57
+    # Match 61
     w57 = Match.find_by_match_number_score_board(57, self).winner
     w58 = Match.find_by_match_number_score_board(58, self).winner
     m61 = matches[0]
     m61.update_attributes(team_1_id: w57.id, team_2_id: w58.id)
     updated_matches << m61
 
-    # Match 58
+    # Match 62
     w59 = Match.find_by_match_number_score_board(59, self).winner
     w60 = Match.find_by_match_number_score_board(60, self).winner
     m62 = matches[1]
