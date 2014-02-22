@@ -64,7 +64,10 @@ class Match < ActiveRecord::Base
 
   def self.find_by_team_group_score_board_match_type(t,sb,type)
     Match.where(team_1_id: t.id, score_board_id: sb.id, match_type: type ) | Match.where(team_2_id: t.id, score_board_id: sb.id, match_type: type)
+  end
 
+  def self.find_by_match_number_score_board(match_number, sb)
+    Match.where(match_number: match_number, score_board_id: sb.id)
   end
 
   def update_teams_stats
@@ -76,6 +79,19 @@ class Match < ActiveRecord::Base
 
   def self.find_by_match_number_score_board(match_number, score_board_id)
     Match.where(match_number: match_number, score_board_id: score_board_id).first
+  end
+
+  def winner
+    Team.find(self.score.winner_team_id) unless self.score.nil?
+  end
+
+  def loser
+    tw = Team.find(self.score.winner_team_id)
+    if tw.id == team_1_id
+      return Team.find(team_2_id)
+    else
+      return Team.find(team_1_id)
+    end
   end
 
 end

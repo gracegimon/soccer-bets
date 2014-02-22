@@ -167,7 +167,6 @@ class ScoreBoard < ActiveRecord::Base
     m1.update_attributes(team_1_id: team_1A.id, team_2_id: team_2B.id)
     updated_matches << m1
 
-    binding.pry
     m2 = matches[1]
     m2.update_attributes(team_1_id: team_1C.id, team_2_id: team_2D.id)
     updated_matches << m2
@@ -198,6 +197,172 @@ class ScoreBoard < ActiveRecord::Base
 
     return updated_matches
 
+  end
+
+
+  def calculate_quarters
+    matches = []
+     match_type = Match::QUARTER
+    if self.user.nil?
+      match_type = Match::QUARTER_MAIN
+    end
+    # Match 57
+    w49 = Match.find_by_match_number_score_board(49, self).winner
+    w50 = Match.find_by_match_number_score_board(50, self).winner
+    m1 = Match.create(team_1_id: w49.id, team_2_id: w50.id, city: "Fortaleza", stadium_id: nil, match_type: match_type , date: "2014-07-04 15:30:00", match_number: 57, score_board_id: self.id)
+    matches << m1
+
+    # Match 58
+    w53 = Match.find_by_match_number_score_board(53, self).winner
+    w54 = Match.find_by_match_number_score_board(54, self).winner
+    m2 = Match.create(team_1_id: w53.id, team_2_id: w54.id, city: "Rio de Janeiro", stadium_id: nil, match_type: match_type , date: "2014-07-04 11:30:00", match_number: 58, score_board_id: self.id)
+    matches << m2
+
+    # Match 59
+    w51 = Match.find_by_match_number_score_board(51, self).winner
+    w52 = Match.find_by_match_number_score_board(52, self).winner
+    m3 = Match.create(team_1_id: w51.id, team_2_id: w52.id, city: "Salvador", stadium_id: nil, match_type: match_type , date: "2014-07-05 15:30:00", match_number: 59, score_board_id: self.id)
+    matches << m3    
+
+    # Match 60
+    w55 = Match.find_by_match_number_score_board(55, self).winner
+    w56 = Match.find_by_match_number_score_board(56, self).winner
+    m4 = Match.create(team_1_id: w55.id, team_2_id: w56.id, city: "Brasilia", stadium_id: nil, match_type: match_type , date: "2014-07-05 11:30:00", match_number: 60, score_board_id: self.id)
+    matches << m4
+
+    return matches
+  end
+
+
+  def update_quarters(matches)
+    updated_matches = []
+
+    # Match 57
+    w49 = Match.find_by_match_number_score_board(49, self).winner
+    w50 = Match.find_by_match_number_score_board(50, self).winner
+    m57 = matches[0]
+    m57.update_attributes(team_1_id: w49.id, team_2_id: w50.id)
+    updated_matches << m57
+
+    # Match 58
+    w53 = Match.find_by_match_number_score_board(53, self).winner
+    w54 = Match.find_by_match_number_score_board(54, self).winner
+    m58 = matches[1]
+    m58.update_attributes(team_1_id: w53.id, team_2_id: w54.id)
+    updated_matches << m58
+
+    # Match 59
+    w51 = Match.find_by_match_number_score_board(51, self).winner
+    w52 = Match.find_by_match_number_score_board(52, self).winner
+    m59 = matches[2]
+    m59.update_attributes(team_1_id: w51.id, team_2_id: w52.id)
+    updated_matches << m59    
+
+    # Match 60
+    w55 = Match.find_by_match_number_score_board(55, self).winner
+    w56 = Match.find_by_match_number_score_board(56, self).winner
+    m60 = matches[3]
+    m60.update_attributes(team_1_id: w55.id, team_2_id: w56.id)
+    updated_matches << m60
+
+    return updated_matches
+  end
+
+
+
+  def calculate_semi_finals
+    matches = []
+     match_type = Match::SEMI
+    if self.user.nil?
+      match_type = Match::SEMI_MAIN
+    end
+    # Match 61
+    w57 = Match.find_by_match_number_score_board(57, self).winner
+    w58 = Match.find_by_match_number_score_board(58, self).winner
+    m1 = Match.create(team_1_id: w57.id, team_2_id: w58.id, city: "Belo Horizonte", stadium_id: nil, match_type: match_type , date: "2014-07-08 15:30:00", match_number: 61, score_board_id: self.id)
+    matches << m1
+
+    # Match 62
+    w59 = Match.find_by_match_number_score_board(59, self).winner
+    w60 = Match.find_by_match_number_score_board(60, self).winner
+    m2 = Match.create(team_1_id: w59.id, team_2_id: w60.id, city: "Sao Paulo", stadium_id: nil, match_type: match_type , date: "2014-07-09 15:30:00", match_number: 62, score_board_id: self.id)
+    matches << m2
+
+    return matches
+  end
+
+ def update_semi_finals(matches)
+    updated_matches = []
+
+    # Match 57
+    w57 = Match.find_by_match_number_score_board(57, self).winner
+    w58 = Match.find_by_match_number_score_board(58, self).winner
+    m61 = matches[0]
+    m61.update_attributes(team_1_id: w57.id, team_2_id: w58.id)
+    updated_matches << m61
+
+    # Match 58
+    w59 = Match.find_by_match_number_score_board(59, self).winner
+    w60 = Match.find_by_match_number_score_board(60, self).winner
+    m62 = matches[1]
+    m62.update_attributes(team_1_id: w59.id, team_2_id: w60.id)
+    updated_matches << m62
+
+    return updated_matches
+  end
+
+  def calculate_third_place
+    match_type = Match::THIRD
+    if self.user.nil?
+      match_type = Match::THIRD_MAIN
+    end
+    l61 = Match.find_by_match_number_score_board(61, self).loser
+    l62 = Match.find_by_match_number_score_board(62, self).loser
+
+    m1 = Match.create(team_1_id: l61.id, team_2_id: l62.id, city: "Brasilia", stadium_id: nil, match_type: match_type , date: "2014-07-12 15:30:00", match_number: 63, score_board_id: self.id)
+    return m1
+  end
+
+  def update_third_place
+    l61 = Match.find_by_match_number_score_board(61, self).loser
+    l62 = Match.find_by_match_number_score_board(62, self).loser
+
+    m1 = Match.find_by_match_number_score_board(63,self)
+    m1.update_attributes(team_1_id: l61.id, team_2_id: l62.id)
+
+    return m1
+  end
+
+
+  def calculate_final
+    match_type = Match::FINAL
+    if self.user.nil?
+      match_type = Match::FINAL_MAIN
+    end
+    w61 = Match.find_by_match_number_score_board(61, self).winner
+    w62 = Match.find_by_match_number_score_board(62, self).winner
+
+    m1 = Match.create(team_1_id: w61.id, team_2_id: w62.id, city: "Rio de Janeiro", stadium_id: nil, match_type: match_type , date: "2014-07-13 14:30:00", match_number: 64, score_board_id: self.id)
+    return m1    
+  end
+
+  def update_final
+    w61 = Match.find_by_match_number_score_board(61, self).winner
+    w62 = Match.find_by_match_number_score_board(62, self).winner
+
+    m1 = Match.find_by_match_number_score_board(64,self)
+    m1.update_attributes(team_1_id: w61.id, team_2_id: w62.id)
+
+    return m1
+  end
+
+
+
+  def matches_have_score(matches)
+    matches.each do |match|
+      return false if match.score.nil?
+    end
+    return true
   end
 
 end

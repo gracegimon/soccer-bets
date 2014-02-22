@@ -22,19 +22,10 @@
           = f.hidden_field :scoreboard_id, value: @score_board.id
           = f.hidden_field :match_id, value: m.id
           .div{style: "visibility:hidden;"}
-            = f.submit 'Save', class: "scores-round"
+            = f.submit 'Save', class: "scores"
       .span3.team-2-name
         %p= m.team_2.name
         = image_tag team_2.flag
-  .row.span11
-    %button.btn.btn-success{class: "js-save-round", style: "float:right;"}
-      Guardar
-
-
-:coffeescript
-  jQuery(document).ready ->
-    jQuery(".js-save-round").click ->
-      scores = jQuery(".scores-round")
-      scores.each ->
-        $(this).click()
-
+      .row.span3
+        %button.btn.btn-success{class: "js-save-group"}
+          Guardar

@@ -30,6 +30,9 @@ Quiniela::Application.routes.draw do
     get "show_all", to: "score_boards#show_for_admin", on: :collection
     get "ranking", to: "score_boards#ranking", on: :collection
     get "show_round_of_16", to: "score_boards#show_round_of_16", on: :member
+    get "show_quarter_finals", to: "score_boards#show_quarter_finals", on: :member
+    get "show_semi_finals", to: "score_boards#show_semi_finals", on: :member
+    get "show_finals", to: "score_boards#show_finals", on: :member
   end
 
   resources :scores do
