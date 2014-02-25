@@ -1,21 +1,22 @@
 %h1 Administración de quinielas
 
 .col-xs-6
-  %table
+  %table.table
     %th Quinielas por activar
     %tbody
+      %tr
       - if @score_boards_not_active.empty?
         %p No hay quinielas por activar
       - @score_boards_not_active.each do |score_board|
-        %tr
-          %td= link_to score_board.name, user_score_board_path(score_board.user, score_board)
+        %td= link_to score_board.name, user_score_board_path(score_board.user, score_board)
 
 .col-xs-6
-  %table
+  %table.table
     %th Quinielas activas
     %tbody
+      %tr
       - if @score_boards_active.empty?
-        %p No hay quinielas activas
+        %td
+          %p No hay quinielas activas
       - @score_boards_active.each do |score_board|
-        %tr
-          %td= link_to score_board.name, user_score_board_path(score_board.user, score_board)
+        %td= link_to score_board.name, user_score_board_path(score_board.user, score_board)
