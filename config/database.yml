@@ -13,9 +13,9 @@
 #   host: localhost
 #   port: 5432
 
- development:
+ production:
    adapter: postgresql
    encoding: unicode
-   database: quiniela_development
+   database: quiniela_production
    pool: 5
    password: 

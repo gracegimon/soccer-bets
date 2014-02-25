@@ -1,9 +1,11 @@
 class ScoreBoardsController < ApplicationController
   before_filter :authenticate
   before_action :check_admin, only: [:tournament_score_board, :show_for_admin]
+  before_action :check_published, only: [:show]
 
   def index
     @score_boards = current_user.score_boards
+    @user = current_user
   end
   
   def show
@@ -13,8 +15,8 @@ class ScoreBoardsController < ApplicationController
   end
 
   def show_for_admin
-    @score_boards_not_active = ScoreBoard.where(is_active: false, is_published: true)
-    @score_boards_active = ScoreBoard.where(is_active: true, is_published: true)
+    @score_boards_not_active = ScoreBoard.where(is_active: false, is_published: true, tournament_id: current_tournament.id)
+    @score_boards_active = ScoreBoard.where(is_active: true, is_published: true, tournament_id: current_tournament.id)
   end
 
   def tournament_score_board
@@ -24,7 +26,7 @@ class ScoreBoardsController < ApplicationController
   end
 
   def ranking
-    @score_boards = ScoreBoard.not_main_board.order(points: :desc)
+    @score_boards = ScoreBoard.not_main_board.active.order(points: :desc)
   end
 
   def create
@@ -106,5 +108,33 @@ class ScoreBoardsController < ApplicationController
 
   end
 
+  def update
+    @score_board = ScoreBoard.find(params[:id])
+    binding.pry
+    if @score_board.update_attributes(score_board_params)
+      flash[:notice] = "Publicado"
+      redirect_to action: 'wait'
+    end
+
+  end
+
+  def wait
+    @score_board = ScoreBoard.find(params[:id])
+  end
+
+  private
+
+
+  def score_board_params
+    params.require(:score_board).permit(:name,:board_type,:is_active, :tournament_id, :is_published)
+  end
+
+  def check_published
+    is_published = ScoreBoard.find(params[:id]).is_published?
+    if is_published
+      flash[:notice] = "Esta quiniela ya fue completada"
+      redirect_to user_path(params[:user_id])
+    end
+  end
 
 end

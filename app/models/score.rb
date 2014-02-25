@@ -34,8 +34,7 @@ class Score < ActiveRecord::Base
   end
 
   def update_match_stats
-    unless self.match.match_type != Match::GROUP_USERS || self.match.match_type != Match::GROUP_MAIN
-      binding.pry
+    if self.match.match_type == Match::GROUP_USERS || self.match.match_type == Match::GROUP_MAIN
       self.match.update_teams_stats
       leaders = self.match.team_1.group.group.group_leaders_for_score_board(self.score_board)
       bottom = self.match.team_1.group.group.group_bottom_for_score_board(self.score_board)

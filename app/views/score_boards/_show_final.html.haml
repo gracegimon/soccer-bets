@@ -29,6 +29,10 @@
   .row.span11
     %button.btn.btn-success{class: "js-save-final"}
       Guardar
+  .row.span11
+    = form_for @score_board do |f|
+      = f.hidden_field :is_published, value: true
+      = f.submit 'Publicar', class: "button btn btn-success", style: "float: right"
 
 :coffeescript
   jQuery(document).ready ->
