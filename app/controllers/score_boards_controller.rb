@@ -110,10 +110,14 @@ class ScoreBoardsController < ApplicationController
 
   def update
     @score_board = ScoreBoard.find(params[:id])
-    binding.pry
     if @score_board.update_attributes(score_board_params)
       flash[:notice] = "Publicado"
       redirect_to action: 'wait'
+    end
+
+    respond_to do |format|
+      format.js
+      format.html
     end
 
   end
