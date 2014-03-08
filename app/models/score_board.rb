@@ -357,13 +357,78 @@ class ScoreBoard < ActiveRecord::Base
     return m1
   end
 
-
-
   def matches_have_score(matches)
     matches.each do |match|
       return false if match.score.nil?
     end
     return true
   end
+
+  def self.main_score_board
+    ScoreBoard.where(tournament_id: Tournament.active.last.id, user_id: nil).first
+  end
+
+
+  def set_points_for_group_phase(official_score, match_number)
+    match = Match.find_by_match_number_score_board(match_number, self)
+    binding.pry
+    unless match.score.nil?
+      if match.exact_results?(official_score)
+        self.points += 5
+    
+      elsif match.diff_goals_results?(official_score)
+        self.points += 4
+      
+      elsif match.exact_winner?(official_score)
+        self.points += 3
+      end
+      self.save
+    end
+  end
+
+  def set_points_for_group_phase(official_score, match_number)
+    match = Match.find_by_match_number_score_board(match_number, self)
+    binding.pry
+    unless match.score.nil?
+      if match.exact_results?(official_score)
+        self.points += 5
+    
+      elsif match.diff_goals_results?(official_score)
+        self.points += 4
+      
+      elsif match.exact_winner?(official_score)
+        self.points += 3
+      end
+      self.save
+    end
+  end
+
+  # Returns the number of teams that are the same for
+  # each score board for a phase
+  def number_of_same_teams(match_type)
+    matches = Match.where(match_type: match_type, score_board_id: self.id)
+    matches_official = Match.where(match_type: match_type, score_board_id: self.id)
+    teams_of = []
+    teams = []
+    count = 0
+    matches_official.each do |match_official|
+      teams_of << match_official.teams
+    end
+    matches.each do | match |
+      teams << match.teams
+    end
+    teams_of.each do | team_of|
+      if teams.include?(team_of)
+        count += 1
+      end
+    end
+    return count
+  end
+
+  def has_score_for_match_type(match_type)
+
+  end
+
+
 
 end

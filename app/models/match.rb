@@ -42,6 +42,10 @@ class Match < ActiveRecord::Base
     Team.find(team_2_id)
   end
 
+  def teams
+    return [self.team_1, self.team_2]
+  end
+
   def time
     self.date.strftime("%I:%M%p")
   end
@@ -93,5 +97,29 @@ class Match < ActiveRecord::Base
       return Team.find(team_1_id)
     end
   end
+
+  def exact_results?(official_score)
+    binding.pry
+    if (self.score.team_1_goals == official_score.team_1_goals) && (self.score.team_2_goals == official_score.team_2_goals)
+      return true
+    end
+    return false
+  end
+
+  def diff_goals_results?(official_score)
+    diff_goals = self.goals_difference
+    diff_goals_official = official_score.goals_difference
+    return diff_goals == diff_goals_official
+  end
+
+  def exact_winner?(official_score)
+    return self.winner_team_id == official_score.winner_team_id
+  end
+
+
+  def goals_difference
+    return (self.score.team_1_goals - self.score.team_2_goals).abs
+  end
+
 
 end

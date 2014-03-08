@@ -1,0 +1,63 @@
+%ul.nav.nav-tabs
+  %li.active
+    %a{:href => "#tabs-1", "data-toggle" => "tab", "id" => "tabs-groups"}="Etapa de Grupos"
+  %li
+    %a{:href => "#tabs-2", "data-toggle" => "tab", "id" => "tabs-r16"}= "Octavos de Final"
+  %li
+    %a{:href => "#tabs-3", "data-toggle" => "tab", "id" => "tabs-quarter"}="Cuartos de final"
+  %li
+    %a{:href => "#tabs-4", "data-toggle" => "tab", "id" => "tabs-semi"}="Semifinal"
+  %li
+    %a{:href => "#tabs-5", "data-toggle" => "tab", "id" => "tabs-final"}="3er puesto y Final"
+
+
+.tab-content
+  #tabs-1.tab-pane.active
+    #accordion.panel-group
+      = render "score_boards/show_groups", groups: @groups
+
+  #tabs-2.tab-pane
+
+  #tabs-3.tab-pane
+    %p Por favor, rellene todos los resultados de los octavos de final
+  #tabs-4.tab-pane
+    %p Por favor, rellene todos los resultados de los cuartos de final
+  #tabs-5.tab-pane
+    %p Por favor, rellene todos los resultados de semifinales
+- content_for(:javascript) do
+  :coffeescript
+    jQuery(".js-save-group").click ->
+      console.log "Pressed"
+      scores = jQuery(this).parent().siblings().find("form")
+      tournament = "#{@tournament}"
+
+      scores.each (index) ->
+        console.log index
+        unless tournament?
+          $(this).validate rules:
+            'score[team_1_goals]':
+              required: true
+              min: 0
+          console.log index
+          $(this).validate rules:
+            'score[team_2_goals]':
+              required: true
+              min: 0
+        $(this).submit()
+
+
+    jQuery('#tabs-r16').click ->
+     # Get the URL for the action thats going to be executed when clicked this tab
+     jQuery.get('#{show_round_of_16_score_board_path(@score_board)}')
+
+    jQuery("#tabs-quarter").click ->
+     # Get the URL for the action thats going to be executed when clicked this tab
+     jQuery.get('#{show_quarter_finals_score_board_path(@score_board)}')
+
+    jQuery("#tabs-semi").click ->
+     # Get the URL for the action thats going to be executed when clicked this tab
+     jQuery.get('#{show_semi_finals_score_board_path(@score_board)}')
+
+    jQuery("#tabs-final").click ->
+     # Get the URL for the action thats going to be executed when clicked this tab
+     jQuery.get('#{show_finals_score_board_path(@score_board)}')
