@@ -10,7 +10,10 @@ class ScoresController < ApplicationController
         flash[:error] = "Something unexpected happened"
       end
     else
-      render action: "update"
+      @score = score_exists(@score).first
+      if @score.update_attributes(score_params)
+        flash[:notice] = "Good"
+      end
     end
   end
 

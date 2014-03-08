@@ -426,7 +426,7 @@ class ScoreBoard < ActiveRecord::Base
   end
 
   def has_score_for_match_type(match_type)
-
+    Match.where(match_type: match_type).joins(:score)
   end
 
 
