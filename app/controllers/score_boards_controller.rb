@@ -42,7 +42,11 @@ class ScoreBoardsController < ApplicationController
 
   def show_round_of_16
     @score_board = ScoreBoard.find(params[:id])
-    @matches = Match.where(match_type: Match::R16, score_board_id: @score_board.id).order(:match_number)
+    match_type = Match::R16
+    if @score_board.is_main?
+      match_type = Match::R16_MAIN
+    end
+    @matches = Match.where(match_type: match_type, score_board_id: @score_board.id).order(:match_number)
     if @matches.empty?
       @matches = @score_board.calculate_round_of_16
     else
@@ -52,8 +56,14 @@ class ScoreBoardsController < ApplicationController
 
   def show_quarter_finals
     @score_board = ScoreBoard.find(params[:id])
-    @matches_r16 = Match.where(match_type: Match::R16, score_board_id: @score_board.id).order(:match_number)
-    @matches = Match.where(match_type: Match::QUARTER, score_board_id: @score_board.id).order(:match_number)
+    match_type_r16 = Match::R16
+    match_type_quarters = Match::QUARTER
+    if @score_board.is_main?
+      match_type_r16 = Match::R16_MAIN
+      match_type_quarters = Match::QUARTER_MAIN
+    end    
+    @matches_r16 = Match.where(match_type: match_type_r16, score_board_id: @score_board.id).order(:match_number)
+    @matches = Match.where(match_type: match_type_quarters, score_board_id: @score_board.id).order(:match_number)
     if @score_board.matches_have_score(@matches_r16)
 
       if @matches.empty? || @matches.count < 4
@@ -69,8 +79,14 @@ class ScoreBoardsController < ApplicationController
 
   def show_semi_finals
     @score_board = ScoreBoard.find(params[:id])
-    @matches_quarters = Match.where(match_type: Match::QUARTER, score_board_id: @score_board.id).order(:match_number)
-    @matches = Match.where(match_type: Match::SEMI, score_board_id: @score_board.id).order(:match_number)
+    match_type_quarters = Match::QUARTER
+    match_type_semi = Match::SEMI
+    if @score_board.is_main?
+      match_type_semi = Match::SEMI_MAIN
+      match_type_quarters = Match::QUARTER_MAIN
+    end      
+    @matches_quarters = Match.where(match_type: match_type_quarters, score_board_id: @score_board.id).order(:match_number)
+    @matches = Match.where(match_type: match_type_semi, score_board_id: @score_board.id).order(:match_number)
     if @score_board.matches_have_score(@matches_quarters)
       if @matches.empty? || @matches.count < 2
         @matches = @score_board.calculate_semi_finals
@@ -85,9 +101,18 @@ class ScoreBoardsController < ApplicationController
 
   def show_finals
     @score_board = ScoreBoard.find(params[:id])
-    @matches_semi = Match.where(match_type: Match::SEMI, score_board_id: @score_board.id).order(:match_number)
-    @final = Match.where(match_type: Match::FINAL, score_board_id: @score_board.id).first
-    @third = Match.where(match_type: Match::THIRD, score_board_id: @score_board.id).first
+    match_type_third = Match::THIRD
+    match_type_semi = Match::SEMI
+    match_type_final = Match::FINAL
+
+    if @score_board.is_main?
+      match_type_third = Match::THIRD_MAIN
+      match_type_semi = Match::SEMI_MAIN
+      match_type_final = Match::FINAL_MAIN
+    end     
+    @matches_semi = Match.where(match_type: match_type_semi, score_board_id: @score_board.id).order(:match_number)
+    @final = Match.where(match_type: match_type_final, score_board_id: @score_board.id).first
+    @third = Match.where(match_type: match_type_third, score_board_id: @score_board.id).first
     @matches = []
     if @score_board.matches_have_score(@matches_semi)
       if @final.nil?
@@ -125,6 +150,11 @@ class ScoreBoardsController < ApplicationController
   def wait
     @score_board = ScoreBoard.find(params[:id])
   end
+
+  def finish_phase
+    
+  end
+
 
   private
 

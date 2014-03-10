@@ -368,6 +368,10 @@ class ScoreBoard < ActiveRecord::Base
     ScoreBoard.where(tournament_id: Tournament.active.last.id, user_id: nil).first
   end
 
+  def is_main?
+    return ScoreBoard.main_score_board.id == self.id 
+  end
+
 
   def set_points_for_group_phase(official_score, match_number)
     match = Match.find_by_match_number_score_board(match_number, self)
@@ -426,9 +430,8 @@ class ScoreBoard < ActiveRecord::Base
   end
 
   def has_score_for_match_type(match_type)
-    Match.where(match_type: match_type).joins(:score)
+    return !Match.where(match_type: match_type).joins(:score).empty?
   end
-
 
 
 end

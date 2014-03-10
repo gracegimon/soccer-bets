@@ -30,14 +30,18 @@
                     %p= m.time
                   = f.hidden_field :scoreboard_id, value: @score_board.id
                   = f.hidden_field :match_id, value: m.id
-                  .div{style: "visibility:hidden;"}
-                    = f.submit 'Save', class: "scores"
+                  - if !is_main
+                    .div{style: "visibility:hidden;"}
+                      = f.submit 'Guardar', class: "scores"
+                  - else
+                    = f.submit 'Guardar', class: "scores btn btn-success"
               .span3.team-2-name
                 %p= m.team_2.name
                 = image_tag team_2.flag
           .row.span3
-            %button.btn.btn-success{class: "js-save-group"}
-              Guardar
+            - if !is_main
+              %button.btn.btn-success{class: "js-save-group"}
+                Guardar
             
         .span5
           %table.table{style: "float:right"}

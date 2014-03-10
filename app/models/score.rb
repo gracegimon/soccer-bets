@@ -87,9 +87,6 @@ class Score < ActiveRecord::Base
           update_each_group_match(matches, score_board)
         end      
       elsif match_type == Match::R16_MAIN
-        if has_score_for_match_type(Match::R16_MAIN)
-
-        end
         # check if teams are the same and save those points
         # but only if it's the first score that's being saved
         # to not recalculate all the time (4 per team)
