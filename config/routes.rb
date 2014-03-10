@@ -34,6 +34,7 @@ Quiniela::Application.routes.draw do
     get "show_semi_finals", to: "score_boards#show_semi_finals", on: :member
     get "show_finals", to: "score_boards#show_finals", on: :member
     get "wait", on: :member
+    get "finish_phase", on: :member
   end
 
   resources :scores do

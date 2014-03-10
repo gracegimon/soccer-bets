@@ -21,14 +21,23 @@
             %p= m.time
           = f.hidden_field :scoreboard_id, value: @score_board.id
           = f.hidden_field :match_id, value: m.id
-          .div{style: "visibility:hidden;"}
-            = f.submit 'Save', class: "scores-semi"
+          - if !@is_main
+            .div{style: "visibility:hidden;"}
+              = f.submit 'Save', class: "scores-semi"
+          - else
+            = f.submit "Guardar", class: "scores-semi btn btn-success"
       .span3.team-2-name
         %p= m.team_2.name
         = image_tag team_2.flag
-  .row.span11
-    %button.btn.btn-success{class: "js-save-semi"}
-      Guardar
+  - if !@is_main
+    .row.span11
+      %button.btn.btn-success{class: "js-save-semi"}
+        Guardar
+  - else
+    %a{href: finish_phase_score_board_path(@score_board)}
+      %button.btn.btn-success{style: "float:right;"}
+        Terminar etapa
+
 
 :coffeescript
   jQuery(document).ready ->

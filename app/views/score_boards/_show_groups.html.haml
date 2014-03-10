@@ -70,3 +70,8 @@
                   %td{id: t.id.to_s + 'DIF'}= ts.goals_favor - ts.goals_aggainst
                   %td{id: t.id.to_s + 'PTS'}= ts.points
                   %td{id: t.id.to_s + 'LD'}= ts.final_position
+
+- if is_main
+  %a{href: finish_phase_score_board_path(@score_board)}
+    %button.btn.btn-success{style: "float:right;"}
+      Terminar etapa

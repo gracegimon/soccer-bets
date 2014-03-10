@@ -43,7 +43,8 @@ class ScoreBoardsController < ApplicationController
   def show_round_of_16
     @score_board = ScoreBoard.find(params[:id])
     match_type = Match::R16
-    if @score_board.is_main?
+    @is_main = @score_board.is_main?
+    if @is_main
       match_type = Match::R16_MAIN
     end
     @matches = Match.where(match_type: match_type, score_board_id: @score_board.id).order(:match_number)
@@ -58,7 +59,8 @@ class ScoreBoardsController < ApplicationController
     @score_board = ScoreBoard.find(params[:id])
     match_type_r16 = Match::R16
     match_type_quarters = Match::QUARTER
-    if @score_board.is_main?
+    @is_main = @score_board.is_main?
+    if @is_main
       match_type_r16 = Match::R16_MAIN
       match_type_quarters = Match::QUARTER_MAIN
     end    
@@ -81,7 +83,8 @@ class ScoreBoardsController < ApplicationController
     @score_board = ScoreBoard.find(params[:id])
     match_type_quarters = Match::QUARTER
     match_type_semi = Match::SEMI
-    if @score_board.is_main?
+    @is_main = @score_board.is_main?
+    if @is_main
       match_type_semi = Match::SEMI_MAIN
       match_type_quarters = Match::QUARTER_MAIN
     end      
@@ -104,8 +107,8 @@ class ScoreBoardsController < ApplicationController
     match_type_third = Match::THIRD
     match_type_semi = Match::SEMI
     match_type_final = Match::FINAL
-
-    if @score_board.is_main?
+    @is_main = @score_board.is_main?
+    if @is_main
       match_type_third = Match::THIRD_MAIN
       match_type_semi = Match::SEMI_MAIN
       match_type_final = Match::FINAL_MAIN
