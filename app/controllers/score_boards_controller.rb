@@ -53,6 +53,7 @@ class ScoreBoardsController < ApplicationController
     else
       @matches = @score_board.update_round_of_16(@matches)
     end
+
   end
 
   def show_quarter_finals
@@ -63,11 +64,10 @@ class ScoreBoardsController < ApplicationController
     if @is_main
       match_type_r16 = Match::R16_MAIN
       match_type_quarters = Match::QUARTER_MAIN
-    end    
+    end        
     @matches_r16 = Match.where(match_type: match_type_r16, score_board_id: @score_board.id).order(:match_number)
     @matches = Match.where(match_type: match_type_quarters, score_board_id: @score_board.id).order(:match_number)
     if @score_board.matches_have_score(@matches_r16)
-
       if @matches.empty? || @matches.count < 4
         @matches = @score_board.calculate_quarters
       else
@@ -143,11 +143,6 @@ class ScoreBoardsController < ApplicationController
       redirect_to action: 'wait'
     end
 
-    respond_to do |format|
-      format.js
-      format.html
-    end
-
   end
 
   def wait
@@ -155,8 +150,10 @@ class ScoreBoardsController < ApplicationController
   end
 
   def finish_phase
-    type = params[:phase]
-    ScoreBoard.update_points_for_score_boards(type, current_tournament)
+    type = params[:phase].to_i
+    @score_board = main_score_board
+    @score_board.update_points_for_score_boards(type, current_tournament)
+    redirect_to action: 'tournament_score_board'
   end
 
 

@@ -30,6 +30,7 @@
                     %p= m.time
                   = f.hidden_field :scoreboard_id, value: @score_board.id
                   = f.hidden_field :match_id, value: m.id
+                  = f.hidden_field :can_change, value: true
                   - if !is_main
                     .div{style: "visibility:hidden;"}
                       = f.submit 'Guardar', class: "scores"
@@ -74,6 +75,6 @@
                   %td{id: t.id.to_s + 'LD'}= ts.final_position
 
 - if is_main
-  %a{href: finish_phase_score_board_path(@score_board)}
+  %a{href: finish_phase_score_board_path(@score_board, :phase => Match::R16_MAIN)}
     %button.btn.btn-success{style: "float:right;"}
       Terminar etapa

@@ -60,7 +60,6 @@ class Score < ActiveRecord::Base
   end
 
   def update_score_boards
-    binding.pry
     if self.score_board.id == ScoreBoard.main_score_board.id
       match_type = self.match.match_type
       match_number = self.match.match_number
@@ -83,7 +82,6 @@ class Score < ActiveRecord::Base
           score_board.points = 0
           score_board.save
           matches = select_group_matches(score_board)
-          binding.pry
           update_each_group_match(matches, score_board)
         end
       elsif match_type == Match::THIRD_MAIN
@@ -163,7 +161,6 @@ class Score < ActiveRecord::Base
           score_board.points = 0
           score_board.save
           matches = select_group_matches(score_board)
-          binding.pry
           update_each_group_match(matches, score_board)
         end    
       elsif match_type == Match::THIRD_MAIN
@@ -195,6 +192,7 @@ class Score < ActiveRecord::Base
   end
 
  def update_each_group_match(matches, score_board)
+    main_score_board = ScoreBoard.where(tournament_id: Tournament.where(is_active: true).first.id, user_id: nil).first
     matches.each do |match|
       match_number = match.match_number
       official_match = Match.where(score_board_id: main_score_board.id, match_number: match_number).first

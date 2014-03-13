@@ -31,7 +31,7 @@ class ScoresController < ApplicationController
   private
 
   def score_params
-    params.require(:score).permit(:team_1_goals, :team_2_goals, :scoreboard_id, :match_id)
+    params.require(:score).permit(:team_1_goals, :team_2_goals, :scoreboard_id, :match_id, :can_change)
   end
 
   def score_exists(score)

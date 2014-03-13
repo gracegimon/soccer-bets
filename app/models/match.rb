@@ -99,7 +99,6 @@ class Match < ActiveRecord::Base
   end
 
   def exact_results?(official_score)
-    binding.pry
     if (self.score.team_1_goals == official_score.team_1_goals) && (self.score.team_2_goals == official_score.team_2_goals)
       return true
     end
@@ -108,12 +107,12 @@ class Match < ActiveRecord::Base
 
   def diff_goals_results?(official_score)
     diff_goals = self.goals_difference
-    diff_goals_official = official_score.goals_difference
+    diff_goals_official = official_score.match.goals_difference
     return diff_goals == diff_goals_official
   end
 
   def exact_winner?(official_score)
-    return self.winner_team_id == official_score.winner_team_id
+    return self.score.winner_team_id == official_score.winner_team_id
   end
 
 
