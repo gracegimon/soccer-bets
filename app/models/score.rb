@@ -64,7 +64,6 @@ class Score < ActiveRecord::Base
       match_type = self.match.match_type
       match_number = self.match.match_number
       @score_boards = ScoreBoard.not_main_board.active
-      binding.pry
       @score_boards.each do |score_board|
         if match_type == Match::GROUP_MAIN
           score_board.set_points_for_group_phase(self, match_number)
@@ -120,7 +119,6 @@ class Score < ActiveRecord::Base
       # current score is self
       # old score 
       old_score = Score.find(self.id)
-      binding.pry
       if match_type == Match::THIRD_MAIN
         @score_boards = ScoreBoard.not_main_board.active
         @score_boards.each do |score_board|

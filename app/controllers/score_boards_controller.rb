@@ -153,7 +153,10 @@ class ScoreBoardsController < ApplicationController
     type = params[:phase].to_i
     @score_board = main_score_board
     @score_board.update_points_for_score_boards(type, current_tournament)
-    redirect_to action: 'tournament_score_board'
+    respond_to do |format|
+      format.html { redirect_to(:action => 'tournament_score_board') }
+      format.js
+    end    
   end
 
 

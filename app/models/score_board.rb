@@ -424,8 +424,7 @@ class ScoreBoard < ActiveRecord::Base
     scores.each do |score|
       score.can_change = false
       score.save
-    end
-    binding.pry    
+    end 
     score_boards = ScoreBoard.not_main_board.active.where(tournament_id: tournament.id)
     score_boards.each do |score_board| 
       score_board.update_points(type + 1)

@@ -75,6 +75,6 @@
                   %td{id: t.id.to_s + 'LD'}= ts.final_position
 
 - if is_main
-  %a{href: finish_phase_score_board_path(@score_board, :phase => Match::R16_MAIN)}
+  = link_to finish_phase_score_board_path(@score_board, :phase => Match::R16_MAIN), remote: true do
     %button.btn.btn-success{style: "float:right;"}
       Terminar etapa
