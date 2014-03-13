@@ -34,9 +34,10 @@
       %button.btn.btn-success{class: "js-save-quarter"}
         Guardar
   - else
-    %a{href: finish_phase_score_board_path(@score_board)}
+    = link_to finish_phase_score_board_path(@score_board, :phase => Match::SEMI_MAIN), remote: true do
       %button.btn.btn-success{style: "float:right;"}
         Terminar etapa
+
 
 
 :coffeescript
