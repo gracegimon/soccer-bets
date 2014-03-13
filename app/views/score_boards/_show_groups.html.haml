@@ -34,7 +34,9 @@
                     .div{style: "visibility:hidden;"}
                       = f.submit 'Guardar', class: "scores"
                   - else
-                    = f.submit 'Guardar', class: "scores btn btn-success"
+                    - if @score.can_change || @score.id.nil?
+                      = f.submit 'Guardar', class: "scores btn btn-success"
+
               .span3.team-2-name
                 %p= m.team_2.name
                 = image_tag team_2.flag

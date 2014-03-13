@@ -390,22 +390,6 @@ class ScoreBoard < ActiveRecord::Base
     end
   end
 
-  def set_points_for_group_phase(official_score, match_number)
-    match = Match.find_by_match_number_score_board(match_number, self)
-    binding.pry
-    unless match.score.nil?
-      if match.exact_results?(official_score)
-        self.points += 5
-    
-      elsif match.diff_goals_results?(official_score)
-        self.points += 4
-      
-      elsif match.exact_winner?(official_score)
-        self.points += 3
-      end
-      self.save
-    end
-  end
 
   # Returns the number of teams that are the same for
   # each score board for a phase
@@ -431,6 +415,31 @@ class ScoreBoard < ActiveRecord::Base
 
   def has_score_for_match_type(match_type)
     return !Match.where(match_type: match_type).joins(:score).empty?
+  end
+
+  def update_points_for_score_boards(type, tournament)
+    main = ScoreBoard.main_board.active.where(tournament_id: tournament.id)
+    scores = Score.where(score_board_id: main.id).joins(:match).where("match.match_type" => type)
+    scores.each do |score|
+      score.can_change = false
+      score.save
+    end
+    score_boards = ScoreBoard.not_main_board.active.where(tournament_id: tournament.id)
+    score_boards.each do |score_board| 
+      score_board.update_points(type)
+    end
+  end
+
+  def update_points(type)
+    count = self.number_of_same_teams(type)
+    if type == Match::R16_MAIN
+      self.points += count * 4
+    elsif type == Match::QUARTER_MAIN
+      self.points += count * 5
+    elsif type == Match::SEMI_MAIN
+      self.points += count * 6
+    end
+    self.save
   end
 
 

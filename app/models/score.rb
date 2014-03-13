@@ -2,11 +2,12 @@ class Score < ActiveRecord::Base
   belongs_to :score_board
   belongs_to :match, touch: true
 
-  after_update :update_match_stats, :calculate_all_score_boards 
+  after_update :update_match_stats, :calculate_final_points 
   after_create :update_match_stats, :calculate_all_score_boards 
 
   before_create :set_winner
   before_update :set_winner
+  before_update :erase_final_points
 
 #  validates :match, uniqueness: { scope: :match}
   validates :team_1_goals, :numericality => {:greater_than_or_equal_to => 0}
@@ -75,31 +76,119 @@ class Score < ActiveRecord::Base
 
   def calculate_all_score_boards
     if self.score_board.id == ScoreBoard.main_score_board.id
+      @score_boards = ScoreBoard.not_main_board.active
       match_type = self.match.match_type
       if match_type == Match::GROUP_MAIN
-        @score_boards = ScoreBoard.not_main_board.active
-        main_score_board = ScoreBoard.main_score_board
         @score_boards.each do |score_board|
           score_board.points = 0
           score_board.save
           matches = select_group_matches(score_board)
           binding.pry
           update_each_group_match(matches, score_board)
-        end      
-      elsif match_type == Match::R16_MAIN
-        # check if teams are the same and save those points
-        # but only if it's the first score that's being saved
-        # to not recalculate all the time (4 per team)
-      elsif match_type == Match::QUARTER_MAIN
-        # check if teams are the same and save those points
-        # but only if it's the first score that's being saved
-        # to not recalculate all the time (5 per team)
-      elsif match_type == Match::SEMI_MAIN
-        # check if the teams are the same for the first time
-        # add 6 per team
+        end
       elsif match_type == Match::THIRD_MAIN
+        @score_boards.each do |score_board|
+          score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
+          winner = self.match.winner_team_id
+          if winner == score_board_match.winner_team_id
+            score_board.points += 7
+            score_board.save
+          end
+        end
         # check winner add 7
       elsif match_type == Match::FINAL_MAIN
+        @score_boards.each do |score_board|
+          score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
+          winner = self.match.winner_team_id
+          loser = self.match.loser.id
+          if winner == score_board_match.winner_team_id
+            score_board.points += 9
+          end
+          if score_board_match.loser == loser
+            score_board.points += 8
+          end
+          score_board.save
+
+        end
+        # check if winner (9) and sub champion (8)
+      end      
+    end
+  end
+
+  def erase_final_points
+    if self.score_board.id == ScoreBoard.main_score_board.id
+      @score_boards = ScoreBoard.not_main_board.active
+      match_type = self.match.match_type
+      # current score is self
+      # old score 
+      old_score = Score.find(self.id)
+      binding.pry
+      if match_type == Match::THIRD_MAIN
+        @score_boards = ScoreBoard.not_main_board.active
+        @score_boards.each do |score_board|
+          score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
+          winner = self.match.winner_team_id
+          if old_score.match.winner_team_id == score_board_match.winner_team_id
+            score_board.points -= 7
+          end
+            score_board.save
+        end
+        # check winner add 7
+      elsif match_type == Match::FINAL_MAIN
+        @score_boards = ScoreBoard.not_main_board.active  
+        score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
+        winner = old_score.match.winner_team_id
+        loser = old_score.match.loser.id
+        score_board.points 
+        if winner == score_board_match.winner_team_id
+          score_board.points -= 9
+        end
+        if score_board_match.loser == loser
+          score_board.points -= 8
+        end
+        score_board.save        
+        # check if winner (9) and sub champion (8)
+      end
+    end  
+  end
+
+  # this is only run during updates
+  def calculate_final_points
+    if self.score_board.id == ScoreBoard.main_score_board.id
+
+      match_type = self.match.match_type
+      if match_type == Match::GROUP_MAIN
+        @score_boards = ScoreBoard.not_main_board.active
+        @score_boards.each do |score_board|
+          score_board.points = 0
+          score_board.save
+          matches = select_group_matches(score_board)
+          binding.pry
+          update_each_group_match(matches, score_board)
+        end    
+      elsif match_type == Match::THIRD_MAIN
+        @score_boards = ScoreBoard.not_main_board.active
+        @score_boards.each do |score_board|
+          score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
+          winner = self.match.winner_team_id
+          if winner == score_board_match.winner_team_id
+            score_board.points += 7
+            score_board.save
+          end
+        end
+        # check winner add 7
+      elsif match_type == Match::FINAL_MAIN
+        @score_boards = ScoreBoard.not_main_board.active  
+        score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
+        winner = self.match.winner_team_id
+        loser = self.match.loser.id
+        if winner == score_board_match.winner_team_id
+          score_board.points += 9
+        end
+        if score_board_match.loser == loser
+          score_board.points += 8
+        end
+        score_board.save        
         # check if winner (9) and sub champion (8)
       end
     end

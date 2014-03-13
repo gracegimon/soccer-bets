@@ -155,7 +155,8 @@ class ScoreBoardsController < ApplicationController
   end
 
   def finish_phase
-    
+    type = params[:phase]
+    ScoreBoard.update_points_for_score_boards(type, current_tournament)
   end
 
 
