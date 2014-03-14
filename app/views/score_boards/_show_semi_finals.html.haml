@@ -33,11 +33,6 @@
     .row.span11
       %button.btn.btn-success{class: "js-save-semi"}
         Guardar
-  - else
-    = link_to finish_phase_score_board_path(@score_board, :phase => Match::FINAL_MAIN), remote: true do
-      %button.btn.btn-success{style: "float:right;"}
-        Terminar etapa
-
 
 :coffeescript
   jQuery(document).ready ->

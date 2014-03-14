@@ -152,11 +152,14 @@ class ScoreBoardsController < ApplicationController
   def finish_phase
     type = params[:phase].to_i
     @score_board = main_score_board
-    @score_board.update_points_for_score_boards(type, current_tournament)
-    respond_to do |format|
-      format.html { redirect_to(:action => 'tournament_score_board') }
-      format.js
-    end    
+    matches = Match.find_by_match_type_score_board(type, @score_board)
+    if @score_board.matches_have_score(matches)    
+      @score_board.update_points_for_score_boards(type, current_tournament)
+      respond_to do |format|
+        format.html { redirect_to(:action => 'tournament_score_board') }
+        format.js
+      end    
+    end
   end
 
 

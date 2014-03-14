@@ -74,6 +74,10 @@ class Match < ActiveRecord::Base
     Match.where(match_number: match_number, score_board_id: sb.id)
   end
 
+  def self.find_by_match_type_score_board(match_type, sb)
+    Match.where(match_type: match_type, score_board_id: sb.id )
+  end
+
   def update_teams_stats
     unless self.score.winner_team_id.nil?
       team_stats_1 = self.team_1.read_team_stats(self.score_board)

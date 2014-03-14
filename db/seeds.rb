@@ -223,3 +223,5 @@ m9 = Match.new(team_1_id: Team.find_by_name("Belgium").id, team_2_id: Team.find_
 m9.save
 
 g8.matches << m9
+
+s.create_team_stats

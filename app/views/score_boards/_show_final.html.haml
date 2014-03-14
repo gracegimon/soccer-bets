@@ -33,10 +33,6 @@
     .row.span11
       %button.btn.btn-success{class: "js-save-final"}
         Guardar
-  - else
-    %a{href: finish_phase_score_board_path(@score_board)}
-      %button.btn.btn-success{style: "float:right;"}
-        Terminar etapa
   .row.span11
     = form_for @score_board do |f|
       = f.hidden_field :is_published, value: true

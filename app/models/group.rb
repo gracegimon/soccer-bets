@@ -34,7 +34,7 @@ class Group < ActiveRecord::Base
     teams.each do |t|
       matches << Match.find_by_team_group_score_board_match_type(t,score_board,type) unless  Match.find_by_team_group_score_board_match_type(t,score_board,type).empty?
     end
-    return matches.flatten.uniq!   
+    return matches.flatten.uniq!.sort_by{|m| m[:match_number]}   
   end
 
   def group_team_stats_for_score_board(score_board)

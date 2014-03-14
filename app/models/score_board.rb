@@ -394,17 +394,21 @@ class ScoreBoard < ActiveRecord::Base
   # each score board for a phase
   # Receives main match_type
   def number_of_same_teams(match_type)
-    matches = Match.where(match_type: match_type, score_board_id: self.id)
-    matches_official = Match.where(match_type: match_type + 1, score_board_id: self.id)
+    matches = Match.where(match_type: match_type + 1, score_board_id: self.id)
+    matches_official = Match.where(match_type: match_type, score_board_id: self.id)
     teams_of = []
     teams = []
     count = 0
+    if matches_official.empty?
+      matches_official = calculate_proper_matches(match_type)
+    end
     matches_official.each do |match_official|
       teams_of << match_official.teams
     end
     matches.each do | match |
       teams << match.teams
     end
+
     teams_of.each do | team_of|
       if teams.include?(team_of)
         count += 1
@@ -418,6 +422,7 @@ class ScoreBoard < ActiveRecord::Base
   end
 
   # Receives main match type
+  # This is only called for Main Score board
   def update_points_for_score_boards(type, tournament)
     scores = Score.where(scoreboard_id: self.id).includes(:match).where("matches.match_type" => type - 2)
 
@@ -427,7 +432,7 @@ class ScoreBoard < ActiveRecord::Base
     end 
     score_boards = ScoreBoard.not_main_board.active.where(tournament_id: tournament.id)
     score_boards.each do |score_board| 
-      score_board.update_points(type + 1)
+      score_board.update_points(type)
     end
   end
 
@@ -443,5 +448,15 @@ class ScoreBoard < ActiveRecord::Base
     self.save
   end
 
+def calculate_proper_matches(type)
+  official_matches = []
+  if type == Match::R16_MAIN
+    official_matches = self.calculate_round_of_16
+  elsif type == Match::QUARTER_MAIN
+    official_matches = self.calculate_quarters
+  elsif type == Match::SEMI_MAIN
+    official_matches = self.calculate_semi_finals
+  end
+end
 
 end

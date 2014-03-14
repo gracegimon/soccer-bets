@@ -59,6 +59,7 @@ class Score < ActiveRecord::Base
     team_s_4.save
   end
 
+  # Updating group phase
   def update_score_boards
     if self.score_board.id == ScoreBoard.main_score_board.id
       match_type = self.match.match_type
