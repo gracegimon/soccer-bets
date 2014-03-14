@@ -395,7 +395,8 @@ class ScoreBoard < ActiveRecord::Base
   # Receives main match_type
   def number_of_same_teams(match_type)
     matches = Match.where(match_type: match_type + 1, score_board_id: self.id)
-    matches_official = Match.where(match_type: match_type, score_board_id: self.id)
+    main = ScoreBoard.main_score_board
+    matches_official = Match.where(match_type: match_type, score_board_id: main.id)
     teams_of = []
     teams = []
     count = 0
