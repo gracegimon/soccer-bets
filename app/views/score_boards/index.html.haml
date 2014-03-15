@@ -5,7 +5,7 @@
         = link_to "#{score_board.name}", show_after_published_score_board_path(score_board)
     - else
       %h6
-        = link_to "#{score_board.name}", user_score_board_path(current_user,score_board)
+        =link_to "#{score_board.name}", user_score_board_path(current_user,score_board)
 
 
 - unless @user.is_admin?
@@ -32,7 +32,7 @@
       =f.hidden_field :is_active, value: false
       = f.hidden_field :tournament_id, value: current_tournament.id
       %p
-        = f.submit, "Crear quiniela"
+        = f.submit "Crear quiniela"
 
 
 
