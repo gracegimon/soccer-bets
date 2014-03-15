@@ -17,22 +17,22 @@
     %h2 Agregar una Quiniela:
     = form_for([@user, @user.score_boards.build]) do |f|
       %p
-        = f.label :name
+        = f.label :name, "Nombre"
         %br/
         = f.text_field :name, required: true
-        %p Remember that your scoreboards should have different names!
+        %p Recuerda que tus quinielas deben tener nombres distintos
 
-      = f.label :board_type, "Amount to bet", required: true
+      = f.label :board_type, "Tipo de quiniela", required: true
       %br/
       - # This can be a select if it has more options
       = f.radio_button :board_type, "0", checked: true
-      %p= '50 USD'
+      %p= 'General (50 USD)'
       = f.radio_button :board_type, "1"
-      %p= '200 USD'
+      %p= 'High Roller (200 USD)'
       =f.hidden_field :is_active, value: false
       = f.hidden_field :tournament_id, value: current_tournament.id
       %p
-        = f.submit
+        = f.submit, "Crear quiniela"
 
 
 

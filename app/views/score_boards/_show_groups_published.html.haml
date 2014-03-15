@@ -18,13 +18,13 @@
                 = image_tag team_1.flag
               .span6
                 .span5
-                  = score.team_1_goals
+                  %p.score-style= score.team_1_goals
                   %p= m.day
                   %p= m.city
                 .span1
                   %p{style: "display:inline;"} -
                 .span5
-                  = score.team_2_goals
+                  %p.score-style= score.team_2_goals
                   %p= m.time
               .span3.team-2-name
                 %p= m.team_2.name
