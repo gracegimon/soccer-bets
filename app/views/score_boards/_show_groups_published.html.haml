@@ -1,0 +1,59 @@
+- groups.each_with_index do |g,i| 
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title
+        %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapse#{i}"}
+          %h3= "Group " + g.name
+    .panel-collapse.collapse.in{id: "collapse#{i}"}
+      .panel-body
+        - matches = g.matches_for_score_board_group(@score_board)
+        .span7
+          - matches.each_with_index do |m,i|
+            .row
+              - team_1 = m.team_1
+              - team_2 = m.team_2
+              - score = m.score
+              .span3.team-name
+                %p= team_1.name
+                = image_tag team_1.flag
+              .span6
+                .span5
+                  = score.team_1_goals
+                  %p= m.day
+                  %p= m.city
+                .span1
+                  %p{style: "display:inline;"} -
+                .span5
+                  = score.team_2_goals
+                  %p= m.time
+              .span3.team-2-name
+                %p= m.team_2.name
+                = image_tag team_2.flag
+
+        .span5
+          %table.table{style: "float:right"}
+            %thead
+              %th Teams
+              %th J
+              %th G
+              %th E
+              %th P
+              %th GF
+              %th GC
+              %th DIF
+              %th PTS
+              %th
+            %tbody
+              - g.teams.each do |t|
+                - ts = t.team_stats.where(score_board_id: @score_board.id).first
+                %tr
+                  %td= t.name
+                  %td{id: t.id.to_s + "J"}= ts.played_games
+                  %td{id: t.id.to_s + "G"}= ts.won_games
+                  %td{id: t.id.to_s + 'E'}= ts.tied_games
+                  %td{id: t.id.to_s + 'P'}= ts.lost_games
+                  %td{id: t.id.to_s + 'GF'}= ts.goals_favor
+                  %td{id: t.id.to_s + 'GC'}= ts.goals_aggainst
+                  %td{id: t.id.to_s + 'DIF'}= ts.goals_favor - ts.goals_aggainst
+                  %td{id: t.id.to_s + 'PTS'}= ts.points
+                  %td{id: t.id.to_s + 'LD'}= ts.final_position

@@ -1,4 +1,4 @@
-%p Bienvenido :) #{@user.username}
+%h6 Bienvenido :) #{@user.username}
 
 - if @user.is_admin?
   %h6
@@ -7,28 +7,33 @@
 - else 
 
   - @score_boards.each unless @score_boards.nil? do |score_board|
-    %h6
-      =link_to "#{score_board.name}", user_score_board_path(@user,score_board)
-  %a#new_scoreboard_link{href: "#"}
-    Agregar una nueva quiniela
+    - if score_board.is_published?
+      %h6 
+        = link_to "#{score_board.name}", show_after_published_score_board_path(score_board)
+    - else
+      %h6
+        =link_to "#{score_board.name}", user_score_board_path(@user,score_board)
+  %h6
+    %a#new_scoreboard_link{href: "#"}
+      Agregar una nueva quiniela
 
   %hr
   #new_scoreboard{style: "display:none"}
     %h2 Agregar una Quiniela:
     = form_for([@user, @user.score_boards.build]) do |f|
       %p
-        = f.label :name
+        = f.label :name, "Nombre"
         %br/
         = f.text_field :name, required: true
-        %p Remember that your scoreboards should have different names!
+        %p Recuerda que tus quinielas deben tener nombres distintos
 
-      = f.label :board_type, "Amount to bet", required: true
+      = f.label :board_type, "Tipo de quiniela", required: true
       %br/
       - # This can be a select if it has more options
       = f.radio_button :board_type, "0", checked: true
-      %p= '50 USD'
+      %p= 'General (50 USD)'
       = f.radio_button :board_type, "1"
-      %p= '200 USD'
+      %p= 'High Roller (200 USD)'
       =f.hidden_field :is_active, value: false
       = f.hidden_field :tournament_id, value: current_tournament.id
       %p
@@ -39,5 +44,4 @@
   :coffeescript
     jQuery("#new_scoreboard_link").on 'click', (event) ->
       event.preventDefault()
-      console.log "hols"
       jQuery("#new_scoreboard").toggle()

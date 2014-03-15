@@ -1,0 +1,26 @@
+%ul.nav.nav-tabs
+  %li.active
+    %a{:href => "#tabs-1", "data-toggle" => "tab", "id" => "tabs-groups"}="Etapa de Grupos"
+  %li
+    %a{:href => "#tabs-2", "data-toggle" => "tab", "id" => "tabs-r16"}= "Octavos de Final"
+  %li
+    %a{:href => "#tabs-3", "data-toggle" => "tab", "id" => "tabs-quarter"}="Cuartos de final"
+  %li
+    %a{:href => "#tabs-4", "data-toggle" => "tab", "id" => "tabs-semi"}="Semifinal"
+  %li
+    %a{:href => "#tabs-5", "data-toggle" => "tab", "id" => "tabs-final"}="3er puesto y Final"
+
+
+.tab-content
+  #tabs-1.tab-pane.active
+    #accordion.panel-group
+      = render "score_boards/show_groups_published", groups: @groups
+
+  #tabs-2.tab-pane  
+    = render "score_boards/show_second_phase_published", matches: @matches_r16
+  #tabs-3.tab-pane
+    = render "score_boards/show_second_phase_published", matches: @matches_quarters
+  #tabs-4.tab-pane
+    = render "score_boards/show_second_phase_published", matches: @matches_semi
+  #tabs-5.tab-pane
+    = render "score_boards/show_finals_published", final: @final, third: @third

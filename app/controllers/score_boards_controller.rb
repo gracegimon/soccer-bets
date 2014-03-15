@@ -1,7 +1,7 @@
 class ScoreBoardsController < ApplicationController
   before_filter :authenticate
   before_action :check_admin, only: [:tournament_score_board, :show_for_admin]
-  before_action :check_published, only: [:show]
+  before_action :check_published, only: [:show_after_published]
 
   def index
     @score_boards = current_user.score_boards
@@ -162,6 +162,29 @@ class ScoreBoardsController < ApplicationController
     end
   end
 
+  def show_after_published
+    @score_board = ScoreBoard.find(params[:id])
+    @user = @score_board.user
+    @groups = current_tournament.groups
+    @is_main = @score_board.is_main?
+    match_type_r16 = Match::R16
+    match_type_quarters = Match::QUARTER
+    match_type_semi = Match::SEMI
+    match_type_third = Match::THIRD
+    match_type_final = Match::FINAL
+    if @is_main
+      match_type_r16 = Match::R16_MAIN
+      match_type_quarters = Match::QUARTER_MAIN
+      match_type_semi = Match::SEMI_MAIN
+      match_type_third = Match::THIRD_MAIN
+      match_type_final = Match::FINAL_MAIN
+    end
+    @matches_r16 = Match.where(match_type: match_type_r16, score_board_id: @score_board.id).order(:match_number)
+    @matches_quarters = Match.where(match_type: match_type_quarters, score_board_id: @score_board.id).order(:match_number)
+    @matches_semi = Match.where(match_type: match_type_semi, score_board_id: @score_board.id).order(:match_number)
+    @final = Match.where(match_type: match_type_final, score_board_id: @score_board.id).first
+    @third = Match.where(match_type: match_type_third, score_board_id: @score_board.id).first
+  end
 
   private
 
@@ -172,10 +195,7 @@ class ScoreBoardsController < ApplicationController
 
   def check_published
     is_published = ScoreBoard.find(params[:id]).is_published?
-    if is_published
-      flash[:notice] = "Esta quiniela ya fue completada"
-      redirect_to user_path(params[:user_id])
-    end
+    return true if is_published
   end
 
 end
