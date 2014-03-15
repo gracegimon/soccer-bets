@@ -3,11 +3,15 @@ class ScoreBoardsController < ApplicationController
   before_action :check_admin, only: [:tournament_score_board, :show_for_admin]
   before_action :check_published, only: [:show_after_published]
  # before_action :current_user_is_viewing, except: [:show_after_published]
-  before_action :signed_in
+  before_action :signed_in, except: [:index]
 
   def index
-    @score_boards = current_user.score_boards
-    @user = current_user
+    @user = User.find(params[:user_id])
+    @score_boards = @user.score_boards
+    @can_add = false
+    if current_user?(@user)
+      @can_add = true
+    end
   end
   
   def show
