@@ -164,6 +164,7 @@ class ScoreBoardsController < ApplicationController
 
   def show_after_published
     @score_board = ScoreBoard.find(params[:id])
+    @status = @score_board.status
     @user = @score_board.user
     @groups = current_tournament.groups
     @is_main = @score_board.is_main?

@@ -460,4 +460,12 @@ def calculate_proper_matches(type)
   end
 end
 
+def status
+  if self.is_active
+    return "Activa"
+  elsif self.is_published
+    return "Publicada: Esperando para ser activada por Administrador"
+  end
+end
+
 end

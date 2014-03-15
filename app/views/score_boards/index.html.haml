@@ -1,6 +1,11 @@
 - @score_boards.each do |score_board|
   %h6
-    =link_to "#{score_board.name}", user_score_board_path(current_user,score_board)
+    - if score_board.is_published?
+      %h6 
+        = link_to "#{score_board.name}", show_after_published_score_board_path(score_board)
+    - else
+      %h6
+        = link_to "#{score_board.name}", user_score_board_path(current_user,score_board)
 
 
 - unless @user.is_admin?

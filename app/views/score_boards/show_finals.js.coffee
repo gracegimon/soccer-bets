@@ -1,1 +1,1 @@
-jQuery("#tabs-5").html("<%= j render 'score_boards/show_final', {:matches=> @matches} %>");
+jQuery("#tabs-5").html("<%= j render 'score_boards/show_final', {:final=> @final, :third => @third} %>");

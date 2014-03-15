@@ -78,3 +78,21 @@
   = link_to finish_phase_score_board_path(@score_board, :phase => Match::R16_MAIN), remote: true do
     %button.btn.btn-success{style: "float:right;"}
       Terminar etapa
+- content_for(:javascript) do
+
+  :coffeescript
+    jQuery(".js-save-group").click ->
+      console.log "Pressed"
+      scores = jQuery(this).parent().siblings().find("form")
+
+      scores.each (index) ->
+        console.log "Verifico cada score"
+        $(this).validate rules:
+          'score[team_1_goals]':
+            required: true
+            min: 0
+        $(this).validate rules:
+          'score[team_2_goals]':
+            required: true
+            min: 0
+        $(this).submit()

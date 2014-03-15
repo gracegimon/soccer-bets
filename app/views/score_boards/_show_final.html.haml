@@ -1,34 +1,64 @@
 #accordion.panel-group
-  - matches.each_with_index do |m,i|
-    .row
-      - team_1 = m.team_1
-      - team_2 = m.team_2
-      - @score = m.score
-      - @score = Score.new if m.score.nil?
-      .span3.team-name
-        %p= team_1.name
-        = image_tag team_1.flag
-      .span6
-        = form_for @score, remote: true  do |f|
-          .span5
-            = f.text_field :team_1_goals, required: true, class: "form-control form-input"
-            %p= m.day
-            %p= m.city
-          .span1
-            %p{style: "display:inline;"} -
-          .span5
-            = f.text_field :team_2_goals, required: true, class: "form-control form-input"
-            %p= m.time
-          = f.hidden_field :scoreboard_id, value: @score_board.id
-          = f.hidden_field :match_id, value: m.id
-          - if !@is_main
-            .div{style: "visibility:hidden;"}
-              = f.submit 'Save', class: "scores-final"
-          - else
-            = f.submit "Guardar", class: "scores-final btn btn-success"
-      .span3.team-2-name
-        %p= m.team_2.name
-        = image_tag team_2.flag
+  %h3 Final
+  .row
+    - team_1 = final.team_1
+    - team_2 = final.team_2
+    - @score = final.score
+    - @score = Score.new if final.score.nil?
+    .span3.team-name
+      %p= team_1.name
+      = image_tag team_1.flag
+    .span6
+      = form_for @score, remote: true  do |f|
+        .span5
+          = f.text_field :team_1_goals, required: true, class: "form-control form-input"
+          %p= final.day
+          %p= final.city
+        .span1
+          %p{style: "display:inline;"} -
+        .span5
+          = f.text_field :team_2_goals, required: true, class: "form-control form-input"
+          %p= final.time
+        = f.hidden_field :scoreboard_id, value: @score_board.id
+        = f.hidden_field :match_id, value: final.id
+        - if !@is_main
+          .div{style: "visibility:hidden;"}
+            = f.submit 'Save', class: "scores-final"
+        - else
+          = f.submit "Guardar", class: "scores-final btn btn-success"
+    .span3.team-2-name
+      %p= final.team_2.name
+      = image_tag team_2.flag
+  %h3 Tercer lugar
+  .row
+    - team_1 = third.team_1
+    - team_2 = third.team_2
+    - @score = third.score
+    - @score = Score.new if third.score.nil?
+    .span3.team-name
+      %p= team_1.name
+      = image_tag team_1.flag
+    .span6
+      = form_for @score, remote: true  do |f|
+        .span5
+          = f.text_field :team_1_goals, required: true, class: "form-control form-input"
+          %p= third.day
+          %p= third.city
+        .span1
+          %p{style: "display:inline;"} -
+        .span5
+          = f.text_field :team_2_goals, required: true, class: "form-control form-input"
+          %p= third.time
+        = f.hidden_field :scoreboard_id, value: @score_board.id
+        = f.hidden_field :match_id, value: third.id
+        - if !@is_main
+          .div{style: "visibility:hidden;"}
+            = f.submit 'Save', class: "scores-final"
+        - else
+          = f.submit "Guardar", class: "scores-final btn btn-success"
+    .span3.team-2-name
+      %p= third.team_2.name
+      = image_tag team_2.flag        
   - if !@is_main
     .row.span11
       %button.btn.btn-success{class: "js-save-final"}

@@ -26,26 +26,7 @@
     %p Por favor, rellene todos los resultados de semifinales
 - content_for(:javascript) do
   :coffeescript
-    jQuery(".js-save-group").click ->
-      console.log "Pressed"
-      scores = jQuery(this).parent().siblings().find("form")
-      tournament = "#{@tournament}"
-
-      scores.each (index) ->
-        console.log index
-        unless tournament?
-          $(this).validate rules:
-            'score[team_1_goals]':
-              required: true
-              min: 0
-          console.log index
-          $(this).validate rules:
-            'score[team_2_goals]':
-              required: true
-              min: 0
-        $(this).submit()
-
-
+  
     jQuery('#tabs-r16').click ->
      # Get the URL for the action thats going to be executed when clicked this tab
      jQuery.get('#{show_round_of_16_score_board_path(@score_board)}')
