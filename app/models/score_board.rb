@@ -400,16 +400,18 @@ class ScoreBoard < ActiveRecord::Base
     teams_of = []
     teams = []
     count = 0
+
     if matches_official.empty?
-      matches_official = calculate_proper_matches(match_type)
+      matches_official = main.calculate_proper_matches(match_type)
     end
     matches_official.each do |match_official|
       teams_of << match_official.teams
-    end
+    end    
     matches.each do | match |
       teams << match.teams
     end
-
+    teams_of.flatten!
+    teams.flatten!
     teams_of.each do | team_of|
       if teams.include?(team_of)
         count += 1
@@ -426,7 +428,6 @@ class ScoreBoard < ActiveRecord::Base
   # This is only called for Main Score board
   def update_points_for_score_boards(type, tournament)
     scores = Score.where(scoreboard_id: self.id).includes(:match).where("matches.match_type" => type - 2)
-
     scores.each do |score|
       score.can_change = false
       score.save
@@ -439,6 +440,7 @@ class ScoreBoard < ActiveRecord::Base
 
   def update_points(type)
     count = self.number_of_same_teams(type)
+    binding.pry
     if type == Match::R16_MAIN
       self.points += count * 4
     elsif type == Match::QUARTER_MAIN

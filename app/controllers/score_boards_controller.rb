@@ -3,7 +3,7 @@ class ScoreBoardsController < ApplicationController
   before_action :check_admin, only: [:tournament_score_board, :show_for_admin]
   before_action :check_published, only: [:show_after_published]
  # before_action :current_user_is_viewing, except: [:show_after_published]
-  before_action :signed_in, except: [:index]
+  before_action :signed_in, only: [:show]
 
   def index
     @user = User.find(params[:user_id])
@@ -18,6 +18,9 @@ class ScoreBoardsController < ApplicationController
     @score_board = ScoreBoard.find(params[:id])
     @user = @score_board.user
     @groups = current_tournament.groups
+    if @score_board.is_published?
+      redirect_to action: 'show_after_published'
+    end
   end
 
   def show_for_admin
@@ -35,10 +38,11 @@ class ScoreBoardsController < ApplicationController
     @score_boards = ScoreBoard.not_main_board.active.order(points: :desc)
   end
 
-  def create
+  def create 
     @user = User.find(params[:user_id])
     @score_board = @user.score_boards.create(params[:score_board].permit(:name,:board_type,:is_active, :tournament_id))
-    if @score_board.errors.empty?
+
+   if @score_board.errors.empty?
       redirect_to user_score_board_path(@user,@score_board)
     else
       flash[:error] = @score_board.errors
@@ -211,7 +215,7 @@ class ScoreBoardsController < ApplicationController
   end
 
   def signed_in
-    @user = ScoreBoard.find(params[:id]).user
+    @user = ScoreBoard.find(params[:id]).user unless ScoreBoard.find(params[:id]).nil?
     redirect_to(root_url) unless (current_user?(@user) || !@current_user.nil?)
   end
 

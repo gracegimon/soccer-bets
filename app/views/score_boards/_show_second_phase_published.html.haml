@@ -4,6 +4,7 @@
       - team_1 = m.team_1
       - team_2 = m.team_2
       - score = m.score
+      - binding.pry if m.score.nil?
       .span3.team-name
         %p= team_1.name
         = image_tag team_1.flag

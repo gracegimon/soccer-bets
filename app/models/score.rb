@@ -87,8 +87,8 @@ class Score < ActiveRecord::Base
       elsif match_type == Match::THIRD_MAIN
         @score_boards.each do |score_board|
           score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
-          winner = self.match.winner_team_id
-          if winner == score_board_match.winner_team_id
+          winner = self.match.winner.id
+          if winner == score_board_match.winner.id
             score_board.points += 7
             score_board.save
           end
@@ -97,12 +97,12 @@ class Score < ActiveRecord::Base
       elsif match_type == Match::FINAL_MAIN
         @score_boards.each do |score_board|
           score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
-          winner = self.match.winner_team_id
+          winner = self.match.winner.id
           loser = self.match.loser.id
-          if winner == score_board_match.winner_team_id
+          if winner == score_board_match.winner.id
             score_board.points += 9
           end
-          if score_board_match.loser == loser
+          if score_board_match.loser.id == loser
             score_board.points += 8
           end
           score_board.save
@@ -124,26 +124,27 @@ class Score < ActiveRecord::Base
         @score_boards = ScoreBoard.not_main_board.active
         @score_boards.each do |score_board|
           score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
-          winner = self.match.winner_team_id
-          if old_score.match.winner_team_id == score_board_match.winner_team_id
-            score_board.points -= 7
+          winner = self.match.winner.id
+          if old_score.match.winner.id == score_board_match.winner.id
+            score_board.points = score_board.points - 7
           end
             score_board.save
         end
         # check winner add 7
       elsif match_type == Match::FINAL_MAIN
-        @score_boards = ScoreBoard.not_main_board.active  
-        score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
-        winner = old_score.match.winner_team_id
-        loser = old_score.match.loser.id
-        score_board.points 
-        if winner == score_board_match.winner_team_id
-          score_board.points -= 9
-        end
-        if score_board_match.loser == loser
-          score_board.points -= 8
-        end
-        score_board.save        
+        @score_boards = ScoreBoard.not_main_board.active
+        @score_boards.each do |score_board|  
+          score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
+          winner = old_score.match.winner.id
+          loser = old_score.match.loser.id
+          if winner == score_board_match.winner.id
+            score_board.points = score_board.points - 9
+          end
+          if score_board_match.loser.id == loser
+            score_board.points = score_board.points - 8
+          end
+          score_board.save
+        end        
         # check if winner (9) and sub champion (8)
       end
     end  
@@ -166,25 +167,27 @@ class Score < ActiveRecord::Base
         @score_boards = ScoreBoard.not_main_board.active
         @score_boards.each do |score_board|
           score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
-          winner = self.match.winner_team_id
-          if winner == score_board_match.winner_team_id
+          winner = self.match.winner.id
+          if winner == score_board_match.winner.id
             score_board.points += 7
             score_board.save
           end
         end
         # check winner add 7
       elsif match_type == Match::FINAL_MAIN
-        @score_boards = ScoreBoard.not_main_board.active  
-        score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
-        winner = self.match.winner_team_id
-        loser = self.match.loser.id
-        if winner == score_board_match.winner_team_id
-          score_board.points += 9
-        end
-        if score_board_match.loser == loser
-          score_board.points += 8
-        end
-        score_board.save        
+        @score_boards = ScoreBoard.not_main_board.active
+        @score_boards.each do |score_board|
+          score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
+          winner = self.match.winner.id
+          loser = self.match.loser.id
+          if winner == score_board_match.winner.id
+            score_board.points += 9
+          end
+          if score_board_match.loser.id == loser
+            score_board.points += 8
+          end
+          score_board.save
+        end        
         # check if winner (9) and sub champion (8)
       end
     end
