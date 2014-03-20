@@ -19,9 +19,8 @@
         %h4 2do lugar
         %h1 35%
         %h4 del pote
-  .row-fluid{style: "margin-left: 5%;"}
-    = image_tag "dots.png"
-    = image_tag "dots.png"
+  .row-fluid.span12
+    = image_tag "dots.png", class: "dots-image"
   .row-fluid
     .span4
       .colored-circle.colored-circle-subsection.colored-circle-subsection-center.tournament-blue
@@ -29,15 +28,14 @@
         %h2 $50
     .span4#quinielas
       .colored-circle.colored-circle-middle-section.colored-circle-middle-section-center.tournament-blue
-        %a{href: sign_in_path}
+        %a{href: sign_up_path}
           %h2.expandable-h2 Arma tus quinielas
     .span4
       .colored-circle.colored-circle-subsection.colored-circle-subsection-center.tournament-blue
         %h5 High Roller
         %h2 $200
-  .row-fluid{style: "margin-left: 5%;"}
-    = image_tag "dots.png"
-    = image_tag "dots.png"
+  .row-fluid.span12
+    = image_tag "dots.png", class: "dots-image"
   .row-fluid
 
     .span4
@@ -116,10 +114,10 @@
         .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-dark
           %h6 Campeón
           %h5 9 puntos 
-  .row-fluid{style: "margin-left: 5%;"}
-    = image_tag "dots.png"
-    = image_tag "dots.png"  
-  .blue-text#reglas
+  .row-fluid.span12
+    = image_tag "dots.png", class: 'dots-image'
+
+  .row-fluid.span12.blue-text#reglas
     %h4 REGLAS DE LA QUINIELA
 
     %p - Tu Quiniela será válida desde el momento que se haya confirmado el pago (sin excepción).
