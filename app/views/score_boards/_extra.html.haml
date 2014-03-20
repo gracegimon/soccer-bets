@@ -14,7 +14,7 @@
       .span12
         %h3 Primer equipo con tarjeta roja
         .span3
-          = f.text_field :red_card_team_id
+          = f.text_field :red_card_team_id, id: "red-card"
         .span6
           = image_tag "red-card.gif", size: "50x70"           
       .span12
@@ -26,3 +26,13 @@
       = f.hidden_field :score_board_id, value: @score_board.id
       .row.span12
         = f.submit "Guardar", class: 'btn btn-success'
+
+- content_for(:javascript) do
+
+  :coffeescript
+    $(document).ready ->
+      tags = ["hola", "bien"]
+      console.log "I'm in extra"
+      $("#red-card").autocomplete(
+        source: tags
+      )
