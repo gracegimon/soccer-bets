@@ -36,6 +36,11 @@ Quiniela::Application.routes.draw do
     get "wait", on: :member
     get "finish_phase", on: :member
     get "show_after_published", on: :member
+
+  end
+
+
+  resources :extra_phases do
   end
 
   resources :scores do

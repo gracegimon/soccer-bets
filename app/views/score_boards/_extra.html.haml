@@ -1,0 +1,28 @@
+#accordion.panel-group
+  - @extra = ExtraPhase.new
+  - unless @score_board.extra_phase.nil?
+    - @extra = @score_board.extra_phase
+
+  .row
+    = form_for @extra, remote: true  do |f|
+      .span12
+        %h3 Mejor goleador
+        .span3
+          = f.text_field  :best_player_id
+        .span6
+          = image_tag "Soccer-Ball.png", size: "50x50"      
+      .span12
+        %h3 Primer equipo con tarjeta roja
+        .span3
+          = f.text_field :red_card_team_id
+        .span6
+          = image_tag "red-card.gif", size: "50x70"           
+      .span12
+        %h3 Primer equipo con penal
+        .span3
+          = f.text_field :penal_team_id
+        .span6
+          = image_tag "penal.png", size: "100x100"           
+      = f.hidden_field :score_board_id, value: @score_board.id
+      .row.span12
+        = f.submit "Guardar", class: 'btn btn-success'
