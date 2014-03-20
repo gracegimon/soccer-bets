@@ -12,7 +12,7 @@
     .span4
       .colored-circle.colored-circle-title.tournament-blue
         %a{href: "http://www.fifa.com/worldcup/"}
-          = image_tag "Brasil_2014.png", class: "logo-center"
+          = image_tag "Brasil_2014.png", class: "logo-center clickable"
 
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
@@ -27,9 +27,10 @@
       .colored-circle.colored-circle-subsection.colored-circle-subsection-center.tournament-blue
         %h5 General
         %h2 $50
-    .span4
+    .span4#quinielas
       .colored-circle.colored-circle-middle-section.colored-circle-middle-section-center.tournament-blue
-        %h2 Arma tus quinielas
+        %a{href: sign_in_path}
+          %h2.expandable-h2 Arma tus quinielas
     .span4
       .colored-circle.colored-circle-subsection.colored-circle-subsection-center.tournament-blue
         %h5 High Roller
@@ -42,7 +43,8 @@
     .span4
     .span4
       .colored-circle.colored-circle-middle-section.colored-circle-middle-section-center.tournament-blue{style: "padding-left: 5px; padding-top: 57px;"}
-        %h2 Puntuación
+        %a{href: ranking_score_boards_path}
+          %h2.expandable-h2 Puntuación
     .span4
 
   .row-fluid
@@ -117,7 +119,7 @@
   .row-fluid{style: "margin-left: 5%;"}
     = image_tag "dots.png"
     = image_tag "dots.png"  
-  .blue-text
+  .blue-text#reglas
     %h4 REGLAS DE LA QUINIELA
 
     %p - Tu Quiniela será válida desde el momento que se haya confirmado el pago (sin excepción).
@@ -136,7 +138,7 @@
       e.preventDefault();
       $('#view-more').toggle()
     $(window).load ->
-      $("a > img").each(->
+      $(".clickable").each(->
         $.data this, "size",
           width: $(this).width()
           height: $(this).height()
@@ -144,8 +146,26 @@
         return
       ).hover (->
         $(this).stop().animate
-          height: $.data(this, "size").height * 1.2
-          width: $.data(this, "size").width * 1.5
+          height: $.data(this, "size").height * 1.1
+          width: $.data(this, "size").width * 1.1
+
+        return
+      ), ->
+        $(this).stop().animate
+          height: $.data(this, "size").height
+          width: $.data(this, "size").width
+        return
+
+      $(".clickable-header").each(->
+        $.data this, "size",
+          width: $(this).width()
+          height: $(this).height()
+
+        return
+      ).hover (->
+        $(this).stop().animate
+          height: $.data(this, "size").height * 1.05
+          width: $.data(this, "size").width * 1.05
 
         return
       ), ->
@@ -154,4 +174,23 @@
           width: $.data(this, "size").width
 
         return
+
+    # For smooth scroll
+    $(".scroll").click (event) ->
+      event.preventDefault()
+      
+      #calculate destination place
+      dest = 0
+      if $(@hash).offset().top > $(document).height() - $(window).height()
+        dest = $(document).height() - $(window).height()
+      else
+        dest = $(@hash).offset().top
+      
+      #go to destination
+      $("html,body").animate
+        scrollTop: dest
+      , 800, "swing"
+      return
+
+
 

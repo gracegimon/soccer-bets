@@ -6,23 +6,12 @@
   = image_tag "brasil-header.jpg", size: "200x100"
 .span4
   %a(href= root_path)
-    = image_tag "tuPote.png", size: "200x100"
+    = image_tag "tuPote.png", size: "200x100", class: 'clickable-header'
 .container.nav-collapse
-  .span4
+  .span6
     %ul.nav.navbar-nav.navbar-right
-      - if current_user
-        - if current_user.is_admin?
-          %li= link_to "Resultados Oficiales", tournament_score_board_path(current_tournament,main_score_board)
-          %li= link_to "Administración de Quinielas", show_all_score_boards_path
-        - else
-          %li= link_to "Tus quinielas", user_score_boards_path(current_user)
-        %li= link_to "Ranking", ranking_score_boards_path
-        %li= link_to "Estadios", "/path3"
-      - else
-        %li= link_to "Crea tu cuenta", sign_up_path
-        %li= link_to "Inicia sesión", sign_in_path
-  .span7
-    %ul.nav.navbar-nav.navbar-right
+      %li
+        %p.white-text{style: "margin-top:20px;"} Síguenos
       %li 
         %a{href: "#"}
           = image_tag "facebook.gif", size: "40x40"
@@ -34,3 +23,23 @@
           %a{href: "#"}
             = current_user.username
         %li= link_to "Cerrar sesión", signed_out_path
+  .span7
+    %ul.nav.navbar-nav.navbar-right
+      - if current_user
+        - if current_user.is_admin?
+          %li= link_to "Resultados Oficiales", tournament_score_board_path(current_tournament,main_score_board)
+          %li= link_to "Administración de Quinielas", show_all_score_boards_path
+        - else
+          %li= link_to "Tus quinielas", user_score_boards_path(current_user)
+        %li= link_to "Ranking", ranking_score_boards_path
+        %li= link_to "Estadios", "/path3"
+      - else
+        %li
+          %a{href: "#quinielas", class: 'scroll'}
+            Comienza ahora
+        %li= link_to "Ranking actual", ranking_score_boards_path
+        %li
+          %a{href: "#reglas", class: 'scroll'}
+            Reglas del torneo
+        %li= link_to "Inicia sesión", sign_in_path
+

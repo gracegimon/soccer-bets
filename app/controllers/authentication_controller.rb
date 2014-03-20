@@ -10,9 +10,9 @@ class AuthenticationController < ApplicationController
     user = User.authenticate(email, password)
     if user
       session[:user_id] = user.id
-      redirect_to user, :notice => "You're logged in"
+      redirect_to user, :notice => "Listo! Bienvenido de nuevo!"
     else
-      flash[:error] = "Please check your email and/or password"
+      flash[:error] = "Por favor, verifica tu usuario o contraseña"
       redirect_to :action => "sign_in"
     end
 
@@ -20,7 +20,7 @@ class AuthenticationController < ApplicationController
 
   def signed_out
     session[:user_id] = nil
-    flash[:notice] = "You have been signed out."
+    flash[:notice] = "Has cerrado sesión"
     redirect_to :root
   end
 
@@ -42,7 +42,7 @@ class AuthenticationController < ApplicationController
       @user.save
       session[:user_id] = @user.id
       #UserMailer.welcome_email(@user).deliver
-      flash[:notice] = "You've signed up !"
+      flash[:notice] = " Bienvenido!"
       redirect_to @user
     else
       render "sign_up"
@@ -63,8 +63,8 @@ class AuthenticationController < ApplicationController
       @user = User.new
       # put the previous value back.
       @user.email = params[:user][:email]
-      @user.errors[:email] = 'is not a registered user.'
-      flash[:notice] = 'This email is not a registered user'
+      @user.errors[:email] = 'no es un usuario registrado.'
+      flash[:notice] = 'Este correo no pertenece a un usuario registrado'
       redirect_to forgot_password_path
     end
 
