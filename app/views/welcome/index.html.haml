@@ -1,6 +1,6 @@
 .main-content
   .row-fluid{style: "text-align:right; color:white;"}
-    %p Participantes: 10
+    %p= "Participantes: #{User.count}"
 
   .row-fluid
     .span4
@@ -11,15 +11,17 @@
 
     .span4
       .colored-circle.colored-circle-title.tournament-blue
-        = image_tag "Brasil_2014.png", class: "logo-center"
+        %a{href: "http://www.fifa.com/worldcup/"}
+          = image_tag "Brasil_2014.png", class: "logo-center"
 
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
         %h4 2do lugar
         %h1 35%
         %h4 del pote
-  = image_tag "dots.png"
-  = image_tag "dots.png"
+  .row-fluid{style: "margin-left: 5%;"}
+    = image_tag "dots.png"
+    = image_tag "dots.png"
   .row-fluid
     .span4
       .colored-circle.colored-circle-subsection.colored-circle-subsection-center.tournament-blue
@@ -32,8 +34,9 @@
       .colored-circle.colored-circle-subsection.colored-circle-subsection-center.tournament-blue
         %h5 High Roller
         %h2 $200
-  = image_tag "dots.png"
-  = image_tag "dots.png"    
+  .row-fluid{style: "margin-left: 5%;"}
+    = image_tag "dots.png"
+    = image_tag "dots.png"
   .row-fluid
 
     .span4
@@ -111,20 +114,20 @@
         .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-dark
           %h6 Campeón
           %h5 9 puntos 
-  = image_tag "dots.png"
-  = image_tag "dots.png"    
+  .row-fluid{style: "margin-left: 5%;"}
+    = image_tag "dots.png"
+    = image_tag "dots.png"  
+  .blue-text
+    %h4 REGLAS DE LA QUINIELA
 
-.well
-  %h4 REGLAS DE LA QUINIELA
-   
-  %p - Tu Quiniela será válida desde el momento que se haya confirmado el pago (sin excepción).
-  %p - Se aceptarán pagos para la Quiniela hasta el 10 de junio a las 8pm
-  %p - Una vez enviada tu Quiniela definitiva no podrá ser modificada por ningún motivo.
-  %p - La Quiniela de todos los participantes estarán publicadas en la página a partir del 12 de junio con los respectivos resultados y puntuaciones.
-  %p - En caso de empate en el 1er lugar, se repartirá el POTE equitativamente entre las quinielas empatadas y no habrá 2do lugar.
-  %p - En caso de empate en el 2do lugar, se repartirá el segundo premio equitativamente entre las quinielas empatadas.
-  %p - En caso de empate en el "goleador", se otorgará la puntuación para todos los goleadores por igual.
-  %p - Los premios a los ganadores se entregaran el día 16 de JULIO del 2014.
+    %p - Tu Quiniela será válida desde el momento que se haya confirmado el pago (sin excepción).
+    %p - Se aceptarán pagos para la Quiniela hasta el 10 de junio a las 8pm
+    %p - Una vez enviada tu Quiniela definitiva no podrá ser modificada por ningún motivo.
+    %p - La Quiniela de todos los participantes estarán publicadas en la página a partir del 12 de junio con los respectivos resultados y puntuaciones.
+    %p - En caso de empate en el 1er lugar, se repartirá el POTE equitativamente entre las quinielas empatadas y no habrá 2do lugar.
+    %p - En caso de empate en el 2do lugar, se repartirá el segundo premio equitativamente entre las quinielas empatadas.
+    %p - En caso de empate en el "goleador", se otorgará la puntuación para todos los goleadores por igual.
+    %p - Los premios a los ganadores se entregaran el día 16 de JULIO del 2014.
 
 
 - content_for(:javascript) do
@@ -132,3 +135,23 @@
     $('#view-more-link').click (e) ->
       e.preventDefault();
       $('#view-more').toggle()
+    $(window).load ->
+      $("a > img").each(->
+        $.data this, "size",
+          width: $(this).width()
+          height: $(this).height()
+
+        return
+      ).hover (->
+        $(this).stop().animate
+          height: $.data(this, "size").height * 1.2
+          width: $.data(this, "size").width * 1.5
+
+        return
+      ), ->
+        $(this).stop().animate
+          height: $.data(this, "size").height
+          width: $.data(this, "size").width
+
+        return
+
