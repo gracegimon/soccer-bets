@@ -112,19 +112,34 @@ g.save
 
 ## Match ##
 
-m = Match.new(team_1_id: 6, team_2_id: 12, city: "Sao Paulo", stadium_id: nil, match_type: 0, date: "2014-06-12 00:00:00", score_board_id: s.id, match_number: 1)
-m.save
-
-m1 = Match.new(team_1_id: 24, team_2_id: 7, city: "Natal", stadium_id: nil, match_type: 0, date: "2014-06-13 11:30:00", score_board_id: s.id, match_number: 2 )
+m1 = Match.new(team_1_id: 6, team_2_id: 12, city: "Sao Paulo", stadium_id: nil, match_type: 0, date: "2014-06-12 00:00:00", score_board_id: s.id, match_number: 1)
 m1.save
 
-g.teams << Team.find_by_name("Brazil")
-g.teams << Team.find_by_name("Croatia")
-g.teams << Team.find_by_name("Cameroon")
-g.teams << Team.find_by_name("Mexico")
+m2 = Match.new(team_1_id: 24, team_2_id: 7, city: "Natal", stadium_id: nil, match_type: 0, date: "2014-06-13 11:30:00", score_board_id: s.id, match_number: 2 )
+m2.save
 
-g.matches << m
+m17 = Match.new(team_1_id: 6, team_2_id: 24, city: "Fortaleza", stadium_id: nil, match_type: 0, date: "2014-06-17 14:30:00", score_board_id: s.id, match_number: 17 )
+m17.save
+m18 = Match.new(team_1_id: 7, team_2_id: 12, city: "Manaus", stadium_id: nil, match_type: 0, date: "2014-06-18 17:30:00", score_board_id: s.id, match_number: 18 )
+m18.save
+
+m33 = Match.new(team_1_id: 7, team_2_id: 6, city: "Brasilia", stadium_id: nil, match_type: 0, date: "2014-06-23 15:30:00", score_board_id: s.id, match_number: 33 )
+m33.save
+
+m34 = Match.new(team_1_id: 12, team_2_id: 24, city: "Recife", stadium_id: nil, match_type: 0, date: "2014-06-23 15:30:00", score_board_id: s.id, match_number: 34 )
+m34.save
+
+g.teams << Team.find_by_name("Brazil") # 6
+g.teams << Team.find_by_name("Croatia") # 12
+g.teams << Team.find_by_name("Cameroon") # 7
+g.teams << Team.find_by_name("Mexico") # 24
+
 g.matches << m1
+g.matches << m2
+g.matches << m17
+g.matches << m18
+g.matches << m33
+g.matches << m34
 
 g2 = Group.new( name: "B", first_place_team_id: 0, second_place_team_id: 0, tournament_id: t.id)
 g2.save
@@ -134,15 +149,30 @@ g2.teams << Team.find_by_name("Australia")
 g2.teams << Team.find_by_name("Netherlands")
 g2.save
 
-m2 = Match.new(team_1_id: Team.find_by_name("Spain").id, team_2_id: Team.find_by_name("Netherlands").id, city: "Salvador", stadium_id: nil, match_type: 0, date: "2014-06-13 14:30:00", score_board_id: s.id, match_number: 3 )
-m2.save
-
-m3 = Match.new(team_1_id: Team.find_by_name("Chile").id, team_2_id: Team.find_by_name("Australia").id, city: "Cuiaba", stadium_id: nil, match_type: 0, date: "2014-06-13 17:30:00", score_board_id: s.id, match_number: 4 )
+m3 = Match.new(team_1_id: Team.find_by_name("Spain").id, team_2_id: Team.find_by_name("Netherlands").id, city: "Salvador", stadium_id: nil, match_type: 0, date: "2014-06-13 14:30:00", score_board_id: s.id, match_number: 3 )
 m3.save
 
-g2.matches << m2
+m4 = Match.new(team_1_id: Team.find_by_name("Chile").id, team_2_id: Team.find_by_name("Australia").id, city: "Cuiaba", stadium_id: nil, match_type: 0, date: "2014-06-13 17:30:00", score_board_id: s.id, match_number: 4 )
+m4.save
 
-g2.matches << m3 
+m19 = Match.new(team_1_id: Team.find_by_name("Spain").id, team_2_id: Team.find_by_name("Chile").id, city: "Rio de Janeiro", stadium_id: nil, match_type: 0, date: "2014-06-18 14:30:00", score_board_id: s.id, match_number: 19 )
+m19.save
+
+m20 = Match.new(team_1_id: Team.find_by_name("Australia").id, team_2_id: Team.find_by_name("Netherlands").id, city: "Porto Alegre", stadium_id: nil, match_type: 0, date: "2014-06-18 11:30:00", score_board_id: s.id, match_number: 20 )
+m20.save
+
+m35 = Match.new(team_1_id: Team.find_by_name("Australia").id, team_2_id: Team.find_by_name("Spain").id, city: "Curitibia", stadium_id: nil, match_type: 0, date: "2014-06-23 11:30:00", score_board_id: s.id, match_number: 35 )
+m35.save
+
+m36 = Match.new(team_1_id: Team.find_by_name("Netherlands").id, team_2_id: Team.find_by_name("Chile").id, city: "Sao Paulo", stadium_id: nil, match_type: 0, date: "2014-06-23 11:30:00", score_board_id: s.id, match_number: 36 )
+m36.save
+
+g2.matches << m3
+g2.matches << m4
+g2.matches << m19
+g2.matches << m20
+g2.matches << m35
+g2.matches << m36 
 
 g3 =  Group.new( name: "C", first_place_team_id: 0, second_place_team_id: 0, tournament_id: t.id)
 g3.save
