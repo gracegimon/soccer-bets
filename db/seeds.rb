@@ -182,10 +182,27 @@ g3.teams << Team.find_by_name("Greece")
 g3.teams << Team.find_by_name("Japan")
 g3.save
 
-m4 = Match.new(team_1_id: Team.find_by_name("Colombia").id, team_2_id: Team.find_by_name("Greece").id, city: "Belo Horizonte", stadium_id: nil, match_type: 0, date: "2014-06-14 11:30:00", score_board_id: s.id, match_number: 5 )
-m4.save
+m5 = Match.new(team_1_id: Team.find_by_name("Colombia").id, team_2_id: Team.find_by_name("Greece").id, city: "Belo Horizonte", stadium_id: nil, match_type: 0, date: "2014-06-14 11:30:00", score_board_id: s.id, match_number: 5 )
+m5.save
+m6 = Match.new(team_1_id: Team.find_by_name("Côte d\'Ivoire"), team_2_id: Team.find_by_name("Japan").id, city: "Recife", stadium_id: nil, match_type: 0, date: "2014-06-14 20:30:00", score_board_id: s.id, match_number: 6 )
+m6.save
 
-g3.matches << m4
+m21 = Match.new(team_1_id: Team.find_by_name("Colombia").id, team_2_id: Team.find_by_name("Côte d\'Ivoire"), city: "Brasilia", stadium_id: nil, match_type: 0, date: "2014-06-19 11:30:00", score_board_id: s.id, match_number: 21 )
+m21.save
+m22 = Match.new(team_1_id: Team.find_by_name("Japan").id, team_2_id: Team.find_by_name("Greece").id, city: "Natal", stadium_id: nil, match_type: 0, date: "2014-06-19 17:30:00", score_board_id: s.id, match_number: 22 )
+m22.save
+
+m37 = Match.new(team_1_id: Team.find_by_name("Japan").id, team_2_id: Team.find_by_name("Colombia").id, city: "Cuiaba", stadium_id: nil, match_type: 0, date: "2014-06-24 15:30:00", score_board_id: s.id, match_number: 37 )
+m37.save
+m38 = Match.new(team_1_id: Team.find_by_name("Greece").id, team_2_id: Team.find_by_name("Côte d\'Ivoire"), city: "Fortaleza", stadium_id: nil, match_type: 0, date: "2014-06-24 15:30:00", score_board_id: s.id, match_number: 38 )
+m38.save
+
+g3.matches << m5
+g3.matches << m6
+g3.matches << m21
+g3.matches << m22
+g3.matches << m37
+g3.matches << m38
 
 g4 = Group.new( name: "D", first_place_team_id: 0, second_place_team_id: 0, tournament_id: t.id)
 g4.save
@@ -197,9 +214,27 @@ g4.save
 
 
 
-m5 = Match.new(team_1_id: Team.find_by_name("Uruguay").id, team_2_id: Team.find_by_name("Costa Rica").id, city: "Fortaleza", stadium_id: nil, match_type: 0, date: "2014-06-14 14:30:00", score_board_id: s.id, match_number: 7 )
-m5.save
-g4.matches << m5
+m7 = Match.new(team_1_id: Team.find_by_name("Uruguay").id, team_2_id: Team.find_by_name("Costa Rica").id, city: "Fortaleza", stadium_id: nil, match_type: 0, date: "2014-06-14 14:30:00", score_board_id: s.id, match_number: 7 )
+m7.save
+m8 = Match.new(team_1_id: Team.find_by_name("England").id, team_2_id: Team.find_by_name("Italy").id, city: "Manaus", stadium_id: nil, match_type: 0, date: "2014-06-14 17:30:00", score_board_id: s.id, match_number: 8 )
+m8.save
+
+m23 = Match.new(team_1_id: Team.find_by_name("Uruguay").id, team_2_id: Team.find_by_name("England").id, city: "Sao Paulo", stadium_id: nil, match_type: 0, date: "2014-06-19 14:30:00", score_board_id: s.id, match_number: 23 )
+m23.save
+m24 = Match.new(team_1_id: Team.find_by_name("Italy").id, team_2_id: Team.find_by_name("Costa Rica").id, city: "Recife", stadium_id: nil, match_type: 0, date: "2014-06-20 11:30:00", score_board_id: s.id, match_number: 24 )
+m24.save
+
+m39 = Match.new(team_1_id: Team.find_by_name("Italy").id, team_2_id: Team.find_by_name("Uruguay").id, city: "Natal", stadium_id: nil, match_type: 0, date: "2014-06-24 11:30:00", score_board_id: s.id, match_number: 39 )
+m39.save
+m40 = Match.new(team_1_id: Team.find_by_name("Costa Rica").id, team_2_id: Team.find_by_name("England").id, city: "Belo Horizonte", stadium_id: nil, match_type: 0, date: "2014-06-24 11:30:00", score_board_id: s.id, match_number: 40 )
+m40.save
+
+g4.matches << m7
+g4.matches << m8
+g4.matches << m23
+g4.matches << m24
+g4.matches << m39
+g4.matches << m40
 
 g5 = Group.new( name: "E", first_place_team_id: 0, second_place_team_id: 0, tournament_id: t.id)
 g5.save
@@ -209,11 +244,27 @@ g5.teams << Team.find_by_name("Honduras")
 g5.teams << Team.find_by_name("Switzerland")
 g5.save
 
-m6 = Match.new(team_1_id: Team.find_by_name("Switzerland").id, team_2_id: Team.find_by_name("Ecuador").id, city: "Brasilia", stadium_id: nil, match_type: 0, date: "2014-06-15 11:30:00", score_board_id: s.id, match_number: 9 )
-m6.save
+m9 = Match.new(team_1_id: Team.find_by_name("Switzerland").id, team_2_id: Team.find_by_name("Ecuador").id, city: "Brasilia", stadium_id: nil, match_type: 0, date: "2014-06-15 11:30:00", score_board_id: s.id, match_number: 9 )
+m9.save
+m10 = Match.new(team_1_id: Team.find_by_name("France").id, team_2_id: Team.find_by_name("Honduras").id, city: "Porto Alegre", stadium_id: nil, match_type: 0, date: "2014-06-15 14:30:00", score_board_id: s.id, match_number: 10 )
+m10.save
 
-g5.matches << m6
+m25 = Match.new(team_1_id: Team.find_by_name("Switzerland").id, team_2_id: Team.find_by_name("France").id, city: "Salvador", stadium_id: nil, match_type: 0, date: "2014-06-20 14:30:00", score_board_id: s.id, match_number: 25 )
+m25.save
+m26 = Match.new(team_1_id: Team.find_by_name("Honduras").id, team_2_id: Team.find_by_name("Ecuador").id, city: "Curitibia", stadium_id: nil, match_type: 0, date: "2014-06-20 17:30:00", score_board_id: s.id, match_number: 26 )
+m26.save
 
+m41 = Match.new(team_1_id: Team.find_by_name("Honduras").id, team_2_id: Team.find_by_name("Switzerland").id, city: "Manaus", stadium_id: nil, match_type: 0, date: "2014-06-25 15:30:00", score_board_id: s.id, match_number: 41 )
+m41.save
+m42 = Match.new(team_1_id: Team.find_by_name("Ecuador").id, team_2_id: Team.find_by_name("France").id, city: "Rio de Janeiro", stadium_id: nil, match_type: 0, date: "2014-06-25 15:30:00", score_board_id: s.id, match_number: 42 )
+m42.save
+
+g5.matches << m9
+g5.matches << m10
+g5.matches << m25
+g5.matches << m26
+g5.matches << m41
+g5.matches << m42
 
 g6 = Group.new( name: "F", first_place_team_id: 0, second_place_team_id: 0, tournament_id: t.id)
 g6.save
@@ -223,10 +274,28 @@ g6.teams << Team.find_by_name("Iran")
 g6.teams << Team.find_by_name("Nigeria")
 g6.save
 
-m7 = Match.new(team_1_id: Team.find_by_name("Argentina").id, team_2_id: Team.find_by_name("Bosnia and Herzegovina").id, city: "Rio de Janeiro", stadium_id: nil, match_type: 0, date: "2014-06-15 17:30:00", score_board_id: s.id, match_number: 11 )
-m7.save
+m11 = Match.new(team_1_id: Team.find_by_name("Argentina").id, team_2_id: Team.find_by_name("Bosnia and Herzegovina").id, city: "Rio de Janeiro", stadium_id: nil, match_type: 0, date: "2014-06-15 17:30:00", score_board_id: s.id, match_number: 11 )
+m11.save
+m12 = Match.new(team_1_id: Team.find_by_name("Iran").id, team_2_id: Team.find_by_name("Nigeria").id, city: "Curitibia", stadium_id: nil, match_type: 0, date: "2014-06-16 14:30:00", score_board_id: s.id, match_number: 12 )
+m12.save
 
-g6.matches << m7
+m27 = Match.new(team_1_id: Team.find_by_name("Argentina").id, team_2_id: Team.find_by_name("Iran").id, city: "Belo Horizonte", stadium_id: nil, match_type: 0, date: "2014-06-21 11:30:00", score_board_id: s.id, match_number: 27 )
+m27.save
+m28 = Match.new(team_1_id: Team.find_by_name("Nigeria").id, team_2_id: Team.find_by_name("Bosnia and Herzegovina").id, city: "Cuiaba", stadium_id: nil, match_type: 0, date: "2014-06-21 17:30:00", score_board_id: s.id, match_number: 28 )
+m28.save
+
+m43 = Match.new(team_1_id: Team.find_by_name("Nigeria").id, team_2_id: Team.find_by_name("Argentina").id, city: "Porto Alegre", stadium_id: nil, match_type: 0, date: "2014-06-25 11:30:00", score_board_id: s.id, match_number: 43 )
+m43.save
+m44 = Match.new(team_1_id: Team.find_by_name("Bosnia and Herzegovina").id, team_2_id: Team.find_by_name("Iran").id, city: "Salvador", stadium_id: nil, match_type: 0, date: "2014-06-25 11:30:00", score_board_id: s.id, match_number: 44 )
+m44.save
+
+
+g6.matches << m11
+g6.matches << m12
+g6.matches << m27
+g6.matches << m28
+g6.matches << m43
+g6.matches << m44
 
 g7 = Group.new( name: "G", first_place_team_id: 0, second_place_team_id: 0, tournament_id: t.id)
 g7.save
@@ -236,10 +305,27 @@ g7.teams << Team.find_by_name("Portugal")
 g7.teams << Team.find_by_name("USA")
 g7.save
 
-m8 = Match.new(team_1_id: Team.find_by_name("Germany").id, team_2_id: Team.find_by_name("Portugal").id, city: "Salvador", stadium_id: nil, match_type: 0, date: "2014-06-16 11:30:00", score_board_id: s.id, match_number: 13 )
-m8.save
+m13 = Match.new(team_1_id: Team.find_by_name("Germany").id, team_2_id: Team.find_by_name("Portugal").id, city: "Salvador", stadium_id: nil, match_type: 0, date: "2014-06-16 11:30:00", score_board_id: s.id, match_number: 13 )
+m13.save
+m14 = Match.new(team_1_id: Team.find_by_name("Ghana").id, team_2_id: Team.find_by_name("USA").id, city: "Natal", stadium_id: nil, match_type: 0, date: "2014-06-16 17:30:00", score_board_id: s.id, match_number: 14 )
+m14.save
 
-g7.matches << m8
+m29 = Match.new(team_1_id: Team.find_by_name("Germany").id, team_2_id: Team.find_by_name("Ghana").id, city: "Fortaleza", stadium_id: nil, match_type: 0, date: "2014-06-21 14:30:00", score_board_id: s.id, match_number: 29 )
+m29.save
+m30 = Match.new(team_1_id: Team.find_by_name("USA").id, team_2_id: Team.find_by_name("Portugal").id, city: "Manaus", stadium_id: nil, match_type: 0, date: "2014-06-22 17:30:00", score_board_id: s.id, match_number: 30 )
+m30.save
+
+m45 = Match.new(team_1_id: Team.find_by_name("USA").id, team_2_id: Team.find_by_name("Germany").id, city: "Recife", stadium_id: nil, match_type: 0, date: "2014-06-26 11:30:00", score_board_id: s.id, match_number: 45 )
+m45.save
+m46 = Match.new(team_1_id: Team.find_by_name("Portugal").id, team_2_id: Team.find_by_name("Ghana").id, city: "Brasilia", stadium_id: nil, match_type: 0, date: "2014-06-26 11:30:00", score_board_id: s.id, match_number: 46 )
+m46.save
+
+g7.matches << m13
+g7.matches << m14
+g7.matches << m29
+g7.matches << m30
+g7.matches << m45
+g7.matches << m46
 
 g8 = Group.new( name: "H", first_place_team_id: 0, second_place_team_id: 0, tournament_id: t.id)
 g8.save
@@ -249,9 +335,26 @@ g8.teams << Team.find_by_name("Korea Republic")
 g8.teams << Team.find_by_name("Russia")
 g8.save
 
-m9 = Match.new(team_1_id: Team.find_by_name("Belgium").id, team_2_id: Team.find_by_name("Algeria").id, city: "Belo Horizonte", stadium_id: nil, match_type: 0, date: "2014-06-17 11:30:00", score_board_id: s.id, match_number: 15 )
-m9.save
+m15 = Match.new(team_1_id: Team.find_by_name("Belgium").id, team_2_id: Team.find_by_name("Algeria").id, city: "Belo Horizonte", stadium_id: nil, match_type: 0, date: "2014-06-17 11:30:00", score_board_id: s.id, match_number: 15 )
+m15.save
+m16 = Match.new(team_1_id: Team.find_by_name("Russia").id, team_2_id: Team.find_by_name("Korea Republic").id, city: "Cuiaba", stadium_id: nil, match_type: 0, date: "2014-06-17 17:30:00", score_board_id: s.id, match_number: 16 )
+m16.save
 
-g8.matches << m9
+m31 = Match.new(team_1_id: Team.find_by_name("Belgium").id, team_2_id: Team.find_by_name("Russia").id, city: "Rio de Janeiro", stadium_id: nil, match_type: 0, date: "2014-06-22 11:30:00", score_board_id: s.id, match_number: 31 )
+m31.save
+m32 = Match.new(team_1_id: Team.find_by_name("Korea Republic").id, team_2_id: Team.find_by_name("Algeria").id, city: "Porto Alegre", stadium_id: nil, match_type: 0, date: "2014-06-22 14:30:00", score_board_id: s.id, match_number: 32 )
+m32.save
+
+m47 = Match.new(team_1_id: Team.find_by_name("Korea Republic").id, team_2_id: Team.find_by_name("Belgium").id, city: "Sao Paulo", stadium_id: nil, match_type: 0, date: "2014-06-26 15:30:00", score_board_id: s.id, match_number: 47 )
+m47.save
+m48 = Match.new(team_1_id: Team.find_by_name("Algeria").id, team_2_id: Team.find_by_name("Russia").id, city: "Curitibia", stadium_id: nil, match_type: 0, date: "2014-06-26 15:30:00", score_board_id: s.id, match_number: 48 )
+m48.save
+
+g8.matches << m15
+g8.matches << m16
+g8.matches << m31
+g8.matches << m32
+g8.matches << m47
+g8.matches << m48
 
 s.create_team_stats
