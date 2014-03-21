@@ -51,7 +51,7 @@ country_teams = [
 		country_ab: 'IRN'},
 	{name: "Italy", flag: "http://img.fifa.com/imgml/flags/reflected/m/ita.png",
 		country_ab: 'ITA'},
-	{name: "Japan", flag: "http://img.fifa.com/imgml/flags/reflected/m/jap.png",
+	{name: "Japan", flag: "http://www.fifa.com/imgml/flags/reflected/m/JPN.png",
 		country_ab: 'JAP'},
 	{name: "Korea Republic", flag: "http://img.fifa.com/imgml/flags/reflected/m/kor.png",
 		country_ab: 'KOR'},
@@ -184,17 +184,17 @@ g3.save
 
 m5 = Match.new(team_1_id: Team.find_by_name("Colombia").id, team_2_id: Team.find_by_name("Greece").id, city: "Belo Horizonte", stadium_id: nil, match_type: 0, date: "2014-06-14 11:30:00", score_board_id: s.id, match_number: 5 )
 m5.save
-m6 = Match.new(team_1_id: Team.find_by_name("Côte d\'Ivoire"), team_2_id: Team.find_by_name("Japan").id, city: "Recife", stadium_id: nil, match_type: 0, date: "2014-06-14 20:30:00", score_board_id: s.id, match_number: 6 )
+m6 = Match.new(team_1_id: Team.find_by_name("Côte d\'Ivoire").id, team_2_id: Team.find_by_name("Japan").id, city: "Recife", stadium_id: nil, match_type: 0, date: "2014-06-14 20:30:00", score_board_id: s.id, match_number: 6 )
 m6.save
 
-m21 = Match.new(team_1_id: Team.find_by_name("Colombia").id, team_2_id: Team.find_by_name("Côte d\'Ivoire"), city: "Brasilia", stadium_id: nil, match_type: 0, date: "2014-06-19 11:30:00", score_board_id: s.id, match_number: 21 )
+m21 = Match.new(team_1_id: Team.find_by_name("Colombia").id, team_2_id: Team.find_by_name("Côte d\'Ivoire").id, city: "Brasilia", stadium_id: nil, match_type: 0, date: "2014-06-19 11:30:00", score_board_id: s.id, match_number: 21 )
 m21.save
 m22 = Match.new(team_1_id: Team.find_by_name("Japan").id, team_2_id: Team.find_by_name("Greece").id, city: "Natal", stadium_id: nil, match_type: 0, date: "2014-06-19 17:30:00", score_board_id: s.id, match_number: 22 )
 m22.save
 
 m37 = Match.new(team_1_id: Team.find_by_name("Japan").id, team_2_id: Team.find_by_name("Colombia").id, city: "Cuiaba", stadium_id: nil, match_type: 0, date: "2014-06-24 15:30:00", score_board_id: s.id, match_number: 37 )
 m37.save
-m38 = Match.new(team_1_id: Team.find_by_name("Greece").id, team_2_id: Team.find_by_name("Côte d\'Ivoire"), city: "Fortaleza", stadium_id: nil, match_type: 0, date: "2014-06-24 15:30:00", score_board_id: s.id, match_number: 38 )
+m38 = Match.new(team_1_id: Team.find_by_name("Greece").id, team_2_id: Team.find_by_name("Côte d\'Ivoire").id, city: "Fortaleza", stadium_id: nil, match_type: 0, date: "2014-06-24 15:30:00", score_board_id: s.id, match_number: 38 )
 m38.save
 
 g3.matches << m5
