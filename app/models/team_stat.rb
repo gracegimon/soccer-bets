@@ -107,5 +107,13 @@ class TeamStat < ActiveRecord::Base
     self.goals_favor - self.goals_aggainst
   end
 
+  # points are equal, diff is equal and goals favor
+  # is equal 
+  def same_position_as(team_stat_1)
+    return ( (self.points == team_stat_1.points) &&
+              (self.diff == team_stat_1.diff) && (self.goals_favor == team_stat_1.goals_favor) )  
+
+  end
+
 end
  

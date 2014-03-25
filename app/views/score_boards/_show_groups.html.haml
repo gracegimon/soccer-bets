@@ -60,8 +60,15 @@
               %th PTS
               %th
             %tbody
-              - g.teams.each do |t|
+              - g.teams.each_with_index do |t, index|
                 - ts = t.team_stats.where(score_board_id: @score_board.id).first
+                - check = false
+                - if ts.position != 0
+                  - g.teams.each do |t1|
+                    - t1s = t1.team_stats.where(score_board_id: @score_board.id).first
+                    - unless t1s == ts
+                      - if ts.same_position_as(t1s)
+                        - check = true
                 %tr
                   %td= t.name
                   %td{id: t.id.to_s + "J"}= ts.played_games
@@ -73,6 +80,9 @@
                   %td{id: t.id.to_s + 'DIF'}= ts.goals_favor - ts.goals_aggainst
                   %td{id: t.id.to_s + 'PTS'}= ts.points
                   %td{id: t.id.to_s + 'LD'}= ts.final_position
+                  - if check
+                    %td{id: t.id.to_s + 'final'}
+                      %input{type: 'radio', name: "team_s_radio_#{g.id}"}
 
 - if is_main
   = link_to finish_phase_score_board_path(@score_board, :phase => Match::R16_MAIN), remote: true do

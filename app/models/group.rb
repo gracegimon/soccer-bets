@@ -58,21 +58,28 @@ class Group < ActiveRecord::Base
     set_leader(team_stats[2], team_stats[3])
   end
 
+  # Condition that must be met to create a custom
+  # leadership
+
+  # points are equal, diff is equal and goals favor
+  # is equal 
+
+
   # Compares TeamStats
   def set_leader(leader_1, leader_2)
     if leader_1.points > leader_2.points
       return [leader_1.team, leader_2.team]
     elsif leader_1.points == leader_2.points
-      if leader_1.diff > leader_2.diff
+      if leader_1.diff > leader_2.diff # GOAL DIFF
         return [leader_1.team, leader_2.team]
       elsif leader_1.diff == leader_2.diff
-        if leader_1.goals_favor > leader_2.goals_favor
+        if leader_1.goals_favor > leader_2.goals_favor # GOAL FAVOR
           return [leader_1.team, leader_2.team]
-        else
+        else 
           return [leader_2.team, leader_1.team]
         end
       else
-        return [leader_2.team, leader_1.team]
+        return [leader_2.team, leader_1.team] 
       end
     else
       return [leader_2.team, leader_1.team]
