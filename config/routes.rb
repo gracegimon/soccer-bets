@@ -40,7 +40,7 @@ Quiniela::Application.routes.draw do
   end
 
   resources :team_stats do
-    get "change_position", to: "team_stats#change_position"
+    post "change_position", to: "team_stats#change_position"
   end
 
   resources :extra_phases do

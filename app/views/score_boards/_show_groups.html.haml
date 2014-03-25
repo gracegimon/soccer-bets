@@ -82,7 +82,7 @@
                   %td{id: t.id.to_s + 'LD'}= ts.final_position
                   - if check
                     %td{id: t.id.to_s + 'final'}
-                      %input.checkbox-team-stat{type: 'checkbox', class: "team-s-#{g.id}"}
+                      %input.checkbox-team-stat{type: 'checkbox', class: "team-s-#{g.id}", "data-id" => ts.id, "data-order-number" => "0"}
 
 - if is_main
   = link_to finish_phase_score_board_path(@score_board, :phase => Match::R16_MAIN), remote: true do
@@ -92,10 +92,19 @@
 
   :coffeescript
     jQuery(".checkbox-team-stat").on 'change', ->
-        console.log("Entreee")
-        scores = $(this).siblings().find('.score-board')[0]
-        console.log("scores "+ scores)
-        scores.click()
+      console.log("Entreee")
+      team_stat_id = $(this).data("id")
+      order_number = $(this).data("order-number")
+      $(this).data("order-number", parseInt( order_number, 10 ) + 1)
+      console.log team_stat_id
+      url = '/team_stats/'+team_stat_id+'/change_position'
+      data = {id: team_stat_id, order_number: order_number}
+
+      jQuery.ajax(
+        type: "POST",
+        url: url,
+        data: data
+      )
     jQuery(".js-save-group").click ->
       console.log "Pressed"
       scores = jQuery(this).parent().siblings().find("form")
