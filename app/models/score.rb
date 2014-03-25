@@ -52,7 +52,7 @@ class Score < ActiveRecord::Base
     team_s_1.save
     team_s_2.save
     team_s_3 = bottom.first.team_stats.for_scoreboard(self.score_board)
-    team_s_4 = bottom.first.team_stats.for_scoreboard(self.score_board)
+    team_s_4 = bottom.second.team_stats.for_scoreboard(self.score_board)
     team_s_3.set_position(3)
     team_s_3.save
     team_s_4.set_position(4)
