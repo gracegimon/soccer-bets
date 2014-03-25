@@ -39,6 +39,9 @@ Quiniela::Application.routes.draw do
 
   end
 
+  resources :team_stats do
+    get "change_position", to: "team_stats#change_position"
+  end
 
   resources :extra_phases do
     get "teams", to: "extra_phases#get_teams", on: :member

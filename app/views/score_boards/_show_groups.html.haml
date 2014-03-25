@@ -82,7 +82,7 @@
                   %td{id: t.id.to_s + 'LD'}= ts.final_position
                   - if check
                     %td{id: t.id.to_s + 'final'}
-                      %input{type: 'radio', name: "team_s_radio_#{g.id}"}
+                      %input.checkbox-team-stat{type: 'checkbox', class: "team-s-#{g.id}"}
 
 - if is_main
   = link_to finish_phase_score_board_path(@score_board, :phase => Match::R16_MAIN), remote: true do
@@ -91,6 +91,11 @@
 - content_for(:javascript) do
 
   :coffeescript
+    jQuery(".checkbox-team-stat").on 'change', ->
+        console.log("Entreee")
+        scores = $(this).siblings().find('.score-board')[0]
+        console.log("scores "+ scores)
+        scores.click()
     jQuery(".js-save-group").click ->
       console.log "Pressed"
       scores = jQuery(this).parent().siblings().find("form")
