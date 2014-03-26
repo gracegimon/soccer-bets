@@ -467,6 +467,16 @@ def status
     return "Activa"
   elsif self.is_published
     return "Publicada: Esperando para ser activada por Administrador"
+  else
+    return "No finalizada"
+  end
+end
+
+def type
+  if self.board_type == 0
+      return "General"
+  else
+      return "High Roller"
   end
 end
 
