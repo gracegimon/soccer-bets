@@ -5,6 +5,11 @@ class ScoresController < ApplicationController
     if score_exists(@score).empty?
       if @score.valid?
         @score.save
+        @teams = @score.return_remaining_teams
+        @team_1 = @teams[0]
+        @team_2 = @teams[1]
+        @team_3 = @teams[2]
+        @team_4 = @teams[3]
         flash[:notice] = "It was saved"
       else
         flash[:error] = "Something unexpected happened"
@@ -12,6 +17,11 @@ class ScoresController < ApplicationController
     else
       @score = score_exists(@score).first
       if @score.update_attributes(score_params)
+        @teams = @score.return_remaining_teams
+        @team_1 = @teams[0]
+        @team_2 = @teams[1]
+        @team_3 = @teams[2]
+        @team_4 = @teams[3]
         flash[:notice] = "Good"
       end
     end
@@ -20,6 +30,11 @@ class ScoresController < ApplicationController
   def update
     @score = Score.find(params[:id]) unless params[:id].nil?
     if @score.update_attributes(score_params)
+      @teams = @score.return_remaining_teams
+      @team_1 = @teams[0]
+      @team_2 = @teams[1]
+      @team_3 = @teams[2]
+      @team_4 = @teams[3]
       flash[:notice] = "Good"
     end
   end

@@ -229,5 +229,9 @@ class Score < ActiveRecord::Base
     return third
   end
 
+  def return_remaining_teams
+    group = self.match.team_1.group.group
+    return group.teams
+  end
 end
 

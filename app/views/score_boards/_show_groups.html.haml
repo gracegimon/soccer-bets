@@ -59,6 +59,7 @@
               %th DIF
               %th PTS
               %th
+              %th POS
             %tbody
               - g.teams.each_with_index do |t, index|
                 - ts = t.team_stats.where(score_board_id: @score_board.id).first
@@ -82,7 +83,10 @@
                   %td{id: t.id.to_s + 'LD'}= ts.final_position
                   - if check
                     %td{id: t.id.to_s + 'final'}
-                      %input.checkbox-team-stat{type: 'checkbox', class: "team-s-#{g.id}", "data-id" => ts.id, "data-order-number" => "0"}
+                      %input.col-xs-4.checkbox-team-stat{type: 'text', class: "team-s-#{g.id}", "data-id" => ts.id, "data-order-number" => "0"}
+                      .status-input
+          .positions-equal
+            %p Nota: Refrescar la página de haber empate en posiciones
 
 - if is_main
   = link_to finish_phase_score_board_path(@score_board, :phase => Match::R16_MAIN), remote: true do
@@ -94,17 +98,24 @@
     jQuery(".checkbox-team-stat").on 'change', ->
       console.log("Entreee")
       team_stat_id = $(this).data("id")
-      order_number = $(this).data("order-number")
-      $(this).data("order-number", parseInt( order_number, 10 ) + 1)
-      console.log team_stat_id
-      url = '/team_stats/'+team_stat_id+'/change_position'
-      data = {id: team_stat_id, order_number: order_number}
+      value = $(this).val()
+      val = parseInt(value,10)
+      if val not in [1...4]
+        console.log "Not valid"
+        $(this).addClass("has-error-border")
+        $(this).siblings().html("<p class='alert-error-text'> Posiciones son del 1 al 4 </p>")
+      else
+        console.log team_stat_id
+        url = '/team_stats/'+team_stat_id+'/change_position'
+        data = {id: team_stat_id, value: value}
 
-      jQuery.ajax(
-        type: "POST",
-        url: url,
-        data: data
-      )
+        jQuery.ajax(
+          type: "POST",
+          url: url,
+          data: data
+        )
+        $(this).removeClass("has-error-border")
+        $(this).siblings().html("<p class= 'alert-success-text'> Guardado </p>")
     jQuery(".js-save-group").click ->
       console.log "Pressed"
       scores = jQuery(this).parent().siblings().find("form")

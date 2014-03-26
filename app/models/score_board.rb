@@ -441,7 +441,6 @@ class ScoreBoard < ActiveRecord::Base
 
   def update_points(type)
     count = self.number_of_same_teams(type)
-    binding.pry
     if type == Match::R16_MAIN
       self.points += count * 4
     elsif type == Match::QUARTER_MAIN
