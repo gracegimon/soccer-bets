@@ -29,14 +29,30 @@
       .span3.team-2-name
         %p= m.team_2.name
         = image_tag team_2.flag
-  - if !@is_main
-    .row.span11
-      %button.btn.btn-success{class: "js-save-semi"}
+  .row.span11
+    - if !@is_main
+      %button.btn.btn-success{class: "js-save-semi", style: "float: right"}        
         Guardar
+  .row.span10.loader-row
+    .loader-position{style: "float: right;"}
 
 :coffeescript
   jQuery(document).ready ->
     jQuery(".js-save-semi").click ->
       scores = jQuery(".scores-semi")
+      jQuery(this).parent().siblings().find(".loader-position").html("#{escape_javascript render 'shared/loader'}")
       scores.each ->
+        $(this).closest("form").validate rules:
+          'score[team_1_goals]':
+            required: true
+            min: 0
+            isTie:
+              param: 2
+          'score[team_2_goals]':
+            required: true
+            min: 0
+            isTie:
+              param: 1 
+        $(this).closest("form").bind "ajax:complete", ->
+          jQuery(".loader-position").empty()
         $(this).click()

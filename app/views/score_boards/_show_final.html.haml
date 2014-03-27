@@ -58,11 +58,13 @@
           = f.submit "Guardar", class: "scores-final btn btn-success"
     .span3.team-2-name
       %p= third.team_2.name
-      = image_tag team_2.flag        
-  - if !@is_main
-    .row.span11
-      %button.btn.btn-success{class: "js-save-final"}
+      = image_tag team_2.flag
+  .row.span11              
+    - if !@is_main
+      %button.btn.btn-success{class: "js-save-final", style: "float: right"}
         Guardar
+  .row.span10.loader-row
+    .loader-position{style: "float: right;"}
   .row.span11
     = form_for @score_board do |f|
       = f.hidden_field :is_published, value: true
@@ -71,6 +73,20 @@
 :coffeescript
   jQuery(document).ready ->
     jQuery(".js-save-final").click ->
+      jQuery(this).parent().siblings().find(".loader-position").html("#{escape_javascript render 'shared/loader'}")
       scores = jQuery(".scores-final")
       scores.each ->
+        $(this).closest("form").validate rules:
+          'score[team_1_goals]':
+            required: true
+            min: 0
+            isTie:
+              param: 2
+          'score[team_2_goals]':
+            required: true
+            min: 0
+            isTie:
+              param: 1 
+        $(this).closest("form").bind "ajax:complete", ->
+          jQuery(".loader-position").empty()
         $(this).click()

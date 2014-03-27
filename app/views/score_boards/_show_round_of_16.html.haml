@@ -51,12 +51,12 @@
             required: true
             min: 0
             isTie:
-              param: $("[name='score[team_2_goals]']").val()
+              param: 2
           'score[team_2_goals]':
             required: true
             min: 0
             isTie:
-              param: $("[name='score[team_1_goals]']").val()
+              param: 1
         $(this).closest("form").bind "ajax:complete", ->
           jQuery(".loader-position").empty()
         $(this).click()
