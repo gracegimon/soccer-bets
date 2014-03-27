@@ -37,12 +37,14 @@
       = link_to finish_phase_score_board_path(@score_board, :phase => Match::QUARTER_MAIN), remote: true do
         %button.btn.btn-success{style: "float:right;"}
           Terminar etapa
-
+  .row.span10{style: "position: relative; left: 10px; bottom: 32px;"}
+    .loader-position{style: "float: right;"}
 
 :coffeescript
   jQuery(document).ready ->
     jQuery(".js-save-round").click ->
       scores = jQuery(".scores-round")
+      jQuery(this).parent().siblings().find(".loader-position").html("#{escape_javascript render 'shared/loader'}")     
       scores.each ->
         $(this).closest("form").validate rules:
           'score[team_1_goals]':
@@ -51,5 +53,7 @@
           'score[team_2_goals]':
             required: true
             min: 0
+        $(this).closest("form").bind "ajax:complete", ->
+          jQuery(".loader-position").empty()
         $(this).click()
 
