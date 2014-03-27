@@ -37,7 +37,7 @@
       = link_to finish_phase_score_board_path(@score_board, :phase => Match::QUARTER_MAIN), remote: true do
         %button.btn.btn-success{style: "float:right;"}
           Terminar etapa
-  .row.span10{style: "position: relative; left: 10px; bottom: 32px;"}
+  .row.span10.loader-row
     .loader-position{style: "float: right;"}
 
 :coffeescript
@@ -50,9 +50,13 @@
           'score[team_1_goals]':
             required: true
             min: 0
+            isTie:
+              param: $("[name='score[team_2_goals]']").val()
           'score[team_2_goals]':
             required: true
             min: 0
+            isTie:
+              param: $("[name='score[team_1_goals]']").val()
         $(this).closest("form").bind "ajax:complete", ->
           jQuery(".loader-position").empty()
         $(this).click()
