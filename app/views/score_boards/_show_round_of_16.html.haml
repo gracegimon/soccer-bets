@@ -44,5 +44,12 @@
     jQuery(".js-save-round").click ->
       scores = jQuery(".scores-round")
       scores.each ->
+        $(this).closest("form").validate rules:
+          'score[team_1_goals]':
+            required: true
+            min: 0
+          'score[team_2_goals]':
+            required: true
+            min: 0
         $(this).click()
 
