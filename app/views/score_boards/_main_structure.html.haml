@@ -34,16 +34,20 @@
   
     jQuery('#tabs-r16').click ->
      # Get the URL for the action thats going to be executed when clicked this tab
+     jQuery('#tabs-2').html("#{escape_javascript render 'shared/loader'}")
      jQuery.get('#{show_round_of_16_score_board_path(@score_board)}')
 
     jQuery("#tabs-quarter").click ->
-     # Get the URL for the action thats going to be executed when clicked this tab
-     jQuery.get('#{show_quarter_finals_score_board_path(@score_board)}')
+      jQuery('#tabs-3').html("#{escape_javascript render 'shared/loader'}")
+      # Get the URL for the action thats going to be executed when clicked this tab
+      jQuery.get('#{show_quarter_finals_score_board_path(@score_board)}')
 
     jQuery("#tabs-semi").click ->
-     # Get the URL for the action thats going to be executed when clicked this tab
-     jQuery.get('#{show_semi_finals_score_board_path(@score_board)}')
+      jQuery('#tabs-4').html("#{escape_javascript render 'shared/loader'}")
+      # Get the URL for the action thats going to be executed when clicked this tab
+      jQuery.get('#{show_semi_finals_score_board_path(@score_board)}')
 
     jQuery("#tabs-final").click ->
-     # Get the URL for the action thats going to be executed when clicked this tab
-     jQuery.get('#{show_finals_score_board_path(@score_board)}')  
+      jQuery('#tabs-5').html("#{escape_javascript render 'shared/loader'}")
+      # Get the URL for the action thats going to be executed when clicked this tab
+      jQuery.get('#{show_finals_score_board_path(@score_board)}')  
