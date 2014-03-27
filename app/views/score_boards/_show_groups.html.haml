@@ -45,6 +45,8 @@
             - if !is_main
               %button.btn.btn-success{class: "js-save-group"}
                 Guardar
+          .row.span3
+            .loader-position
             
         .span5
           %table.table{style: "float:right"}
@@ -119,7 +121,8 @@
     jQuery(".js-save-group").click ->
       console.log "Pressed"
       scores = jQuery(this).parent().siblings().find("form")
-
+      console.log (jQuery(this).parent().siblings().find(".loader-position"))
+      jQuery(this).parent().siblings().find(".loader-position").html("#{escape_javascript render 'shared/loader'}")
       scores.each (index) ->
         console.log "Verifico cada score"
         $(this).validate rules:
@@ -130,3 +133,5 @@
             required: true
             min: 0
         $(this).submit()
+        $(this).bind "ajax:complete", ->
+          jQuery(".loader-position").empty()
