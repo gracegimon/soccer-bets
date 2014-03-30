@@ -14,13 +14,14 @@
       .span12
         %h3 Primer equipo con tarjeta roja
         .span3
-          = f.text_field :red_card_team_id, id: "red-card"
+          %input#red-card-label{type: 'text'}
+          = f.hidden_field :red_card_team_id, id: "red-card", value: ""
         .span6
           = image_tag "red-card.gif", size: "50x70"           
       .span12
         %h3 Primer equipo con penal
         .span3
-          = f.text_field :penal_team_id
+          = f.text_field :penal_team_id, id: "penal"
         .span6
           = image_tag "penal.png", size: "100x100"           
       = f.hidden_field :score_board_id, value: @score_board.id
@@ -33,6 +34,11 @@
     $(document).ready ->
       tags = ["hola", "bien"]
       console.log "I'm in extra"
-      $("#red-card").autocomplete(
+      $("#red-card-label").autocomplete(
+        source: "#{teams_extra_phase_path}"
+        select: (event, ui) ->
+          $( "#red-card" ).val( ui.item.id );
+      )
+      $("#penal").autocomplete(
         source: tags
       )

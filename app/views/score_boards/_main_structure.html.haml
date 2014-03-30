@@ -9,8 +9,8 @@
     %a{:href => "#tabs-4", "data-toggle" => "tab", "id" => "tabs-semi"}="Semifinal"
   %li
     %a{:href => "#tabs-5", "data-toggle" => "tab", "id" => "tabs-final"}="3er puesto y Final"
-  / %li
-  /   %a{:href => "#tabs-6", "data-toggle" => "tab", "id" => "tabs-final"}="Extra"
+  %li
+    %a{:href => "#tabs-6", "data-toggle" => "tab", "id" => "tabs-final"}="Extra"
 
 
 
@@ -27,8 +27,8 @@
     %p Por favor, rellene todos los resultados de los cuartos de final
   #tabs-5.tab-pane
     %p Por favor, rellene todos los resultados de semifinales
-  / #tabs-6.tab-pane
-  /   = render "score_boards/extra", is_main: false  
+  #tabs-6.tab-pane
+    = render "score_boards/extra", is_main: false  
 - content_for(:javascript) do
   :coffeescript
   
