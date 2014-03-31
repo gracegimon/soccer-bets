@@ -45,6 +45,7 @@ Quiniela::Application.routes.draw do
 
   resources :extra_phases do
     get "teams", to: "extra_phases#get_teams", on: :member
+    get "players", to: "extra_phases#get_players", on: :member
   end
 
   resources :scores do

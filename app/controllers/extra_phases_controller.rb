@@ -27,6 +27,15 @@ class ExtraPhasesController < ApplicationController
   	render json: result.to_json
   end
 
+  def get_players
+    @players = Player.where("name LIKE :prefix", prefix: "%#{params[:term].camelcase}%")
+    result = []
+    @players.each do |player|
+      result << {label: "#{player.name} #{player.team.name}", id: player.id}
+    end
+    render json: result.to_json
+  end
+
   private
 
   def extra_phase_params

@@ -8,7 +8,8 @@
       .span12
         %h3 Mejor goleador
         .span3
-          = f.text_field :best_player_id
+          %input#player-label{type: "text", value: "#{@extra.best_player.name unless @extra.best_player_id.nil?}"}
+          = f.hidden_field :best_player_id, id: "player", value: "" 
         .span6
           = image_tag "Soccer-Ball.png", size: "50x50"      
       .span12
@@ -43,6 +44,11 @@
         source: "#{teams_extra_phase_path}"
         select: (event, ui) ->
           $("#penal" ).val( ui.item.id );
+      )
+      $("#player-label").autocomplete(
+        source: "#{players_extra_phase_path}"
+        select: (event, ui) ->
+          $("#player" ).val( ui.item.id );
       )
       $("#extra-button").on "click", ->
         $("#penal-label").removeClass("has-error-border")

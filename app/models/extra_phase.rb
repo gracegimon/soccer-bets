@@ -8,4 +8,9 @@ class ExtraPhase < ActiveRecord::Base
   def red_card_team
   	Team.find(self.red_card_team_id)
   end
+
+  def best_player
+  	Player.find(self.best_player_id)
+  end
+
 end
