@@ -13,6 +13,11 @@ class ExtraPhasesController < ApplicationController
     end
   end
 
+  def update
+    @extra_phase = ExtraPhase.find(params[:id])
+    @extra_phase.update_attributes(extra_phase_params)
+  end
+
   def get_teams
   	@teams = Team.where("name LIKE :prefix", prefix: "#{params[:term].camelcase}%") 
     result = []

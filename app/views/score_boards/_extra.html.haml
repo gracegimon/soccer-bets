@@ -14,15 +14,15 @@
       .span12
         %h3 Primer equipo con tarjeta roja
         .span3
-          %input#red-card-label{type: 'text'}
-          = f.hidden_field :red_card_team_id, required: true, id: "red-card", value: ""
+          %input#red-card-label{type: 'text', value: "#{@extra.red_card_team.name unless @extra.red_card_team_id.nil?}"}
+          = f.hidden_field :red_card_team_id, required: true, id: "red-card", value: "#{@extra.red_card_team_id}"
         .span6
           = image_tag "red-card.gif", size: "50x70"           
       .span12
         %h3 Primer equipo con penal
         .span3
-          %input#penal-label{type: 'text'}
-          = f.hidden_field :penal_team_id, required: true, id: "penal", value: ""
+          %input#penal-label{type: 'text', value: "#{@extra.penal_team.name unless @extra.penal_team_id.nil?}"}
+          = f.hidden_field :penal_team_id, required: true, id: "penal", value: "#{@extra.penal_team_id}"
         .span6
           = image_tag "penal.png", size: "100x100"           
       = f.hidden_field :score_board_id, value: @score_board.id
@@ -49,6 +49,7 @@
         $("#red-card-label").removeClass("has-error-border")
         $("#penal-label").parent().find("label").empty()
         $("#red-card-label").parent().find("label").empty()
+        console.log($("#penal").val())
         if $("#penal").val() == ""
           console.log "It's empty"
           $("#penal-label").addClass("has-error-border")
