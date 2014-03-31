@@ -1,0 +1,19 @@
+﻿#,Pos.,Player,Date of birth
+1,GK,Asmir Begović,20 June 1987
+12,GK,Jasmin Fejzić,15 May 1986
+2,DF,Avdija Vršajević,6 March 1986
+3,DF,Ermin Bičakčić,24 January 1990
+4,DF,Emir Spahić (C),18 August 1980
+5,DF,Sead Kolašinac,20 June 1993
+23,DF,Toni Šunjić,15 December 1988
+8,MF,Miralem Pjanić,2 April 1990
+10,MF,Zvjezdan Misimović ,5 June 1982
+13,MF,Zoran Kvržić,7 August 1988
+14,MF,Adnan Zahirović,23 March 1990
+15,MF,Sejad Salihović,8 October 1984
+17,MF,Senijad Ibričić,26 September 1985
+18,MF,Haris Medunjanin,8 March 1985
+19,MF,Edin Višća,17 February 1990
+20,MF,Izet Hajrović,4 August 1991
+9,FW,Vedad Ibišević,6 August 1984
+11,FW,Edin Džeko ,17 March 1986 

@@ -1,0 +1,24 @@
+﻿#,Pos.,Player,Date of birth
+12,GK,René Adler,15 January 1985
+22,GK,Roman Weidenfeller,6 August 1980
+3,DF,Marcel Schmelzer,22 January 1988
+4,DF,Benedikt Höwedes,29 February 1988
+5,DF,Mats Hummels,16 December 1988
+16,DF,Philipp Lahm (C),11 November 1983
+7,DF,Marcell Jansen,4 November 1985
+17,DF,Per Mertesacker,29 September 1984
+20,DF,Jérôme Boateng,3 September 1988
+23,DF,Heiko Westermann,14 August 1983
+2,MF,Sven Bender,27 April 1989
+8,MF,Bastian Schweinsteiger,1 August 1984
+9,MF,André Schürrle,6 November 1990
+10,MF,Julian Draxler,20 September 1993
+11,MF,Mesut Özil,15 October 1988
+13,MF,Thomas Müller,13 September 1989
+15,MF,Lars Bender,27 April 1989
+6,MF,Sami Khedira,4 April 1987
+18,MF,Toni Kroos,4 January 1990
+19,MF,Mario Götze,3 June 1992
+21,MF,Marco Reus,31 May 1989
+24,MF,Sidney Sam,31 January 1988
+14,FW,Max Kruse,19 March 1988 

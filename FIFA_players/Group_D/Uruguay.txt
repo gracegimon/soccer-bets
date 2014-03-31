@@ -1,0 +1,25 @@
+﻿#,Pos.,Player,Date of birth
+12,GK,Juan Castillo,April 17 1978
+1,GK,Martín Silva,March 25 1983
+23,GK,Rodrigo Muñoz,January 22 1982
+2,DF,Diego Lugano (C),November 2 1980
+16,DF,Maxi Pereira,June 8 1984
+3,DF,Diego Godín,February 16 1986
+22,DF,Martín Cáceres,April 7 1987
+19,DF,Andrés Scotti,December 14 1975
+4,DF,Jorge Fucile,November 19 1984
+5,DF,José María Giménez,January 20 1995
+24,DF,Alejandro Silva,September 4 1989
+15,MF,Diego Pérez,May 18 1980
+7,MF,Cristian Rodríguez,September 30 1985
+8,MF,Walter Gargano,July 23 1984
+6,MF,Álvaro Pereira,November 28 1985
+17,MF,Egidio Arévalo Ríos,January 1 1982
+20,MF,Álvaro González,October 29 1984
+18,MF,Gastón Ramírez,December 2 1990
+14,MF,Nicolás Lodeiro,March 21 1989
+10,FW,Diego Forlán,May 19 1979
+9,FW,Luis Suárez,January 24 1987
+21,FW,Edinson Cavani,February 14 1987
+13,FW,Abel Hernández,August 8 1990
+11,FW,Christian Stuani,October 12 1986 

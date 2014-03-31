@@ -1,0 +1,28 @@
+﻿#,Pos.,Player,Date of birth
+0,GK,Stipe Pletikosa,8 January 1979
+0,GK,Danijel Subašić,27 October 1984
+0,DF,Darijo Srna -c-,1 May 1982
+0,DF,Vedran Ćorluka,5 February 1986
+0,DF,Danijel Pranjić,2 December 1981
+0,DF,Ivan Strinić,17 July 1987
+0,DF,Dejan Lovren,5 July 1989
+0,DF,Domagoj Vida,29 April 1989
+0,DF,Gordon Schildenfeld,18 March 1985
+0,DF,Šime Vrsaljko,10 January 1992
+0,DF,Hrvoje Milić,10 May 1989
+0,DF,Igor Bubnjić,17 July 1992
+0,MF,Niko Kranjčar,13 August 1984
+0,MF,Luka Modrić,9 September 1985
+0,MF,Ivan Rakitić,10 March 1988
+0,MF,Ognjen Vukojević,20 December 1983
+0,MF,Ivan Perišić,2 February 1989
+0,MF,Milan Badelj,25 February 1989
+0,MF,Ivo Iličević,14 September 1986
+0,MF,Mateo Kovačić,6 May 1994
+0,MF,Mate Maleš,11 March 1989
+0,FW,Ivica Olić,14 September 1979
+0,FW,Eduardo,25 February 1983
+0,FW,Mario Mandžukić,21 May 1986
+0,FW,Nikica Jelavić,27 August 1985
+0,FW,Leon Benko,11 November 1983
+0,FW,Ante Rebić,21 September 1993 

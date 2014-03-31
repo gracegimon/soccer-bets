@@ -1,0 +1,22 @@
+﻿#,Pos.,Player,Date of birth
+0,GK,Patrick Pemberton,May 24 1982
+0,GK,Leonel Moreira,January 8 1990
+0,DF,Michael Umaña,July 16 1982
+0,DF,Roy Miller,November 24 1984
+0,DF,Johnny Acosta,July 21 1983
+0,DF,Christopher Meneses,May 2 1990
+0,DF,David Myrie,January 6 1988
+0,DF,Porfirio López,October 9 1985
+0,MF,Carlos Hernández,April 9 1982
+0,MF,José Miguel Cubero,February 14 1987
+0,MF,Pablo Herrera,February 14 1987
+0,MF,Yeltsin Tejeda,March 17 1992
+0,MF,Ariel Rodríguez,April 22 1986
+0,MF,Kenny Cunningham,June 7 1985
+0,MF,Esteban Granados,October 25 1985
+0,MF,Mauricio Castillo,June 17 1987
+0,FW,Randall Brenes,August 13 1983
+0,FW,Marco Ureña,May 3 1990
+0,FW,Jairo Arrieta,August 25 1983
+0,FW,Jonathan McDonald,October 28 1987
+0,FW,John Jairo Ruiz,October 1 1995 

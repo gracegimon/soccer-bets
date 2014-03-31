@@ -1,0 +1,24 @@
+﻿#,Pos.,Player,Date of birth
+1,GK,Rahman Ahmadi,30 July 1980
+12,GK,Daniel Davari,6 January 1988
+22,GK,Hamed Lak,24 December 1990
+4,DF,Jalal Hosseini,3 February 1982
+3,DF,Ehsan Hajsafi,25 February 1990
+17,DF,Maziar Zare,22 December 1984
+15,DF,Pejman Montazeri,6 September 1983
+13,DF,Hossein Mahini,16 September 1986
+5,DF,Amir Hossein Sadeghi,6 September 1981
+2,DF,Mehrdad Beitashour,1 February 1987
+6,MF,Javad Nekounam (C),7 September 1980
+14,MF,Andranik Teymourian,6 March 1983
+9,MF,Mohammad Reza Khalatbari,14 September 1983
+7,MF,Masoud Shojaei,9 June 1984
+8,MF,Mojtaba Jabbari,16 June 1983
+11,MF,Mohammad Nouri,9 January 1983
+23,MF,Ghasem Haddadifar,12 July 1983
+21,MF,Ashkan Dejagah,5 June 1986
+18,MF,Yaghoub Karimi,31 August 1991
+19,MF,Reza Haghighi,31 January 1989
+20,MF,Alireza Jahanbakhsh,8 October 1993
+10,FW,Karim Ansarifard,3 April 1990
+16,FW,Reza Ghoochannejhad,20 September 1987 

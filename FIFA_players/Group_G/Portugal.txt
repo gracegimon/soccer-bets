@@ -1,0 +1,24 @@
+﻿#,Pos.,Player,Date of birth
+12,GK,Rui Patrício,15 February 1988
+22,GK,Beto,1 May 1982
+1,GK,Eduardo,19 September 1982
+3,DF,Pepe,26 February 1983
+2,DF,Bruno Alves,27 November 1981
+5,DF,Fábio Coentrão,11 March 1988
+21,DF,João Pereira,25 February 1984
+13,DF,Ricardo Costa,16 May 1981
+19,DF,Antunes,1 April 1987
+14,DF,Luís Neto,26 May 1988
+11,DF,André Almeida,10 September 1990
+17,MF,Nani,17 November 1986
+8,MF,João Moutinho,8 September 1986
+4,MF,Miguel Veloso,11 May 1986
+16,MF,Raul Meireles,17 March 1983
+18,MF,Silvestre Varela,2 February 1985
+15,MF,Rúben Micael,19 August 1986
+20,MF,Josué,17 September 1990
+6,MF,William Carvalho,7 April 1992
+7,FW,Cristiano Ronaldo (C),5 February 1985
+23,FW,Hélder Postiga,2 August 1982
+10,FW,Éder,22 December 1987
+9,FW,Hugo Almeida,23 May 1984 

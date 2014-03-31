@@ -1,0 +1,25 @@
+﻿#,Pos.,Player,Date of birth
+1,GK,Orestis Karnezis,11 July 1985
+12,GK,Stefanos Kapino,18 March 1994
+13,GK,Michalis Sifakis,9 September 1984
+2,DF,Giannis Maniatis,12 October 1986
+3,DF,Giorgos Tzavellas,26 November 1987
+4,DF,Kostas Manolas,14 June 1991
+5,DF,Dimitris Siovas,16 September 1988
+11,DF,Loukas Vyntra,5 February 1981
+15,DF,Vasilis Torosidis,10 June 1985
+19,DF,Sokratis Papastathopoulos,9 June 1988
+20,DF,José Holebas,27 June 1984
+6,MF,Alexandros Tziolis,13 February 1985
+8,MF,Panagiotis Kone,26 July 1987
+10,MF,Giorgos Karagounis (C),6 March 1977
+16,MF,Lazaros Christodoulopoulos,19 December 1986
+18,MF,Sotiris Ninis,3 April 1990
+21,MF,Andreas Samaris,13 June 1989
+22,MF,Kostas Fortounis,16 October 1992
+23,MF,Panagiotis Tachtsidis,15 February 1991
+0,MF,Kostas Katsouranis,21 June 1979
+7,FW,Giorgos Samaras,21 February 1985
+9,FW,Kostas Mitroglou,12 March 1988
+14,FW,Dimitris Salpingidis,18 August 1981
+17,FW,Theofanis Gekas,23 May 1980 

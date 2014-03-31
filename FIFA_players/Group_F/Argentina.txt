@@ -1,0 +1,24 @@
+﻿#,Pos.,Player,Date of birth
+1,GK,Sergio Romero,February 22 1987
+12,GK,Agustín Orión,July 26 1981
+21,GK,Mariano Andújar,July 30 1983
+2,DF,Ezequiel Garay,October 10 1986
+3,DF,Lucas Orban,February 3 1989
+4,DF,Pablo Zabaleta,January 16 1985
+6,DF,Marcos Rojo,March 20 1990
+13,DF,Facundo Roncaglia,February 10 1987
+15,DF,Nicolás Otamendi,February 12 1988
+17,DF,Federico Fernández,February 21 1989
+23,DF,José María Basanta,April 3 1984
+5,MF,Lucas Biglia,January 30 1986
+7,MF,Ángel di María,February 14 1988
+8,MF,Augusto Fernández,April 10 1986
+11,MF,Maxi Rodríguez,January 2 1981
+14,MF,Javier Mascherano (C),June 8 1984
+16,MF,Ricardo Álvarez,April 12 1988
+19,MF,Éver Banega,June 29 1988
+20,MF,Erik Lamela,March 4 1992
+9,FW,Gonzalo Higuaín,December 10 1987
+10,FW,Sergio Agüero,June 2 1988
+18,FW,Rodrigo Palacio,February 5 1982
+22,FW,Ezequiel Lavezzi,May 3 1985 

@@ -1,0 +1,22 @@
+﻿#,Pos.,Player,Date of birth
+0,GK,José de Jesús Corona,January 26 1981
+0,GK,Alfredo Talavera,September 18 1982
+0,DF,Rafael Márquez,February 13 1979
+0,DF,Francisco Javier Rodríguez,October 20 1981
+0,DF,Jorge Torres Nilo,January 16 1988
+0,DF,Paul Aguilar,March 6 1986
+0,DF,Juan Carlos Valenzuela,March 15 1984
+0,DF,Diego Reyes,September 19 1992
+0,DF,Miguel Layún,June 25 1988
+0,DF,Miguel Ponce,April 12 1989
+0,DF,Enrique Pérez,October 13 1988
+0,MF,Jesús Zavala,July 21 1987
+0,MF,Carlos Peña,March 29 1990
+0,MF,Luis Montes,May 16 1986
+0,MF,Juan Carlos Medina,August 22 1983
+0,MF,Isaác Brizuela,August 28 1990
+0,MF,Rodolfo Pizarro,February 15 1994
+0,MF,José Juan Vázquez,March 14 1988
+0,FW,Oribe Peralta,January 12 1984
+0,FW,Aldo de Nigris,July 22 1983
+0,FW,Alan Pulido,March 8 1991 

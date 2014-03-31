@@ -1,0 +1,24 @@
+﻿#,Pos.,Player,Date of birth
+23,GK,Raïs M'Bolhi,25 April 1986
+16,GK,Mohamed Zemmamouche,March 19 1985
+1,GK,Cédric Si Mohamed,9 January 1985
+2,DF,Madjid Bougherra (C),7 October 1982
+6,DF,Djamel Mesbah,9 October 1984
+12,DF,Carl Medjani,15 May 1985
+4,DF,Liassine Cadamuro-Bentaïba,5 March 1988
+3,DF,Faouzi Ghoulam,1 February 1991
+17,DF,Aïssa Mandi,October 22 1991
+5,DF,Ali Rial,March 26 1980
+8,MF,Medhi Lacen,15 May 1984
+7,MF,Hassan Yebda,14 May 1984
+14,MF,Foued Kadir,5 December 1983
+22,MF,Mehdi Mostefa,30 August 1983
+10,MF,Sofiane Feghouli,26 December 1989
+19,MF,Saphir Taïder,29 February 1992
+18,MF,Abdelmoumene Djabou,31 January 1987
+11,MF,Yacine Brahimi,8 February 1990
+20,MF,Nacereddine Khoualed,16 April 1986
+9,FW,Rafik Djebbour,8 March 1984
+15,FW,El Arbi Hillel Soudani,25 November 1987
+13,FW,Islam Slimani,18 June 1988
+21,FW,Ishak Belfodil,12 January 1992 

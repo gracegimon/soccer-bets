@@ -1,0 +1,23 @@
+﻿#,Pos.,Player,Date of birth
+1,GK,Máximo Banguera,December 16 1985
+22,GK,Alexander Domínguez,June 5 1987
+10,DF,Walter Ayoví,August 11 1979
+2,DF,Jorge Guagua,September 28 1981
+4,DF,Juan Carlos Paredes,July 8 1987
+3,DF,Frickson Erazo,May 5 1988
+23,DF,Jayro Campos,July 19 1984
+21,DF,Gabriel Achilier,March 24 1985
+18,DF,Óscar Bagüí,December 10 1982
+20,DF,Cristian Ramírez,August 15 1994
+14,MF,Segundo Castillo,May 15 1982
+16,MF,Antonio Valencia (C),August 4 1985
+19,MF,Luis Saritama,October 20 1983
+6,MF,Christian Noboa,April 9 1985
+9,MF,Jefferson Montero,September 1 1989
+7,MF,João Rojas,June 14 1989
+5,MF,Renato Ibarra,January 20 1991
+13,MF,Enner Valencia,April 11 1989
+12,MF,Fidel Martínez,February 15 1990
+15,MF,Fernando Gaibor,October 8 1991
+8,FW,Felipe Caicedo,September 5 1988
+17,FW,Jaime Ayoví,February 21 1988 

@@ -1,0 +1,24 @@
+﻿#,Pos.,Player,Date of birth
+0,GK,Vincent Enyeama,29 August 1982
+0,GK,Austin Ejide,8 April 1984
+0,DF,Joseph Yobo,6 September 1980
+0,DF,Elderson,20 January 1988
+0,DF,Efe Ambrose,18 October 1988
+0,DF,Godfrey Oboabona,16 August 1990
+0,DF,Kenneth Omeruo,17 October 1993
+0,DF,Kunle Odunlami,5 March 1990
+0,DF,Azubuike Egwuekwe,16 July 1989
+0,DF,Juwon Oshaniwa,14 September 1990
+0,MF,John Obi Mikel,22 April 1987
+0,MF,Ahmed Musa,14 October 1992
+0,MF,Ogenyi Onazi,25 December 1992
+0,MF,Ramon Azeez,12 December 1992
+0,MF,Victor Moses,12 December 1990
+0,MF,Ejike Uzoenyi,23 March 1988
+0,MF,Shehu Abdullahi,12 March 1993
+0,FW,Victor Obinna,25 March 1987
+0,FW,Emmanuel Emenike,10 May 1987
+0,FW,Shola Ameobi,12 October 1981
+0,FW,Bright Dike,2 February 1987
+0,FW,Michael Uchebo,2 February 1990
+0,FW,Imoh Ezekiel,24 October 1993 

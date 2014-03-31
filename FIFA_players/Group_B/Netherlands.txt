@@ -1,0 +1,24 @@
+﻿#,Pos.,Player,Date of birth
+23,GK,Maarten Stekelenburg,September 22 1982
+22,GK,Tim Krul,April 3 1988
+1,GK,Jasper Cillessen,April 22 1989
+2,DF,Gregory van der Wiel,February 3 1988
+4,DF,Ron Vlaar,February 16 1985
+12,DF,Daryl Janmaat,July 22 1989
+13,DF,Stefan de Vrij,February 5 1992
+5,DF,Daley Blind,March 9 1990
+15,DF,Patrick van Aanholt,August 29 1990
+3,DF,Joël Veltman,January 15 1992
+10,MF,Rafael van der Vaart,February 11 1983
+14,MF,Wesley Sneijder,June 9 1984
+20,MF,Arjen Robben,January 23 1984
+16,MF,Nigel de Jong,November 30 1984
+8,MF,Kevin Strootman,February 13 1990
+6,MF,Stijn Schaars,January 11 1984
+18,MF,Jonathan de Guzmán,September 13 1987
+17,MF,Luciano Narsingh,September 13 1990
+21,MF,Jordy Clasie,June 27 1991
+19,MF,Leroy Fer,January 5 1990
+9,FW,Robin van Persie (C),August 6 1983
+7,FW,Jeremain Lens,November 24 1987
+11,FW,Memphis Depay,February 13 1994 

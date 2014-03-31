@@ -1,0 +1,29 @@
+﻿#,Pos.,Player,Date of birth
+1,GK,Gianluigi Buffon (C),28 January 1978
+27,GK,Federico Marchetti,7 February 1983
+12,GK,Salvatore Sirigu,12 January 1987
+15,DF,Andrea Barzagli,8 May 1981
+19,DF,Leonardo Bonucci,1 May 1987
+2,DF,Christian Maggio,11 February 1982
+4,DF,Domenico Criscito,30 December 1986
+7,DF,Ignazio Abate,12 November 1986
+13,DF,Andrea Ranocchia,16 February 1988
+24,DF,Angelo Ogbonna,23 May 1988
+3,DF,Manuel Pasqual,13 March 1982
+21,MF,Andrea Pirlo,19 May 1979
+23,MF,Daniele De Rossi,24 July 1983
+18,MF,Riccardo Montolivo,18 January 1985
+8,MF,Claudio Marchisio,19 January 1986
+6,MF,Antonio Candreva,28 February 1987
+20,MF,Emanuele Giaccherini,5 May 1985
+7,MF,Alessandro Diamanti,2 May 1983
+5,MF,Thiago Motta,28 August 1982
+14,MF,Alessandro Florenzi,11 March 1991
+17,MF,Lorenzo Insigne,4 June 1991
+25,MF,Andrea Poli,29 September 1989
+25,MF,Marco Parolo,25 January 1985
+11,FW,Alberto Gilardino,5 July 1982
+9,FW,Mario Balotelli,12 August 1990
+22,FW,Giuseppe Rossi,1 February 1987
+10,FW,Pablo Osvaldo,12 January 1986
+24,FW,Alessio Cerci,23 July 1987 

@@ -1,0 +1,25 @@
+﻿#,Pos.,Player,Date of birth
+1,GK,Hugo Lloris (C),26 December 1986
+16,GK,Steve Mandanda,28 March 1985
+23,GK,Mickael Landreau,14 May 1979
+2,DF,Mathieu Debuchy,28 July 1985
+3,DF,Patrice Evra,15 May 1981
+4,DF,Raphaël Varane,25 April 1993
+5,DF,Mamadou Sakho,13 February 1990
+12,DF,Gaël Clichy,26 July 1985
+15,DF,Bacary Sagna,14 February 1983
+21,DF,Laurent Koscielny,10 September 1985
+22,DF,Eric Abidal,11 September 1979
+6,MF,Yohan Cabaye,14 January 1986
+7,MF,Franck Ribéry,7 April 1983
+8,MF,Mathieu Valbuena,28 September 1984
+11,MF,Samir Nasri,26 June 1987
+13,MF,Clément Grenier,7 January 1991
+14,MF,Blaise Matuidi,9 April 1987
+17,MF,Dimitri Payet,29 March 1987
+18,MF,Moussa Sissoko,16 August 1989
+19,MF,Paul Pogba,15 March 1993
+24,MF,Rio Mavuba,8 March 1984
+9,FW,Olivier Giroud,30 September 1986
+10,FW,Karim Benzema,19 December 1987
+20,FW,Loïc Rémy,2 January 1987 

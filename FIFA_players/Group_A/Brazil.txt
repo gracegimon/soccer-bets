@@ -1,0 +1,17 @@
+﻿#,Pos.,Player,Date of birth
+0,GK,Júlio César,September 3 1979
+0,DF,Dani Alves,May 6 1983
+0,DF,Thiago Silva (C),September 22 1984
+0,DF,David Luiz,April 22 1987
+0,DF,Marcelo,May 12 1988
+0,DF,Dante,October 18 1983
+0,DF,Rafinha,September 7 1985
+0,MF,Ramires,March 24 1987
+0,MF,Oscar,September 9 1991
+0,MF,Paulinho,July 25 1988
+0,MF,Luiz Gustavo,July 23 1987
+0,MF,Bernard,September 8 1992
+0,MF,Fernandinho,May 4 1985
+0,MF,Willian,August 9 1988
+0,FW,Neymar,February 5 1992
+0,FW,Hulk,July 25 1986 

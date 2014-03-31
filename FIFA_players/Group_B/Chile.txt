@@ -1,0 +1,23 @@
+﻿#,Pos.,Player,Date of birth
+0,GK,Johnny Herrera,May 9 1981
+0,GK,Cristopher Toselli,June 22 1988
+0,GK,Paulo Garcés,August 2 1984
+0,DF,Cristian Alvárez,January 20 1980
+0,DF,Gonzalo Fierro,March 21 1983
+0,DF,José Rojas,June 23 1983
+0,DF,Osvaldo González,August 10 1984
+0,DF,Enzo Andía,August 16 1992
+0,DF,Albert Acevedo,May 6 1983
+0,DF,Miiko Albornoz,November 30 1990
+0,MF,Fernando Meneses,September 27 1985
+0,MF,Braulio Leal,November 22 1981
+0,MF,Pablo Hernández,October 24 1986
+0,MF,Fernando Cordero,August 26 1987
+0,MF,Esteban Pavez,May 1 1990
+0,MF,César Fuentes,April 12 1993
+0,FW,Mark González,July 10 1984
+0,FW,Esteban Paredes,August 1 1980
+0,FW,José Pedro Fuenzalida,February 22 1985
+0,FW,Carlos Muñoz,April 21 1989
+0,FW,Gonzalo Barriga,June 21 1984
+0,FW,Rubén Farfán,May 29 1991 

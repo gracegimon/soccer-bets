@@ -1,0 +1,24 @@
+﻿#,Pos.,Player,Date of birth
+1,GK,Iker Casillas -c-,20 May 1981
+12,GK,Víctor Valdés,14 January 1982
+23,GK,Pepe Reina,31 August 1982
+2,DF,Raúl Albiol,4 September 1985
+3,DF,Iñigo Martínez,17 May 1991
+5,DF,Juanfran,9 January 1985
+10,DF,Marc Bartra,15 January 1991
+15,DF,Sergio Ramos,30 March 1986
+17,DF,Álvaro Arbeloa,17 January 1983
+18,DF,Alberto Moreno,5 July 1992
+21,DF,Nacho Monreal,26 February 1986
+4,MF,Javi Martínez,2 September 1988
+6,MF,Andrés Iniesta,11 May 1984
+8,MF,Koke,8 January 1992
+13,MF,Juan Mata,28 April 1988
+14,MF,Xabi Alonso,25 November 1981
+16,MF,Sergio Busquets,16 July 1988
+20,MF,Santi Cazorla,13 December 1984
+22,MF,Jesús Navas,21 November 1985
+7,FW,David Villa,3 December 1981
+9,FW,Álvaro Negredo,August 20 1985
+11,FW,Pedro,28 July 1987
+19,FW,Fernando Llorente,26 February 1985 

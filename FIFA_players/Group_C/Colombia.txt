@@ -1,0 +1,25 @@
+﻿#,Pos.,Player,Date of birth
+0,GK,Faryd Mondragón,21 June 1971
+0,GK,Camilo Vargas,1 September 1989
+0,DF,Luis Amaranto Perea,30 January 1979
+0,DF,Pablo Armero,2 November 1986
+0,DF,Cristián Zapata,30 September 1986
+0,DF,Carlos Valdés,22 May 1985
+0,DF,Santiago Arias,13 January 1992
+0,DF,Stefan Medina,14 June 1992
+0,DF,Éder Álvarez Balanta,28 February 1993
+0,MF,Fredy Guarín,30 June 1986
+0,MF,Abel Aguilar,6 January 1985
+0,MF,Carlos Sánchez,6 February 1986
+0,MF,Macnelly Torres,1 November 1984
+0,MF,Aldo Leão Ramírez,18 April 1981
+0,MF,Juan Guillermo Cuadrado,26 May 1988
+0,MF,James Rodríguez,12 July 1991
+0,MF,Edwin Valencia,29 March 1985
+0,MF,Alexander Mejía,7 September 1988
+0,MF,Víctor Ibarbo,19 May 1990
+0,FW,Radamel Falcao,10 February 1986
+0,FW,Teófilo Gutiérrez,28 May 1985
+0,FW,Jackson Martínez,3 October 1986
+0,FW,Carlos Bacca,8 September 1986
+0,FW,Luis Muriel,18 April 1991

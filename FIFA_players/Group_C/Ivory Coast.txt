@@ -1,0 +1,24 @@
+﻿#,Pos.,Player,Date of birth
+1,GK,Boubacar Barry,30 December 1979
+23,GK,Abdoul Karim Cissé,27 October 1985
+16,GK,Sylvain Gbohouo,29 October 1988
+5,DF,Didier Zokora,14 December 1980
+4,DF,Kolo Touré,19 March 1981
+22,DF,Sol Bamba,13 January 1985
+14,DF,Benjamin Angoua,28 November 1986
+17,DF,Serge Aurier,24 December 1992
+2,DF,Ousmane Viera,21 December 1986
+3,DF,Jean-Daniel Akpa-Akpro,11 October 1992
+19,MF,Yaya Touré,13 May 1983
+6,MF,Romaric,4 June 1983
+15,MF,Max Gradel,30 November 1987
+20,MF,Jean-Jacques Gosso,15 March 1983
+13,MF,Mathis Bolly,14 November 1990
+9,MF,Ismaël Diomande,28 August 1992
+11,FW,Didier Drogba (C),11 March 1978
+8,FW,Salomon Kalou,5 August 1985
+10,FW,Gervinho,27 May 1987
+12,FW,Wilfried Bony,10 December 1988
+7,FW,Seydou Doumbia,31 December 1987
+18,FW,Lacina Traoré,20 May 1990
+21,FW,Giovanni Sio,31 March 1989 

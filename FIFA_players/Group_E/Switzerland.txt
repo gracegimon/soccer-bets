@@ -1,0 +1,21 @@
+﻿#,Pos.,Player,Date of birth
+1,GK,Diego Benaglio,September 8 1983
+13,GK,Marco Wölfli,August 22 1982
+22,GK,Yann Sommer,December 17 1988
+2,DF,Stephan Lichtsteiner,January 16 1984
+5,DF,Philippe Senderos,February 14 1985
+3,DF,Johan Djourou,January 18 1987
+17,DF,Steve von Bergen,June 10 1983
+6,DF,Reto Ziegler,January 16 1986
+20,DF,Fabian Schär,December 20 1991
+11,MF,Tranquillo Barnetta,May 22 1985
+8,MF,Gökhan Inler (C),June 27 1984
+12,MF,Gelson Fernandes,September 2 1986
+15,MF,Blerim Džemaili,April 12 1986
+23,MF,Xherdan Shaqiri,October 10 1991
+21,MF,Granit Xhaka,September 27 1992
+4,MF,Valentin Stocker,April 12 1989
+18,MF,Pajtim Kasami,June 2 1992
+9,FW,Eren Derdiyok,June 12 1988
+14,FW,Admir Mehmedi,March 16 1991
+7,FW,Mario Gavranović,November 24 1989 

@@ -1,0 +1,21 @@
+﻿#,Pos.,Player,Date of birth
+18,GK,Noel Valladares,May 3 1977
+1,GK,John Alston Bodden,October 3 1981
+3,DF,Maynor Figueroa,May 2 1983
+5,DF,Víctor Bernárdez,May 24 1982
+7,DF,Emilio Izaguirre,May 10 1986
+6,DF,Juan Carlos García,March 8 1988
+12,DF,Brayan Beckeles,November 28 1985
+4,DF,Arnold Peralta,March 29 1989
+2,DF,Juan Pablo Montes,October 26 1985
+8,MF,Wilson Palacios,July 29 1984
+14,MF,Óscar García,September 4 1984
+20,MF,Jorge Claros,January 8 1986
+17,MF,Marvin Chávez,November 3 1983
+15,MF,Roger Espinoza,October 25 1986
+23,MF,Edder Delgado,November 20 1986
+16,MF,Andy Najar,March 16 1993
+13,FW,Carlo Costly,July 18 1982
+11,FW,Jerry Bengtson,April 8 1987
+9,FW,Jerry Palacios,November 1 1981
+10,FW,Rony Martínez,October 16 1988 

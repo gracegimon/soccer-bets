@@ -1,0 +1,28 @@
+﻿#,Pos.,Player,Date of birth
+1,GK,Simon Mignolet,6 August 1988
+12,GK,Thibaut Courtois,11 May 1992
+22,GK,Koen Casteels,25 June 1992
+2,DF,Toby Alderweireld,2 March 1989
+3,DF,Daniel Van Buyten ,7 February 1978
+4,DF,Thomas Vermaelen (C),14 November 1985
+5,DF,Jan Vertonghen,24 April 1987
+26,DF,Thomas Meunier,12 September 1991
+0,DF,Vincent Kompany,10 April 1986
+0,DF,Nicolas Lombaerts,20 March 1985
+0,DF,Sébastien Pocognoli,1 August 1987
+0,DF,Laurent Ciman,5 August 1985
+8,MF,Marouane Fellaini,22 November 1987
+7,MF,Eden Hazard,7 January 1991
+10,MF,Kevin Mirallas,5 October 1987
+13,MF,Steven Defour,15 April 1988
+17,MF,Axel Witsel,12 January 1989
+19,MF,Mousa Dembélé,16 July 1987
+20,MF,Radja Nainggolan,4 May 1988
+31,MF,Kevin De Bruyne,28 June 1991
+48,MF,Dries Mertens,6 May 1987
+0,MF,Timmy Simons,11 December 1976
+0,MF,Nacer Chadli,2 October 1989
+9,FW,Christian Benteke,3 December 1990
+11,FW,Romelu Lukaku,13 May 1993
+92,FW,Jelle Vossen,22 March 1989
+0,FW,Zakaria Bakkali,26 January 1996 

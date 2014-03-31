@@ -1,0 +1,26 @@
+﻿#,Pos.,Player,Date of birth
+1,GK,Guy N'dy Assembé,28 February 1986
+16,GK,Charles Itandje,2 November 1982
+22,GK,Sammy N'Djock,25 February 1990
+2,DF,Benoit Assou-Ekotto,24 March 1984
+3,DF,Nicolas N'Koulou,27 March 1990
+4,DF,Jean-Armel Kana-Biyik,3 July 1989
+5,DF,Dany Nounkeu,11 April 1986
+12,DF,Henri Bedimo,4 June 1984
+14,DF,Aurélien Chedjou,20 June 1985
+19,DF,Gaëtan Bong,25 April 1988
+21,DF,Joël Matip,8 August 1991
+25,DF,Allan Nyom,10 May 1988
+6,MF,Alex Song,9 September 1987
+7,MF,Landry N'Guémo,28 November 1985
+11,MF,Jean Makoun,29 May 1983
+17,MF,Stéphane Mbia,20 May 1986
+18,MF,Eyong Enoh,23 March 1986
+20,MF,Fabrice Olinga,12 May 1996
+24,MF,Raoul Loé,31 January 1989
+8,FW,Benjamin Moukandjo,12 November 1988
+9,FW,Samuel Eto'o (C),10 March 1981
+10,FW,Vincent Aboubakar,22 January 1992
+13,FW,Maxim Choupo-Moting,23 March 1989
+15,FW,Pierre Webó,20 January 1982
+23,FW,Jacques Zoua,6 September 1991 

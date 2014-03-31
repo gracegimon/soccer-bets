@@ -1,0 +1,24 @@
+﻿#,Pos.,Player,Date of birth
+1,GK,Igor Akinfeev,8 April 1986
+16,GK,Sergey Ryzhikov,19 September 1980
+12,GK,Yuri Lodygin,26 May 1990
+4,DF,Sergei Ignashevich,14 July 1979
+6,DF,Aleksei Berezutski,20 June 1982
+23,DF,Dmitri Kombarov,22 January 1987
+22,DF,Andrey Yeshchenko,9 February 1984
+2,DF,Aleksei Kozlov,16 November 1986
+13,DF,Vladimir Granat,22 May 1987
+3,DF,Georgi Schennikov,27 April 1991
+0,DF,Yevgeni Makeyev,24 July 1989
+0,DF,Igor Smolnikov,8 August 1988
+15,MF,Roman Shirokov (C),6 July 1981
+8,MF,Denis Glushakov,27 January 1987
+20,MF,Viktor Fayzulin,22 April 1986
+19,MF,Aleksandr Samedov,19 July 1984
+0,MF,Aleksandr Ryazantsev,5 September 1986
+0,MF,Maksim Grigoryev,6 July 1990
+0,MF,Aleksei Ionov,18 February 1989
+0,MF,Dmitri Tarasov,18 March 1987
+11,FW,Aleksandr Kerzhakov,27 November 1982
+9,FW,Aleksandr Kokorin,19 March 1991
+21,FW,Fyodor Smolov,9 February 1990 

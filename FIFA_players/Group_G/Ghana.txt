@@ -1,0 +1,24 @@
+﻿#,Pos.,Player,Date of birth
+1,GK,Isaac Amoako,12 August 1983
+16,GK,Adade Foli,12 May 1991
+22,GK,Steven Adams,28 September 1989
+2,DF,Godfred Saka,2 November 1988
+3,DF,Kwabena Adusei,3 June 1987
+5,DF,Abeiku Ainooson,24 September 1990
+14,DF,Tijani Joshua,22 October 1988
+15,DF,Nuru Sulley,11 June 1992
+20,DF,Francis Morton,5 November 1992
+23,DF,Alfred Nelson,18 August 1992
+4,MF,Jackson Owusu,15 October 1988
+6,MF,Michael Akuffu,18 December 1985
+7,MF,Richard Mpong,4 July 1990
+8,MF,Jordan Opoku,8 October 1987
+10,MF,Asiedu Attobrah,15 March 1995
+11,MF,Theophilus Annorbaah,17 September 1987
+17,MF,Latif Mohammed,22 January 1993
+21,MF,Yahaya Mohamed,17 February 1988
+9,FW,Seidu Bancey,15 May 1990
+12,FW,Samuel Afful,29 September 1991
+13,FW,Sulley Mohammed,7 December 1995
+18,FW,Paul de Vries,3 March 1996
+19,FW,Kennedy Boateng,30 November 1989 

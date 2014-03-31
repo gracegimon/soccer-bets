@@ -1,0 +1,24 @@
+﻿#,Pos.,Player,Date of birth
+1,GK,Eiji Kawashima,20 March 1983
+12,GK,Shūsaku Nishikawa,18 June 1986
+23,GK,Shūichi Gonda,3 March 1989
+2,DF,Atsuto Uchida,27 March 1988
+3,DF,Gōtoku Sakai,14 March 1991
+5,DF,Yūto Nagatomo,12 September 1986
+6,DF,Masato Morishige,21 May 1987
+15,DF,Yasuyuki Konno,25 January 1983
+19,DF,Masahiko Inoha,28 August 1985
+21,DF,Hiroki Sakai,12 April 1990
+22,DF,Maya Yoshida,24 August 1988
+4,MF,Keisuke Honda,13 June 1986
+7,MF,Yasuhito Endō,28 January 1980
+10,MF,Shinji Kagawa,17 March 1989
+13,MF,Hajime Hosogai,10 June 1986
+14,MF,Hideto Takahashi,17 October 1987
+16,MF,Hotaru Yamaguchi,6 October 1990
+17,MF,Makoto Hasebe (C),18 January 1984
+8,FW,Hiroshi Kiyotake,12 November 1989
+9,FW,Shinji Okazaki,16 April 1986
+11,FW,Yōichirō Kakitani,3 January 1990
+18,FW,Yūya Ōsako,18 May 1990
+20,FW,Takashi Inui,2 June 1988 
