@@ -1,7 +1,16 @@
 class ExtraPhasesController < ApplicationController
 
   def create
-    binding.pry
+    @extra_phase = ExtraPhase.new(extra_phase_params)
+    exists = extra_phase_exists(@extra_phase)
+    if exists.empty?
+      if @extra_phase.valid?
+        @extra_phase.save
+        flash[:success] = "Guardado"
+      end
+    else
+      exists.first.update_attributes(extra_phase_params)
+    end
   end
 
   def get_teams
@@ -16,6 +25,11 @@ class ExtraPhasesController < ApplicationController
   private
 
   def extra_phase_params
-    params.require(:score).permit(:red_card_team_id, :penal_team_id, :score_board_id, :best_player_id) 
-  end   
+    params.require(:extra_phase).permit(:red_card_team_id, :penal_team_id, :score_board_id, :best_player_id) 
+  end
+
+  def extra_phase_exists(extra_phase)
+    ExtraPhase.where(score_board_id: extra_phase.score_board_id)
+  end
+
 end

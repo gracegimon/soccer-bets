@@ -42,9 +42,13 @@
       $("#penal-label").autocomplete(
         source: "#{teams_extra_phase_path}"
         select: (event, ui) ->
-          $("#red-card" ).val( ui.item.id );
+          $("#penal" ).val( ui.item.id );
       )
       $("#extra-button").on "click", ->
+        $("#penal-label").removeClass("has-error-border")
+        $("#red-card-label").removeClass("has-error-border")
+        $("#penal-label").parent().find("label").empty()
+        $("#red-card-label").parent().find("label").empty()
         if $("#penal").val() == ""
           console.log "It's empty"
           $("#penal-label").addClass("has-error-border")
