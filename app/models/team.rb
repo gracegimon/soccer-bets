@@ -1,7 +1,8 @@
 class Team < ActiveRecord::Base
   has_many :matches
   has_many :team_stats
-
+  has_many :players
+  
   belongs_to :group
   validates :name, uniqueness: true
 
