@@ -5,10 +5,10 @@ class ExtraPhasesController < ApplicationController
   end
 
   def get_teams
-  	@teams = Team.all
-  	result = []
+  	@teams = Team.where("name LIKE :prefix", prefix: "#{params[:term].camelcase}%") 
+    result = []
   	@teams.each do |team|
-  		result << {id: team.id, label: team.name}
+  		result << {label: team.name, id: team.id}
   	end
   	render json: result.to_json
   end
