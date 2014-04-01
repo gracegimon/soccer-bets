@@ -11,6 +11,8 @@
     %a{:href => "#tabs-4", "data-toggle" => "tab", "id" => "tabs-semi"}="Semifinal"
   %li
     %a{:href => "#tabs-5", "data-toggle" => "tab", "id" => "tabs-final"}="3er puesto y Final"
+  %li
+    %a{:href => "#tabs-6", "data-toggle" => "tab", "id" => "tabs-extra"}="Extra"
 
 
 .tab-content
@@ -26,3 +28,5 @@
     = render "score_boards/show_second_phase_published", matches: @matches_semi
   #tabs-5.tab-pane
     = render "score_boards/show_finals_published", final: @final, third: @third
+  #tabs-6.tab-pane
+    = render "score_boards/show_extra_published", extra: @extra

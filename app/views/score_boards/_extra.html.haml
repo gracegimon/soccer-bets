@@ -9,7 +9,7 @@
         %h3 Mejor goleador
         .span3
           %input#player-label{type: "text", value: "#{@extra.best_player.name unless @extra.best_player_id.nil?}"}
-          = f.hidden_field :best_player_id, id: "player", value: "" 
+          = f.hidden_field :best_player_id, id: "player", value: "#{@extra.best_player_id}" 
         .span6
           = image_tag "Soccer-Ball.png", size: "50x50"      
       .span12

@@ -33,6 +33,7 @@
         %p= 'High Roller (200 USD)'
         =f.hidden_field :is_active, value: false
         = f.hidden_field :tournament_id, value: current_tournament.id
+        = f.hidden_field :points, value: 0
         %p
           = f.submit "Crear quiniela"
 

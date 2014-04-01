@@ -1,0 +1,19 @@
+#accordion.panel-group
+  .span12
+    %h3 Mejor goleador
+    .span3
+      %input#player-label{type: "text", value: "#{@extra.best_player.name unless @extra.best_player_id.nil?}"}
+    .span6
+      = image_tag "Soccer-Ball.png", size: "50x50"      
+  .span12
+    %h3 Primer equipo con tarjeta roja
+    .span3
+      %input#red-card-label{type: 'text', value: "#{@extra.red_card_team.name unless @extra.red_card_team_id.nil?}"}
+    .span6
+      = image_tag "red-card.gif", size: "50x70"           
+  .span12
+    %h3 Primer equipo con penal
+    .span3
+      %input#penal-label{type: 'text', value: "#{@extra.penal_team.name unless @extra.penal_team_id.nil?}"}
+    .span6
+      = image_tag "penal.png", size: "100x100"           
