@@ -433,6 +433,7 @@ class ScoreBoard < ActiveRecord::Base
   end
 
   def matches_have_score(matches)
+    return false if matches.empty?
     matches.each do |match|
       return false if match.score.nil?
     end

@@ -29,6 +29,10 @@
       = f.hidden_field :score_board_id, value: @score_board.id
       .row.span12
         = f.submit "Guardar", class: 'btn btn-success', id: "extra-button"
+  .row.span11
+    = form_for @score_board do |f|
+      = f.hidden_field :is_published, value: true
+      = f.submit 'Publicar', class: "button btn btn-success", style: "float: right"
 
 - content_for(:javascript) do
 

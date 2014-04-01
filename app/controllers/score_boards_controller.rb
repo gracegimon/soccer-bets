@@ -128,6 +128,7 @@ class ScoreBoardsController < ApplicationController
     @third = Match.where(match_type: match_type_third, score_board_id: @score_board.id).first
     @matches = []
     if @score_board.matches_have_score(@matches_semi)
+      binding.pry
       if @final.nil?
         @final = @score_board.calculate_final
       else
