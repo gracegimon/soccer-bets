@@ -113,6 +113,8 @@ class Score < ActiveRecord::Base
     end
   end
 
+  # This method erases the final points obtained
+  # only in the matches third place, 2nd place and final
   def erase_final_points
     if self.score_board.id == ScoreBoard.main_score_board.id
       @score_boards = ScoreBoard.not_main_board.active
@@ -151,6 +153,7 @@ class Score < ActiveRecord::Base
   end
 
   # this is only run during updates
+  # This adds points
   def calculate_final_points
     if self.score_board.id == ScoreBoard.main_score_board.id
 

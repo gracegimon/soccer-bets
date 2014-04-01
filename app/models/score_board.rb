@@ -57,6 +57,8 @@ class ScoreBoard < ActiveRecord::Base
     end
   end
 
+  # this returns leaders by its points
+
   def all_groups_leaders
     groups = self.tournament.groups
 
@@ -66,6 +68,18 @@ class ScoreBoard < ActiveRecord::Base
     end
     return leaders
   end
+
+  # Returns leaders by it position
+  def all_groups_leaders_by_position
+    groups = self.tournament.groups
+
+    leaders = []
+    groups.each do |group|
+      leaders << group.group_leaders_for_score_board_by_pos(self)
+    end
+    return leaders
+  end
+
 
   # Returns matches for Round of 16
   # phase, for normal users and admin
@@ -93,7 +107,6 @@ class ScoreBoard < ActiveRecord::Base
 
     team_1H = leaders[7][0]
     team_2H = leaders[7][1]
-
     match_type = Match::R16
     if self.user.nil?
       match_type = Match::R16_MAIN
@@ -136,10 +149,9 @@ class ScoreBoard < ActiveRecord::Base
     return matches
   end
 
-
   def update_round_of_16(matches)
     updated_matches = []
-    leaders = all_groups_leaders
+    leaders = all_groups_leaders_by_position
     team_1A = leaders.first.first
     team_2A = leaders.first.second
     team_1B = leaders[1][0]
@@ -163,7 +175,6 @@ class ScoreBoard < ActiveRecord::Base
     if matches.size > 8
       return []
     end
-
     m1 = matches[0]
     m1.update_attributes(team_1_id: team_1A.id, team_2_id: team_2B.id)
     updated_matches << m1
@@ -199,6 +210,69 @@ class ScoreBoard < ActiveRecord::Base
     return updated_matches
 
   end
+
+  # def update_round_of_16(matches)
+  #   updated_matches = []
+  #   leaders = all_groups_leaders
+  #   team_1A = leaders.first.first
+  #   team_2A = leaders.first.second
+  #   team_1B = leaders[1][0]
+  #   team_2B = leaders[1][1]
+  #   team_1C = leaders[2][0]
+  #   team_2C = leaders[2][1]
+  #   team_1D = leaders[3][0]
+  #   team_2D = leaders[3][1]
+  #   team_1E = leaders[4][0]
+  #   team_2E = leaders[4][1]
+
+  #   team_1F = leaders[5][0]
+  #   team_2F = leaders[5][1]
+
+  #   team_1G = leaders[6][0]
+  #   team_2G = leaders[6][1]
+
+  #   team_1H = leaders[7][0]
+  #   team_2H = leaders[7][1]
+
+  #   if matches.size > 8
+  #     return []
+  #   end
+
+  #   m1 = matches[0]
+  #   m1.update_attributes(team_1_id: team_1A.id, team_2_id: team_2B.id)
+  #   updated_matches << m1
+
+  #   m2 = matches[1]
+  #   m2.update_attributes(team_1_id: team_1C.id, team_2_id: team_2D.id)
+  #   updated_matches << m2
+
+  #   m3 = matches[2]
+  #   m3.update_attributes(team_1_id: team_1B.id, team_2_id: team_2A.id)
+  #   updated_matches << m3
+
+  #   m4 = matches[3]
+  #   m4.update_attributes(team_1_id: team_1D.id, team_2_id: team_2C.id)
+  #   updated_matches << m4
+
+  #   m5 = matches[4]
+  #   m5.update_attributes(team_1_id: team_1E.id, team_2_id: team_2F.id)
+  #   updated_matches << m5
+
+  #   m6 = matches[5]
+  #   m6.update_attributes(team_1_id: team_1G.id, team_2_id: team_2H.id)
+  #   updated_matches << m6
+
+  #   m7 = matches[6]
+  #   m7.update_attributes(team_1_id: team_1F.id, team_2_id: team_2E.id)
+  #   updated_matches << m7
+
+  #   m8 = matches[7]
+  #   m8.update_attributes(team_1_id: team_1H.id, team_2_id: team_2G.id)
+  #   updated_matches << m8
+  #   binding.pry
+  #   return updated_matches
+
+  # end
 
 
   def calculate_quarters

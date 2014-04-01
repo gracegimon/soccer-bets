@@ -102,7 +102,7 @@
       team_stat_id = $(this).data("id")
       value = $(this).val()
       val = parseInt(value,10)
-      if val not in [1...4]
+      if val not in [1...5]
         console.log "Not valid"
         $(this).addClass("has-error-border")
         $(this).siblings().html("<p class='alert-error-text'> Posiciones son del 1 al 4 </p>")
