@@ -100,7 +100,7 @@ admin.save
 
 ## Tournament ##
 
-t = Tournament.new(name: "2014 FIFA World Cup Brazil", number: "0", start_date: "2014-06-12", end_date: "2014-07-13", country: "Brazil", tournament_type: 0, is_active: true)
+t = Tournament.new(name: "2014 FIFA World Cup Brazil", number: "0", start_date: "2014-06-12", end_date: "2014-07-13", country: "Brazil", tournament_type: 0, is_active: true, current_phase: 0)
 t.save
 
 s = ScoreBoard.new(name: "Resultados Oficiales", is_active: true, user_id: nil, tournament_id: t.id)

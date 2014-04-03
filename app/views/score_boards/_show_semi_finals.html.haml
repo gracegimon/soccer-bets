@@ -62,8 +62,6 @@
           jQuery(".loader-position").empty()
         $(this).click()
 
-    jQuery(".js-finish-phase").on 'click', ->
-      jQuery(this).siblings().find(".loader-position-phase").html("#{escape_javascript render 'shared/loader'}")
 
     # Individual Scores -> Main
     jQuery(".scores-semi").on 'click', ->

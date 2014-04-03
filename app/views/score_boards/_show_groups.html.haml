@@ -96,8 +96,12 @@
 - if is_main
   .row.span10
     .loader-position-phase
+    .message-position
+  - disabled_class = ''
+  - if current_tournament.current_phase > Match::GROUP_MAIN
+    - disabled_class = 'disabled'
   = link_to finish_phase_score_board_path(@score_board, :phase => Match::R16_MAIN), class: "js-finish-phase", remote: true do
-    %button.btn.btn-success{style: "float:right;"}
+    %button.btn.btn-success{style: "float:right;", class: "#{disabled_class}"}
       Terminar etapa
 
 
@@ -150,7 +154,7 @@
         
     jQuery(".js-finish-phase").on 'click', ->
       jQuery(this).siblings().find(".loader-position-phase").html("#{escape_javascript render 'shared/loader'}")
-      jQuery(".js-finish-phase > .btn ").addClass("disabled")
+      jQuery(this).siblings().find(".message-position").append("<p> Esto puede tomar tiempo. No cambie de página </p>")
       
     jQuery(".js-save-group").click ->
       console.log "Pressed"

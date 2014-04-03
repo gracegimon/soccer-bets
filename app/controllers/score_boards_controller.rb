@@ -163,17 +163,24 @@ class ScoreBoardsController < ApplicationController
     @score_board = ScoreBoard.find(params[:id])
   end
 
+  # type -> The next phase
+  # type - 2 -> The current phase
   def finish_phase
     type = params[:phase].to_i
     @score_board = main_score_board
     matches = Match.find_by_match_type_score_board(type - 2, @score_board)
-    if @score_board.matches_have_score(matches)    
+    if @score_board.matches_have_score(matches)
+      @has_error = false    
       @score_board.update_points_for_score_boards(type, current_tournament)
+      tournament = current_tournament
+      tournament.current_phase = type
+      tournament.save
       respond_to do |format|
         format.html { redirect_to(:action => 'tournament_score_board') }
         format.js
       end    
     else
+      @has_error = true
       respond_to do |format|
         format.html { redirect_to(:action => 'tournament_score_board') }
         format.js
