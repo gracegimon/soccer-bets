@@ -1,44 +1,46 @@
 
 %h3 Final
 .row
-  - team_1 = final.team_1
-  - team_2 = final.team_2
-  - score = final.score 
-  .span3.team-name
-    %p= team_1.name
-    = image_tag team_1.flag
-  .span6
-    .span5
-      %p.score-style= score.team_1_goals unless score.nil?
-      %p= final.day
-      %p= final.city
-    .span1
-      %p{style: "display:inline;"} -
-    .span5
-      %p.score-style= score.team_2_goals unless score.nil?
-      %p= final.time
-  .span3.team-2-name
-    %p= final.team_2.name
-    = image_tag team_2.flag
+  - unless final.nil?
+    - team_1 = final.team_1
+    - team_2 = final.team_2
+    - score = final.score 
+    .span3.team-name
+      %p= team_1.name
+      = image_tag team_1.flag
+    .span6
+      .span5
+        %p.score-style= score.team_1_goals unless score.nil?
+        %p= final.day
+        %p= final.city
+      .span1
+        %p{style: "display:inline;"} -
+      .span5
+        %p.score-style= score.team_2_goals unless score.nil?
+        %p= final.time
+    .span3.team-2-name
+      %p= final.team_2.name
+      = image_tag team_2.flag
 
 %h3 Tercer Lugar
 .row
-  - team_1 = third.team_1
-  - team_2 = third.team_2
-  - score = third.score
-  .span3.team-name
-    %p= team_1.name
-    = image_tag team_1.flag
-  .span6
-    .span5
-      %p.score-style= score.team_1_goals unless score.nil?
-      %p= third.day
-      %p= third.city
-    .span1
-      %p{style: "display:inline;"} -
-    .span5
-      %p.score-style= score.team_2_goals unless score.nil?
-      %p= third.time
-  .span3.team-2-name
-    %p= third.team_2.name
-    = image_tag team_2.flag
+  - unless third.nil?
+    - team_1 = third.team_1
+    - team_2 = third.team_2
+    - score = third.score
+    .span3.team-name
+      %p= team_1.name
+      = image_tag team_1.flag
+    .span6
+      .span5
+        %p.score-style= score.team_1_goals unless score.nil?
+        %p= third.day
+        %p= third.city
+      .span1
+        %p{style: "display:inline;"} -
+      .span5
+        %p.score-style= score.team_2_goals unless score.nil?
+        %p= third.time
+    .span3.team-2-name
+      %p= third.team_2.name
+      = image_tag team_2.flag
