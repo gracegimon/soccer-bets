@@ -173,6 +173,11 @@ class ScoreBoardsController < ApplicationController
         format.html { redirect_to(:action => 'tournament_score_board') }
         format.js
       end    
+    else
+      respond_to do |format|
+        format.html { redirect_to(:action => 'tournament_score_board') }
+        format.js
+      end   
     end
   end
 
