@@ -51,11 +51,13 @@
             min: 0
             isTie:
               param: 2
+            number: true
           'score[team_2_goals]':
             required: true
             min: 0
             isTie:
-              param: 1 
+              param: 1
+            number: true 
         $(this).closest("form").bind "ajax:complete", ->
           jQuery(".loader-position").empty()
         $(this).click()
@@ -66,3 +68,18 @@
     # Individual Scores -> Main
     jQuery(".scores-semi").on 'click', ->
       jQuery(this).siblings().find(".loader-position").html("#{escape_javascript render 'shared/loader'}")
+      $(this).closest("form").validate rules:
+        'score[team_1_goals]':
+          required: true
+          min: 0
+          isTie:
+            param: 2
+          number: true
+        'score[team_2_goals]':
+          required: true
+          min: 0
+          isTie:
+            param: 1
+          number: true
+      $(this).closest("form").bind "ajax:complete", ->
+        jQuery(".loader-position").empty()

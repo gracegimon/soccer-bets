@@ -131,7 +131,23 @@
     jQuery(".scores").on 'click', ->
       console.log  "entre"
       jQuery(this).siblings().find(".loader-position").html("#{escape_javascript render 'shared/loader'}")
+      $(this).closest("form").validate rules:
+        'score[team_1_goals]':
+          required: true
+          min: 0
+          isTie:
+            param: 2
+          number: true
+        'score[team_2_goals]':
+          required: true
+          min: 0
+          isTie:
+            param: 1
+          number: true
+      $(this).closest("form").bind "ajax:complete", ->
+        jQuery(".loader-position").empty()
 
+        
     jQuery(".js-finish-phase").on 'click', ->
       jQuery(this).siblings().find(".loader-position-phase").html("#{escape_javascript render 'shared/loader'}")
       jQuery(".js-finish-phase > .btn ").addClass("disabled")
@@ -147,9 +163,11 @@
           'score[team_1_goals]':
             required: true
             min: 0
+            number: true
           'score[team_2_goals]':
             required: true
             min: 0
+            number: true
         $(this).submit()
         $(this).bind "ajax:complete", ->
           jQuery(".loader-position").empty()
