@@ -25,6 +25,8 @@
             .div{style: "visibility:hidden;"}
               = f.submit 'Save', class: "scores-round"
           - else
+            .span2
+              .loader-position          
             = f.submit 'Guardar', class: "scores-round btn btn-success"
       .span3.team-2-name
         %p= m.team_2.name
@@ -33,18 +35,20 @@
     - if !@is_main
       %button.btn.btn-success{class: "js-save-round", style: "float:right;"}
         Guardar
+      .row.span10.loader-row
+        .loader-position{style: "float: right;"}
     - else
-      = link_to finish_phase_score_board_path(@score_board, :phase => Match::QUARTER_MAIN), remote: true do
+      .row.span3
+        .loader-position-phase
+      = link_to finish_phase_score_board_path(@score_board, :phase => Match::QUARTER_MAIN), class: "js-finish-phase", remote: true do
         %button.btn.btn-success{style: "float:right;"}
           Terminar etapa
-  .row.span10.loader-row
-    .loader-position{style: "float: right;"}
 
 :coffeescript
   jQuery(document).ready ->
     jQuery(".js-save-round").click ->
       scores = jQuery(".scores-round")
-      jQuery(this).parent().siblings().find(".loader-position").html("#{escape_javascript render 'shared/loader'}")     
+      jQuery(this).siblings().find(".loader-position").html("#{escape_javascript render 'shared/loader'}")     
       scores.each ->
         $(this).closest("form").validate rules:
           'score[team_1_goals]':
@@ -61,3 +65,9 @@
           jQuery(".loader-position").empty()
         $(this).click()
 
+    jQuery(".js-finish-phase").on 'click', ->
+      jQuery(this).siblings().find(".loader-position-phase").html("#{escape_javascript render 'shared/loader'}")
+
+    # Individual Scores -> Main
+    jQuery(".scores-round").on 'click', ->
+      jQuery(this).siblings().find(".loader-position").html("#{escape_javascript render 'shared/loader'}")

@@ -1,0 +1,1 @@
+$(".loader-position-phase").empty();

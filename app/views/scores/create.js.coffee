@@ -1,6 +1,10 @@
 console.log("CREATE")
 console.log('#<%= escape_javascript @score.match.team_1_id.to_s%>J')
 
+# Clear the loaders
+
+$(".loader-position").empty()
+
 <%# Played games %>
 $("#<%= escape_javascript @score.match.team_1_id.to_s%>J").html("<%= escape_javascript @score.match.team_1.team_stats.for_scoreboard(@score.score_board).played_games.to_s %>")
 $("#<%= escape_javascript @score.match.team_2_id.to_s%>J").html("<%= escape_javascript @score.match.team_2.team_stats.for_scoreboard(@score.score_board).played_games.to_s %>")

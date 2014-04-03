@@ -27,8 +27,10 @@
         .span6
           = image_tag "penal.png", size: "100x100"           
       = f.hidden_field :score_board_id, value: @score_board.id
-      .row.span12
+      .row.span11
         = f.submit "Guardar", class: 'btn btn-success', id: "extra-button"
+      .span2
+        .loader-position
   .row.span11
     = form_for @score_board do |f|
       = f.hidden_field :is_published, value: true
@@ -55,6 +57,7 @@
           $("#player" ).val( ui.item.id );
       )
       $("#extra-button").on "click", ->
+        $(".loader-position").html("#{escape_javascript render 'shared/loader'}")
         $("#penal-label").removeClass("has-error-border")
         $("#red-card-label").removeClass("has-error-border")
         $("#penal-label").parent().find("label").empty()

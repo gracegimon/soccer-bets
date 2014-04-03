@@ -2,7 +2,7 @@ class Score < ActiveRecord::Base
   belongs_to :score_board
   belongs_to :match, touch: true
 
-  after_update :update_match_stats, :calculate_final_points 
+  after_update :update_match_stats, :calculate_final_points, :update_positions
   after_create :update_match_stats, :calculate_all_score_boards 
 
   before_create :set_winner
@@ -236,5 +236,17 @@ class Score < ActiveRecord::Base
     group = self.match.team_1.group.group
     return group.teams
   end
+
+  def update_positions
+    if self.score_board.user.nil?
+      @score_boards = ScoreBoard.not_main_board.active.order(points: :desc)
+      @score_boards.each_with_index do |score_board, index|
+        score_board.position = index + 1
+        score_board.save
+      end
+    end
+  end
+
+
 end
 

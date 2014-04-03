@@ -25,6 +25,8 @@
           .div{style: "visibility:hidden;"}
             = f.submit 'Save', class: "scores-final"
         - else
+          .span2
+            .loader-position
           = f.submit "Guardar", class: "scores-final btn btn-success"
     .span3.team-2-name
       %p= final.team_2.name
@@ -55,6 +57,8 @@
           .div{style: "visibility:hidden;"}
             = f.submit 'Save', class: "scores-final"
         - else
+          .span2
+            .loader-position
           = f.submit "Guardar", class: "scores-final btn btn-success"
     .span3.team-2-name
       %p= third.team_2.name
@@ -86,3 +90,7 @@
         $(this).closest("form").bind "ajax:complete", ->
           jQuery(".loader-position").empty()
         $(this).click()
+
+    # Individual Scores -> Main
+    jQuery(".scores-final").on 'click', ->
+      jQuery(this).siblings().find(".loader-position").html("#{escape_javascript render 'shared/loader'}")

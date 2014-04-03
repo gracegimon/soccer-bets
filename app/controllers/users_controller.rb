@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @score_boards = @user.score_boards
+    @score_boards = @user.score_boards.order(position: :asc)
     if @score_boards.empty?
       @score_boards = @user.score_boards_admin
     end
