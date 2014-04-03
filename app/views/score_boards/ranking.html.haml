@@ -2,14 +2,23 @@
 
 %table.table.table-bordered
   %thead
-    %th Núm
-    %th Usuario
-    %th Quiniela
-    %th Puntos
+    %th
+      %h5 Posición
+    %th
+      %h5 Usuario
+    %th
+      %h5 Quiniela
+    %th
+      %h5 Puntos
   %tbody
     - @score_boards.each_with_index do |score_board, i|
       %tr
-        %td= i + 1
-        %td= score_board.user.username
-        %td= score_board.name
-        %td= score_board.points
+        %td
+          %h6= i + 1
+        %td
+          %h6= score_board.user.username
+        %td
+          = link_to show_after_published_score_board_path(score_board) do
+            %h6= score_board.name
+        %td
+          %h6= score_board.points
