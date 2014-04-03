@@ -2,13 +2,16 @@
 %html
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-  %body
+  %body{style: "font-family: Helvetica"}
     %h2
-      Welcome to #{@site_name}, #{@user.username}
+      Bienvenido a #{@site_name}, #{@user.username}
     %p
-      You have successfully signed up to #{@site_name},
-      your username is: #{@user.username}.
+      Has sido registrado exitosamente a #{@site_name},
+      tu nombre de usuario es: #{@user.username}.
       %br/
     %p
-      To login to the site, just follow this link: #{@url}.
-    %p Thanks for joining and have a great day!
+      Para iniciar sesión sólo sigue este link:
+    %a{href: "http://www.tupote.com/sign_in"}
+      Inicia Sesión
+    %p Ingresa ya y arma tus quinielas!
+    %p Gracias por unirte y que tengas un gran día!

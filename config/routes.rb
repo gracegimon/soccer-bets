@@ -36,6 +36,7 @@ Quiniela::Application.routes.draw do
     get "wait", on: :member
     get "finish_phase", on: :member
     get "show_after_published", on: :member
+    patch "update_active", on: :member
 
   end
 

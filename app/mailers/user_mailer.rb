@@ -1,16 +1,28 @@
 class UserMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "admin@tupote.com"
 
   def welcome_email(user)
     @user = user
-    @url = "<a href='http://localhost:3000/sign_in'>http://localhost:3000/sign_in</a>"
-    @site_name = "localhost"
-    mail(:to => user.email, :subject => "Welcome to my website.")
+    @site_name = "Tu Pote"
+    mail(:to => user.email, :subject => "Bienvenido a TuPote")
   end
 
   def reset_password_email(user)
     @user = user
-    @password_reset_url = 'http://localhost:3000/password_reset?' + @user.password_reset_token
-    mail(:to => user.email, :subject => 'Password Reset Instructions.')
+    @password_reset_url = 'http://www.tupote.com/password_reset?' + @user.password_reset_token
+    mail(:to => user.email, :subject => 'TuPote: Instrucciones para reestablecer contraseña')
+  end
+
+  def you_should_pay(user, score_board)
+    @user = user
+    @score_board = score_board
+    mail(:to => user.email, :subject => "TuPote: Tu Quiniela ha sido completada")
+  end
+
+  def you_are_active(user, score_board)
+    @user = user
+    @site_name = "Tu Pote"
+    @score_board = score_board
+    mail(:to => user.email, :subject => "TuPote: Tu Quiniela está activa")
   end
 end

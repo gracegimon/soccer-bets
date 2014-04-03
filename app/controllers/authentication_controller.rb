@@ -41,7 +41,7 @@ class AuthenticationController < ApplicationController
     if @user.valid?
       @user.save
       session[:user_id] = @user.id
-      #UserMailer.welcome_email(@user).deliver
+      UserMailer.welcome_email(@user).deliver
       flash[:notice] = " Bienvenido!"
       redirect_to @user
     else

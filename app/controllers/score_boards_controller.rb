@@ -156,11 +156,20 @@ class ScoreBoardsController < ApplicationController
         redirect_to action: 'wait'
       end
     end
+  end
 
+  def update_active
+    @score_board = ScoreBoard.find(params[:id])
+    if @score_board.update_attributes(score_board_params)
+      if @score_board.is_active
+        UserMailer.you_are_active(@score_board.user, @score_board).deliver
+      end
+    end
   end
 
   def wait
     @score_board = ScoreBoard.find(params[:id])
+    UserMailer.you_should_pay(@score_board.user, @score_board).deliver
   end
 
   # type -> The next phase
