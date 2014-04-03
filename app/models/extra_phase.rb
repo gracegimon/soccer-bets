@@ -7,6 +7,7 @@ class ExtraPhase < ActiveRecord::Base
 
   after_update :set_points_for_score_boards
 
+
   def penal_team
   	Team.find(self.penal_team_id)
   end

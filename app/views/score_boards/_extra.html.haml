@@ -9,7 +9,7 @@
         %h3 Mejor goleador
         .span3
           %input#player-label{type: "text", value: "#{@extra.best_player.name unless @extra.best_player_id.nil?}"}
-          = f.hidden_field :best_player_id, id: "player", value: "#{@extra.best_player_id}" 
+          = f.hidden_field :best_player_id, required: true, id: "player", value: "#{@extra.best_player_id}" 
         .span6
           = image_tag "Soccer-Ball.png", size: "50x50"      
       .span12
@@ -66,8 +66,11 @@
         if $("#penal").val() == ""
           console.log "It's empty"
           $("#penal-label").addClass("has-error-border")
-          $("#penal-label").parent().append("<label for='extra_phase[penal_team_id]' class='error'>Este campo es obligatorio.</label>")
+          $("#penal-label").parent().append("<label for='extra_phase[penal_team_id]' class='error'>Este campo es obligatorio. Escoja uno de la lista</label>")
         if $("#red-card").val() == ""
           $("#red-card-label").addClass("has-error-border")
-          $("#red-card-label").parent().append("<label for='extra_phase[red_card_team_id]' class='error'>Este campo es obligatorio.</label>")
+          $("#red-card-label").parent().append("<label for='extra_phase[red_card_team_id]' class='error'>Este campo es obligatorio. Escoja uno de la lista</label>")
+        if $("#player").val() == ""
+          $("#player-label").addClass("has-error-border")
+          $("#player-label").parent().append("<label for='extra_phase[red_card_team_id]' class='error'>Este campo es obligatorio. Escoja uno de la lista</label>")          
 
