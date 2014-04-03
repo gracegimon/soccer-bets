@@ -25,7 +25,7 @@ class ScoreBoardsController < ApplicationController
 
   def show_for_admin
     @score_boards_not_active = ScoreBoard.where(is_active: false, is_published: true, tournament_id: current_tournament.id)
-    @score_boards_active = ScoreBoard.where(is_active: true, is_published: true, tournament_id: current_tournament.id)
+    @score_boards_active = ScoreBoard.not_main_board.where(is_active: true, is_published: true, tournament_id: current_tournament.id)
   end
 
   def official_results

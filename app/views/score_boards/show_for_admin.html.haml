@@ -38,7 +38,6 @@
   :coffeescript
     jQuery(document).ready ->
       jQuery(".checkbox-score-board").on 'change', ->
-        console.log("Entreee")
         scores = $(this).siblings().find('.score-board')[0]
         console.log("scores "+ scores)
         scores.click()
