@@ -22,3 +22,7 @@
 9,FW,Álvaro Negredo,August 20 1985
 11,FW,Pedro,28 July 1987
 19,FW,Fernando Llorente,26 February 1985 
+0,FW,Fernando Torres,20 March 1984
+0,DF,Carles Puyol,13 April 1978
+0,MF,Xavi,25 January 1980
+0,DF,Gerard Piqué,2 February 1987

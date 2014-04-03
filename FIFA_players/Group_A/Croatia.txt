@@ -26,3 +26,4 @@
 0,FW,Nikica Jelavić,27 August 1985
 0,FW,Leon Benko,11 November 1983
 0,FW,Ante Rebić,21 September 1993 
+0,FW,Mladen Petrić,1 January 1981

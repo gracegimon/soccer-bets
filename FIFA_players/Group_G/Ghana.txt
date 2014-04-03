@@ -21,4 +21,7 @@
 12,FW,Samuel Afful,29 September 1991
 13,FW,Sulley Mohammed,7 December 1995
 18,FW,Paul de Vries,3 March 1996
-19,FW,Kennedy Boateng,30 November 1989 
+19,FW,Kennedy Boateng,30 November 1989
+0,MF,Michael Essien,3 December 1982
+0,MF,Anthony Annan,21 July 1986
+0,FW,Asamoah Gyan,22 November 1985

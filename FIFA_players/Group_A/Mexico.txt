@@ -19,4 +19,6 @@
 0,MF,José Juan Vázquez,March 14 1988
 0,FW,Oribe Peralta,January 12 1984
 0,FW,Aldo de Nigris,July 22 1983
-0,FW,Alan Pulido,March 8 1991 
+0,FW,Alan Pulido,March 8 1991
+0,FW,Javier Hernández,June 1 1988
+0,FW,Giovani Dos Santos,May 11 1989

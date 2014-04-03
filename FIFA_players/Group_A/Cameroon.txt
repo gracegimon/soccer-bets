@@ -24,3 +24,5 @@
 13,FW,Maxim Choupo-Moting,23 March 1989
 15,FW,Pierre Webó,20 January 1982
 23,FW,Jacques Zoua,6 September 1991 
+0,GK,Idriss Carlos Kameni,February 18 1984
+0,MF,Achille Emana,June 5 1982

@@ -21,4 +21,7 @@
 9,FW,Rafik Djebbour,8 March 1984
 15,FW,El Arbi Hillel Soudani,25 November 1987
 13,FW,Islam Slimani,18 June 1988
-21,FW,Ishak Belfodil,12 January 1992 
+21,FW,Ishak Belfodil,12 January 1992
+0,DF,Antar Yahia,March 21 1982
+0,MF,Karim Ziani,August 17 1982
+0,MF,Ryad Boudebouz,February 19 1990

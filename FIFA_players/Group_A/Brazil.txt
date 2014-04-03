@@ -15,3 +15,5 @@
 0,MF,Willian,August 9 1988
 0,FW,Neymar,February 5 1992
 0,FW,Hulk,July 25 1986 
+0,FW,Robinho,January 25 1984
+0,GK,Julio Cesar,September 3 1979

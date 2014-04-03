@@ -21,4 +21,5 @@
 19,MF,Reza Haghighi,31 January 1989
 20,MF,Alireza Jahanbakhsh,8 October 1993
 10,FW,Karim Ansarifard,3 April 1990
-16,FW,Reza Ghoochannejhad,20 September 1987 
+16,FW,Reza Ghoochannejhad,20 September 1987
+0,DF,Mohammad Nosrati,10 January 1981

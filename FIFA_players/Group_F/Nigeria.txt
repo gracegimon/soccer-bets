@@ -21,4 +21,5 @@
 0,FW,Shola Ameobi,12 October 1981
 0,FW,Bright Dike,2 February 1987
 0,FW,Michael Uchebo,2 February 1990
-0,FW,Imoh Ezekiel,24 October 1993 
+0,FW,Imoh Ezekiel,24 October 1993
+0,DF,Taye Taiwo,16 April 1985

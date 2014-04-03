@@ -22,3 +22,5 @@
 10,FW,Sergio Agüero,June 2 1988
 18,FW,Rodrigo Palacio,February 5 1982
 22,FW,Ezequiel Lavezzi,May 3 1985 
+0,FW,Lionel Messi,June 24 1987
+0,MF,Fernando Gago,April 10 1986

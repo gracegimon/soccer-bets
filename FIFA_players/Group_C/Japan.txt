@@ -22,3 +22,6 @@
 11,FW,Yōichirō Kakitani,3 January 1990
 18,FW,Yūya Ōsako,18 May 1990
 20,FW,Takashi Inui,2 June 1988 
+0,MF,Hidetoshi Nakata,22 January 1977
+0,FW,Shinji Okazaki,16 April 1986
+0,MF,Shunsuke Nakamura,24 June 1978

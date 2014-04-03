@@ -20,4 +20,10 @@
 0,FW,José Pedro Fuenzalida,February 22 1985
 0,FW,Carlos Muñoz,April 21 1989
 0,FW,Gonzalo Barriga,June 21 1984
-0,FW,Rubén Farfán,May 29 1991 
+0,FW,Rubén Farfán,May 29 1991
+0,FW,Alexis Sánchez,December 19 1988
+0,MF,Matías Fernández,May 15 1986
+0,FW,Eduardo Vargas,November 20 1989
+0,MF,Marcelo Díaz,December 30 1986
+0,MF,Arturo Vidal,May 22 1987
+0,MF,Claudio Bravo,April 13 1983
