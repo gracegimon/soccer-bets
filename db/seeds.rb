@@ -95,7 +95,7 @@ end
 
 # User Admin #
 
-admin = User.new(username: "Admin", email: "admin@tupote.com", password: "tupote.admin", password_confirmation: "tupote.admin", is_admin: true)
+admin = User.new(username: "Admin", email: "admin@tupote.com.ve", password: "tupote.admin", password_confirmation: "tupote.admin", is_admin: true)
 admin.save
 
 ## Tournament ##

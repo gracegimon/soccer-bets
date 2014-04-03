@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "admin@tupote.com"
+  default from: "no-reply@tupote.com.ve"
 
   def welcome_email(user)
     @user = user
@@ -9,7 +9,7 @@ class UserMailer < ActionMailer::Base
 
   def reset_password_email(user)
     @user = user
-    @password_reset_url = 'http://www.tupote.com/password_reset?' + @user.password_reset_token
+    @password_reset_url = 'http://www.tupote.com.ve/password_reset?' + @user.password_reset_token
     mail(:to => user.email, :subject => 'TuPote: Instrucciones para reestablecer contraseña')
   end
 
