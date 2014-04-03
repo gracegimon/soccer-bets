@@ -1,4 +1,7 @@
-%h2 Quiniela "#{@score_board.name}" de #{@user.username}
+- if @user.nil?
+  %h2 Resultados oficiales del Mundial FIFA 2014
+- else
+  %h2 Quiniela "#{@score_board.name}" de #{@user.username}
 %h3.white-text  Estado: "#{@status}" 
 %ul.nav.nav-tabs
   %li.active
