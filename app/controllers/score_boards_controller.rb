@@ -28,10 +28,6 @@ class ScoreBoardsController < ApplicationController
     @score_boards_active = ScoreBoard.not_main_board.where(is_active: true, is_published: true, tournament_id: current_tournament.id)
   end
 
-  def official_results
-    @score_board = main_score_board
-  end
-
   def tournament_score_board
     @tournament = Tournament.find(params[:id])
     @groups = @tournament.groups
@@ -155,7 +151,7 @@ class ScoreBoardsController < ApplicationController
     if @score_board.update_attributes(score_board_params)
       flash[:notice] = "Publicado"
       if @score_board == main_score_board
-        redirect_to action: 'tournament_score_board'
+        redirect_to action: 'show_after_published', score_board: @score_board
       else
         redirect_to action: 'wait'
       end
