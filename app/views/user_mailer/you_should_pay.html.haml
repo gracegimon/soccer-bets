@@ -6,7 +6,19 @@
     %h2
       Tu quiniela #{@score_board.name} ha sido completada 
     %p
-      Ahora, para que tu Quiniela comience a participar en el pote de #{@score_board.type} debes realizar tu pago en: 
-      %br/
+      Ahora, para que tu Quiniela comience a participar en el pote de #{@score_board.type} debes realizar tu pago en:
+    - if @score_board.board_type == 0
+      %form{action: "https://www.paypal.com/cgi-bin/webscr", method: "post", target: "_top"}
+        %input{name: "cmd", type: "hidden", value: "_s-xclick"}/
+        %input{name: "hosted_button_id", type: "hidden", value: "4WKHZ3SZ47RLJ"}/
+        %input{alt: "PayPal - The safer, easier way to pay online!", border: "0", name: "submit", src: "https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif", type: "image"}/
+        %img{alt: "", border: "0", height: "1", src: "https://www.paypalobjects.com/en_US/i/scr/pixel.gif", width: "1"}/
+    - else
+      %form{action: "https://www.paypal.com/cgi-bin/webscr", method: "post", target: "_top"}
+        %input{name: "cmd", type: "hidden", value: "_s-xclick"}/
+        %input{name: "hosted_button_id", type: "hidden", value: "4WKHZ3SZ47RLJ"}/
+        %input{alt: "PayPal - The safer, easier way to pay online!", border: "0", name: "submit", src: "https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif", type: "image"}/
+        %img{alt: "", border: "0", height: "1", src: "https://www.paypalobjects.com/en_US/i/scr/pixel.gif", width: "1"}/      
+    %br/
     %p Cuando tu pago sea efectivo se te informará y automáticamente estarás participando en TuPote
     %p Gracias por participar. Recuerda que puedes concursar con todas las quinielas que quieras!
