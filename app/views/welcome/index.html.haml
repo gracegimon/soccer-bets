@@ -1,13 +1,14 @@
 .main-content
   .row-fluid{style: "text-align:right; color:white;"}
-    %p= "Participantes: #{User.count}"
+    // %p= "Participantes: #{User.count}"
+    %h3= "Pote actual: #{current_tournament.final_jackpot} BsF "
 
   .row-fluid
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
         %h4 1er lugar
-        %h1 55%
-        %h4 del pote
+        %h4= "#{current_tournament.first_place} BsF"
+        %h4 premio actual
 
     .span4
       .colored-circle.colored-circle-title.tournament-blue
@@ -17,8 +18,16 @@
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
         %h4 2do lugar
-        %h1 35%
-        %h4 del pote
+        %h4= "#{current_tournament.second_place} BsF"
+        %h4 premio actual
+  .row-fluid
+    .span4
+    .span4
+      .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
+        %h4 3er lugar
+        %h4= "#{current_tournament.third_place} BsF"
+        %h4 premio actual     
+    .span4
   .row-fluid.span12
     = image_tag "dots.png", class: "dots-image"
   .row-fluid
