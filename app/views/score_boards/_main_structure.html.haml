@@ -19,15 +19,15 @@
     #accordion.panel-group
       = render "score_boards/show_groups", groups: @groups, is_main: false
 
-  #tabs-2.tab-pane
+  #tabs-2.tab-pane.white-text
 
-  #tabs-3.tab-pane
+  #tabs-3.tab-pane.white-text
     %p Por favor, rellene todos los resultados de los octavos de final
-  #tabs-4.tab-pane
+  #tabs-4.tab-pane.white-text
     %p Por favor, rellene todos los resultados de los cuartos de final
-  #tabs-5.tab-pane
+  #tabs-5.tab-pane.white-text
     %p Por favor, rellene todos los resultados de semifinales
-  #tabs-6.tab-pane
+  #tabs-6.tab-pane.white-text
     = render "score_boards/extra", is_main: false  
 - content_for(:javascript) do
   :coffeescript

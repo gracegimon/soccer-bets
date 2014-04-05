@@ -95,7 +95,7 @@ end
 
 # User Admin #
 
-admin = User.new(username: "Admin", email: "admin@tupote.com.ve", password: "tupote.admin", password_confirmation: "tupote.admin", is_admin: true)
+admin = User.new(username: "Admin", email: "admin@tuquiniela2014.com.ve", password: "tuquiniela.admin", password_confirmation: "tuquiniela.admin", is_admin: true)
 admin.save
 
 ## Tournament ##
@@ -103,7 +103,7 @@ admin.save
 t = Tournament.new(name: "2014 FIFA World Cup Brazil", number: "0", start_date: "2014-06-12", end_date: "2014-07-13", country: "Brazil", tournament_type: 0, is_active: true, current_phase: 0)
 t.save
 
-s = ScoreBoard.new(name: "Resultados Oficiales", is_active: true, user_id: nil, tournament_id: t.id)
+s = ScoreBoard.new(name: "Resultados Oficiales", is_active: true, user_id: nil, tournament_id: t.id, is_published: true)
 s.save
 ## Group ##
 

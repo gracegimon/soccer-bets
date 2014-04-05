@@ -44,7 +44,7 @@
       Agregar una nueva quiniela
 
   %hr
-  #new_scoreboard{style: "display:none"}
+  #new_scoreboard.white-text{style: "display:none"}
     %h2 Agregar una Quiniela:
     = form_for([@user, @user.score_boards.build]) do |f|
       %p

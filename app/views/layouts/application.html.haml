@@ -28,7 +28,8 @@
           = bootstrap_flash
           = yield
     
-      %footer
-        %p{style: "text-align: center; margin-top: 60px;"} &copy; TuPote 2014
+      %footer.white-text{style: "float:right"}
+        %p{style: "text-align: center; margin-top: 60px; display:inline-block;"} &copy; TuPote 2014 - Developed by
+        %a.white-text{href: "https://github.com/gracegimon", target: "_blank"} Grace Gimón
   = javascript_include_tag "application"
   = yield(:javascript) if content_for?(:javascript)
