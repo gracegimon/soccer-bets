@@ -2,11 +2,11 @@
   %span.icon-bar
   %span.icon-bar
   %span.icon-bar
-.span3
+.span2
   = image_tag "brasil-header.jpg", size: "200x100"
 .span4
   %a(href= root_path)
-    = image_tag "tuPote.png", size: "200x100", class: 'clickable-header'
+    = image_tag "TuQuiniela2014.png", class: 'clickable-header'
 .container.nav-collapse
   .span4
     %ul.nav.navbar-nav.navbar-right
@@ -33,7 +33,7 @@
           %li= link_to "Tus quinielas", user_path(current_user)
           %li= link_to "Resultados Oficiales", show_after_published_score_board_path(main_score_board)
         %li= link_to "Ranking", ranking_score_boards_path
-        %li= link_to "Estadios", "/path3"
+        %li=# link_to "Estadios", "/path3"
       - else
         %li
           %a{href: "/#quinielas", class: 'scroll'}
