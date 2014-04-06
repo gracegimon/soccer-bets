@@ -86,7 +86,6 @@ country_teams.each do |c|
   @t1.save
 end
 
-
 # For each Match, add its stadium
 
 ## Stadium ##
@@ -103,8 +102,8 @@ admin.save
 t = Tournament.new(name: "2014 FIFA World Cup Brazil", number: "0", start_date: "2014-06-12", end_date: "2014-07-13", country: "Brazil", tournament_type: 0, is_active: true, current_phase: 0)
 t.save
 
-s = ScoreBoard.new(name: "Resultados Oficiales", is_active: true, user_id: nil, tournament_id: t.id)
-s.save
+s = ScoreBoard.create(name: "Resultados Oficiales", is_active: true, user_id: nil, tournament_id: t.id)
+
 ## Group ##
 
 g = Group.new( name: "A", first_place_team_id: 0, second_place_team_id: 0, tournament_id: t.id)
@@ -356,5 +355,3 @@ g8.matches << m31
 g8.matches << m32
 g8.matches << m47
 g8.matches << m48
-
-s.create_team_stats
