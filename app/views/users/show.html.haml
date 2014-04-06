@@ -57,9 +57,9 @@
       %br/
       - # This can be a select if it has more options
       = f.radio_button :board_type, "0", checked: true
-      %p= 'General (50 USD)'
+      %p= 'Pote 500 (500 BsF)'
       = f.radio_button :board_type, "1"
-      %p= 'High Roller (200 USD)'
+      %p= 'Pote 1000 (1000 BsF)'
       =f.hidden_field :is_active, value: false
       = f.hidden_field :tournament_id, value: current_tournament.id
       = f.hidden_field :points, value: 0

@@ -553,9 +553,9 @@ end
 
 def type
   if self.board_type == 0
-      return "General"
+      return "Pote 500"
   else
-      return "High Roller"
+      return "Pote 1000"
   end
 end
 
