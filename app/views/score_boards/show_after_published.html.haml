@@ -23,13 +23,13 @@
     #accordion.panel-group
       = render "score_boards/show_groups_published", groups: @groups
 
-  #tabs-2.tab-pane.white-text  
+  #tabs-2.tab-pane
     = render "score_boards/show_second_phase_published", matches: @matches_r16
-  #tabs-3.tab-pane.white-text
+  #tabs-3.tab-pane
     = render "score_boards/show_second_phase_published", matches: @matches_quarters
-  #tabs-4.tab-pane.white-text
+  #tabs-4.tab-pane
     = render "score_boards/show_second_phase_published", matches: @matches_semi
-  #tabs-5.tab-pane.white-text
+  #tabs-5.tab-pane
     = render "score_boards/show_finals_published", final: @final, third: @third
-  #tabs-6.tab-pane.white-text
+  #tabs-6.tab-pane
     = render "score_boards/show_extra_published", extra: @extra
