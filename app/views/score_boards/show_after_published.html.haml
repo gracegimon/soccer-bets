@@ -1,4 +1,4 @@
-- if @user.nil?
+- if @is_main
   %h2 Resultados oficiales del Mundial FIFA 2014
 - else
   %h2 Quiniela "#{@score_board.name}" de #{@user.username}
@@ -23,13 +23,13 @@
     #accordion.panel-group
       = render "score_boards/show_groups_published", groups: @groups
 
-  #tabs-2.tab-pane  
+  #tabs-2.tab-pane.white-text  
     = render "score_boards/show_second_phase_published", matches: @matches_r16
-  #tabs-3.tab-pane
+  #tabs-3.tab-pane.white-text
     = render "score_boards/show_second_phase_published", matches: @matches_quarters
-  #tabs-4.tab-pane
+  #tabs-4.tab-pane.white-text
     = render "score_boards/show_second_phase_published", matches: @matches_semi
-  #tabs-5.tab-pane
+  #tabs-5.tab-pane.white-text
     = render "score_boards/show_finals_published", final: @final, third: @third
-  #tabs-6.tab-pane
+  #tabs-6.tab-pane.white-text
     = render "score_boards/show_extra_published", extra: @extra
