@@ -78,4 +78,12 @@ Quiniela::Application.configure do
   config.action_mailer.delivery_method = :sendmail
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  
+  Quiniela::Application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[TuPote_Error] ",
+    :sender_address => %{"notifier" <notifier@tupote.com>},
+    :exception_recipients => %w{tupote.notifier@gmail.com}
+  }
 end
