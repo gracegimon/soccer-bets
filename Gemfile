@@ -48,7 +48,7 @@ gem "letter_opener", :group => :development
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 # Use unicorn as the app server
 # gem 'unicorn'
-
+gem "bugsnag"
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
