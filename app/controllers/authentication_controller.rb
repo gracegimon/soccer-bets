@@ -57,7 +57,7 @@ class AuthenticationController < ApplicationController
       user.password_expires_after = 24.hours.from_now
       user.save
       UserMailer.reset_password_email(user).deliver
-      flash[:notice] = 'Password instructions have been mailed to you. Please check your inbox.'
+      flash[:notice] = 'Instrucciones de cambio de contraseña han sido enviadas a su correo. Por favor, verifique.'
       redirect_to :sign_in  
     else
       @user = User.new
@@ -74,9 +74,8 @@ class AuthenticationController < ApplicationController
   def password_reset
     token = params.first[0]
     @user = User.find_by_password_reset_token(token)
-
     if @user.nil?
-      flash[:error] = 'You have not requested a password reset.'
+      flash[:error] = 'Usted no ha solicitado un cambio de contraseña.'
       redirect_to :root
       return
     end
@@ -84,7 +83,7 @@ class AuthenticationController < ApplicationController
     if @user.password_expires_after < DateTime.now
       clear_password_reset(@user)
       @user.save
-      flash[:error] = 'Password reset has expired. Please request a new password reset.'
+      flash[:error] = 'Su solicitud de reinicio de contraseña expiró. Por favor, solicite una nueva.'
       redirect_to :forgot_password
     end
 
@@ -95,19 +94,19 @@ class AuthenticationController < ApplicationController
     @user = User.find_by_username(username)
 
     if verify_new_password(params[:user])
-      @user.update(params[:user])
+      @user.update(new_password_params)
       @user.password = @user.new_password
 
       if @user.valid?
         clear_password_reset(@user)
         @user.save
-        flash[:notice] = 'Your password has been reset. Please sign in with your new password.'
+        flash[:notice] = 'Su contraseña ha sido reiniciada. Por favor, inicie sesión con su nueva contraseña.'
         redirect_to :sign_in
       else
         render :action => "password_reset"
       end
     else
-      @user.errors[:new_password] = 'Cannot be blank and must match the password verification.'
+      @user.errors[:new_password] = 'No puede ser vacía, debe ser igual a la confirmación y mínimo 6 caracteres .'
       render :action => "password_reset"
     end
   end
@@ -117,6 +116,10 @@ class AuthenticationController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username,:password)
+  end
+
+  def new_password_params
+    params.require(:user).permit(:password, :password_confirmation)
   end
 
   def new_user_params
@@ -131,7 +134,7 @@ class AuthenticationController < ApplicationController
   def verify_new_password(passwords)
     result = true
 
-    if passwords[:new_password].blank? || (passwords[:new_password] != passwords[:new_password_confirmation])
+    if passwords[:new_password].blank? || (passwords[:new_password] != passwords[:new_password_confirmation]) || (passwords[:new_password].length < 6)
       result = false
     end
 
