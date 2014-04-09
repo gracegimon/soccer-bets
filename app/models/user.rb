@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :on => :create
   validates :email, uniqueness: true
   validate  :email_regex
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, :on => :create
 
   def score_boards_admin
     if self.is_admin?

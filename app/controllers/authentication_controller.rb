@@ -95,7 +95,7 @@ class AuthenticationController < ApplicationController
     @user = User.find_by_username(username)
 
     if verify_new_password(params[:user])
-      @user.update(params[:user])
+      @user.update(password_params)
       @user.password = @user.new_password
 
       if @user.valid?
@@ -123,6 +123,10 @@ class AuthenticationController < ApplicationController
     params.require(:user).permit(:username, :password, :password_confirmation, :email)
   end
 
+  def password_params
+    params.require(:user).permit(:password, :password_confirmation)
+  end
+
   def clear_password_reset(user)
     user.password_expires_after = nil
     user.password_reset_token = nil
@@ -131,7 +135,7 @@ class AuthenticationController < ApplicationController
   def verify_new_password(passwords)
     result = true
 
-    if passwords[:new_password].blank? || (passwords[:new_password] != passwords[:new_password_confirmation])
+    if passwords[:new_password].blank? || (passwords[:new_password] != passwords[:new_password_confirmation]) || (passwords[:new_password].length < 6)
       result = false
     end
 
