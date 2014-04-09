@@ -107,7 +107,7 @@ class AuthenticationController < ApplicationController
         render :action => "password_reset"
       end
     else
-      @user.errors[:new_password] = 'Cannot be blank and must match the password verification.'
+      @user.errors[:new_password] = 'No puede estar vacía, debe coincidir con la confirmación y además debe contener mínimo 6 caracteres.'
       render :action => "password_reset"
     end
   end
