@@ -1,9 +1,14 @@
 %h1 Administración de quinielas
 
 %p Seleccione las quinielas por activar y automáticamente serán activadas
+%p.white-text Recuerde estar seguro de querer activarlas, ya que se envía un correo electrónico al usuario confirmando que la quiniela ha sido activada
 .col-xs-6
+  %h4 Quinielas por activar
   %table.table
     %th Quinielas por activar
+    %th Usuario
+    %th Email
+    %th Activar
     %tbody
       - if @score_boards_not_active.empty?
         %tr
@@ -14,6 +19,7 @@
         %tr
           %td= link_to score_board.name, user_score_board_path(score_board.user, score_board)
           %td= link_to score_board.user.username, user_path(score_board.user)
+          %td= link_to score_board.user.email, user_path(score_board.user)
           %td
             = form_for score_board, url: update_active_score_board_path(score_board), remote: true do |f|
               = f.check_box :is_active, class: "checkbox-score-board"
@@ -22,8 +28,11 @@
   .message-position
 
 .col-xs-6
+  %h4 Quinielas activas
   %table.table
     %th Quinielas activas
+    %th Usuario
+    %th Email
     %tbody
       - if @score_boards_active.empty?
         %tr 
@@ -33,6 +42,7 @@
         %tr
           %td= link_to score_board.name, user_score_board_path(score_board.user, score_board)
           %td= link_to score_board.user.username, user_path(score_board.user)
+          %td= link_to score_board.user.email, user_path(score_board.user)
 
 - content_for(:javascript) do
   :coffeescript
