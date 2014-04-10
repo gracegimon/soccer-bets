@@ -67,10 +67,13 @@
           console.log "It's empty"
           $("#penal-label").addClass("has-error-border")
           $("#penal-label").parent().append("<label for='extra_phase[penal_team_id]' class='error'>Este campo es obligatorio. Escoja uno de la lista</label>")
+          $(".loader-position").empty()
         if $("#red-card").val() == ""
           $("#red-card-label").addClass("has-error-border")
           $("#red-card-label").parent().append("<label for='extra_phase[red_card_team_id]' class='error'>Este campo es obligatorio. Escoja uno de la lista</label>")
+          $(".loader-position").empty()
         if $("#player").val() == ""
           $("#player-label").addClass("has-error-border")
-          $("#player-label").parent().append("<label for='extra_phase[red_card_team_id]' class='error'>Este campo es obligatorio. Escoja uno de la lista</label>")          
+          $("#player-label").parent().append("<label for='extra_phase[red_card_team_id]' class='error'>Este campo es obligatorio. Escoja uno de la lista</label>")
+          $(".loader-position").empty()
 
