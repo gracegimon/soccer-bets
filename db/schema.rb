@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403141538) do
+ActiveRecord::Schema.define(version: 20140410023456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20140403141538) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "extra_phases", ["score_board_id"], name: "index_extra_phases_on_score_board_id", using: :btree
 
   create_table "group_matches", force: true do |t|
     t.integer  "group_id"
@@ -61,6 +63,9 @@ ActiveRecord::Schema.define(version: 20140403141538) do
     t.integer  "match_number"
   end
 
+  add_index "matches", ["match_type"], name: "index_matches_on_match_type", using: :btree
+  add_index "matches", ["score_board_id"], name: "index_matches_on_score_board_id", using: :btree
+
   create_table "players", force: true do |t|
     t.date     "date_of_birth"
     t.string   "position"
@@ -70,6 +75,8 @@ ActiveRecord::Schema.define(version: 20140403141538) do
     t.datetime "updated_at"
     t.string   "name"
   end
+
+  add_index "players", ["name"], name: "index_players_on_name", using: :btree
 
   create_table "score_boards", force: true do |t|
     t.integer  "user_id"
@@ -84,6 +91,10 @@ ActiveRecord::Schema.define(version: 20140403141538) do
     t.boolean  "is_published"
   end
 
+  add_index "score_boards", ["is_active"], name: "index_score_boards_on_is_active", using: :btree
+  add_index "score_boards", ["points"], name: "index_score_boards_on_points", order: {"points"=>:desc}, using: :btree
+  add_index "score_boards", ["user_id"], name: "index_score_boards_on_user_id", using: :btree
+
   create_table "scores", force: true do |t|
     t.integer  "team_1_goals"
     t.integer  "team_2_goals"
@@ -94,6 +105,8 @@ ActiveRecord::Schema.define(version: 20140403141538) do
     t.datetime "updated_at"
     t.boolean  "can_change",     default: true
   end
+
+  add_index "scores", ["match_id"], name: "index_scores_on_match_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
@@ -132,6 +145,8 @@ ActiveRecord::Schema.define(version: 20140403141538) do
     t.integer  "position"
   end
 
+  add_index "team_stats", ["score_board_id"], name: "index_team_stats_on_score_board_id", using: :btree
+
   create_table "teams", force: true do |t|
     t.string   "country"
     t.string   "country_ab"
@@ -142,6 +157,8 @@ ActiveRecord::Schema.define(version: 20140403141538) do
     t.string   "city"
     t.string   "league"
   end
+
+  add_index "teams", ["name"], name: "index_teams_on_name", using: :btree
 
   create_table "tournaments", force: true do |t|
     t.string   "name"
@@ -167,5 +184,7 @@ ActiveRecord::Schema.define(version: 20140403141538) do
     t.datetime "password_expires_after"
     t.boolean  "is_admin"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
 end

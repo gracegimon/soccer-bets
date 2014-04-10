@@ -139,14 +139,10 @@
         'score[team_1_goals]':
           required: true
           min: 0
-          isTie:
-            param: 2
           number: true
         'score[team_2_goals]':
           required: true
           min: 0
-          isTie:
-            param: 1
           number: true
       $(this).closest("form").bind "ajax:complete", ->
         jQuery(".loader-position").empty()
