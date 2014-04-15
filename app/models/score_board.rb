@@ -14,11 +14,11 @@ class ScoreBoard < ActiveRecord::Base
   validates_presence_of :name, :tournament_id
 
   GENERAL = 0
-  GENERAL_VALUE = 50
+  GENERAL_VALUE = 500
   HIGH_ROLLER = 1
-  HIGH_ROLLER_VALUE = 200
-  # TYPE 0 --> SCOREBOARD WORTH 50$
-  # TYPE 1 --> SCOREBOARD WORTH 200$
+  HIGH_ROLLER_VALUE = 1000
+  # TYPE 0 --> SCOREBOARD WORTH 500
+  # TYPE 1 --> SCOREBOARD WORTH 1000
   # IS_ACTIVE set to TRUE only when user has paid.
 
   # This method should see all of the scoreboards that
