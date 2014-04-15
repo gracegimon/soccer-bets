@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
   helper_method :current_user, :current_tournament, :main_score_board
+  helper_method :user_count_general, :user_count_high_roller
 
   def current_user
     # Note: we want to use "find_by_id" because it's OK to return a nil.
@@ -41,6 +42,14 @@ class ApplicationController < ActionController::Base
 
   def error_500
 
+  end
+
+  def user_count_general
+    ScoreBoard.where(board_type: ScoreBoard::GENERAL, is_active: true).count
+  end
+
+  def user_count_high_roller
+    ScoreBoard.where(board_type: ScoreBoard::HIGH_ROLLER, is_active: true).count
   end
 
   private
