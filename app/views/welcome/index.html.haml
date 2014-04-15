@@ -1,13 +1,16 @@
 .main-content
   .row-fluid{style: "text-align:right; color:white;"}
     // %p= "Participantes: #{User.count}"
-    %h3= "Pote actual: #{current_tournament.final_jackpot} BsF "
+    - jackpot_general = current_tournament.jackpot_general
+    - jackpot_high = current_tournament.jackpot_high
+    %h4= "Pote actual (500): #{current_tournament.final_jackpot(jackpot_general)} BsF "
+    %h4= "Pote actual (1000): #{current_tournament.final_jackpot(jackpot_high)} BsF "
 
   .row-fluid
     .span4
-      .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
+      .colored-circle.colored-circle-section.colored-circle-section-center.top-circles.tournament-blue
         %h4 1er lugar
-        %h4= "#{current_tournament.first_place} BsF"
+        %h4= "#{current_tournament.first_place(jackpot_general)} BsF"
         %h4 premio actual
 
     .span4
@@ -16,18 +19,43 @@
           = image_tag "Brasil_2014.png", class: "logo-center clickable"
 
     .span4
+      .colored-circle.colored-circle-section.colored-circle-section-center.top-circles.tournament-blue
+        %h4 1er lugar
+        %h4= "#{current_tournament.first_place(jackpot_high)} BsF"
+        %h4 premio actual
+
+  .row-fluid
+    .span3
       .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
         %h4 2do lugar
-        %h4= "#{current_tournament.second_place} BsF"
+        %h4= "#{current_tournament.second_place(jackpot_general)} BsF"
+        %h4 premio actual
+    .span3
+      .colored-circle.colored-circle-section.colored-circle-section-center.colored-circle-middle-section-small.tournament-blue
+        %h2 Pote 
+        %h2 500
+    .span3
+      .colored-circle.colored-circle-section.colored-circle-section-center.colored-circle-middle-section-small.tournament-blue
+        %h2 Pote 
+        %h2 1000
+    .span3
+      .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
+        %h4 2do lugar
+        %h4= "#{current_tournament.second_place(jackpot_high)} BsF"
         %h4 premio actual
   .row-fluid
     .span4
-    .span4
-      .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
+      .colored-circle.colored-circle-section.colored-circle-section-center.bottom-circles.tournament-blue
         %h4 3er lugar
-        %h4= "#{current_tournament.third_place} BsF"
-        %h4 premio actual     
+        %h4= "#{current_tournament.third_place(jackpot_general)} BsF"
+        %h4 premio actual
     .span4
+    .span4   
+      .colored-circle.colored-circle-section.colored-circle-section-center.bottom-circles.tournament-blue
+        %h4 3er lugar
+        %h4= "#{current_tournament.third_place(jackpot_high)} BsF"
+        %h4 premio actual
+
   .row-fluid.span12
     = image_tag "dots.png", class: "dots-image"
   .row-fluid
