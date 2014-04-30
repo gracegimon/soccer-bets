@@ -1,5 +1,5 @@
 - groups.each_with_index do |g,i| 
-  .panel.panel-default{"data-group" => g.id, "data-scoreboard" => @score_board.id}
+  .panel.panel-default{"data-group" => g.id, "data-scoreboard" => @score_board.id, id: g.id}
     .panel-heading
       %h4.panel-title
         %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapse#{i}"}
@@ -154,6 +154,7 @@
       
     jQuery(".js-save-group").click ->
       console.log "Pressed"
+      $(this).addClass("disabled")
       scores = jQuery(this).parent().siblings().find("form")
       console.log (jQuery(this).parent().siblings().find(".loader-position"))
 

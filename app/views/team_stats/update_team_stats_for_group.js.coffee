@@ -1,5 +1,6 @@
 
-$(".loader-position").html("<p class= 'alert-success-text'> Guardado </p>")
+$("#<%=@group.id%>").find(".loader-position").html("<p class= 'alert-success-text'> Guardado </p>")
+$(".js-save-group").removeClass("disabled")
 
 <% @teams.each do |team| %>
 <%# Played games %>

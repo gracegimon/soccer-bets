@@ -24,14 +24,14 @@ class TeamStatsController < ApplicationController
   end
 
   def update_team_stats_for_group
-    group = Group.find(params[:group_id])
+    @group = Group.find(params[:group_id])
     @score_board = ScoreBoard.find(params[:score_board_id])
-    @teams = group.teams
+    @teams = @group.teams
     @teams.each do |team|
       team.read_team_stats(@score_board)
     end
-    leaders = group.group_leaders_for_score_board(@score_board)
-    bottom = group.group_bottom_for_score_board(@score_board)
+    leaders = @group.group_leaders_for_score_board(@score_board)
+    bottom = @group.group_bottom_for_score_board(@score_board)
     Score.set_group_positions(leaders,bottom,@score_board)
   end
 end
