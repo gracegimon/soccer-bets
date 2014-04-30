@@ -42,6 +42,8 @@ Quiniela::Application.routes.draw do
 
   resources :team_stats do
     post "change_position", to: "team_stats#change_position"
+    post "update_team_stats", to: "team_stats#update_team_stats_for_group", 
+          on: :collection
   end
 
   resources :extra_phases do

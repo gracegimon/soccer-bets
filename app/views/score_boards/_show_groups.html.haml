@@ -1,5 +1,5 @@
 - groups.each_with_index do |g,i| 
-  .panel.panel-default
+  .panel.panel-default{"data-group" => g.id, "data-scoreboard" => @score_board.id}
     .panel-heading
       %h4.panel-title
         %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapse#{i}"}
@@ -156,8 +156,9 @@
       console.log "Pressed"
       scores = jQuery(this).parent().siblings().find("form")
       console.log (jQuery(this).parent().siblings().find(".loader-position"))
-      jQuery(this).parent().siblings().find(".loader-position").html("#{escape_javascript render 'shared/loader'}")
+
       scores.each (index) ->
+        jQuery(".js-save-group").parent().siblings().find(".loader-position").html("#{escape_javascript render 'shared/loader'}")
         console.log "Verifico cada score"
         $(this).validate rules:
           'score[team_1_goals]':
@@ -169,5 +170,17 @@
             min: 0
             number: true
         $(this).submit()
-        $(this).bind "ajax:complete", ->
-          jQuery(".loader-position").empty()
+      group_panel = $(this).closest('.panel-default')
+      score_board_id = group_panel.data("scoreboard")
+      group_id = group_panel.data("group")
+      console.log score_board_id
+      console.log group_id
+      url = '/team_stats/update_team_stats'
+      data = {group_id: group_id, score_board_id: score_board_id}
+
+      jQuery.ajax(
+        type: "POST",
+        url: url,
+        data: data
+      )
+

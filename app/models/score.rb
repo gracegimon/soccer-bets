@@ -35,24 +35,24 @@ class Score < ActiveRecord::Base
   end
 
   def update_match_stats
-    if self.match.match_type == Match::GROUP_USERS || self.match.match_type == Match::GROUP_MAIN
+    if self.match.match_type == Match::GROUP_MAIN
       self.match.update_teams_stats
       leaders = self.match.team_1.group.group.group_leaders_for_score_board(self.score_board)
       bottom = self.match.team_1.group.group.group_bottom_for_score_board(self.score_board)
-      set_group_positions(leaders,bottom)
+      Score.set_group_positions(leaders,bottom, self.score_board)
     end
 
   end
 
-  def set_group_positions(leaders,bottom)
-    team_s_1 = leaders.first.team_stats.for_scoreboard(self.score_board)
+  def self.set_group_positions(leaders,bottom, score_board)
+    team_s_1 = leaders.first.team_stats.for_scoreboard(score_board)
     team_s_1.set_position(1)
-    team_s_2 = leaders.second.team_stats.for_scoreboard(self.score_board)
+    team_s_2 = leaders.second.team_stats.for_scoreboard(score_board)
     team_s_2.set_position(2)
     team_s_1.save
     team_s_2.save
-    team_s_3 = bottom.first.team_stats.for_scoreboard(self.score_board)
-    team_s_4 = bottom.second.team_stats.for_scoreboard(self.score_board)
+    team_s_3 = bottom.first.team_stats.for_scoreboard(score_board)
+    team_s_4 = bottom.second.team_stats.for_scoreboard(score_board)
     team_s_3.set_position(3)
     team_s_3.save
     team_s_4.set_position(4)
