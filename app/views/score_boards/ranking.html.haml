@@ -1,15 +1,15 @@
-%h2 Ranking
+%h2= t('menu.ranking')
 
 %table.table.table-bordered
   %thead
     %th
-      %h5 Posición
+      %h5= t('general.position')
     %th
-      %h5 Usuario
+      %h5= t('user.user')
     %th
-      %h5 Quiniela
+      %h5= t('score_boards.score_board')
     %th
-      %h5 Puntos
+      %h5= t('general.points')
   %tbody
     - @score_boards.each_with_index do |score_board, i|
       %tr

@@ -1,1 +1,1 @@
-$(".message-position").html("<label class='success'> Se ha guardado satisfactoriamente </label>")
+$(".message-position").html("<label class='success'> <%= t('notices.successful_save') %> </label>")

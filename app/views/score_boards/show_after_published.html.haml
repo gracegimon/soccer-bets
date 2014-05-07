@@ -1,22 +1,21 @@
 - if @is_main
-  %h2 Resultados oficiales del Mundial FIFA 2014
+  %h2= "#{t('menu.official_results')} #{t('general.from_2')} #{t('tournaments.worldcup')}"
 - else
-  %h2 Quiniela "#{@score_board.name}" de #{@user.username}
-%h3.white-text  Estado: "#{@status}" 
+  %h2= "#{t('score_boards.score_board')} #{@score_board.name} #{t('general.from')} #{@user.username}"
+%h3.white-text= " #{t('general.status')}: #{@status}" 
 %ul.nav.nav-tabs
   %li.active
-    %a{:href => "#tabs-1", "data-toggle" => "tab", "id" => "tabs-groups"}="Etapa de Grupos"
+    %a{:href => "#tabs-1", "data-toggle" => "tab", "id" => "tabs-groups"}= t('phases.groups')
   %li
-    %a{:href => "#tabs-2", "data-toggle" => "tab", "id" => "tabs-r16"}= "Octavos de Final"
+    %a{:href => "#tabs-2", "data-toggle" => "tab", "id" => "tabs-r16"}= t('phases.round_of_16')
   %li
-    %a{:href => "#tabs-3", "data-toggle" => "tab", "id" => "tabs-quarter"}="Cuartos de final"
+    %a{:href => "#tabs-3", "data-toggle" => "tab", "id" => "tabs-quarter"}= t('phases.quarter_finals')
   %li
-    %a{:href => "#tabs-4", "data-toggle" => "tab", "id" => "tabs-semi"}="Semifinal"
+    %a{:href => "#tabs-4", "data-toggle" => "tab", "id" => "tabs-semi"}= t('phases.semi_finals')
   %li
-    %a{:href => "#tabs-5", "data-toggle" => "tab", "id" => "tabs-final"}="3er puesto y Final"
+    %a{:href => "#tabs-5", "data-toggle" => "tab", "id" => "tabs-final"}= t('phases.third_place_and_finals')
   %li
-    %a{:href => "#tabs-6", "data-toggle" => "tab", "id" => "tabs-extra"}="Extra"
-
+    %a{:href => "#tabs-6", "data-toggle" => "tab", "id" => "tabs-final"}= t('phases.extra')
 
 .tab-content
   #tabs-1.tab-pane.active

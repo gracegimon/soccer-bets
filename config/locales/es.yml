@@ -14,12 +14,17 @@ es:
     clear: 'Limpiar'
     configuration: 'Configuración'
     finish_phase: 'Terminar etapa'
+    from: 'de'
+    from_2: 'del'
     follow_us: 'Síguenos'
     save: 'Guardar'
     send: 'Enviar'
     send_instructions: 'Enviar instrucciones'
     publish: 'Publicar'
     update: 'Actualizar'
+    position: 'Posición'
+    points: 'Puntos'
+    status: 'Estado'
   notices:
     mandatory_field: 'Este campo es obligatorio'
     pick_one: 'Escoja uno de la lista'
@@ -31,6 +36,8 @@ es:
     saved: 'Guardado'
     positions_rule: 'Posiciones son del 1 al 4'
     this_may_take_time: 'Esto puede tomar tiempo. Por favor, no salga de esta página'
+    score_board_names: 'Recuerda que tus quinielas deben tener nombres distintos'
+    successful_save: 'Se ha guardado satisfactoriamente'
   menu:
     official_results: 'Resultados Oficiales'
     score_boards_admin: 'Administración de Quinielas'
@@ -52,6 +59,12 @@ es:
     third_place: 'Tercer lugar'
     finals: 'Final'
     extra: 'Extra'
+  score_boards:
+    add: 'Agregar una nueva quiniela'
+    score_board: 'Quiniela'
+    name: 'Nombre'
+    type: 'Tipo de quiniela'
+    create: 'Crear quiniela'
   teams:
     teams: 'Equipos'
     played_games_short: 'J'
@@ -72,3 +85,7 @@ es:
     points: 'Puntos'
     position_short: 'POS'
     position: 'Posición'
+  tournaments:
+    worldcup: 'Mundial FIFA 2014'
+  user:
+    user: 'Usuario'
