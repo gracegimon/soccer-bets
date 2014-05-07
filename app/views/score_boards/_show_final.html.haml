@@ -1,5 +1,5 @@
 #accordion.panel-group
-  %h3 Final
+  %h3= t('phases.final')
   .row
     - team_1 = final.team_1
     - team_2 = final.team_2
@@ -27,11 +27,11 @@
         - else
           .span2
             .loader-position
-          = f.submit "Guardar", class: "scores-final btn btn-success"
+          = f.submit "#{t('general.save')}", class: "scores-final btn btn-success"
     .span3.team-2-name
       %p= final.team_2.name
       = image_tag team_2.flag
-  %h3 Tercer lugar
+  %h3= t('phases.third_place')
   .row
     - team_1 = third.team_1
     - team_2 = third.team_2
@@ -59,7 +59,7 @@
         - else
           .span2
             .loader-position
-          = f.submit "Guardar", class: "scores-final btn btn-success"
+          = f.submit "#{t('general.save')}", class: "scores-final btn btn-success"
     .span3.team-2-name
       %p= third.team_2.name
       = image_tag team_2.flag

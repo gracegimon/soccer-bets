@@ -1,20 +1,20 @@
 #accordion.panel-group
   .span12
-    %h3 Mejor goleador
+    %h3= t('extra_phase.best_player')
     .span3
       - unless extra.nil?
         %input#player-label{type: "text", value: "#{extra.best_player.name unless extra.best_player_id.nil?}"}
     .span6
       = image_tag "Soccer-Ball.png", size: "50x50"      
   .span12
-    %h3 Primer equipo con tarjeta roja
+    %h3= t('extra_phase.red_card_team')
     .span3
       - unless extra.nil?
         %input#red-card-label{type: 'text', value: "#{extra.red_card_team.name unless extra.red_card_team_id.nil?}"}
     .span6
       = image_tag "red-card.gif", size: "50x70"           
   .span12
-    %h3 Primer equipo con penal
+    %h3= t('extra_phase.penal_team')
     .span3
       - unless extra.nil?
         %input#penal-label{type: 'text', value: "#{extra.penal_team.name unless extra.penal_team_id.nil?}"}

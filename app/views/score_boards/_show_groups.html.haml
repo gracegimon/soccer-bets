@@ -33,12 +33,12 @@
                   = f.hidden_field :can_change, value: true
                   - if !is_main
                     .div{style: "visibility:hidden;"}
-                      = f.submit 'Guardar', class: "scores"
+                      = f.submit "#{t('general.save')}", class: "scores"
                   - else
                     - if @score.can_change || @score.id.nil?
                       .span2
                         .loader-position
-                      = f.submit 'Guardar', class: "scores btn btn-success"
+                      = f.submit "#{t('general.save')}", class: "scores btn btn-success"
 
 
               .span3.team-2-name
@@ -47,24 +47,24 @@
           .row.span3
             - if !is_main
               %button.btn.btn-success{class: "js-save-group"}
-                Guardar
+                = t('general.save')
           .row.span3
             .loader-position
             
         .span5
           %table.table{style: "float:right"}
             %thead
-              %th Teams
-              %th J
-              %th G
-              %th E
-              %th P
-              %th GF
-              %th GC
-              %th DIF
-              %th PTS
+              %th= t('teams.teams')
+              %th{title: t('teams.played_games')}= t('teams.played_games_short')
+              %th{title: t('teams.won_games')}= t('teams.won_games_short')
+              %th{title: t('teams.tied_games')}= t('teams.tied_games_short')
+              %th{title: t('teams.lost_games')}= t('teams.lost_games_short')
+              %th{title: t('teams.goals_favor')}=t('teams.goals_favor_short')
+              %th{title: t('teams.goals_aggainst')}= t('teams.goals_aggainst_short')
+              %th{title: t('teams.diff_goals')}= t('teams.diff_goals_short')
+              %th{title: t('teams.points')}= t('teams.points_short')
               %th
-              %th POS
+              %th{title: t('teams.position')}= t('teams.position_short') 
             %tbody
               - g.teams.each_with_index do |t, index|
                 - ts = t.team_stats.where(score_board_id: @score_board.id).first
@@ -91,7 +91,7 @@
                       %input.col-xs-4.checkbox-team-stat{type: 'text', class: "team-s-#{g.id}", "data-id" => ts.id, "data-order-number" => "0"}
                       .status-input
           .positions-equal
-            %p Nota: Refrescar la página de haber empate en posiciones
+            %p= t('notices.refresh_page_on_tie')
 
 - if is_main
   .row.span10
@@ -102,7 +102,7 @@
     - disabled_class = 'disabled'
   = link_to finish_phase_score_board_path(@score_board, :phase => Match::R16_MAIN), class: "js-finish-phase", remote: true do
     %button.btn.btn-success{style: "float:right;", class: "#{disabled_class}"}
-      Terminar etapa
+      = t('general.finish_phase')
 
 
 
@@ -110,14 +110,13 @@
 
   :coffeescript
     jQuery(".checkbox-team-stat").on 'change', ->
-      console.log("Entreee")
       team_stat_id = $(this).data("id")
       value = $(this).val()
       val = parseInt(value,10)
       if val not in [1...5]
         console.log "Not valid"
         $(this).addClass("has-error-border")
-        $(this).siblings().html("<p class='alert-error-text'> Posiciones son del 1 al 4 </p>")
+        $(this).siblings().html("<p class='alert-error-text'> #{t('notices.positions_rule')}</p>")
       else
         console.log team_stat_id
         url = '/team_stats/'+team_stat_id+'/change_position'
@@ -129,7 +128,7 @@
           data: data
         )
         $(this).removeClass("has-error-border")
-        $(this).siblings().html("<p class= 'alert-success-text'> Guardado </p>")
+        $(this).siblings().html("<p class= 'alert-success-text'> #{t('notices.saved')} </p>")
 
     # Individual Scores -> Main
     jQuery(".scores").on 'click', ->
@@ -150,7 +149,7 @@
         
     jQuery(".js-finish-phase").on 'click', ->
       jQuery(this).siblings().find(".loader-position-phase").html("#{escape_javascript render 'shared/loader'}")
-      jQuery(this).siblings().find(".message-position").append("<p> Esto puede tomar tiempo. No cambie de página </p>")
+      jQuery(this).siblings().find(".message-position").append("<p> #{t('notices.this_may_take_time')} </p>")
       
     jQuery(".js-save-group").click ->
       console.log "Pressed"

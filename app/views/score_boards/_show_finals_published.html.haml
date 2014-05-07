@@ -1,5 +1,5 @@
 
-%h3 Final
+%h3= t('phases.final')
 .row
   - unless final.nil?
     - team_1 = final.team_1
@@ -22,7 +22,7 @@
       %p= final.team_2.name
       = image_tag team_2.flag
 
-%h3 Tercer Lugar
+%h3= t('phases.third_place')
 .row
   - unless third.nil?
     - team_1 = third.team_1

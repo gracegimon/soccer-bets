@@ -33,15 +33,15 @@
         .span5
           %table.table{style: "float:right"}
             %thead
-              %th Teams
-              %th J
-              %th G
-              %th E
-              %th P
-              %th GF
-              %th GC
-              %th DIF
-              %th PTS
+              %th= t('teams.teams')
+              %th{title: t('teams.played_games')}= t('teams.played_games_short')
+              %th{title: t('teams.won_games')}= t('teams.won_games_short')
+              %th{title: t('teams.tied_games')}= t('teams.tied_games_short')
+              %th{title: t('teams.lost_games')}= t('teams.lost_games_short')
+              %th{title: t('teams.goals_favor')}=t('teams.goals_favor_short')
+              %th{title: t('teams.goals_aggainst')}= t('teams.goals_aggainst_short')
+              %th{title: t('teams.diff_goals')}= t('teams.diff_goals_short')
+              %th{title: t('teams.points')}= t('teams.points_short')
               %th
             %tbody
               - g.teams.each do |t|
