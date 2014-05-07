@@ -1,0 +1,41 @@
+es:
+  authentication:
+    forgot_password: 'Olvidó su contraseña'
+    has_requested: 'ha solicitado su reinicio de contraseña. Por favor ingrese su nueva contraseña:'
+    new_password: 'Nueva contraseña'
+    confirm_new_password: 'Confirmar nueva contraseña'
+    confirm_password: 'Confirme su contraseña'
+    sign_in: 'Iniciar sesión'
+    sign_up: 'Crea tu cuenta'
+    password: 'Contraseña'
+    username: 'Nombre de usuario'
+    username_notice: 'Este es el nombre que será visible públicamente'
+  general:
+    clear: 'Limpiar'
+    configuration: 'Configuración'
+    follow_us: 'Síguenos'
+    save: 'Guardar'
+    send: 'Enviar'
+    send_instructions: 'Enviar instrucciones'
+    publish: 'Publicar'
+    update: 'Actualizar'
+  notices:
+    mandatory_field: 'Este campo es obligatorio'
+    pick_one: 'Escoja uno de la lista'
+    please_fill_out_r: 'Por favor, rellene todos los resultados de los %{record}'
+  menu:
+    official_results: 'Resultados Oficiales'
+    score_boards_admin: 'Administración de Quinielas'
+    your_boards: 'Tus quinielas'
+    ranking: 'Ranking'
+    current_ranking: 'Ranking actual'
+    sign_in: 'Inicia sesión'
+    logout: 'Cerrar sesión'
+  extra_phase:
+    best_player: 'Mejor goleador'
+    red_card_team: 'Primer equipo con tarjeta roja'
+    penal_team: 'Primer equipo con penal'
+  phases:
+    round_of_16: 'Octavos de final'
+    quarter_finals: 'Cuartos de final'
+    semi_finals: 'Semifinales'

@@ -1,17 +1,17 @@
 .well
-  %h3 Inicio de sesión
+  %h3= t('authentication.sign_in')
   = form_for @user, :as => :user, :url => sign_in_path(@user) do |f|
     %p
       = f.label 'Email:'
       %br/
       = f.text_field :email, required: true
     %p
-      = f.label 'Contraseña:'
+      = f.label "#{t('authentication.password')}"
       %br/
       = f.password_field :password, required: true
     %p
-      = f.submit 'Iniciar sesión'
+      = f.submit "#{t('authentication.sign_in')}"
       \   
       \#{f.submit 'Limpiar', :type => 'reset'}
 
-    %p= link_to 'Olvidaste tu contraseña?', :forgot_password 
+    %p= link_to "#{t('authentication.forgot_password')}?", :forgot_password 

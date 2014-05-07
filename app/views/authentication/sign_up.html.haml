@@ -1,28 +1,28 @@
 .well
-  %h3 Crea tu cuenta
+  %h3= t('authentication.sign_up')
   = form_for @user, :as => :user, :url => sign_up_path, :method => :post  do |f|
     .form-group
-      = f.label 'Nombre de usuario:'
+      = f.label "#{t('authentication.username')}:"
       %br/
       = f.text_field :username, required: true
       = show_field_error(@user, :username)
-      %p Este es el nombre que será visible públicamente
+      %p= t('authentication.username_notice')
     .form-group
       = f.label 'Email:'
       %br/
       = f.text_field :email, required: true
       = show_field_error(@user, :email)
     .form-group
-      = f.label 'Contraseña:'
+      = f.label "#{t('authentication.password')}:"
       %br/
       = f.password_field :password, required: true
       = show_field_error(@user, :password)
     .form-group
-      = f.label 'Confirme su contraseña:'
+      = f.label "#{t('authentication.confirm_password')}:"
       %br/
       = f.password_field :password_confirmation, required: true
       = show_field_error(@user, :password_confirmation)
     %p
-      = f.submit 'Crear cuenta'
+      = f.submit "#{t('authentication.sign_up')}"
       \   
-      \#{f.submit 'Limpiar', :type => 'reset'}
+      \#{f.submit "#{t('general.clear')}", :type => 'reset'}

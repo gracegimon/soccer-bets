@@ -22,11 +22,11 @@
   #tabs-2.tab-pane
 
   #tabs-3.tab-pane
-    %p Por favor, rellene todos los resultados de los octavos de final
+    %p= t('notices.please_fill_out', record: t('phases.round_of_16'))
   #tabs-4.tab-pane
-    %p Por favor, rellene todos los resultados de los cuartos de final
+    %p= t('notices.please_fill_out', record: t('phases.quarter_finals'))
   #tabs-5.tab-pane
-    %p Por favor, rellene todos los resultados de semifinales
+    %p= t('notices.please_fill_out', record: t('phases.semi_finals'))
   #tabs-6.tab-pane
     = render "score_boards/extra", is_main: false  
 - content_for(:javascript) do
