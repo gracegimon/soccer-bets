@@ -27,7 +27,7 @@
           - else
             .span2
               .loader-position 
-            = f.submit "Guardar", class: "scores-semi btn btn-success"
+            = f.submit "#{t('general.save')}", class: "scores-semi btn btn-success"
 
       .span3.team-2-name
         %p= m.team_2.name
@@ -35,7 +35,7 @@
   .row.span11
     - if !@is_main
       %button.btn.btn-success{class: "js-save-semi", style: "float: right"}        
-        Guardar
+        = t('general.save')
   .row.span10.loader-row
     .loader-position{style: "float: right;"}
 

@@ -24,6 +24,8 @@ es:
     mandatory_field: 'Este campo es obligatorio'
     pick_one: 'Escoja uno de la lista'
     please_fill_out_r: 'Por favor, rellene todos los resultados de los %{record}'
+    finish_phase_error: 'No se puede terminar la etapa si hay partidos sin resultados'
+    finish_phase_success: 'Se actualizaron todos los puntos de las quinielas existentes'
     no_ties: 'No pueden haber empates en esta etapa'
     refresh_page_on_tie: 'Nota: Refrescar la página de haber empate en posiciones'
     saved: 'Guardado'
