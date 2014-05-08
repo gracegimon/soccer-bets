@@ -1,7 +1,8 @@
 es:
   authentication:
     forgot_password: 'Olvidó su contraseña'
-    has_requested: 'ha solicitado su reinicio de contraseña. Por favor ingrese su nueva contraseña:'
+    has_requested: 'ha solicitado su reinicio de contraseña.'
+    please_enter_password: 'Por favor ingrese su nueva contraseña:'
     new_password: 'Nueva contraseña'
     confirm_new_password: 'Confirmar nueva contraseña'
     confirm_password: 'Confirme su contraseña'
@@ -10,6 +11,17 @@ es:
     password: 'Contraseña'
     username: 'Nombre de usuario'
     username_notice: 'Este es el nombre que será visible públicamente'
+  email:
+    to_change: 'Para cambiar su contraseña, entre al siguiente link.'
+    reset_password: 'Reiniciar contraseña'
+    if_you_didnt_request: 'Si usted no solicitó este reinicio de contraseña, ignore este email por favor y su contraseña permanecerá siendo la misma.'
+    welcome_to: 'Bienvenido a'
+    you_have_been_registered_to: 'Has sido registrado exitosamente a'
+    your_username_is: 'tu nombre de usuario es'
+    to_sign_in: 'Para iniciar sesión sólo sigue este link:'
+    sign_in: 'Inicia sesión'
+    enter_now: 'Ingresa ya y arma tus quinielas!'
+    thanks_for_joining: 'Gracias por unirte y que tengas un gran día!'
   general:
     activate: 'Activar'
     clear: 'Limpiar'
