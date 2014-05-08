@@ -6,7 +6,7 @@
     %h2
       Tu quiniela #{@score_board.name} ha sido completada 
     %p
-      Ahora, para que tu Quiniela comience a participar en el pote de #{@score_board.type} debes realizar tu pago por uno de estos medios:
+      = t('email.please_pay')
     %h3 Transferencia o depósito en moneda local:
     %p Se puede hacer el pago en Bs al cambio del dia = Dollar Today + 5 puntos. 
     %p Datos de la cuenta: 01080521060100041696 Sonny Milhem Banco Provincial CI: V-16.286.051
@@ -14,5 +14,5 @@
     %h3 Transferencia en moneda extranjera:
     %p Account number: 009487083370, Routing number: 026009593. Bank of america. Sonny Milhem. Dirección: 21205 Yacht club Dr Apt 408
     %br/
-    %p Cuando tu pago sea efectivo se te informará y automáticamente estarás participando en TuPote
-    %p Gracias por participar. Recuerda que puedes concursar con todas las quinielas que quieras!
+    %p= "#{t('email.you_will_be_informed')} TuPote"
+    %p= t('email.thank_you_enroll_more')

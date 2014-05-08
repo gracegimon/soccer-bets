@@ -3,12 +3,10 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body{style: "font-family: Helvetica"}
-    %h2
-      Tu quiniela #{@score_board.name} ya está activa 
-    %p
-      Gracias! Tu pago ya ha sido recibido.
+    %h2= "#{t('score_boards.your_board')} #{@score_board.name} #{t('score_boards.is_active')} "
+    %p= t('email.thanks_for_your_payment')
       %br/
-    %p Ya te encuentras concursando para TuPote #{@score_board.type}
-    %p A medida que se vayan publicando los resultados oficiales tu puntuación será actualizada.  
+    %p= "#{t('email.youre_enrolled')} TuPote #{@score_board.type}"
+    %p= t('email.points_will_be_updated')
 
-    %p Gracias por participar. Recuerda que puedes concursar con todas las quiniela que quieras!
+    %p= t('email.thank_you_enroll_more')
