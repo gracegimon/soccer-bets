@@ -9,6 +9,8 @@
     %th
       %h5= t('score_boards.score_board')
     %th
+      %h5= t('score_boards.type')
+    %th
       %h5= t('general.points')
   %tbody
     - @score_boards.each_with_index do |score_board, i|
@@ -20,5 +22,7 @@
         %td
           = link_to show_after_published_score_board_path(score_board) do
             %h6= score_board.name
+        %td
+          %h6= score_board.type
         %td
           %h6= score_board.points
