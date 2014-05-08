@@ -1,0 +1,4 @@
+%tr
+  %td= link_to score_board.name, user_score_board_path(score_board.user, score_board)
+  %td= link_to score_board.user.username, user_path(score_board.user)
+  %td= link_to score_board.user.email, user_path(score_board.user)

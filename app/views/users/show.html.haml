@@ -45,15 +45,15 @@
 
   %hr
   #new_scoreboard{style: "display:none"}
-    %h2 Agregar una Quiniela:
+    %h2= t('score_boards.add')
     = form_for([@user, @user.score_boards.build]) do |f|
       %p
-        = f.label :name, "Nombre"
+        = f.label :name, "#{t('score_boards.name')}"
         %br/
         = f.text_field :name, required: true
-        %p Recuerda que tus quinielas deben tener nombres distintos
+        %p= t('notices.score_board_names')
 
-      = f.label :board_type, "Tipo de quiniela", required: true
+      = f.label :board_type, "#{t('score_boards.type')}", required: true
       %br/
       - # This can be a select if it has more options
       = f.radio_button :board_type, "0", checked: true
@@ -64,7 +64,7 @@
       = f.hidden_field :tournament_id, value: current_tournament.id
       = f.hidden_field :points, value: 0
       %p
-        = f.submit "Crear quiniela"
+        = f.submit "#{t('score_boards.create')}"
 
 - content_for(:javascript) do
 

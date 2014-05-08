@@ -5,10 +5,11 @@
 .col-xs-6
   %h4= t('score_boards.to_activate')
   %table.table
-    %th= t('score_boards.to_activate')
-    %th= t('users.user')
-    %th= t('users.email')
-    %th= t('general.activate')
+    %thead
+      %th= t('score_boards.to_activate')
+      %th= t('users.user')
+      %th= t('users.email')
+      %th= t('general.activate')
     %tbody
       - if @score_boards_not_active.empty?
         %tr
@@ -16,7 +17,7 @@
             %p= t('notices.no_score_boards_to_activate')
 
       - @score_boards_not_active.each do |score_board|
-        %tr
+        %tr{id: score_board.id}
           %td= link_to score_board.name, user_score_board_path(score_board.user, score_board)
           %td= link_to score_board.user.username, user_path(score_board.user)
           %td= link_to score_board.user.email, user_path(score_board.user)
@@ -29,10 +30,11 @@
 
 .col-xs-6
   %h4= t('score_boards.active')
-  %table.table
-    %th= t('score_boards.active')
-    %t= t('users.user')
-    %th= t('users.email')
+  %table.table#active
+    %thead
+      %th= t('score_boards.active')
+      %t= t('users.user')
+      %th= t('users.email')
     %tbody
       - if @score_boards_active.empty?
         %tr 

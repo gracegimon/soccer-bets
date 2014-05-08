@@ -4,9 +4,8 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body{style: "font-family: Helvetica"}
     %h2= "#{t('email.welcome_to')} #{@site_name}, #{@user.username}"
-    %p= "#{t('email.you_have_been_registered_to')} #{@site_name},
-      #{t('email.your_username_is')}: #{@user.username}."
-      %br/
+    %p= "#{t('email.you_have_been_registered_to')} #{@site_name}, #{t('email.your_username_is')}: #{@user.username}."
+    %br/
     %p= t('email.to_sign_in')
     %a{href: "http://www.tupote.com.ve/sign_in"}
       = t('email.sign_in')

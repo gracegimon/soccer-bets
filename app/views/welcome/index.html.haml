@@ -6,9 +6,9 @@
   .row-fluid
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
-        %h4 1er lugar
+        %h4= t('welcome.first_place')
         %h1 55%
-        %h4 del pote
+        %h4= "#{t('general.from_2')} #{t('welcome.jackpot')}"
 
     .span4
       .colored-circle.colored-circle-title.tournament-blue
@@ -17,9 +17,9 @@
 
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
-        %h4 2do lugar
+        %h4= t('welcome.second_place')
         %h1 35%
-        %h4 del pote
+        %h4= "#{t('general.from_2')} #{t('welcome.jackpot')}"
   .row-fluid.span12
     = image_tag "dots.png", class: "dots-image"
   .row-fluid
@@ -43,93 +43,93 @@
     .span4
       .colored-circle.colored-circle-middle-section.colored-circle-middle-section-center.tournament-blue{style: "padding-left: 5px; padding-top: 57px;"}
         %a{href: ranking_score_boards_path}
-          %h2.expandable-h2 Puntuación
+          %h2.expandable-h2= t('welcome.punctuation')
     .span4
 
   .row-fluid
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.special-section-circle.tournament-blue
-        %h4 Fase de Grupos
+        %h4= t('welcome.group_phase')
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.special-section-circle.tournament-blue
-        %h4 Puntos extra
+        %h4= t('welcome.extra_phase')
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.special-section-circle.tournament-blue
-        %h4 Fase de Eliminatorias
+        %h4= t('welcome.second_phase')
 
   .row-fluid.special-row
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
-        %h6 Marcador Exacto
-        %h5 5 puntos
+        %h6= t('welcome.exact_score')
+        %h5= "5 #{t('welcome.points')}"
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
-        %h6 Goleador (Goles + Penales)
-        %h5 7 puntos
+        %h6= t('welcome.best_player')
+        %h5= "7 #{t('welcome.points')}"
         
     .span4
       .span6
         .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
-          %h6 Equipo en 8vos 
-          %h5 4 puntos (por c/equipo)
+          %h6= t('welcome.round_of_16') 
+          %h5= "4 #{t('welcome.points')} #{t('welcome.for_each_team')}"
       .span6
         .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
-          %h6 Equipo en 4tos
-          %h5 5 puntos (por c/equipo)
+          %h6= t('welcome.quarter_finals')
+          %h5= "5 #{t('welcome.points')} #{t('welcome.for_each_team')}"
 
 
   .row-fluid.special-row
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
-        %h6 Marcador Dif Goles
-        %h5 4 puntos
+        %h6= t('welcome.diff_goals')
+        %h5= "4 #{t('welcome.points')}"
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
-        %h6 Primer equipo con tarjeta roja
-        %h5 5 puntos
+        %h6= t('welcome.red_card_team')
+        %h5= "5 #{t('welcome.points')}"
     .span4
       .span6
         .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
-          %h6 Semi final
-          %h5 6 puntos (por c/equipo)
+          %h6= t('welcome.semi_finals')
+          %h5= "6 #{t('welcome.points')} #{t('welcome.for_each_team')}"
       .span6
         .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-dark
-          %h6 3er lugar
-          %h5 7 puntos
+          %h6= t('welcome.third_place')
+          %h5= "7 #{t('welcome.points')}"
 
   .row-fluid.special-row
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
-        %h6 Acertar ganador
-        %h5 3 puntos
+        %h6= t('welcome.winner')
+        %h5= "3 #{t('welcome.points')}"
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
-        %h6 Primer equipo que anota un gol de penal
-        %h5 3 puntos
+        %h6= t('welcome.penal')
+        %h5= "3 #{t('welcome.points')}"
     .span4
       .span6
         .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-dark
-          %h6 Sub campeón
-          %h5 8 puntos
+          %h6= t('welcome.sub_champion')
+          %h5= "8 #{t('welcome.points')}"
       .span6
         .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-dark
-          %h6 Campeón
-          %h5 9 puntos 
+          %h6= t('welcome.champion')
+          %h5= "9 #{t('welcome.points')}" 
   .row-fluid.span12
     = image_tag "dots.png", class: 'dots-image'
 
   .row-fluid.span12.blue-text#reglas
-    %h4 REGLAS DE LA QUINIELA
+    %h4= t('welcome.rules')
 
-    %p - Tu Quiniela será válida desde el momento que se haya confirmado el pago (sin excepción).
-    %p - Se aceptarán pagos para la Quiniela hasta el 10 de junio a las 8pm
-    %p - Una vez enviada tu Quiniela definitiva no podrá ser modificada por ningún motivo.
-    %p - La Quiniela de todos los participantes estarán publicadas en la página a partir del 12 de junio con los respectivos resultados y puntuaciones.
-    %p - En caso de empate en el 1er lugar, se repartirá el POTE equitativamente entre las quinielas empatadas y no habrá 2do lugar.
-    %p - En caso de empate en el 2do lugar, se repartirá el segundo premio equitativamente entre las quinielas empatadas.
-    %p - En caso de empate en el "goleador", se otorgará la puntuación para todos los goleadores por igual.
-    %p - En la segunda fase (fase de eliminatorias) no importan los marcadores.
-    %p - Los premios a los ganadores se entregaran el día 16 de JULIO del 2014.
+    %p= t('welcome.rule_1') 
+    %p= t('welcome.rule_2') 
+    %p= t('welcome.rule_3') 
+    %p= t('welcome.rule_4') 
+    %p= t('welcome.rule_5')
+    %p= t('welcome.rule_6')
+    %p= t('welcome.rule_7')
+    %p= t('welcome.rule_8')
+    %p= t('welcome.rule_9')
 
 
 - content_for(:javascript) do
