@@ -1,19 +1,19 @@
-%h1 Administración de quinielas
+%h1= t('menu.score_boards_admin')
 
-%p Seleccione las quinielas por activar y automáticamente serán activadas
-%p.white-text Recuerde estar seguro de querer activarlas, ya que se envía un correo electrónico al usuario confirmando que la quiniela ha sido activada
+%p= t('notices.activate_score_board')
+%p.white-text= t('notices.activate_email')
 .col-xs-6
-  %h4 Quinielas por activar
+  %h4= t('score_boards.to_activate')
   %table.table
-    %th Quinielas por activar
-    %th Usuario
-    %th Email
-    %th Activar
+    %th= t('score_boards.to_activate')
+    %th= t('users.user')
+    %th= t('users.email')
+    %th= t('general.activate')
     %tbody
       - if @score_boards_not_active.empty?
         %tr
           %td
-            %p No hay quinielas por activar
+            %p= t('notices.no_score_boards_to_activate')
 
       - @score_boards_not_active.each do |score_board|
         %tr
@@ -28,16 +28,16 @@
   .message-position
 
 .col-xs-6
-  %h4 Quinielas activas
+  %h4= t('score_boards.active')
   %table.table
-    %th Quinielas activas
-    %th Usuario
-    %th Email
+    %th= t('score_boards.active')
+    %t= t('users.user')
+    %th= t('users.email')
     %tbody
       - if @score_boards_active.empty?
         %tr 
           %td
-            %p No hay quinielas activas
+            %p= t('notices.no_active_score_boards')
       - @score_boards_active.each do |score_board|
         %tr
           %td= link_to score_board.name, user_score_board_path(score_board.user, score_board)

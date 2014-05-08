@@ -11,6 +11,7 @@ es:
     username: 'Nombre de usuario'
     username_notice: 'Este es el nombre que será visible públicamente'
   general:
+    activate: 'Activar'
     clear: 'Limpiar'
     configuration: 'Configuración'
     finish_phase: 'Terminar etapa'
@@ -38,6 +39,12 @@ es:
     this_may_take_time: 'Esto puede tomar tiempo. Por favor, no salga de esta página'
     score_board_names: 'Recuerda que tus quinielas deben tener nombres distintos'
     successful_save: 'Se ha guardado satisfactoriamente'
+    activate_score_board: 'Seleccione las quinielas por activar y automáticamente serán activadas'
+    activate_email: 'Recuerde estar seguro de querer activarlas, ya que se envía un correo electrónico al usuario confirmando que la quiniela ha sido activada'
+    no_score_boards_to_activate: 'No hay quinielas por activar'
+    no_active_score_boards: 'No hay quinielas activas'
+    score_board_has_been_published: 'Tu quiniela ha sido publicada. Las instrucciones para realizar el pago han sido enviadas a tu correo.'
+    wait: 'Al ser aprobado, aparecerás concursando en el ranking.'
   menu:
     official_results: 'Resultados Oficiales'
     score_boards_admin: 'Administración de Quinielas'
@@ -65,6 +72,8 @@ es:
     name: 'Nombre'
     type: 'Tipo de quiniela'
     create: 'Crear quiniela'
+    to_activate: 'Quinielas por activar'
+    active: 'Quinielas activas'
   teams:
     teams: 'Equipos'
     played_games_short: 'J'
@@ -89,3 +98,4 @@ es:
     worldcup: 'Mundial FIFA 2014'
   user:
     user: 'Usuario'
+    email: 'Email'
