@@ -32,6 +32,15 @@ en:
     password: 'Password'
     username: 'Username'
     username_notice: 'This name will identify you publicly'
+    ready_welcome: "You're in! Welcome again"
+    please_verify: "Please, check your username and/or password"
+    you_logged_out: "You logged out succesfully"
+    instructions_reset_password: "Instructions to reset your password have been sent to your e-mail, please check"
+    not_registered: 'is not a registered user'
+    no_change_password: 'You have not requested a change of password'
+    request_expired: 'Your request has expired. Please request a new change of password'
+    changed_password: 'Your password has been resetted. Please, sign in with your new password'
+    password_conditions: 'Cannot be empty. Must be same as confirmed password and should have at least 6 characters'
   email:
     transfer: 'Deposit or transfer:'
     to_change: 'Follow this link to change your password.'
@@ -120,6 +129,7 @@ en:
     to_activate: 'Pools requiring activation'
     active: 'Active pools'
     your_board: 'Your pool'
+    your_boards: 'Your pools'
     is_active: 'is active'
     status: 'Status'
   teams:

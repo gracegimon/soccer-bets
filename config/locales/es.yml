@@ -11,6 +11,15 @@ es:
     password: 'Contraseña'
     username: 'Nombre de usuario'
     username_notice: 'Este es el nombre que será visible públicamente'
+    ready_welcome: 'Listo! Bienvenido de nuevo!'
+    please_verify: "Por favor, verifica tu usuario o contraseña"
+    you_logged_out: "Has cerrado sesión"
+    instructions_reset_password: "Instrucciones de cambio de contraseña han sido enviadas a su correo. Por favor, verifique."
+    not_registered: 'no es un usuario registrado.'
+    no_change_password: 'Usted no ha solicitado un cambio de contraseña.'
+    request_expired: 'Su solicitud de reinicio de contraseña expiró. Por favor, solicite una nueva.'
+    changed_password: 'Su contraseña ha sido reiniciada. Por favor, inicie sesión con su nueva contraseña.'
+    password_conditions: 'No puede ser vacía, debe ser igual a la confirmación y mínimo 6 caracteres .'
   email:
     to_change: 'Para cambiar su contraseña, entre al siguiente link.'
     reset_password: 'Reiniciar contraseña'

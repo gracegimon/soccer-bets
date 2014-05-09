@@ -10,9 +10,9 @@ class AuthenticationController < ApplicationController
     user = User.authenticate(email, password)
     if user
       session[:user_id] = user.id
-      redirect_to user, :notice => "Listo! Bienvenido de nuevo!"
+      redirect_to user, :notice => I18n.t('authentication.ready_welcome')
     else
-      flash[:error] = "Por favor, verifica tu usuario o contraseña"
+      flash[:error] = I18n.t('authentication.please_verify')
       redirect_to :action => "sign_in"
     end
 
@@ -20,7 +20,7 @@ class AuthenticationController < ApplicationController
 
   def signed_out
     session[:user_id] = nil
-    flash[:notice] = "Has cerrado sesión"
+    flash[:notice] = I18n.t('authentication.you_logged_out')
     redirect_to :root
   end
 
@@ -57,14 +57,14 @@ class AuthenticationController < ApplicationController
       user.password_expires_after = 24.hours.from_now
       user.save
       UserMailer.reset_password_email(user).deliver
-      flash[:notice] = 'Instrucciones de cambio de contraseña han sido enviadas a su correo. Por favor, verifique.'
+      flash[:notice] = I18n.t('authentication.instructions_reset_password')
       redirect_to :sign_in  
     else
       @user = User.new
       # put the previous value back.
       @user.email = params[:user][:email]
-      @user.errors[:email] = 'no es un usuario registrado.'
-      flash[:notice] = 'Este correo no pertenece a un usuario registrado'
+      @user.errors[:email] = I18n.t('authentication.not_registered')
+      flash[:notice] = I18n.t('authentication.not_registered')
       redirect_to forgot_password_path
     end
 
@@ -75,7 +75,7 @@ class AuthenticationController < ApplicationController
     token = params.first[0]
     @user = User.find_by_password_reset_token(token)
     if @user.nil?
-      flash[:error] = 'Usted no ha solicitado un cambio de contraseña.'
+      flash[:error] = I18n.t('authentication.no_change_password')
       redirect_to :root
       return
     end
@@ -83,7 +83,7 @@ class AuthenticationController < ApplicationController
     if @user.password_expires_after < DateTime.now
       clear_password_reset(@user)
       @user.save
-      flash[:error] = 'Su solicitud de reinicio de contraseña expiró. Por favor, solicite una nueva.'
+      flash[:error] = I18n.t('authentication.request_expired')
       redirect_to :forgot_password
     end
 
@@ -100,13 +100,13 @@ class AuthenticationController < ApplicationController
       if @user.valid?
         clear_password_reset(@user)
         @user.save
-        flash[:notice] = 'Su contraseña ha sido reiniciada. Por favor, inicie sesión con su nueva contraseña.'
+        flash[:notice] = I18n.t('authentication.changed_password')
         redirect_to :sign_in
       else
         render :action => "password_reset"
       end
     else
-      @user.errors[:new_password] = 'No puede ser vacía, debe ser igual a la confirmación y mínimo 6 caracteres .'
+      @user.errors[:new_password] = I18n.t('authentication.password_conditions')
       render :action => "password_reset"
     end
   end
