@@ -1,6 +1,6 @@
-set :application, 'tupote'
+set :application, 'bracket'
 set :repository,  'git@github.com:gracegimon/soccer-bets.git'
-set :deploy_to, "/home/mikehonik/webapps/tupote"
+set :deploy_to, "/home/mikehonik/webapps/bracket"
 
 
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
@@ -30,7 +30,7 @@ default_run_options[:pty] = true
 #   end
 # end
 set :ssh_options, { :forward_agent => true }
-set :branch, "master"
+set :branch, "bracket"
 
 namespace :deploy do
   desc "Restart nginx"
