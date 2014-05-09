@@ -16,5 +16,4 @@
 //= require turbolinks
 //= require jquery.validate.min.js
 //= require jquery-ui-1.10.4.custom.min
-//= require messages_es.js
 //= require is_tie_validator.js.coffee

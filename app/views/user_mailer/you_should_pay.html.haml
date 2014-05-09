@@ -3,16 +3,10 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body{style: "font-family: Helvetica"}
-    %h2
-      Tu quiniela #{@score_board.name} ha sido completada 
-    %p
-      = t('email.please_pay', record: "#{@score_board.type}")
-    %h3 Transferencia o depósito en moneda local:
-    %p Se puede hacer el pago en Bs al cambio del dia = Dollar Today + 5 puntos. 
-    %p Datos de la cuenta: 01080521060100041696 Sonny Milhem Banco Provincial CI: V-16.286.051
-    %p Cualquier duda comunicarse con Sonny Milhem al +58 414 3968239 o responda a este correo electrónico: quinielatupote@gmail.com. Le responderemos lo más pronto posible.
-    %h3 Transferencia en moneda extranjera:
-    %p Account number: 009487083370, Routing number: 026009593. Bank of america. Sonny Milhem. Dirección: 21205 Yacht club Dr Apt 408
+    %h2= " #{t('score_boards.your_board')} #{@score_board.name} #{t('notices.has_been_completed')} "
+    %p= t('email.please_pay', record: "#{@score_board.type}")
+    %h3= t('email.transfer')
+    %p Discount Bank, account number: 124752065 
     %br/
-    %p= "#{t('email.you_will_be_informed')} TuPote"
+    %p= "#{t('email.you_will_be_informed')} Bracket2014"
     %p= t('email.thank_you_enroll_more')

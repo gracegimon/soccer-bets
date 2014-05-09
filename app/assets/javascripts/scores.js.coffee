@@ -13,7 +13,7 @@
       console.log value
 
       if isNaN(value)
-        alert "Debe ser un número entre #{min_value} y #{max_value}"
+        alert "Must be a number between #{min_value} y #{max_value}"
         return
 
       $.post "/scores/",

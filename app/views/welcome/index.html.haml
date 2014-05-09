@@ -1,11 +1,9 @@
 .main-content
   .row-fluid{style: "text-align:right; color:white;"}
-    %p= "Quinielas actuales Pote General: #{user_count_general}"
-    %p= "Quinielas actuales Pote High Roller: #{user_count_high_roller}"
-
+    %p= "#{t('welcome.current_pools')} #{user_count_general}"
   .row-fluid
     .span4
-      .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
+      .colored-circle.colored-circle-section-jackpots.colored-circle-section-center.tournament-blue
         %h4= t('welcome.first_place')
         %h1 55%
         %h4= "#{t('general.from_2')} #{t('welcome.jackpot')}"
@@ -16,7 +14,7 @@
           = image_tag "Brasil_2014.png", class: "logo-center clickable"
 
     .span4
-      .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
+      .colored-circle.colored-circle-section-jackpots.colored-circle-section-center.tournament-blue
         %h4= t('welcome.second_place')
         %h1 35%
         %h4= "#{t('general.from_2')} #{t('welcome.jackpot')}"
@@ -26,15 +24,11 @@
     .span4
       .colored-circle.colored-circle-subsection.colored-circle-subsection-center.tournament-blue
         %h5 General
-        %h2 $50
+        %h2 ₪300
     .span4#quinielas
       .colored-circle.colored-circle-middle-section.colored-circle-middle-section-center.tournament-blue
         %a{href: sign_up_path}
-          %h2.expandable-h2 Arma tus quinielas
-    .span4
-      .colored-circle.colored-circle-subsection.colored-circle-subsection-center.tournament-blue
-        %h5 High Roller
-        %h2 $200
+          %h2.expandable-h2= t('welcome.create_pools')
   .row-fluid.span12
     = image_tag "dots.png", class: "dots-image"
   .row-fluid

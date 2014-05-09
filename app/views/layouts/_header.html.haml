@@ -6,18 +6,15 @@
   = image_tag "brasil-header.jpg", size: "200x100"
 .span4
   %a(href= root_path)
-    = image_tag "tuPote.png", size: "200x100", class: 'clickable-header'
+    = image_tag "Bracket2014.png", size: "400x200", class: 'clickable-header'
 .container.nav-collapse
   .span4
     %ul.nav.navbar-nav.navbar-right
       %li
         %p.white-text{style: "margin-top:20px;"}= t('general.follow_us')
       %li 
-        %a{href: "#"}
+        %a{href: "https://www.facebook.com/groups/1443505629224014/"}
           = image_tag "facebook.gif", size: "40x40"
-      %li 
-        %a{href: "#", style: "padding-top:15px;"}
-          = image_tag "twitter.png", size: "40x43"
       - if current_user
         %li 
           %a{href: "#"}
@@ -37,10 +34,10 @@
       - else
         %li
           %a{href: "/#quinielas", class: 'scroll'}
-            Comienza ahora
+            = t('menu.start_now')
         %li= link_to "#{t('menu.current_ranking')}", ranking_score_boards_path
         %li
           %a{href: "/#reglas", class: 'scroll'}
-            Reglas del torneo
+            = t('menu.tournament_rules')
         %li= link_to "#{t('menu.sign_in')}", sign_in_path
 

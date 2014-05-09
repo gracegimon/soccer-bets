@@ -1,4 +1,4 @@
-%h6 Bienvenido :) #{@user.username}
+%h6= "#{t('notices.welcome')} #{@user.username}"
 
 
 - if @user.is_admin?
@@ -7,18 +7,16 @@
 
 - else 
   - unless @score_boards.nil?
-    %h2 Tus Quinielas
+    %h2= t('score_boards.your_boards')
     %table.table
       %th
-        %h5 Quiniela
+        %h5= t('score_boards.board')
       %th
-        %h5 Estado
+        %h5= t('general.status')
       %th
-        %h5 Pote
+        %h5= t('welcome.punctuation')
       %th
-        %h5 Puntuación
-      %th
-        %h5 Posición
+        %h5= t('general.position')
       %tbody
         - @score_boards.each do |score_board|
           %tr
@@ -33,15 +31,13 @@
             %td
               %h6= score_board.status
             %td
-              %h6= score_board.type
-            %td
               %h6= score_board.points.nil? ? "-" : score_board.points
             %td
               %h6= score_board.position.nil? ? "-" : score_board.position
 
   %h2
     %a#new_scoreboard_link{href: "#"}
-      Agregar una nueva quiniela
+      = t('score_boards.add')
 
   %hr
   #new_scoreboard{style: "display:none"}
@@ -57,9 +53,7 @@
       %br/
       - # This can be a select if it has more options
       = f.radio_button :board_type, "0", checked: true
-      %p= 'General (50 USD)'
-      = f.radio_button :board_type, "1"
-      %p= 'High Roller (200 USD)'
+      %p= 'General (300 ILS)'
       =f.hidden_field :is_active, value: false
       = f.hidden_field :tournament_id, value: current_tournament.id
       = f.hidden_field :points, value: 0

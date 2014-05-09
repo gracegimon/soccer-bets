@@ -3,4 +3,4 @@ $.validator.addMethod "isTie", ((value, element, param) ->
   if value == $(element).parent().siblings().find("[name='score[team_"+param+"_goals]']").val() 
     isValid = false
   isValid
-), "No se permiten empates en esta etapa"  
+), "No ties allowed in this phase"  
