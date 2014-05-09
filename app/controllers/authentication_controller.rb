@@ -42,7 +42,7 @@ class AuthenticationController < ApplicationController
       @user.save
       session[:user_id] = @user.id
       UserMailer.welcome_email(@user).deliver
-      flash[:notice] = " Bienvenido!"
+      flash[:notice] = I18n.t('notices.welcome')
       redirect_to @user
     else
       render "sign_up"
