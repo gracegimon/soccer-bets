@@ -82,7 +82,7 @@ Quiniela::Application.configure do
   
   Quiniela::Application.config.middleware.use ExceptionNotification::Rack,
   :email => {
-    :email_prefix => "[TuPote_Error] ",
+    :email_prefix => "[Bracket_Error] ",
     :sender_address => %{"notifier" <notifier@tupote.com>},
     :exception_recipients => %w{tupote.notifier@gmail.com}
   }
