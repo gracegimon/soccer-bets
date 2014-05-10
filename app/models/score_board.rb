@@ -437,6 +437,7 @@ class ScoreBoard < ActiveRecord::Base
     return m1
   end
 
+  # Returns true only if all matches have a score
   def matches_have_score(matches)
     return false if matches.empty?
     matches.each do |match|
