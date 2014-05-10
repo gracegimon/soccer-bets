@@ -34,7 +34,7 @@
   .row.span11
     = form_for @score_board do |f|
       = f.hidden_field :is_published, value: true
-      = f.submit "#{t('general.publish')}", class: "button btn btn-success", style: "float: right"
+      = f.submit "#{t('general.publish')}", class: "button btn btn-success", style: "float: right", confirm: 'Are you sure you want to publish? You will not be able to make any further changes to your pool'
 
 - content_for(:javascript) do
 
