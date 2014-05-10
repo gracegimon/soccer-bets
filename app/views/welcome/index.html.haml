@@ -1,11 +1,14 @@
 .main-content
+  - jackpot_general = current_tournament.jackpot_general
+  - jackpot_high = current_tournament.jackpot_high
   .row-fluid{style: 'color: white; margin-left: 80px'}
     .span8
       %h5= "Quinielas actuales Pote General: #{user_count_general}"
+      %h4= "Pote General actual: #{current_tournament.final_jackpot(jackpot_general)} $"
     .span4{style: 'float: right'}
       %h5= "Quinielas actuales Pote High Roller: #{user_count_high_roller}"
-  - jackpot_general = current_tournament.jackpot_general
-  - jackpot_high = current_tournament.jackpot_high
+      %h4= "Pote High roller actual: #{current_tournament.final_jackpot(jackpot_high)} $"
+
   
   .row-fluid
     .span4
@@ -42,12 +45,12 @@
         %h2 $200
   .row-fluid
     .span6
-      .span6
+      .span4
         .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
           %h4 1er lugar actual
           %h4= "#{current_tournament.first_place(jackpot_general)} $"
           %h4 General
-      .span6
+      .span4
         .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
           %h4 2do lugar actual
           %h4= "#{current_tournament.second_place(jackpot_general)} $"
