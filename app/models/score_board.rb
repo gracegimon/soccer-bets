@@ -18,7 +18,9 @@ class ScoreBoard < ActiveRecord::Base
   # IS_ACTIVE set to TRUE only when user has paid.
 
   GENERAL = 0
+  GENERAL_VALUE = 50
   HIGH_ROLLER = 1
+  HIGH_ROLLER_VALUE = 200
 
   # This method should see all of the scoreboards that
   # the user has and check if this name is unique 
