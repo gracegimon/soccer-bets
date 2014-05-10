@@ -116,7 +116,7 @@
     %h4= t('welcome.rules')
 
     %p= t('welcome.rule_1') 
-    %p= t('welcome.rule_2') 
+    %p= t('welcome.rule_2')
     %p= t('welcome.rule_3') 
     %p= t('welcome.rule_4') 
     %p= t('welcome.rule_5')
@@ -124,7 +124,12 @@
     %p= t('welcome.rule_7')
     %p= t('welcome.rule_8')
     %p= t('welcome.rule_9')
-
+    %p{style: 'font-weight: bold'}= t('welcome.rule_10')
+    %ul
+      %li= t('welcome.rule_11')
+      %ul
+        %li= t('welcome.rule_12')
+      %li= t('welcome.rule_13')  
 
 - content_for(:javascript) do
   :coffeescript

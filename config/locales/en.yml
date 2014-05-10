@@ -108,7 +108,7 @@ en:
     logout: 'Log out'
     tournament_rules: "Tournament's rules"
   extra_phase:
-    best_player: 'Best player'
+    best_player: 'Top Scorer'
     red_card_team: 'First team that gets a red card'
     penal_team: 'First team that scores a penalty kick'
   phases:
@@ -169,7 +169,7 @@ en:
     extra_phase: 'Extra points'
     punctuation: 'Score'
     exact_score: 'Exact score'
-    best_player: 'Best Player (Goals + Penalty Kicks)'
+    best_player: 'Top Scorer (Goals + Penalty Kicks)'
     round_of_16: 'Team in Round of 16'
     quarter_finals: 'Team in Quarter-finals'
     diff_goals: 'Goals difference'
@@ -189,6 +189,10 @@ en:
     rule_4: '- The pools of every player will be public in the site after June 12th, along with their results and score.'
     rule_5: '- In case of a tie for the 1st place, the jackpot will be splitted equally among all the tied pools. There will be no runner-ups.'
     rule_6: '- In case of a tie for the 2nd place, its prize will be splitted equally among all the tied pools.'
-    rule_7: '- In case of a tie for Best Player, all tied player will recieve the same full score.'
+    rule_7: '- In case of a tie for Top Scorer, all tied player will recieve the same full score.'
     rule_8: '- Match scores will not be taken into account during the Second Phase.'
     rule_9: '- Winners will recieve their prize on July 16th, 2014.'
+    rule_10: '- Ways of paying the entry fee of the Bracket 2014:'
+    rule_11: 'Make a wire transfer to the following account:' 
+    rule_12: 'Discount Bank, account number: 124752065 '
+    rule_13: 'For cash payments please call 058-4973487'
