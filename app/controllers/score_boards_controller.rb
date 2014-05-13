@@ -150,19 +150,50 @@ class ScoreBoardsController < ApplicationController
   def update
     @score_board = ScoreBoard.find(params[:id])
     match_type_group = Match::GROUP_USERS
+    match_type_r16 = Match::R16
+    match_type_quarters = Match::QUARTER
+    match_type_third = Match::THIRD
+    match_type_semi = Match::SEMI
+    match_type_final = Match::FINAL    
     @is_main = @score_board.is_main?
     if @is_main
       match_type_group = Match::GROUP_MAIN
+      match_type_r16 = Match::R16_MAIN
+      match_type_semi = Match::SEMI_MAIN
+      match_type_quarters = Match::QUARTER_MAIN
+      match_type_third = Match::THIRD_MAIN
+      match_type_final = Match::FINAL_MAIN      
     end        
     @matches_group = Match.where(match_type: match_type_group, score_board_id: @score_board.id).order(:match_number)
+    @maches_r16 = Match.where(match_type: match_type_r16, score_board_id: @score_board.id).order(:match_number)
+    @matches_quarters =  Match.where(match_type: match_type_quarters, score_board_id: @score_board.id).order(:match_number)
+    @matches_semi =  Match.where(match_type: match_type_semi, score_board_id: @score_board.id).order(:match_number)
+    @match_third =  Match.where(match_type: match_type_third, score_board_id: @score_board.id).order(:match_number)
+    @match_final =  Match.where(match_type: match_type_final, score_board_id: @score_board.id).order(:match_number)
     extra_phase = @score_board.extra_phase
     messages = []
     if !@score_board.matches_have_score(@matches_group)
       messages << "Por favor completa los resultados en la etapa de grupos."
     end
+    if !@score_board.matches_have_score(@maches_r16)
+      messages << "Por favor completa los resultados en la etapa de octavos de final."
+    end
+    if !@score_board.matches_have_score(@matches_quarters)
+      messages << "Por favor completa los resultados en la etapa de cuartos de final."
+    end
+    if !@score_board.matches_have_score(@matches_semi)
+      messages << "Por favor completa los resultados en la etapa de semifinales."
+    end
+    if !@score_board.matches_have_score(@match_third)
+      messages << "Por favor completa los resultados del partido de 3er lugar."
+    end
+    if !@score_board.matches_have_score(@match_final)
+      messages << "Por favor completa los resultados del partido de la final."
+    end
     if extra_phase.nil? || !extra_phase.is_complete
       messages << "Por favor complete la etapa 'Extra'"
     end
+
     if messages.empty?
       if @score_board.update_attributes(score_board_params)
         flash[:notice] = "Publicado"
