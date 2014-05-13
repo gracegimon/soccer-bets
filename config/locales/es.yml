@@ -26,7 +26,7 @@ es:
     youre_enrolled: 'Ya te encuentras concursando para'
     points_will_be_updated: 'A medida que se vayan publicando los resultados oficiales tu puntuación será actualizada.'
     thank_you_enroll_more: 'Gracias por participar. Recuerda que puedes concursar con todas las quinielas que quieras!'
-    please_pay: 'Ahora, para que tu Quiniela comience a participar en el pote de %{record} usdebes realizar tu pago por uno de estos medios:'
+    please_pay: 'Ahora, para que tu Quiniela comience a participar en el pote de %{record} debes realizar tu pago por uno de estos medios:'
     you_will_be_informed: 'Cuando tu pago sea efectivo se te informará y automáticamente estarás participando en'
   general:
     activate: 'Activar'
