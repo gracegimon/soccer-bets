@@ -1,20 +1,11 @@
 .main-content
   - jackpot_general = current_tournament.jackpot_general
   - jackpot_high = current_tournament.jackpot_high
-  .row-fluid{style: 'color: white; margin-left: 80px'}
-    .span8
-      %h5= "Quinielas actuales Pote General: #{user_count_general}"
-      %h4= "Pote General actual: #{current_tournament.final_jackpot(jackpot_general)} $"
-    .span4{style: 'float: right'}
-      %h5= "Quinielas actuales Pote High Roller: #{user_count_high_roller}"
-      %h4= "Pote High roller actual: #{current_tournament.final_jackpot(jackpot_high)} $"
-
-  
   .row-fluid
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
         %h4= t('welcome.first_place')
-        %h1 60%
+        %h1 55%
         %h4= "#{t('general.from_2')} #{t('welcome.jackpot')}"
 
     .span4
@@ -25,24 +16,29 @@
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
         %h4= t('welcome.second_place')
-        %h1 30%
+        %h1 35%
         %h4= "#{t('general.from_2')} #{t('welcome.jackpot')}"
 
   .row-fluid.span12
     = image_tag "dots.png", class: "dots-image"
   .row-fluid
     .span4
-      .colored-circle.colored-circle-subsection.colored-circle-subsection-center.tournament-blue
-        %h5 General
+      .colored-circle.colored-circle-middle-section.colored-circle-middle-section-center.big-circle.tournament-blue
+        %h4 General
         %h2 $50
+        %h5= "Quinielas actuales: #{user_count_general}"
+        %h5= "Pote actual: #{current_tournament.final_jackpot(jackpot_general)} $"
     .span4#quinielas
       .colored-circle.colored-circle-middle-section.colored-circle-middle-section-center.tournament-blue
         %a{href: sign_up_path}
           %h2.expandable-h2 Arma tus quinielas
     .span4
-      .colored-circle.colored-circle-subsection.colored-circle-subsection-center.tournament-blue
+      .colored-circle.colored-circle-middle-section.colored-circle-middle-section-center.big-circle.tournament-blue
         %h5 High Roller
         %h2 $200
+        %h5= "Quinielas actuales: #{user_count_high_roller}"
+        %h5= "Pote actual: #{current_tournament.final_jackpot(jackpot_high)} $"
+
   .row-fluid
     .span6
       .span4

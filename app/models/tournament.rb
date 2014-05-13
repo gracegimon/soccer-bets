@@ -17,15 +17,15 @@ class Tournament < ActiveRecord::Base
     return (score_boards_type_1 * ScoreBoard::HIGH_ROLLER_VALUE)  
   end
 
-  # First place current prize (60%)
+  # First place current prize (55%)
   def first_place(jackpot)
   	first_place = jackpot
-  	return first_place * 0.6
+  	return (first_place * 0.55).round(2)
   end
 
   def second_place(jackpot)
   	second_place = jackpot
-  	return second_place * 0.3
+  	return (second_place * 0.35).round(2)
   end
 
   def third_place(jackpot)
