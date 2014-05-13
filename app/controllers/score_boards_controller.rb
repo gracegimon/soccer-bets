@@ -146,15 +146,35 @@ class ScoreBoardsController < ApplicationController
 
   end
 
+  # Publish
   def update
     @score_board = ScoreBoard.find(params[:id])
-    if @score_board.update_attributes(score_board_params)
-      flash[:notice] = "Publicado"
-      if @score_board == main_score_board
-        redirect_to action: 'show_after_published', score_board: @score_board
-      else
-        redirect_to action: 'wait'
+    match_type_group = Match::GROUP_USERS
+    @is_main = @score_board.is_main?
+    if @is_main
+      match_type_group = Match::GROUP_MAIN
+    end        
+    @matches_group = Match.where(match_type: match_type_group, score_board_id: @score_board.id).order(:match_number)
+    extra_phase = @score_board.extra_phase
+    messages = []
+    if !@score_board.matches_have_score(@matches_group)
+      messages << "Por favor completa los resultados en la etapa de grupos."
+    end
+    if extra_phase.nil? || !extra_phase.is_complete
+      messages << "Por favor complete la etapa 'Extra'"
+    end
+    if messages.empty?
+      if @score_board.update_attributes(score_board_params)
+        flash[:notice] = "Publicado"
+        if @score_board == main_score_board
+          redirect_to action: 'show_after_published', score_board: @score_board
+        else
+          redirect_to action: 'wait'
+        end
       end
+    else
+      flash[:error] = messages
+      redirect_to action: 'show', score_board: @score_board
     end
   end
 
