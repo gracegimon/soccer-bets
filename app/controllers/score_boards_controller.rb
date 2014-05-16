@@ -53,17 +53,24 @@ class ScoreBoardsController < ApplicationController
   def show_round_of_16
     @score_board = ScoreBoard.find(params[:id])
     match_type = Match::R16
+    match_type_groups = Match::GROUP_USERS
     @is_main = @score_board.is_main?
     if @is_main
       match_type = Match::R16_MAIN
+      match_type_groups = Match::GROUP_MAIN
     end
+    @matches_group = Match.where(match_type: match_type_groups, score_board_id: @score_board.id)
     @matches = Match.where(match_type: match_type, score_board_id: @score_board.id).order(:match_number)
-    if @matches.empty?
-      @matches = @score_board.calculate_round_of_16
+    if @score_board.matches_have_score(@matches_group)
+      if @matches.empty?
+        @matches = @score_board.calculate_round_of_16
+      else
+        @matches = @score_board.update_round_of_16(@matches)
+      end
     else
-      @matches = @score_board.update_round_of_16(@matches)
+      flash[:error] = "Por favor, guarda todos los resultados de la fase anterior"
+      redirect_to action: 'show'
     end
-
   end
 
   def show_quarter_finals
