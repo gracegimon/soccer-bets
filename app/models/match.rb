@@ -1,6 +1,6 @@
 class Match < ActiveRecord::Base
   has_many :teams
-  has_one :score
+  has_one :score, dependent: :destroy
   belongs_to :score_board
   belongs_to :group
 

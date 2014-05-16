@@ -1,7 +1,7 @@
 class ScoreBoard < ActiveRecord::Base
   has_many :scores
-  has_many :matches
-  has_one :extra_phase
+  has_many :matches, dependent: :destroy
+  has_one :extra_phase, dependent: :destroy
   belongs_to :user
   belongs_to :tournament
   before_create :valid_name
