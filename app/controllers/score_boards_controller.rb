@@ -2,7 +2,7 @@ class ScoreBoardsController < ApplicationController
   before_filter :authenticate
   before_action :check_admin, only: [:tournament_score_board, :show_for_admin]
   before_action :check_published, only: [:show_after_published]
- # before_action :current_user_is_viewing, except: [:show_after_published]
+  before_action :current_user_is_viewing, only: [:show_after_published]
   before_action :signed_in, only: [:show]
 
   def index
@@ -295,7 +295,9 @@ class ScoreBoardsController < ApplicationController
 
   def current_user_is_viewing
     @user = ScoreBoard.find(params[:id]).user
-    redirect_to(root_url) unless current_user?(@user)
+    unless ScoreBoard.find(params[:id]).is_main?
+      redirect_to(root_url) unless current_user?(@user)
+    end
   end
 
   def signed_in
