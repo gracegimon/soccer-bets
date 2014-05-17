@@ -1,6 +1,6 @@
 class ScoreBoardsController < ApplicationController
   before_filter :authenticate
-  before_action :check_admin, only: [:tournament_score_board, :show_for_admin]
+  before_action :check_admin, only: [:tournament_score_board, :show_for_admin, :destroy]
   before_action :check_published, only: [:show_after_published]
   before_action :current_user_is_viewing, only: [:show_after_published]
   before_action :signed_in, only: [:show]
@@ -12,6 +12,14 @@ class ScoreBoardsController < ApplicationController
     if current_user?(@user)
       @can_add = true
     end
+  end
+
+  def destroy
+    @score_board = ScoreBoard.find(params[:id])
+    @score_board.destroy
+    flash[:success] = t('notices.destroyed', record: @score_board.name)
+    flash.keep(:success)
+    redirect_to action: 'show_for_admin' 
   end
   
   def show

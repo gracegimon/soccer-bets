@@ -32,6 +32,7 @@ es:
     activate: 'Activar'
     clear: 'Limpiar'
     configuration: 'Configuración'
+    destroy: 'Eliminar'
     finish_phase: 'Terminar etapa'
     from: 'de'
     from_2: 'del'
@@ -45,6 +46,7 @@ es:
     points: 'Puntos'
     status: 'Estado'
   notices:
+    destroyed: 'La quiniela %{record} fue eliminada' 
     mandatory_field: 'Este campo es obligatorio'
     pick_one: 'Escoja uno de la lista'
     please_fill_out_r: 'Por favor, rellene todos los resultados de los %{record}'
