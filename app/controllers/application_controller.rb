@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_admin
-    redirect_to :root unless current_user.is_admin?
+    redirect_to :root unless !current_user.nil? && current_user.is_admin?
   end
 
   def current_tournament
