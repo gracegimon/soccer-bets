@@ -304,7 +304,7 @@ class ScoreBoardsController < ApplicationController
   def current_user_is_viewing
     @user = ScoreBoard.find(params[:id]).user
     unless ScoreBoard.find(params[:id]).is_main?
-      redirect_to(root_url) unless current_user?(@user)
+      redirect_to(root_url) unless ( current_user?(@user) || (@current_user.is_admin? unless @current_user.nil?) ) 
     end
   end
 
