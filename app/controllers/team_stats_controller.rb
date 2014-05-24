@@ -30,8 +30,9 @@ class TeamStatsController < ApplicationController
     @teams.each do |team|
       team.read_team_stats(@score_board)
     end
-    leaders = @group.group_leaders_for_score_board(@score_board)
-    bottom = @group.group_bottom_for_score_board(@score_board)
+    all = @group.group_order_for_score_board(@score_board)
+    leaders = [all[0], all[1]]
+    bottom = [all[2], all[3]]
     Score.set_group_positions(leaders,bottom,@score_board)
   end
 end
