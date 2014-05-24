@@ -8,44 +8,31 @@
 
   .row-fluid
     .span4
+    .span4
+      .colored-circle.colored-circle-title.tournament-blue
+        %a{href: "http://www.fifa.com/worldcup/", target: "_blank"}
+          = image_tag "Brasil_2014.png", class: "logo-center clickable"
+  .row-fluid
+    .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.top-circles.tournament-blue
         %h4 1er lugar
         - ##{current_tournament.first_place(jackpot_general)}
         %h4= "5000 BsF"
         %h4 premio actual
-
     .span4
-      .colored-circle.colored-circle-title.tournament-blue
-        %a{href: "http://www.fifa.com/worldcup/", target: "_blank"}
-          = image_tag "Brasil_2014.png", class: "logo-center clickable"
-
-    .span4
-      .colored-circle.colored-circle-section.colored-circle-section-center.top-circles.tournament-blue
-        %h4 1er lugar
-        %h4= "#{current_tournament.first_place(jackpot_high)} BsF"
-        %h4 premio actual
-
-  .row-fluid
-    .span3
+      .colored-circle.colored-circle-section.colored-circle-section-center.colored-circle-middle-section-small.tournament-blue
+        %h2 Pote 
+        %h2 500
+    .span4            
       .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
         %h4 2do lugar
         - #"#{current_tournament.second_place(jackpot_general)}"
         %h4= "2000 BsF"
         %h4 premio actual
     .span3
-      .colored-circle.colored-circle-section.colored-circle-section-center.colored-circle-middle-section-small.tournament-blue
-        %h2 Pote 
-        %h2 500
-    .span3
-      .colored-circle.colored-circle-section.colored-circle-section-center.colored-circle-middle-section-small.tournament-blue
-        %h2 Pote 
-        %h2 1000
-    .span3
-      .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue
-        %h4 2do lugar
-        %h4= "#{current_tournament.second_place(jackpot_high)} BsF"
-        %h4 premio actual
+
   .row-fluid
+    .span4
     .span4
       .colored-circle.colored-circle-section.colored-circle-section-center.bottom-circles.tournament-blue
         %h4 3er lugar
@@ -53,12 +40,6 @@
         %h4= "1000 BsF"
         %h4 premio actual
     .span4
-    .span4   
-      .colored-circle.colored-circle-section.colored-circle-section-center.bottom-circles.tournament-blue
-        %h4 3er lugar
-        %h4= "#{current_tournament.third_place(jackpot_high)} BsF"
-        %h4 premio actual
-
   .row-fluid.span12
     = image_tag "dots.png", class: "dots-image"
   .row-fluid
@@ -70,10 +51,6 @@
       .colored-circle.colored-circle-middle-section.colored-circle-middle-section-center.tournament-blue
         %a{href: sign_up_path}
           %h2.expandable-h2 Arma tus quinielas
-    .span4
-      .colored-circle.colored-circle-subsection.colored-circle-subsection-center.tournament-blue
-        %h5 Pote 1000
-        %h5 1000 BsF
   .row-fluid.span12
     = image_tag "dots.png", class: "dots-image"
   .row-fluid
