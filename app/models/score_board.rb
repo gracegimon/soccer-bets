@@ -89,7 +89,7 @@ class ScoreBoard < ActiveRecord::Base
   def calculate_round_of_16
     matches = []
 
-    leaders = all_groups_leaders
+    leaders = all_groups_leaders_by_position
 
     team_1A = leaders.first.first
     team_2A = leaders.first.second

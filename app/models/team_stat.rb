@@ -13,7 +13,11 @@ class TeamStat < ActiveRecord::Base
   FINALS = 6
 
   def set_current_stats
-    matches = Match.find_by_team_group_score_board(self.team,self.score_board)
+    match_type = Match::GROUP_USERS
+    if self.score_board.is_main?
+      match_type = Match::GROUP_MAIN
+    end
+    matches = Match.find_by_team_group_score_board_match_type(self.team,self.score_board, match_type)
     matches = matches.select {|m| !m.score.nil?}
     set_won_games(matches)
     set_lost_games(matches)

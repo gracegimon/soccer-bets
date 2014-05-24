@@ -1,8 +1,8 @@
 class ScoreBoardsController < ApplicationController
   before_filter :authenticate
-  before_action :check_admin, only: [:tournament_score_board, :show_for_admin]
+  before_action :check_admin, only: [:tournament_score_board, :show_for_admin, :destroy]
   before_action :check_published, only: [:show_after_published]
- # before_action :current_user_is_viewing, except: [:show_after_published]
+  # before_action :current_user_is_viewing, only: [:show_after_published]
   before_action :signed_in, only: [:show]
 
   def index
@@ -12,6 +12,14 @@ class ScoreBoardsController < ApplicationController
     if current_user?(@user)
       @can_add = true
     end
+  end
+
+  def destroy
+    @score_board = ScoreBoard.find(params[:id])
+    @score_board.destroy
+    flash[:success] = t('notices.destroyed', record: @score_board.name)
+    flash.keep(:success)
+    redirect_to action: 'show_for_admin' 
   end
   
   def show
@@ -53,17 +61,24 @@ class ScoreBoardsController < ApplicationController
   def show_round_of_16
     @score_board = ScoreBoard.find(params[:id])
     match_type = Match::R16
+    match_type_groups = Match::GROUP_USERS
     @is_main = @score_board.is_main?
     if @is_main
       match_type = Match::R16_MAIN
+      match_type_groups = Match::GROUP_MAIN
     end
+    @matches_group = Match.where(match_type: match_type_groups, score_board_id: @score_board.id)
     @matches = Match.where(match_type: match_type, score_board_id: @score_board.id).order(:match_number)
-    if @matches.empty?
-      @matches = @score_board.calculate_round_of_16
+    if @score_board.matches_have_score(@matches_group)
+      if @matches.empty?
+        @matches = @score_board.calculate_round_of_16
+      else
+        @matches = @score_board.update_round_of_16(@matches)
+      end
     else
-      @matches = @score_board.update_round_of_16(@matches)
+      flash[:error] = "Please, save all results"
+      redirect_to action: 'show'
     end
-
   end
 
   def show_quarter_finals
@@ -84,7 +99,7 @@ class ScoreBoardsController < ApplicationController
         @matches = @score_board.update_quarters(@matches)
       end
     else
-      flash[:error] = "Por favor, guarda todos los resultados"
+      flash[:error] = "Please, save all results"
       redirect_to action: 'show_round_of_16'
     end
   end
@@ -107,7 +122,7 @@ class ScoreBoardsController < ApplicationController
         @matches = @score_board.update_semi_finals(@matches)
       end
     else
-      flash[:error] = "Por favor, guarda todos los resultados"
+      flash[:error] = "Please, save all results"
       redirect_to action: 'show_quarter_finals'
     end
   end
@@ -140,21 +155,72 @@ class ScoreBoardsController < ApplicationController
       end
       @matches = [@final, @third]
     else
-      flash[:error] = "Por favor, guarda todos los resultados"
+      flash[:error] = "Please, save all results"
       redirect_to action: 'show_semi_finals'      
     end
 
   end
 
+  # Publish
   def update
     @score_board = ScoreBoard.find(params[:id])
-    if @score_board.update_attributes(score_board_params)
-      flash[:notice] = "Publicado"
-      if @score_board == main_score_board
-        redirect_to action: 'show_after_published', score_board: @score_board
-      else
-        redirect_to action: 'wait'
+    match_type_group = Match::GROUP_USERS
+    match_type_r16 = Match::R16
+    match_type_quarters = Match::QUARTER
+    match_type_third = Match::THIRD
+    match_type_semi = Match::SEMI
+    match_type_final = Match::FINAL    
+    @is_main = @score_board.is_main?
+    if @is_main
+      match_type_group = Match::GROUP_MAIN
+      match_type_r16 = Match::R16_MAIN
+      match_type_semi = Match::SEMI_MAIN
+      match_type_quarters = Match::QUARTER_MAIN
+      match_type_third = Match::THIRD_MAIN
+      match_type_final = Match::FINAL_MAIN      
+    end        
+    @matches_group = Match.where(match_type: match_type_group, score_board_id: @score_board.id).order(:match_number)
+    @maches_r16 = Match.where(match_type: match_type_r16, score_board_id: @score_board.id).order(:match_number)
+    @matches_quarters =  Match.where(match_type: match_type_quarters, score_board_id: @score_board.id).order(:match_number)
+    @matches_semi =  Match.where(match_type: match_type_semi, score_board_id: @score_board.id).order(:match_number)
+    @match_third =  Match.where(match_type: match_type_third, score_board_id: @score_board.id).order(:match_number)
+    @match_final =  Match.where(match_type: match_type_final, score_board_id: @score_board.id).order(:match_number)
+    extra_phase = @score_board.extra_phase
+    messages = []
+    if !@score_board.matches_have_score(@matches_group)
+      messages << "Please complete group phase scores."
+    end
+    if !@score_board.matches_have_score(@maches_r16)
+      messages << "Please complete round of 16 phase scores."
+    end
+    if !@score_board.matches_have_score(@matches_quarters)
+      messages << "Please complete quarters phase scores."
+    end
+    if !@score_board.matches_have_score(@matches_semi)
+      messages << "Please complete semi finals phase scores."
+    end
+    if !@score_board.matches_have_score(@match_third)
+      messages << "Please complete third place match score"
+    end
+    if !@score_board.matches_have_score(@match_final)
+      messages << "Please complete final match score"
+    end
+    if extra_phase.nil? || !extra_phase.is_complete
+      messages << "Please complete 'Extra' phase"
+    end
+
+    if messages.empty?
+      if @score_board.update_attributes(score_board_params)
+        flash[:notice] = "Published"
+        if @score_board == main_score_board
+          redirect_to action: 'show_after_published', score_board: @score_board
+        else
+          redirect_to action: 'wait'
+        end
       end
+    else
+      flash[:error] = messages
+      redirect_to action: 'show', score_board: @score_board
     end
   end
 
@@ -237,7 +303,9 @@ class ScoreBoardsController < ApplicationController
 
   def current_user_is_viewing
     @user = ScoreBoard.find(params[:id]).user
-    redirect_to(root_url) unless current_user?(@user)
+    unless ScoreBoard.find(params[:id]).is_main?
+      redirect_to(root_url) unless current_user?(@user)
+    end
   end
 
   def signed_in

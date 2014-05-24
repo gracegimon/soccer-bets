@@ -6,11 +6,11 @@ class Group < ActiveRecord::Base
   has_many :matches, :through => :group_matches
 
   def group_matches
-  	teams = self.teams
-  	matches = []
-  	teams.each do |t|
-  		matches << Match.find_by_team_group(t) unless  Match.find_by_team_group(t).nil?
-  	end
+    teams = self.teams
+    matches = []
+    teams.each do |t|
+      matches << Match.find_by_team_group(t) unless  Match.find_by_team_group(t).nil?
+    end
     return matches
   end
 
@@ -43,14 +43,23 @@ class Group < ActiveRecord::Base
     teams.each do |t|
       team_stats << t.team_stats.for_scoreboard(score_board)
     end
-    team_stats.sort_by! { |ts| -ts.points}
+    team_stats.sort_by! { |ts| [-ts.points, ts.position]}
   end
 
+  #DEPRECATED
   def group_leaders_for_score_board(score_board)
+  
+  end
+
+  def group_order_for_score_board(score_board)
     team_stats = group_team_stats_for_score_board(score_board)
     leader_1 = team_stats.first
     leader_2 = team_stats.second
-    set_leader(leader_1,leader_2)
+    # They are in order.. now, we have to order the others
+    current_leaders = set_leader(leader_1,leader_2)
+    ts1 = TeamStat.where(team_id: current_leaders[1].id).for_scoreboard(score_board)
+    other_leaders = set_leader(ts1, team_stats[2])
+    return [current_leaders[0], other_leaders[0],other_leaders[1], team_stats.last.team]
   end
 
   # By position
