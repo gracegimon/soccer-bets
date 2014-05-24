@@ -62,4 +62,9 @@ class ExtraPhase < ActiveRecord::Base
     end
   end
 
+  def is_complete
+    return false if (self.red_card_team_id.nil? || self.penal_team_id.nil? || self.best_player_id.nil?)
+    return true
+  end
+
 end
