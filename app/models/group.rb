@@ -43,7 +43,7 @@ class Group < ActiveRecord::Base
     teams.each do |t|
       team_stats << t.team_stats.for_scoreboard(score_board)
     end
-    team_stats.sort_by! { |ts| -ts.points}
+    team_stats.sort_by! { |ts| [-ts.points, ts.position]}
   end
 
   #DEPRECATED
