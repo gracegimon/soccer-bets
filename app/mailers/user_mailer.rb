@@ -21,7 +21,7 @@ class UserMailer < ActionMailer::Base
 
   def you_are_active(user, score_board)
     @user = user
-    @site_name = "Tu Pote"
+    @site_name = "TuQuiniela"
     @score_board = score_board
     mail(:to => user.email, :subject => "TuQuiniela2014: Tu Quiniela está activa")
   end

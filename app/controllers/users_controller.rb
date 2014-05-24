@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
     def signed_in
       @user = User.find(params[:id])
-      redirect_to(root_url) unless (current_user?(@user) || @current_user.is_admin? unless @current_user.nil?)
+      redirect_to(root_url) unless (current_user?(@user) || (@current_user.is_admin? unless @current_user.nil?) )
     end
 
 end
