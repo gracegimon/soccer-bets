@@ -2,7 +2,7 @@ class ScoreBoardsController < ApplicationController
   before_filter :authenticate
   before_action :check_admin, only: [:tournament_score_board, :show_for_admin, :destroy]
   before_action :check_published, only: [:show_after_published]
-  before_action :current_user_is_viewing, only: [:show_after_published]
+ # before_action :current_user_is_viewing, only: [:show_after_published]
   before_action :signed_in, only: [:show]
 
   def index
