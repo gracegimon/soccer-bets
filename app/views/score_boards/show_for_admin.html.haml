@@ -1,19 +1,26 @@
-%h1 Administración de quinielas
+%h1= t('menu.score_boards_admin')
 
-%p Seleccione las quinielas por activar y automáticamente serán activadas
+%p= t('notices.activate_score_board')
+%p.white-text= t('notices.activate_email')
 .col-xs-6
+  %h4= t('score_boards.to_activate')
   %table.table
-    %th Quinielas por activar
+    %thead
+      %th Quinielas a activar
+      %th Usuario
+      %th Email
+      %th Activar
     %tbody
       - if @score_boards_not_active.empty?
         %tr
           %td
-            %p No hay quinielas por activar
+            %p No hay quinielas para activar
 
       - @score_boards_not_active.each do |score_board|
-        %tr
+        %tr{id: score_board.id}
           %td= link_to score_board.name, user_score_board_path(score_board.user, score_board)
           %td= link_to score_board.user.username, user_path(score_board.user)
+          %td= link_to score_board.user.email, user_path(score_board.user)
           %td
             = form_for score_board, url: update_active_score_board_path(score_board), remote: true do |f|
               = f.check_box :is_active, class: "checkbox-score-board"
@@ -22,17 +29,22 @@
   .message-position
 
 .col-xs-6
-  %table.table
-    %th Quinielas activas
+  %h4 Quinielas activas
+  %table.table#active
+    %thead
+      %th Quinielas activas
+      %th Usuario
+      %th Email
     %tbody
       - if @score_boards_active.empty?
         %tr 
           %td
-            %p No hay quinielas activas
+            %p= t('notices.no_active_score_boards')
       - @score_boards_active.each do |score_board|
         %tr
           %td= link_to score_board.name, user_score_board_path(score_board.user, score_board)
           %td= link_to score_board.user.username, user_path(score_board.user)
+          %td= link_to score_board.user.email, user_path(score_board.user)
 
 - content_for(:javascript) do
   :coffeescript
