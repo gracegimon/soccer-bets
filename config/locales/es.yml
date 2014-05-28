@@ -1,4 +1,11 @@
 es:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: 'Este e-mail ya existe'
   authentication:
     forgot_password: 'Olvidó su contraseña'
     has_requested: 'ha solicitado su reinicio de contraseña.'

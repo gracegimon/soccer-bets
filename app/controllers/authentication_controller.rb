@@ -90,8 +90,8 @@ class AuthenticationController < ApplicationController
   end
 
   def new_password
-    username = params[:user][:username]
-    @user = User.find_by_username(username)
+    email = params[:user][:email]
+    @user = User.find_by(email: email)
 
     if verify_new_password(params[:user])
       @user.update(new_password_params)
@@ -99,7 +99,7 @@ class AuthenticationController < ApplicationController
 
       if @user.valid?
         clear_password_reset(@user)
-        @user.save
+        @user.save!
         flash[:notice] = 'Su contraseña ha sido reiniciada. Por favor, inicie sesión con su nueva contraseña.'
         redirect_to :sign_in
       else
@@ -119,7 +119,7 @@ class AuthenticationController < ApplicationController
   end
 
   def new_password_params
-    params.require(:user).permit(:password, :password_confirmation)
+    params.require(:user).permit(:new_password, :new_password_confirmation)
   end
 
   def new_user_params

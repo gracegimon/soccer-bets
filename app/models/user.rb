@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   has_many :score_boards
 
 
-  attr_accessor :password, :new_password
+  attr_accessor :password, :new_password, :new_password_confirmation
+
   before_save :encrypt_password
   before_save { self.email = email.downcase }
   validates_confirmation_of :password
