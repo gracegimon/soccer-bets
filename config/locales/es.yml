@@ -138,6 +138,7 @@ es:
     diff_goals: 'Marcador Dif Goles'
     red_card_team: 'Primer equipo con tarjeta roja'
     semi_finals: 'Semi final'
+    finals: 'Finalistas'
     for_each_team: 'por c/equipo'
     winner: 'Acertar ganador'
     penal: 'Primer equipo que anota un gol de penal'

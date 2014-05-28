@@ -98,7 +98,7 @@
       .span6
         .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
           %h6= t('welcome.round_of_16') 
-          %h5= "4 #{t('welcome.points')} #{t('welcome.for_each_team')}"
+          %h5= "6 #{t('welcome.points')} #{t('welcome.for_each_team')}"
       .span6
         .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-light
           %h6= t('welcome.quarter_finals')
@@ -121,8 +121,8 @@
           %h5= "6 #{t('welcome.points')} #{t('welcome.for_each_team')}"
       .span6
         .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-dark
-          %h6= t('welcome.third_place')
-          %h5= "7 #{t('welcome.points')}"
+          %h6= t('welcome.finals')
+          %h5= "8 #{t('welcome.points')}  #{t('welcome.for_each_team')}"      
 
   .row-fluid.special-row
     .span4
@@ -136,12 +136,19 @@
     .span4
       .span6
         .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-dark
-          %h6= t('welcome.sub_champion')
-          %h5= "8 #{t('welcome.points')}"
+          %h6= t('welcome.third_place')
+          %h5= "4 #{t('welcome.points')}"
       .span6
         .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-dark
-          %h6= t('welcome.champion')
-          %h5= "9 #{t('welcome.points')}" 
+          %h6= t('welcome.sub_champion')
+          %h5= "6 #{t('welcome.points')}"
+  .row-fluid
+    .span4
+    .span4
+    .span4
+      .colored-circle.colored-circle-section.colored-circle-section-center.tournament-blue-dark
+        %h6= t('welcome.champion')
+        %h5= "16 #{t('welcome.points')}" 
   .row-fluid.span12
     = image_tag "dots.png", class: 'dots-image'
 
