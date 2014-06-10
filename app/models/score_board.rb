@@ -454,7 +454,7 @@ class ScoreBoard < ActiveRecord::Base
     return ScoreBoard.main_score_board.id == self.id 
   end
 
-
+  # Set points for Group Phase
   def set_points_for_group_phase(official_score, match_number)
     match = Match.find_by_match_number_score_board(match_number, self)
     unless match.score.nil?
@@ -509,28 +509,39 @@ class ScoreBoard < ActiveRecord::Base
   # Receives main match type
   # This is only called for Main Score board
   def update_points_for_score_boards(type, tournament)
+    # This makes it impossible to change a score after the phase has been finished
     scores = Score.where(scoreboard_id: self.id).includes(:match).where("matches.match_type" => type - 2)
     scores.each do |score|
       score.can_change = false
       score.save
     end 
+    # Now, for all scores update points for achievements in the NEXT phase ! (type)
     score_boards = ScoreBoard.not_main_board.active.where(tournament_id: tournament.id)
     score_boards.each do |score_board| 
       score_board.update_points(type)
     end
   end
 
+  # Update a Score Board point for second phase
   def update_points(type)
     count = self.number_of_same_teams(type)
     if type == Match::R16_MAIN
-      self.points += count * 4
+      self.points += count * 6
     elsif type == Match::QUARTER_MAIN
       self.points += count * 5
     elsif type == Match::SEMI_MAIN
       self.points += count * 6
+    elsif type == Match::THIRD_MAIN # Added 8 points for being at finals all 4 teams
+      self.points += count * 8
+      count_final = number_of_same_teams(Match::FINAL_MAIN)
+      self.points += count_final * 8
     end
     self.save
   end
+
+  # WE NEED TO ADD 4 POINTS FOR SCORING THIRD PLACE
+  # ADD 6 POINTS FOR SCORING SECOND PLACE
+  # ADD 16 POINTS FOR SCORING FIRST PLACE
 
 def calculate_proper_matches(type)
   official_matches = []

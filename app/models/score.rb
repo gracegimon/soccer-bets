@@ -85,31 +85,32 @@ class Score < ActiveRecord::Base
           matches = select_group_matches(score_board)
           update_each_group_match(matches, score_board)
         end
+      # Scoring Third Place: 4
       elsif match_type == Match::THIRD_MAIN
         @score_boards.each do |score_board|
           score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
           winner = self.match.winner.id
           if winner == score_board_match.winner.id
-            score_board.points += 7
+            score_board.points += 4
             score_board.save
           end
         end
-        # check winner add 7
+      # Scoring First Place and Second place
       elsif match_type == Match::FINAL_MAIN
         @score_boards.each do |score_board|
           score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
           winner = self.match.winner.id
           loser = self.match.loser.id
           if winner == score_board_match.winner.id
-            score_board.points += 9
+            score_board.points += 16
           end
           if score_board_match.loser.id == loser
-            score_board.points += 8
+            score_board.points += 6
           end
           score_board.save
 
         end
-        # check if winner (9) and sub champion (8)
+        # check if winner (16) and sub champion (6)
       end      
     end
   end
