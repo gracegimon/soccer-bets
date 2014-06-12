@@ -15,7 +15,7 @@ Quiniela::Application.routes.draw do
   get "password_reset" => "authentication#password_reset"
   put "password_reset" => "authentication#new_password"
   get "sign_up" => "authentication#sign_up"
-  post "sign_up" => "authentication#register"
+  # post "sign_up" => "authentication#register"
   get "password_sent" => "authentication#password_sent"
 
 
