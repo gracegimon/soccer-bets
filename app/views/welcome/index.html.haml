@@ -30,8 +30,8 @@
         %h5= "Pote actual: #{current_tournament.final_jackpot(jackpot_general)} $"
     .span4#quinielas
       .colored-circle.colored-circle-middle-section.colored-circle-middle-section-center.tournament-blue
-        %a{href: sign_up_path}
-          %h2.expandable-h2 Arma tus quinielas
+        %a{href: show_after_published_score_board_path(main_score_board)}
+          %h2.expandable-h2= "#{t('menu.official_results')}" 
     .span4
       .colored-circle.colored-circle-middle-section.colored-circle-middle-section-center.big-circle.tournament-blue
         %h5 High Roller
