@@ -9,21 +9,21 @@
         %h3= t('extra_phase.best_player')
         .span3
           %input#player-label{type: "text", value: "#{@extra.best_player.name unless @extra.best_player_id.nil?}"}
-          = f.hidden_field :best_player_id, required: true, id: "player", value: "#{@extra.best_player_id}" 
+          = f.hidden_field :best_player_id, id: "player", value: "#{@extra.best_player_id}" 
         .span6
           = image_tag "Soccer-Ball.png", size: "50x50"      
       .span12
         %h3= t('extra_phase.red_card_team')
         .span3
           %input#red-card-label{type: 'text', value: "#{@extra.red_card_team.name unless @extra.red_card_team_id.nil?}"}
-          = f.hidden_field :red_card_team_id, required: true, id: "red-card", value: "#{@extra.red_card_team_id}"
+          = f.hidden_field :red_card_team_id, id: "red-card", value: "#{@extra.red_card_team_id}"
         .span6
           = image_tag "red-card.gif", size: "50x70"           
       .span12
         %h3= t('extra_phase.penal_team')
         .span3
           %input#penal-label{type: 'text', value: "#{@extra.penal_team.name unless @extra.penal_team_id.nil?}"}
-          = f.hidden_field :penal_team_id, required: true, id: "penal", value: "#{@extra.penal_team_id}"
+          = f.hidden_field :penal_team_id, id: "penal", value: "#{@extra.penal_team_id}"
         .span6
           = image_tag "penal.png", size: "100x100"           
       = f.hidden_field :score_board_id, value: @score_board.id
@@ -32,9 +32,10 @@
       .span2
         .loader-position
   .row.span11
-    = form_for @score_board do |f|
-      = f.hidden_field :is_published, value: true
-      = f.submit "#{t('general.publish')}", class: "button btn btn-success", style: "float: right", confirm: 'Are you sure you want to publish? You will not be able to make any further changes to your pool'
+    - if !is_main
+      = form_for @score_board do |f|
+        = f.hidden_field :is_published, value: true
+        = f.submit "#{t('general.publish')}", class: "button btn btn-success", style: "float: right", confirm: 'Are you sure you want to publish? You will not be able to make any further changes to your pool'
 
 - content_for(:javascript) do
 
@@ -56,24 +57,25 @@
         select: (event, ui) ->
           $("#player" ).val( ui.item.id );
       )
+      main = #{is_main}
       $("#extra-button").on "click", ->
         $(".loader-position").html("#{escape_javascript render 'shared/loader'}")
         $("#penal-label").removeClass("has-error-border")
         $("#red-card-label").removeClass("has-error-border")
         $("#penal-label").parent().find("label").empty()
         $("#red-card-label").parent().find("label").empty()
-        console.log($("#penal").val())
-        if $("#penal").val() == ""
-          console.log "It's empty"
-          $("#penal-label").addClass("has-error-border")
-          $("#penal-label").parent().append("<label for='extra_phase[penal_team_id]' class='error'>#{t('notices.mandatory_field')}. #{t('notices.pick_one')}</label>")
-          $(".loader-position").empty()
-        if $("#red-card").val() == ""
-          $("#red-card-label").addClass("has-error-border")
-          $("#red-card-label").parent().append("<label for='extra_phase[red_card_team_id]' class='error'> #{t('notices.mandatory_field')}. #{t('notices.pick_one')}</label>")
-          $(".loader-position").empty()
-        if $("#player").val() == ""
-          $("#player-label").addClass("has-error-border")
-          $("#player-label").parent().append("<label for='extra_phase[red_card_team_id]' class='error'>#{t('notices.mandatory_field')}. #{t('notices.pick_one')}</label>")
-          $(".loader-position").empty()
 
+        if !main
+          if $("#penal").val() == ""
+            console.log "It's empty"
+            $("#penal-label").addClass("has-error-border")
+            $("#penal-label").parent().append("<label for='extra_phase[penal_team_id]' class='error'>#{t('notices.mandatory_field')}. #{t('notices.pick_one')}</label>")
+            $(".loader-position").empty()
+          if $("#red-card").val() == ""
+            $("#red-card-label").addClass("has-error-border")
+            $("#red-card-label").parent().append("<label for='extra_phase[red_card_team_id]' class='error'> #{t('notices.mandatory_field')}. #{t('notices.pick_one')}</label>")
+            $(".loader-position").empty()
+          if $("#player").val() == ""
+            $("#player-label").addClass("has-error-border")
+            $("#player-label").parent().append("<label for='extra_phase[red_card_team_id]' class='error'>#{t('notices.mandatory_field')}. #{t('notices.pick_one')}</label>")
+            $(".loader-position").empty()
