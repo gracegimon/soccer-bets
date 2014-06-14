@@ -112,7 +112,11 @@ class Match < ActiveRecord::Base
   def diff_goals_results?(official_score)
     diff_goals = self.goals_difference
     diff_goals_official = official_score.match.goals_difference
-    return diff_goals == diff_goals_official
+    if self.exact_winner?(official_score)
+      return diff_goals == diff_goals_official
+    else
+      return false
+    end
   end
 
   def exact_winner?(official_score)

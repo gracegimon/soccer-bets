@@ -65,8 +65,8 @@ class Score < ActiveRecord::Base
     if self.score_board.id == ScoreBoard.main_score_board.id
       match_type = self.match.match_type
       match_number = self.match.match_number
-      @score_boards = ScoreBoard.not_main_board.active
-      @score_boards.each do |score_board|
+      score_boards = ScoreBoard.not_main_board.active
+      score_boards.each do |score_board|
         if match_type == Match::GROUP_MAIN
           score_board.set_points_for_group_phase(self, match_number)
         end
@@ -76,17 +76,17 @@ class Score < ActiveRecord::Base
 
   def calculate_all_score_boards
     if self.score_board.id == ScoreBoard.main_score_board.id
-      @score_boards = ScoreBoard.not_main_board.active
+      score_boards = ScoreBoard.not_main_board.active
       match_type = self.match.match_type
       if match_type == Match::GROUP_MAIN
-        @score_boards.each do |score_board|
+        score_boards.each do |score_board|
           score_board.points = 0
           score_board.save
           matches = select_group_matches(score_board)
           update_each_group_match(matches, score_board)
         end
       elsif match_type == Match::THIRD_MAIN
-        @score_boards.each do |score_board|
+        score_boards.each do |score_board|
           score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
           winner = self.match.winner.id
           if winner == score_board_match.winner.id
@@ -96,7 +96,7 @@ class Score < ActiveRecord::Base
         end
         # check winner add 7
       elsif match_type == Match::FINAL_MAIN
-        @score_boards.each do |score_board|
+        score_boards.each do |score_board|
           score_board_match = Match.find_by_match_number_score_board(self.match.match_number, score_board) 
           winner = self.match.winner.id
           loser = self.match.loser.id
