@@ -28,8 +28,8 @@ class ExtraPhase < ActiveRecord::Base
 
   def set_points_for_score_boards
     if self.score_board.id == ScoreBoard.main_score_board.id
-      @score_boards =  ScoreBoard.not_main_board.active
-      @score_boards.each do |score_board|
+      score_boards =  ScoreBoard.not_main_board.active
+      score_boards.each do |score_board|
         extra = score_board.extra_phase
         next if extra.nil?
         if extra.best_player_id == self.best_player_id
