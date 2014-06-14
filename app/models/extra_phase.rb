@@ -30,21 +30,27 @@ class ExtraPhase < ActiveRecord::Base
     if self.score_board.id == ScoreBoard.main_score_board.id
       score_boards =  ScoreBoard.not_main_board.active
       score_boards.each do |score_board|
-        extra = score_board.extra_phase
-        next if extra.nil?
-        if extra.best_player_id == self.best_player_id
-          score_board.points += 7
-        end
-        if extra.red_card_team_id == self.red_card_team_id
-          score_board.points += 5
-        end
-        if extra.penal_team_id == self.penal_team_id
-          score_board.points += 3
-        end
-        score_board.save
+        set_point_for_score_board(score_board)
       end
     end
   end
+
+  def set_point_for_score_board(score_board)
+    extra = score_board.extra_phase
+    unless extra.nil?
+      if extra.best_player_id == self.best_player_id
+        score_board.points += 7
+      end
+      if extra.red_card_team_id == self.red_card_team_id
+        score_board.points += 5
+      end
+      if extra.penal_team_id == self.penal_team_id
+        score_board.points += 3
+      end
+      score_board.save
+    end
+  end
+
 
   def erase_points_for_score_boards
     if self.score_board.id == ScoreBoard.main_score_board.id
