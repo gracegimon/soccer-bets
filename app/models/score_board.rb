@@ -531,10 +531,8 @@ class ScoreBoard < ActiveRecord::Base
       self.points += count * 5
     elsif type == Match::SEMI_MAIN
       self.points += count * 6
-    elsif type == Match::THIRD_MAIN # Added 8 points for being at finals all 4 teams
+    elsif type == Match::FINAL_MAIN # Added 8 points for being at finals
       self.points += count * 8
-      count_final = number_of_same_teams(Match::FINAL_MAIN)
-      self.points += count_final * 8
     end
     self.save
   end
@@ -551,6 +549,8 @@ def calculate_proper_matches(type)
     official_matches = self.calculate_quarters
   elsif type == Match::SEMI_MAIN
     official_matches = self.calculate_semi_finals
+  elsif type == Match::FINAL_MAIN
+    official_matches = self.calculate_final
   end
 end
 

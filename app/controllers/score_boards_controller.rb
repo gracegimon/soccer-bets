@@ -242,11 +242,15 @@ class ScoreBoardsController < ApplicationController
   # type - 2 -> The current phase
   def finish_phase
     type = params[:phase].to_i
-    @score_board = main_score_board
-    matches = Match.find_by_match_type_score_board(type - 2, @score_board)
-    if @score_board.matches_have_score(matches)
+    score_board = main_score_board
+    previous_phase = type - 2
+    if type == Match::FINAL_MAIN
+      previous_phase = Match::SEMI_MAIN
+    end
+    matches = Match.find_by_match_type_score_board(previous_phase, score_board)
+    if score_board.matches_have_score(matches)
       @has_error = false    
-      @score_board.update_points_for_score_boards(type, current_tournament)
+      score_board.update_points_for_score_boards(type, current_tournament)
       tournament = current_tournament
       tournament.current_phase = type
       tournament.save
