@@ -165,7 +165,7 @@ class Score < ActiveRecord::Base
           score_board.save
           matches = select_group_matches(score_board)
           update_each_group_match(matches, score_board)
-          self.score_board.extra_phase.set_point_for_score_board(score_board)
+          self.score_board.extra_phase.set_point_for_score_board(score_board) unless self.score_board.extra_phase.nil?
         end    
       elsif match_type == Match::THIRD_MAIN
         @score_boards = ScoreBoard.not_main_board.active
