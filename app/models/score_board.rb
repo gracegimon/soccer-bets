@@ -512,8 +512,7 @@ class ScoreBoard < ActiveRecord::Base
     # This makes it impossible to change a score after the phase has been finished
     scores = Score.where(scoreboard_id: self.id).includes(:match).where("matches.match_type" => type - 2)
     scores.each do |score|
-      score.can_change = false
-      score.save
+      score.update_column(:can_change, false)
     end 
     # Now, for all scores update points for achievements in the NEXT phase ! (type)
     score_boards = ScoreBoard.not_main_board.active.where(tournament_id: tournament.id)
